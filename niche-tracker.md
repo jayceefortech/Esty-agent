@@ -1,6 +1,10 @@
-# Etsy POD Niche Tracker (Agent 5: Memory Keeper log)
+# Etsy POD Niche Tracker (CEO orchestrator log)
 
-Persistent log across pipeline cycles. Each cycle = Agents 1→2→3→4 run, logged here with date first flagged. After 2 weeks, saturation is re-checked and each niche/gap is marked rising / stable / saturated. Rising patterns get fed back to Agent 1 as priority search terms for the next cycle.
+Persistent log across pipeline cycles. After 2 weeks, saturation is re-checked and each niche/gap is marked rising / stable / saturated. Rising patterns get fed back into the next cycle as priority search terms.
+
+**Pipeline structure (as of 2026-08-20):** A persistent CEO orchestrator (`.claude/agents/ceo.md`) runs every cycle. It reads this file first, decides the cycle's scope, delegates to four sub-agents (`trend-scout`, `phrase-miner`, `gap-finder`, `design-briefer` — see `.claude/agents/`), reviews their combined output for contradictions/low-confidence/silent failures, and is the *only* agent that writes this file, `report.html`, or pushes to GitHub. Sub-agents report to the CEO only — none of them have file-write access.
+
+Every cycle section below starts with a `## CEO Summary` — what ran, what changed, what the CEO decided and why. Anything the CEO wouldn't resolve unilaterally (e.g. retiring a previously flagged niche/gap) is marked `⚠️ NEEDS YOUR CALL` and stays in the tracker, unresolved, until the user explicitly says to drop it — the CEO never silently deletes tracked history.
 
 **Data quality caveat (carries forward every cycle):** Direct Etsy scraping (WebFetch/browser) is blocked (HTTP 403 / bot detection).
 
