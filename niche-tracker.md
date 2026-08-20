@@ -2,7 +2,14 @@
 
 Persistent log across pipeline cycles. Each cycle = Agents 1→2→3→4 run, logged here with date first flagged. After 2 weeks, saturation is re-checked and each niche/gap is marked rising / stable / saturated. Rising patterns get fed back to Agent 1 as priority search terms for the next cycle.
 
-**Data quality caveat (carries forward every cycle):** Direct Etsy scraping (WebFetch/browser) is blocked (HTTP 403 / bot detection). All data comes from Google-indexed `site:etsy.com` search snippets (real listing titles, but no reliable listing-count numbers) plus secondary sources (Pinterest Predicts, POD seller blogs, Reddit). Saturation scores are directional estimates, not computed ratios, unless noted otherwise.
+**Data quality caveat (carries forward every cycle):** Direct Etsy scraping (WebFetch/browser) is blocked (HTTP 403 / bot detection).
+
+**Data sourcing priority (as of 2026-08-19, applies to every cycle going forward):**
+1. **Etsy Open API (preferred).** If an `ETSY_API_KEY` is available in the environment, use Etsy's official Open API v3 (`https://openapi.etsy.com/v3/application/listings/active`, header `x-api-key: $ETSY_API_KEY`) for real listing title, price, image URL, and listing URL (`https://www.etsy.com/listing/{listing_id}`). No key is configured yet — pending signup at developers.etsy.com and a decision on where the key gets stored for the cloud routine.
+2. **Search fallback.** If no API key is set, use Google-indexed `site:etsy.com` WebSearch queries as before. A result only counts as "real" if it contains an actual resolvable `etsy.com/listing/...` URL — a bare title snippet with no URL does not qualify as verified for image/URL purposes, only for confirming the niche/phrase exists.
+3. **No fabrication, ever.** If neither path returns a real image, price, or listing URL for a niche/gap, record it as `NO DATA AVAILABLE` — do not invent a plausible-looking placeholder (no fake swatch styled to look like a photo, no estimated price presented as if verified). Loud, visible gaps are correct; fabricated-but-plausible entries are not. This applies to report.html card rendering too: a card with no real `image`/`url` renders a `NO DATA AVAILABLE` placeholder, not a stand-in graphic.
+
+Secondary sources (Pinterest Predicts, POD seller blogs, Reddit) remain fine for directional trend commentary, always tagged as inferred. Saturation scores are directional estimates, not computed ratios, unless a real listing-count number was captured.
 
 ---
 

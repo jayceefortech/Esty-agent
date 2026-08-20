@@ -60,15 +60,16 @@
     background:var(--panel); border:1px solid var(--line); border-radius:14px;
     overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column;
   }
-  .thumb{
-    height:110px; display:flex; align-items:center; justify-content:center;
-    font-size:2.4rem; position:relative;
+  .thumb{ height:110px; position:relative; }
+  .thumb.photo{ overflow:hidden; }
+  .thumb.photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .thumb.nodata{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    background:repeating-linear-gradient(135deg, var(--line), var(--line) 6px, transparent 6px, transparent 12px);
+    color:var(--muted); font-size:.65rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
   }
-  .thumb .swatch-label{
-    position:absolute; bottom:6px; right:8px; font-size:.6rem;
-    background:rgba(0,0,0,.35); color:#fff; padding:2px 6px; border-radius:6px;
-    letter-spacing:.02em;
-  }
+  .thumb.nodata .nodata-icon{ font-size:1.3rem; }
+  a.thumb-link{ display:block; }
   .card-body{ padding:14px 16px 16px; display:flex; flex-direction:column; gap:8px; flex:1; }
   .card-title{ font-size:.95rem; font-weight:600; margin:0; }
   .card-cat{ font-size:.75rem; color:var(--muted); }
@@ -99,7 +100,7 @@
 </header>
 
 <div class="caveat">
-  <b>Data quality note:</b> Direct Etsy access is blocked (HTTP 403 / bot detection) — all listing titles below are real, pulled via Google-indexed <code>site:etsy.com</code> search snippets, but no niche has a verified live listing count, so <b>saturation is a directional estimate</b>, not a computed ratio. <b>No product photos or review counts were captured this cycle</b> — the icon on each card is a style/palette swatch representing the niche's visual direction, not an actual product photo.
+  <b>Data quality note:</b> Direct Etsy access is blocked (HTTP 403 / bot detection) — listing titles below are real, pulled via Google-indexed <code>site:etsy.com</code> search snippets, but no niche has a verified live listing count, so <b>saturation is a directional estimate</b>, not a computed ratio. <b>No real product photo, price, or confirmed listing URL was captured for any card this cycle</b> — cards are marked <b>NO DATA AVAILABLE</b> rather than shown with a styled placeholder that could pass for a real thumbnail. Once the Etsy Open API is wired up with a key, real images/prices/URLs will populate here and each thumbnail will become a clickable link to the live listing.
 </div>
 
 <main>
@@ -126,36 +127,49 @@ const statusBadge = (status) => {
   return `<span class="badge ${cls}">${label}</span>`;
 };
 
+// image: real Etsy CDN image URL, or null if none was captured this cycle.
+// url: real https://www.etsy.com/listing/... URL, or null if none was captured this cycle.
+// Both must come from an actual API response or a search result containing a resolvable
+// listing URL — never fabricate either field just to populate a card.
 const niches = [
-  { icon:'💀🎄', swatch:'#241019', name:'Gothmas / Gothic Christmas', cat:'wall art · mugs · stickers', status:'active', sat:'low', example:'"Gothic Christmas Sticker Bundle"' },
-  { icon:'👵🫖', swatch:'#5a4326', name:'Nonnacore', cat:'mugs · wall art', status:'active', sat:'med', example:'"Personalized Nonna Coffee Mug"' },
-  { icon:'🏰⚔️', swatch:'#3d4a3a', name:'Castlecore / Knightcore', cat:'wall art · t-shirts', status:'active', sat:'med', example:'"King Arthur Pendragon Castle Core Shirt"' },
-  { icon:'🧠✨', swatch:'#4b3d63', name:'ADHD / Neurodivergent Stickers', cat:'stickers', status:'active', sat:'low', example:'"Unapologetically Neurodivergent Sticker"' },
-  { icon:'🥄', swatch:'#5c4a63', name:'Chronic Illness / Spoonie Stickers', cat:'stickers', status:'active', sat:'low', example:'"Super Spoonie Sticker Holographic"' },
-  { icon:'🌅', swatch:'#2c4a52', name:'Recovery / Sobriety Stickers', cat:'stickers', status:'active', sat:'low', example:'"Sobriety Sticker Pack: AA & NA Recovery Gifts"' },
-  { icon:'🐾', swatch:'#6b2f36', name:'Pet Breed + Hobby Combo Mugs', cat:'mugs', status:'active', sat:'med', example:'"Golden Retriever Mug… Dog Mom Era"' },
-  { icon:'💀🩺', swatch:'#44403a', name:'Occupation × Sarcasm T-Shirts', cat:'t-shirts', status:'active', sat:'high', example:'"Skeleton Nurse Meme Group Tshirt"' },
-  { icon:'🧵', swatch:'#7a4a24', name:'Afrohemian Decor', cat:'wall art', status:'unresolved', sat:'low', example:null },
-  { icon:'👽', swatch:'#2f4a5c', name:'Extra Celestial / Alien-Core', cat:'wall art · stickers · tumblers', status:'unresolved', sat:'low', example:null },
-  { icon:'🎪', swatch:'#7a2020', name:'Circus-Core / Funhaus', cat:'wall art', status:'unresolved', sat:'low', example:null },
-  { icon:'✨', swatch:'#3a3226', name:'Neo Deco', cat:'wall art', status:'unresolved', sat:'low', example:null },
-  { icon:'⚠️🥤', swatch:'#4a4a4a', name:'Tumbler General (teachers/nurses/moms)', cat:'tumblers', status:'caution', sat:'high', example:null },
+  { name:'Gothmas / Gothic Christmas', cat:'wall art · mugs · stickers', status:'active', sat:'low', example:'"Gothic Christmas Sticker Bundle"', image:null, url:null },
+  { name:'Nonnacore', cat:'mugs · wall art', status:'active', sat:'med', example:'"Personalized Nonna Coffee Mug"', image:null, url:null },
+  { name:'Castlecore / Knightcore', cat:'wall art · t-shirts', status:'active', sat:'med', example:'"King Arthur Pendragon Castle Core Shirt"', image:null, url:null },
+  { name:'ADHD / Neurodivergent Stickers', cat:'stickers', status:'active', sat:'low', example:'"Unapologetically Neurodivergent Sticker"', image:null, url:null },
+  { name:'Chronic Illness / Spoonie Stickers', cat:'stickers', status:'active', sat:'low', example:'"Super Spoonie Sticker Holographic"', image:null, url:null },
+  { name:'Recovery / Sobriety Stickers', cat:'stickers', status:'active', sat:'low', example:'"Sobriety Sticker Pack: AA & NA Recovery Gifts"', image:null, url:null },
+  { name:'Pet Breed + Hobby Combo Mugs', cat:'mugs', status:'active', sat:'med', example:'"Golden Retriever Mug… Dog Mom Era"', image:null, url:null },
+  { name:'Occupation × Sarcasm T-Shirts', cat:'t-shirts', status:'active', sat:'high', example:'"Skeleton Nurse Meme Group Tshirt"', image:null, url:null },
+  { name:'Afrohemian Decor', cat:'wall art', status:'unresolved', sat:'low', example:null, image:null, url:null },
+  { name:'Extra Celestial / Alien-Core', cat:'wall art · stickers · tumblers', status:'unresolved', sat:'low', example:null, image:null, url:null },
+  { name:'Circus-Core / Funhaus', cat:'wall art', status:'unresolved', sat:'low', example:null, image:null, url:null },
+  { name:'Neo Deco', cat:'wall art', status:'unresolved', sat:'low', example:null, image:null, url:null },
+  { name:'Tumbler General (teachers/nurses/moms)', cat:'tumblers', status:'caution', sat:'high', example:null, image:null, url:null },
 ];
 
 const gaps = [
-  { icon:'🏰🩺', swatch:'#3d4a3a', rank:1, name:'Knightcore × School Nurse/Teacher', product:'"Healer of the Realm" tee', price:'$26–28', sat:'med' },
-  { icon:'👵🥄', swatch:'#5a4a3f', rank:2, name:'Nonnacore × ADHD/Spoonie Mug', product:'"Nonna Said Sit Down And Rest" mug', price:'$18–22', sat:'low' },
-  { icon:'💀🐾', swatch:'#3a1420', rank:3, name:'Gothmas × Pet-Mom Christmas', product:'"Goth Mom, Merry Christmas" sticker', price:'$3.50–5 (est.)', sat:'low' },
-  { icon:'🌅🐾', swatch:'#2c4a52', rank:4, name:'Sobriety × Pet-Mom', product:'"Sober AND a Dog Mom" sticker/tee', price:'$4–5 / $24–26', sat:'med' },
-  { icon:'🧠🌅', swatch:'#3d3a5c', rank:5, name:'ADHD × Sobriety/Recovery', product:'"Neurodivergent AND Sober" sticker', price:'$3.50–5 (est.)', sat:'low' },
+  { rank:1, name:'Knightcore × School Nurse/Teacher', product:'"Healer of the Realm" tee', price:'$26–28', sat:'med', image:null, url:null },
+  { rank:2, name:'Nonnacore × ADHD/Spoonie Mug', product:'"Nonna Said Sit Down And Rest" mug', price:'$18–22', sat:'low', image:null, url:null },
+  { rank:3, name:'Gothmas × Pet-Mom Christmas', product:'"Goth Mom, Merry Christmas" sticker', price:'$3.50–5 (est.)', sat:'low', image:null, url:null },
+  { rank:4, name:'Sobriety × Pet-Mom', product:'"Sober AND a Dog Mom" sticker/tee', price:'$4–5 / $24–26', sat:'med', image:null, url:null },
+  { rank:5, name:'ADHD × Sobriety/Recovery', product:'"Neurodivergent AND Sober" sticker', price:'$3.50–5 (est.)', sat:'low', image:null, url:null },
 ];
+
+function thumbHTML(item){
+  if(item.image){
+    const img = `<img src="${item.image}" alt="${item.name.replace(/"/g,'&quot;')}" loading="lazy">`;
+    const box = `<div class="thumb photo">${img}</div>`;
+    return item.url ? `<a class="thumb-link" href="${item.url}" target="_blank" rel="noopener">${box}</a>` : box;
+  }
+  return `<div class="thumb nodata"><span class="nodata-icon">🚫</span>NO DATA AVAILABLE</div>`;
+}
 
 const nicheGrid = document.getElementById('niche-grid');
 niches.forEach(n => {
   const el = document.createElement('div');
   el.className = 'card';
   el.innerHTML = `
-    <div class="thumb" style="background:${n.swatch}">${n.icon}<span class="swatch-label">style swatch</span></div>
+    ${thumbHTML(n)}
     <div class="card-body">
       <p class="card-title">${n.name}</p>
       <div class="card-cat">${n.cat}</div>
@@ -171,7 +185,7 @@ gaps.forEach(g => {
   const el = document.createElement('div');
   el.className = 'card';
   el.innerHTML = `
-    <div class="thumb" style="background:${g.swatch}">${g.icon}<span class="swatch-label">style swatch</span></div>
+    ${thumbHTML(g)}
     <div class="card-body">
       <p class="card-title">#${g.rank} · ${g.name}</p>
       <div class="card-cat">${g.product}</div>
