@@ -12,7 +12,7 @@ Search Etsy print-on-demand categories (t-shirts, mugs, wall art, stickers, tumb
 
 ## Data sourcing priority — follow exactly, in order
 
-1. **Etsy Open API (preferred).** Check `echo $ETSY_API_KEY` in Bash. If set, call `https://openapi.etsy.com/v3/application/listings/active?keywords=...&limit=...` via `curl -H "x-api-key: $ETSY_API_KEY"` for real title, price, image URL, and listing_id (listing URL = `https://www.etsy.com/listing/{listing_id}`).
+1. **Etsy Open API (preferred).** Check `echo $ETSY_API_KEY` in Bash. If set, call `https://openapi.etsy.com/v3/application/listings/active?keywords=...&limit=...` via `curl -H "x-api-key: $ETSY_API_KEY:$ETSY_SHARED_SECRET"` for real title, price, image URL, and listing_id (listing URL = `https://www.etsy.com/listing/{listing_id}`). Note: the `x-api-key` header must be `keystring:sharedsecret`, not the keystring alone — a bare keystring 403s with "Shared secret is required in x-api-key header."
 2. **Search fallback.** If no key, or the API call fails/403s, use `site:etsy.com` WebSearch queries. A result only counts as carrying a real image/URL if it contains an actual resolvable `etsy.com/listing/...` URL — a bare title snippet only confirms the niche/phrase exists.
 3. **No fabrication, ever.** If neither path returns real data for a search term, report it to the CEO as `NO DATA AVAILABLE` for that term. Never invent a title, price, image, or URL to fill a gap in your report.
 
