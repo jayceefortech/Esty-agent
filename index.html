@@ -189,6 +189,27 @@
   @media (max-width: 480px){
     #graph-wrap{ height:420px; }
   }
+
+  .warn-banner{
+    background:var(--badge-caution-bg); border:1px solid #6b4a20; border-radius:12px;
+    padding:14px 16px; font-size:.82rem; color:var(--badge-caution-fg); margin-bottom:16px;
+  }
+  .warn-banner b{ color:var(--ink); }
+  .earn-inputs{ display:flex; flex-wrap:wrap; gap:16px; margin-bottom:14px; }
+  .earn-inputs label{
+    display:flex; flex-direction:column; gap:5px; font-size:.68rem; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.03em; font-weight:600;
+  }
+  .earn-inputs input{
+    background:var(--panel2); border:1px solid var(--line); border-radius:8px; color:var(--ink);
+    padding:8px 10px; font-size:.9rem; width:150px; font-family:inherit;
+  }
+  .earn-inputs input:focus{ outline:none; border-color:var(--accent); }
+  .earn-fees-note{ font-size:.72rem; color:var(--muted); margin-bottom:16px; line-height:1.6; }
+  #earnings-table th.num, #earnings-table td.num{ text-align:right; }
+  #earnings-table tfoot td{ font-weight:700; color:var(--ink); border-top:2px solid var(--line); }
+  .profit-positive{ color:var(--sat-low-fg); }
+  .profit-negative{ color:var(--sat-high-fg); }
 </style>
 </head>
 <body>
@@ -205,6 +226,7 @@
   <button class="tab" data-tab="history">History</button>
   <button class="tab" data-tab="status">Pipeline Status</button>
   <button class="tab" data-tab="graph">Node Map</button>
+  <button class="tab" data-tab="earnings">Earnings Estimate</button>
 </nav>
 
 <main>
@@ -243,6 +265,44 @@
     </div>
     <div class="graph-legend" id="graph-legend"></div>
   </section>
+
+  <section id="panel-earnings" class="panel">
+    <div class="warn-banner">
+      <b>⚠ Planning tool, not a guarantee.</b> Every number below comes from the assumptions you set here (views/month, conversion rate, listings live) plus each niche's real suggested price and saturation level used only as a rough traffic/competition proxy. No niche has been published or sold on Etsy yet, so none of this is backed by real sales data — adjust the inputs and watch the estimate change instantly.
+    </div>
+
+    <div class="earn-inputs">
+      <label>Views / month per listing
+        <input id="inp-views" type="number" min="0" step="10" value="500">
+      </label>
+      <label>Conversion rate (%)
+        <input id="inp-conv" type="number" min="0" step="0.1" value="2">
+      </label>
+      <label>Listings live (per niche)
+        <input id="inp-listings" type="number" min="0" step="1" value="1">
+      </label>
+    </div>
+
+    <div class="earn-fees-note">
+      Fees modeled: Etsy transaction 6.5% of revenue + payment processing 3% + $0.25/order + listing fee ≈$0.05/listing/month ($0.20 every 4 months). Printify base cost assumed per category: wall art $14.00 · tumblers $11.00 · t-shirts $9.00 · mugs $6.50 · stickers $2.00 (uncategorized gaps default to $8.00). Saturation traffic multiplier: low ×1.3, medium ×1.0, high ×0.6, design gap ×1.4 (wide open, treated as the biggest opportunity).
+    </div>
+
+    <div class="table-wrap">
+      <table id="earnings-table">
+        <thead>
+          <tr>
+            <th>Niche / Gap</th><th>Category</th><th>Saturation</th>
+            <th class="num">Price used</th><th class="num">Est. units/mo</th>
+            <th class="num">Revenue</th><th class="num">Fees</th>
+            <th class="num">Printify cost</th><th class="num">Net profit</th>
+          </tr>
+        </thead>
+        <tbody id="earnings-body"></tbody>
+        <tfoot id="earnings-foot"></tfoot>
+      </table>
+    </div>
+    <p class="na" id="earnings-excluded" style="margin-top:10px"></p>
+  </section>
 </main>
 
 <div class="fab-row"><button id="export-btn">⭐ Export favorites.md</button></div>
@@ -253,7 +313,7 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-08-20T22:27:10",
+  "generatedAt": "2026-08-20T22:37:39",
   "cycle": {
     "number": 1,
     "date": "2026-08-19",
@@ -1462,6 +1522,90 @@ async function exportFavorites(){
   toast('Downloaded favorites.md — move it into etsy-pod-agent/ to keep it with the project');
 }
 
+const SAT_MULTIPLIER = { low: 1.3, medium: 1.0, high: 0.6, unknown: 1.0 };
+const GAP_MULTIPLIER = 1.4;
+const PRINTIFY_BASE_COST = { 'wall art': 14.00, 'tumblers': 11.00, 't-shirts': 9.00, 'mugs': 6.50, 'stickers': 2.00 };
+const DEFAULT_PRINTIFY_COST = 8.00;
+const ETSY_TXN_FEE_PCT = 0.065;
+const ETSY_PAYMENT_FEE_PCT = 0.03;
+const ETSY_PAYMENT_FEE_FLAT = 0.25;
+const ETSY_LISTING_FEE_PER_MONTH = 0.05;
+
+function parsePriceValue(str){
+  if (!str) return null;
+  const nums = [...str.matchAll(/\$([\d,]+(?:\.\d+)?)/g)].map(m => parseFloat(m[1].replace(/,/g, '')));
+  if (!nums.length) return null;
+  return nums.length === 1 ? nums[0] : (nums[0] + nums[1]) / 2;
+}
+
+function currency(n){
+  return (n < 0 ? '-$' : '$') + Math.abs(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function computeEarnings(views, convPct, listings){
+  const rows = [];
+  const excluded = [];
+  (DATA.graph.nodes || []).forEach(node => {
+    const price = parsePriceValue(node.price);
+    if (price === null) { excluded.push(node.name); return; }
+    const mult = node.kind === 'gap' ? GAP_MULTIPLIER : (SAT_MULTIPLIER[node.satLevel] || 1.0);
+    const units = views * listings * (convPct / 100) * mult;
+    const revenue = units * price;
+    const printifyCost = units * (PRINTIFY_BASE_COST[node.category] ?? DEFAULT_PRINTIFY_COST);
+    const etsyTxnFee = revenue * ETSY_TXN_FEE_PCT;
+    const etsyPaymentFee = revenue * ETSY_PAYMENT_FEE_PCT + units * ETSY_PAYMENT_FEE_FLAT;
+    const listingFee = listings * ETSY_LISTING_FEE_PER_MONTH;
+    const fees = etsyTxnFee + etsyPaymentFee + listingFee;
+    const net = revenue - fees - printifyCost;
+    rows.push({ node, price, units, revenue, fees, printifyCost, net });
+  });
+  rows.sort((a, b) => b.net - a.net);
+  return { rows, excluded };
+}
+
+function renderEarnings(){
+  const views = Math.max(0, Number(document.getElementById('inp-views').value) || 0);
+  const conv = Math.max(0, Number(document.getElementById('inp-conv').value) || 0);
+  const listings = Math.max(0, Number(document.getElementById('inp-listings').value) || 0);
+  const { rows, excluded } = computeEarnings(views, conv, listings);
+
+  document.getElementById('earnings-body').innerHTML = rows.map(r => `
+    <tr>
+      <td>${escapeHtml(r.node.name)}${r.node.kind === 'gap' ? ' <span class="na">(gap)</span>' : ''}</td>
+      <td>${escapeHtml(r.node.category || '—')}</td>
+      <td>${r.node.kind === 'gap' ? '<span class="na">n/a</span>' : escapeHtml(r.node.satLevel || 'unknown')}</td>
+      <td class="num">${currency(r.price)}</td>
+      <td class="num">${r.units.toFixed(1)}</td>
+      <td class="num">${currency(r.revenue)}</td>
+      <td class="num">${currency(r.fees)}</td>
+      <td class="num">${currency(r.printifyCost)}</td>
+      <td class="num ${r.net >= 0 ? 'profit-positive' : 'profit-negative'}">${currency(r.net)}</td>
+    </tr>`).join('') || `<tr><td colspan="9" class="na">No niches/gaps have usable price data.</td></tr>`;
+
+  const totals = rows.reduce((a, r) => ({
+    revenue: a.revenue + r.revenue, fees: a.fees + r.fees, printify: a.printify + r.printifyCost, net: a.net + r.net,
+  }), { revenue: 0, fees: 0, printify: 0, net: 0 });
+
+  document.getElementById('earnings-foot').innerHTML = rows.length ? `
+    <tr>
+      <td colspan="5">Total across ${rows.length} niche${rows.length === 1 ? '' : 's'}/gaps with price data</td>
+      <td class="num">${currency(totals.revenue)}</td>
+      <td class="num">${currency(totals.fees)}</td>
+      <td class="num">${currency(totals.printify)}</td>
+      <td class="num ${totals.net >= 0 ? 'profit-positive' : 'profit-negative'}">${currency(totals.net)}</td>
+    </tr>` : '';
+
+  document.getElementById('earnings-excluded').textContent =
+    excluded.length ? `Excluded (no usable price data): ${excluded.join(', ')}` : '';
+}
+
+function initEarnings(){
+  ['inp-views', 'inp-conv', 'inp-listings'].forEach(id => {
+    document.getElementById(id).addEventListener('input', renderEarnings);
+  });
+  renderEarnings();
+}
+
 document.getElementById('meta-line').textContent =
   `Cycle ${DATA.cycle.number} — ${DATA.cycle.date || ''} · generated ${DATA.generatedAt.replace('T', ' ')}`;
 renderTypeFilters();
@@ -1470,6 +1614,7 @@ document.getElementById('gap-grid').innerHTML = DATA.gaps.slice().sort((a, b) =>
 renderHistory();
 renderStatus();
 renderGraphLegend();
+initEarnings();
 document.getElementById('export-btn').addEventListener('click', exportFavorites);
 </script>
 
