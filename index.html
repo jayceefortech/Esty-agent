@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Etsy POD Pipeline Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#14120f; --panel:#1e1b17; --panel2:#242019; --ink:#f1ece3; --muted:#a89e91;
+    --line:#332d25; --accent:#d99a7c;
+    --badge-active-bg:#1d3540; --badge-active-fg:#a9d4e3;
+    --badge-unresolved-bg:#2c281f; --badge-unresolved-fg:#a89e91;
+    --badge-caution-bg:#3a2a17; --badge-caution-fg:#e3b57f;
+    --sat-low-bg:#22331d; --sat-low-fg:#a6d69a;
+    --sat-med-bg:#372f18; --sat-med-fg:#e0c47c;
+    --sat-high-bg:#3a221d; --sat-high-fg:#e79c8c;
+    --sat-unknown-bg:#2c281f; --sat-unknown-fg:#a89e91;
+    --ok-bg:#1d3a24; --ok-fg:#8fd6a0;
+    --err-bg:#3a1d1d; --err-fg:#e79c8c;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.35);
+    --star: #e0c47c;
+  }
+  *{box-sizing:border-box}
+  html,body{ overflow-x:hidden; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.4; padding-bottom:84px;
+  }
+  a{ color:var(--accent); }
+  header{ max-width:1180px; margin:0 auto; padding:24px 16px 4px; }
+  header h1{ font-size:1.4rem; margin:0 0 4px; letter-spacing:-.01em; }
+  header .meta{ color:var(--muted); font-size:.82rem; }
+
+  nav.tabs{
+    max-width:1180px; margin:16px auto 0; padding:0 16px;
+    display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  nav.tabs::-webkit-scrollbar{ display:none; }
+  .tab{
+    flex:0 0 auto; background:var(--panel); color:var(--muted); border:1px solid var(--line);
+    border-radius:999px; padding:8px 16px; font-size:.85rem; font-weight:600; cursor:pointer;
+    white-space:nowrap;
+  }
+  .tab.active{ background:var(--accent); color:#241209; border-color:var(--accent); }
+
+  main{ max-width:1180px; margin:0 auto; padding:20px 16px 40px; }
+  .panel{ display:none; }
+  .panel.active{ display:block; }
+
+  .filters{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:16px; }
+  .filter-group{ display:flex; flex-wrap:wrap; gap:6px; }
+  .filter-label{ font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-right:2px; align-self:center; }
+  .chip{
+    background:var(--panel); color:var(--muted); border:1px solid var(--line); border-radius:999px;
+    padding:5px 12px; font-size:.75rem; cursor:pointer; font-weight:600;
+  }
+  .chip.active{ background:var(--sat-med-bg); color:var(--ink); border-color:var(--accent); }
+  .clear-link{ background:none; border:none; color:var(--muted); font-size:.75rem; text-decoration:underline; cursor:pointer; padding:5px 4px; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; }
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column;
+  }
+  .thumb{ height:110px; position:relative; }
+  .thumb.photo{ overflow:hidden; }
+  .thumb.photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .thumb.nodata{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    background:repeating-linear-gradient(135deg, var(--line), var(--line) 6px, transparent 6px, transparent 12px);
+    color:var(--muted); font-size:.62rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  }
+  .thumb.nodata .nodata-icon{ font-size:1.2rem; }
+  a.thumb-link{ display:block; }
+  .card-body{ padding:12px 14px 14px; display:flex; flex-direction:column; gap:7px; flex:1; }
+  .card-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:6px; }
+  .card-title{ font-size:.92rem; font-weight:600; margin:0; }
+  .fav-btn{
+    background:none; border:none; font-size:1.15rem; line-height:1; cursor:pointer; color:var(--muted);
+    padding:0 2px; flex:0 0 auto;
+  }
+  .fav-btn.active{ color:var(--star); }
+  .card-cat{ font-size:.72rem; color:var(--muted); }
+  .badges{ display:flex; flex-wrap:wrap; gap:6px; margin-top:1px; }
+  .badge{
+    font-size:.64rem; font-weight:600; padding:3px 8px; border-radius:999px;
+    letter-spacing:.02em; text-transform:uppercase; white-space:nowrap;
+  }
+  .badge.status-active{ background:var(--badge-active-bg); color:var(--badge-active-fg); }
+  .badge.status-unresolved{ background:var(--badge-unresolved-bg); color:var(--badge-unresolved-fg); }
+  .badge.status-caution{ background:var(--badge-caution-bg); color:var(--badge-caution-fg); }
+  .badge.sat-low{ background:var(--sat-low-bg); color:var(--sat-low-fg); }
+  .badge.sat-medium{ background:var(--sat-med-bg); color:var(--sat-med-fg); }
+  .badge.sat-high{ background:var(--sat-high-bg); color:var(--sat-high-fg); }
+  .badge.sat-unknown{ background:var(--sat-unknown-bg); color:var(--sat-unknown-fg); }
+  .badge.agent-success{ background:var(--ok-bg); color:var(--ok-fg); }
+  .badge.agent-error, .badge.agent-fail, .badge.agent-failed{ background:var(--err-bg); color:var(--err-fg); }
+  .row{ display:flex; justify-content:space-between; gap:8px; font-size:.74rem; color:var(--muted); border-top:1px dashed var(--line); padding-top:7px; margin-top:1px; }
+  .row b{ color:var(--ink); font-weight:600; text-align:right; }
+  .example{ font-size:.74rem; color:var(--muted); font-style:italic; }
+  .example b{ font-style:normal; color:var(--ink); }
+  .na{ opacity:.6; }
+
+  h3{ font-size:.95rem; margin:20px 0 10px; }
+  .status-grid{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:8px; }
+  .stat{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px;
+    box-shadow:var(--shadow); min-width:150px; flex:1 1 150px;
+  }
+  .stat-label{ display:block; font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+  .stat-val{ display:block; font-size:1.1rem; font-weight:700; margin-top:2px; }
+  .agent-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .ceo-summary{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; font-size:.85rem; color:var(--muted); }
+  .ceo-summary p{ margin:0 0 10px; }
+  .ceo-summary ul{ margin:0 0 10px; padding-left:20px; }
+  .ceo-summary li{ margin-bottom:6px; }
+  .ceo-summary b{ color:var(--ink); }
+  .ceo-summary code{ background:var(--panel2); padding:1px 5px; border-radius:4px; font-size:.85em; }
+
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--panel); }
+  table{ border-collapse:collapse; width:100%; font-size:.78rem; }
+  th,td{ padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th{ color:var(--muted); font-weight:600; font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; }
+  th .muted{ display:block; font-weight:400; text-transform:none; letter-spacing:0; font-size:.7rem; margin-top:2px; }
+  tbody tr:last-child td{ border-bottom:none; }
+
+  .fab-row{ position:fixed; left:0; right:0; bottom:0; display:flex; justify-content:center; padding:14px; pointer-events:none; }
+  #export-btn{
+    pointer-events:auto; background:var(--accent); color:#241209; border:none; border-radius:999px;
+    padding:12px 22px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
+  }
+  #toast{
+    position:fixed; left:50%; bottom:70px; transform:translate(-50%,10px); background:var(--panel2);
+    color:var(--ink); border:1px solid var(--line); padding:10px 16px; border-radius:10px;
+    font-size:.8rem; box-shadow:var(--shadow); opacity:0; transition:opacity .2s, transform .2s; pointer-events:none;
+  }
+  #toast.show{ opacity:1; transform:translate(-50%,0); }
+
+  @media (max-width: 480px){
+    .grid{ grid-template-columns:1fr; }
+    .status-grid{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Etsy POD Pipeline Dashboard</h1>
+  <div class="meta" id="meta-line"></div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="niches">Live Niches</button>
+  <button class="tab" data-tab="briefs">Design Briefs</button>
+  <button class="tab" data-tab="history">History</button>
+  <button class="tab" data-tab="status">Pipeline Status</button>
+</nav>
+
+<main>
+  <section id="panel-niches" class="panel active">
+    <div class="filters">
+      <span class="filter-label">Type</span>
+      <div class="filter-group" id="filter-type"></div>
+      <span class="filter-label">Saturation</span>
+      <div class="filter-group" id="filter-sat">
+        <button class="chip" data-sat="low">Low</button>
+        <button class="chip" data-sat="medium">Medium</button>
+        <button class="chip" data-sat="high">High</button>
+      </div>
+      <button class="clear-link" id="clear-filters">Clear filters</button>
+    </div>
+    <div class="grid" id="niche-grid"></div>
+  </section>
+
+  <section id="panel-briefs" class="panel">
+    <div class="grid" id="gap-grid"></div>
+  </section>
+
+  <section id="panel-history" class="panel">
+    <div id="history-body"></div>
+  </section>
+
+  <section id="panel-status" class="panel">
+    <div id="status-body"></div>
+  </section>
+</main>
+
+<div class="fab-row"><button id="export-btn">⭐ Export favorites.md</button></div>
+<div id="toast"></div>
+
+<script>
+const DATA = {
+  "generatedAt": "2026-08-20T22:03:49",
+  "cycle": {
+    "number": 1,
+    "date": "2026-08-19",
+    "title": "Cycle 1 \u2014 flagged 2026-08-19"
+  },
+  "pipeline": {
+    "lastRun": "2026-08-20",
+    "nextScheduled": "2026-09-02",
+    "agents": [
+      {
+        "name": "Trend Scout",
+        "status": "success",
+        "detail": "API"
+      },
+      {
+        "name": "Phrase Miner",
+        "status": "success",
+        "detail": null
+      },
+      {
+        "name": "Gap Finder",
+        "status": "success",
+        "detail": null
+      },
+      {
+        "name": "Design Briefer",
+        "status": "success",
+        "detail": null
+      }
+    ],
+    "summary": "`ETSY_API_KEY` went live today (confirmed via `openapi-ping` \u2192 HTTP 200). Re-ran all 13 tracked niches and all 5 ranked gaps against the real Etsy Open API \u2014 no search-scraping fallback was needed anywhere in this refresh; every call below returned HTTP 200 on the first try. What changed:\n\n- **Saturation is now computed, not estimated**, for all 13 niches \u2014 each niche's search term returned a real Etsy `count` (total matching active listings), shown in the table below.\n- **Four niches promoted from `unresolved` \u2192 `active`**: Afrohemian Decor (167 listings), Extra Celestial/Alien-Core (89), Circus-Core/Funhaus (145), Neo Deco (1,448). These were previously Pinterest-volume-only with no listing check; real listings now exist for all four, so \"no signal yet\" no longer applies. This is routine re-scoring (new evidence, not a retirement), so no `\u26a0\ufe0f NEEDS YOUR CALL` flag needed per pipeline rule 5.\n- **Tumbler General stays `caution`/saturated**, and the real numbers make the case harder than before: the narrow term (\"teacher nurse mom tumbler\") returns a moderate 688, but the parent category (\"tumbler\") returns **1,624,589** listings \u2014 confirms this was correctly flagged as an oversaturated category, not an opportunity.\n- **All 5 ranked gaps remain valid** \u2014 API-verified instead of search-inferred. Gaps 1, 2, 5 returned **0** matching listings (genuinely unfilled). Gaps 3 and 4 returned exactly **1** listing each, but in both cases it's a loose near-miss (a gothic dog-mom sticker with no Christmas tie-in; a generic dog-lover sticker with no sobriety/recovery framing) \u2014 not a real match for the specific intersection, so the gap stands. Per the no-fabrication rule, these near-miss listings are *not* shown as the gap's product image on its card \u2014 a gap card stays `NO DATA AVAILABLE` since no real product fills that intersection yet.\n- **Nothing was retired.** No niche or gap needed removal this cycle."
+  },
+  "niches": [
+    {
+      "name": "Gothmas / gothic Christmas decor",
+      "category": [
+        "wall art",
+        "mugs",
+        "stickers"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "medium",
+      "satDetail": "medium (1,978)",
+      "count": 1978,
+      "countDisplay": "1,978",
+      "title": "\"Gothic Moon Face Sticker: Sleepy Celestial Moon Art\"",
+      "url": "https://www.etsy.com/listing/4527674043/gothic-moon-face-sticker-sleepy",
+      "img": "https://i.etsystatic.com/53477225/r/il/dd3022/8176191342/il_170x135.8176191342_gc4o.jpg",
+      "price": "$4.49",
+      "reviews": 0,
+      "listed": "2026-06-25",
+      "note": null
+    },
+    {
+      "name": "Nonnacore",
+      "category": [
+        "mugs",
+        "wall art"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "medium",
+      "satDetail": "medium (687)",
+      "count": 687,
+      "countDisplay": "687",
+      "title": "\"Pregnancy Announcement to Grandparents Mug Set\"",
+      "url": "https://www.etsy.com/listing/1775546945/pregnancy-announcement-to-grandparents",
+      "img": "https://i.etsystatic.com/43194460/r/il/d8fd4d/6987654855/il_170x135.6987654855_oq6a.jpg",
+      "price": "$19.99",
+      "reviews": 5,
+      "listed": "2024-08-09",
+      "note": null
+    },
+    {
+      "name": "Castlecore / Knightcore",
+      "category": [
+        "wall art",
+        "t-shirts"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "medium",
+      "satDetail": "medium (501)",
+      "count": 501,
+      "countDisplay": "501",
+      "title": "\"Tartaria Griffin Crest Shirt, Medieval Fantasy Graphic Tee\"",
+      "url": "https://www.etsy.com/listing/4489223103/tartaria-griffin-crest-shirt-medieval",
+      "img": "https://i.etsystatic.com/51155994/c/1150/1150/444/448/il/7ff6e5/8055594433/il_170x135.8055594433_9dxu.jpg",
+      "price": "$36.23",
+      "reviews": 0,
+      "listed": "2026-04-15",
+      "note": null
+    },
+    {
+      "name": "ADHD / neurodivergent stickers",
+      "category": [
+        "stickers"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "high",
+      "satDetail": "high (3,962)",
+      "count": 3962,
+      "countDisplay": "3,962",
+      "title": "\"I Have To Say Weird Stuff Or I'll Die Sticker\"",
+      "url": "https://www.etsy.com/listing/4404433752/i-have-to-say-weird-stuff-or-ill-die",
+      "img": "https://i.etsystatic.com/49019040/r/il/b5eb31/7441532039/il_170x135.7441532039_ogiu.jpg",
+      "price": "$3.50",
+      "reviews": 38,
+      "listed": "2025-11-13",
+      "note": null
+    },
+    {
+      "name": "Chronic illness / spoonie stickers",
+      "category": [
+        "stickers"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "high",
+      "satDetail": "high (3,204)",
+      "count": 3204,
+      "countDisplay": "3,204",
+      "title": "\"Chronic Illness Sticker, Hidden Disability, Spoonie Sticker\"",
+      "url": "https://www.etsy.com/listing/1536789034/chronic-illness-sticker-hidden",
+      "img": "https://i.etsystatic.com/29211463/r/il/cec6bf/5217369566/il_170x135.5217369566_1pf7.jpg",
+      "price": "$4.99",
+      "reviews": 0,
+      "listed": "2023-08-23",
+      "note": null
+    },
+    {
+      "name": "Recovery / sobriety stickers",
+      "category": [
+        "stickers"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "medium",
+      "satDetail": "medium (598)",
+      "count": 598,
+      "countDisplay": "598",
+      "title": "\"Vintage Floral Pretty Sobriety Birthday Celebration Sticker\"",
+      "url": "https://www.etsy.com/listing/1768692507/vintage-floral-pretty-sobriety-birthday",
+      "img": "https://i.etsystatic.com/22651894/r/il/2362c2/6153066914/il_170x135.6153066914_pzjs.jpg",
+      "price": "$5.00",
+      "reviews": 3,
+      "listed": "2024-07-26",
+      "note": null
+    },
+    {
+      "name": "Pet breed + hobby combo mugs",
+      "category": [
+        "mugs"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "low",
+      "satDetail": "low (152)",
+      "count": 152,
+      "countDisplay": "152",
+      "title": "\"Vizsla Mountain Mug, Out Offline Caffeinated, Dog Mom Gift\"",
+      "url": "https://www.etsy.com/listing/4559650270/vizsla-mountain-mug-out-offline",
+      "img": "https://i.etsystatic.com/67444181/r/il/d55eb3/8409836344/il_170x135.8409836344_ohz9.jpg",
+      "price": "$16.65",
+      "reviews": 0,
+      "listed": "2026-08-20",
+      "note": null
+    },
+    {
+      "name": "Occupation x sarcasm t-shirts",
+      "category": [
+        "t-shirts"
+      ],
+      "status": "active",
+      "statusNote": null,
+      "satLevel": "high",
+      "satDetail": "high (4,811)",
+      "count": 4811,
+      "countDisplay": "4,811",
+      "title": "\"My Badge is the Only Thing Keeping This Conversation Professional\" (Halloween Nurse Shirt)",
+      "url": "https://www.etsy.com/listing/4559704859/my-badge-is-the-only-thing-keeping-this",
+      "img": "https://i.etsystatic.com/61085669/r/il/555939/8410374892/il_170x135.8410374892_3egp.jpg",
+      "price": "$29.99",
+      "reviews": 0,
+      "listed": "2026-08-21",
+      "note": null
+    },
+    {
+      "name": "Afrohemian decor",
+      "category": [
+        "wall art"
+      ],
+      "status": "active",
+      "statusNote": "promoted from unresolved",
+      "satLevel": "low",
+      "satDetail": "low (167)",
+      "count": 167,
+      "countDisplay": "167",
+      "title": "\"Modern Black Women Horizontal Wall Art - Afrocentric Boho Folk Print\"",
+      "url": "https://www.etsy.com/listing/4474469102/modern-black-women-horizontal-wall-art",
+      "img": "https://i.etsystatic.com/63505572/r/il/a3f2e0/7821772798/il_170x135.7821772798_8ffb.jpg",
+      "price": "$6.80",
+      "reviews": 2,
+      "listed": "2026-03-19",
+      "note": null
+    },
+    {
+      "name": "Extra Celestial / alien-core",
+      "category": [
+        "wall art",
+        "stickers",
+        "tumblers"
+      ],
+      "status": "active",
+      "statusNote": "promoted from unresolved",
+      "satLevel": "low",
+      "satDetail": "low (89)",
+      "count": 89,
+      "countDisplay": "89",
+      "title": "\"Cute Alien Cat Emotes for Twitch, Discord, YouTube\"",
+      "url": "https://www.etsy.com/listing/4337379977/cute-alien-cat-emotes-for-twitch-discord",
+      "img": "https://i.etsystatic.com/37948217/r/il/1b67c3/7077827605/il_170x135.7077827605_2mh2.jpg",
+      "price": "$6.00",
+      "reviews": 7,
+      "listed": "2025-07-18",
+      "note": null
+    },
+    {
+      "name": "Circus-core / Funhaus",
+      "category": [
+        "wall art"
+      ],
+      "status": "active",
+      "statusNote": "promoted from unresolved",
+      "satLevel": "low",
+      "satDetail": "low (145)",
+      "count": 145,
+      "countDisplay": "145",
+      "title": "\"Bite Me Art Print\"",
+      "url": "https://www.etsy.com/listing/1501174256/bite-me-art-print",
+      "img": "https://i.etsystatic.com/20724047/r/il/6c9a11/5101401697/il_170x135.5101401697_hm82.jpg",
+      "price": "$4.00",
+      "reviews": 1,
+      "listed": "2023-07-02",
+      "note": null
+    },
+    {
+      "name": "Neo Deco",
+      "category": [
+        "wall art"
+      ],
+      "status": "active",
+      "statusNote": "promoted from unresolved",
+      "satLevel": "medium",
+      "satDetail": "medium (1,448)",
+      "count": 1448,
+      "countDisplay": "1,448",
+      "title": "\"Quiet Elegance \u2014 Expressionist Woman in a Modern Interior\"",
+      "url": "https://www.etsy.com/listing/4559701357/quiet-elegance-expressionist-woman-in-a",
+      "img": "https://i.etsystatic.com/51694178/r/il/ce1d53/8410348766/il_170x135.8410348766_b7ge.jpg",
+      "price": "$550.00",
+      "reviews": 0,
+      "listed": "2026-08-21",
+      "note": null
+    },
+    {
+      "name": "Tumbler general (teachers/nurses/moms)",
+      "category": [
+        "tumblers"
+      ],
+      "status": "caution",
+      "statusNote": null,
+      "satLevel": "high",
+      "satDetail": "high \u2014 narrow term medium (688), parent category 1,624,589",
+      "count": 688,
+      "countDisplay": "688 (narrow) / 1,624,589 (broad \"tumbler\")",
+      "title": "\"Cinnamoroll Owala Tumbler 32oz\"",
+      "url": "https://www.etsy.com/listing/4525007672/cinnamoroll-owala-tumbler-32oz-pastel",
+      "img": "https://i.etsystatic.com/35785171/r/il/a78681/8207817815/il_170x135.8207817815_ky2i.jpg",
+      "price": "$49.99",
+      "reviews": 0,
+      "listed": "2026-06-20",
+      "note": "explicitly flagged SATURATED, not an opportunity"
+    }
+  ],
+  "gaps": [
+    {
+      "rank": 1,
+      "rankLabel": "1",
+      "name": "Knightcore/Castlecore \u00d7 teacher/nurse shirts",
+      "verification": "**0** matching listings (Etsy API, term \"knight nurse teacher shirt\") \u2014 confirmed sparse",
+      "risk": "audience overlap (fantasy-fandom vs. practical-gift-buyer) uncertain",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": {
+        "title": "Knightcore \u00d7 School Nurse/Teacher",
+        "exactText": "Title: \"Knight Nurse Educator, Unisex Medieval Tee, School Nurse Aesthetic, Comfort Colors\u00ae Meme Shirt, Healer of the Realm, Ren Faire Nurse Life\". On-garment graphic: **\"HEALER OF THE REALM\"** with small subtext **\"School Nurse Est. [Year]\"**",
+        "style": "Comfort Colors garment-dyed faded tee (sage or faded black); minimalist medieval line-art icon \u2014 a caduceus redrawn as a crossed sword-and-staff crest; goth-floral border (roses/thorns) around the crest; centered badge/crest layout, single ink color for the linework.",
+        "productType": "T-shirt",
+        "audience": "School nurses and clinical educators who read fantasy romance/romantasy or are into cottagecore-adjacent medieval aesthetics \u2014 gift-buyable for nurse appreciation week/graduation.",
+        "price": "$26\u2013$28 (comp-verified: real castlecore/knightcore Comfort Colors tees on Etsy run $26.05\u2013$28; one outlier listing at $68.89, treat as non-representative)."
+      }
+    },
+    {
+      "rank": 2,
+      "rankLabel": "2",
+      "name": "Nonnacore \u00d7 ADHD/spoonie self-care mugs",
+      "verification": "**0** matching listings (term \"nonna spoonie adhd mug\") \u2014 confirmed sparse",
+      "risk": "aesthetic fit is genuinely strong (cozy/comfort language overlaps)",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": {
+        "title": "Nonnacore \u00d7 ADHD/Spoonie Self-Care Mug",
+        "exactText": "Title: \"Personalized Nonna Spoonie Mug: Rest Is Productive Too, Custom Name Chronic Illness Self-Care Gift\". On-mug graphic: **\"Nonna Said Sit Down And Rest\"** with small script tagline **\"[Custom Name]'s Spoonie Corner\"**",
+        "style": "Warm terracotta/olive palette from Nonnacore, retro Italian majolica floral border around the rim; soft rounded script typography for \"Nonna Said...\" (cozy permission-giving tone, not edgy/sarcastic); small holographic spoon icon tucked into the floral border as a nod to spoon theory.",
+        "productType": "Mug",
+        "audience": "Women 25\u201345 managing chronic illness/ADHD who respond to \"cozy grandmother energy\" self-care messaging rather than clinical or sarcastic framing.",
+        "price": "$18\u2013$22 (comp-verified: real spoonie mugs on Etsy cluster $14\u2013$27, personalized/custom listings trend toward the upper half)."
+      }
+    },
+    {
+      "rank": 3,
+      "rankLabel": "3",
+      "name": "Gothmas \u00d7 pet-mom Christmas stickers",
+      "verification": "**1** loose near-miss ([\"Tired As Hell Sticker, Gothic Dog Mom Vinyl Decal\"](https://www.etsy.com/listing/4322820743/gothic-dog-mom-vinyl-stickers-tired-as) \u2014 real gothic dog-mom sticker, but no Christmas element) \u2014 gap confirmed still open",
+      "risk": "low risk \u2014 line extension of already-validated goth-pet-mom niche",
+      "nearMissCount": 1,
+      "nearMissUrl": "https://www.etsy.com/listing/4322820743/gothic-dog-mom-vinyl-stickers-tired-as",
+      "nearMissTitle": "\"Tired As Hell Sticker, Gothic Dog Mom Vinyl Decal\"",
+      "brief": {
+        "title": "Gothmas \u00d7 Pet-Mom Christmas Sticker",
+        "exactText": "Title: \"Gothic Christmas Dog Mom Sticker Bundle, Skull & Ornament Pet Mom Holiday Decal\". On-sticker text: **\"Goth Mom, Merry Christmas\"** styled as blackletter, wrapped around a dog silhouette wearing a small ornament collar.",
+        "style": "Black, dark green, and blood-red palette; blackletter/gothic type for the headline; skull-and-ornament hybrid iconography (skull with holly instead of a Santa hat); die-cut kiss-cut vinyl sticker.",
+        "productType": "Sticker (kiss-cut, waterproof vinyl)",
+        "audience": "Goth-identifying pet owners already buying from \"goth mommy\"/\"gothic dog\" Etsy sellers, wanting a seasonal add-on.",
+        "price": "$3.50\u2013$5 (standard Etsy sticker convention \u2014 not comp-verified, flagged as estimate)."
+      }
+    },
+    {
+      "rank": 4,
+      "rankLabel": "4",
+      "name": "Sobriety \u00d7 pet-mom stickers/shirts",
+      "verification": "**1** loose near-miss ([\"Enjoy The Simple Things Sticker, Dog Lover Gift\"](https://www.etsy.com/listing/1749798508/enjoy-the-simple-things-sticker-dog) \u2014 generic mindfulness/dog-lover sticker, no sobriety/recovery framing) \u2014 gap confirmed still open",
+      "risk": "different buying occasions, audience-merge unclear",
+      "nearMissCount": 1,
+      "nearMissUrl": "https://www.etsy.com/listing/1749798508/enjoy-the-simple-things-sticker-dog",
+      "nearMissTitle": "\"Enjoy The Simple Things Sticker, Dog Lover Gift\"",
+      "brief": {
+        "title": "Sobriety \u00d7 Pet-Mom Sticker/Shirt",
+        "exactText": "Title: \"Sobriety Pet Mom Sticker Pack: Recovery Gift, Dog Mom Sponsor Sponsee Decals\". On-sticker text: **\"Sober AND a Dog Mom (Barely Surviving Either)\"**",
+        "style": "Clean inspirational-quote minimalism (not clinical) crossed with a simple line-art dog icon; broken-chain motif reworked as a dog-leash link breaking open; soft neutral palette (sage, cream, warm gray) to keep pet-mom warmth in the mix.",
+        "productType": "Sticker (primary); same design adaptable to a Comfort Colors tee as a secondary SKU.",
+        "audience": "People in recovery (1+ year sobriety milestone, sponsors buying for sponsees) who are also active pet owners \u2014 sold as a milestone/anniversary gift, not daily-wear identity statement.",
+        "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps)."
+      }
+    },
+    {
+      "rank": 5,
+      "rankLabel": "5",
+      "name": "ADHD \u00d7 sobriety/recovery",
+      "verification": "**0** matching listings (term \"neurodivergent sober recovery sticker\") \u2014 confirmed sparse",
+      "risk": "real clinical/community overlap; execution must stay supportive, not exploitative",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": {
+        "title": "ADHD/Neurodivergent \u00d7 Sobriety/Recovery",
+        "exactText": "Title: \"Neurodivergent in Recovery Sticker: ADHD Sobriety Support, Dual Diagnosis Pride\". On-sticker text: **\"Neurodivergent AND Sober \u2014 Both Are Hard, Both Are Worth It\"**",
+        "style": "Pastel pride-flag color coding (from the ADHD/neurodivergent niche) combined with sobriety niche's clean inspirational-quote minimalism \u2014 no broken-chain/addiction iconography (avoid glamorizing/trivializing); soft rounded sans-serif type; simple sun-rising icon (shared growth/new-day motif).",
+        "productType": "Sticker (kiss-cut vinyl), holographic finish optional.",
+        "audience": "Adults in dual-diagnosis recovery (neurodivergence + substance recovery) seeking community-affirming, non-mocking representation \u2014 likely reached via recovery support groups and ADHD community spaces, not general gift-shopping traffic.",
+        "price": "$3.50\u2013$5 (convention, not comp-verified \u2014 recommend a small test batch given the smaller, more specific audience)."
+      }
+    },
+    {
+      "rank": 6,
+      "rankLabel": "6 (stretch)",
+      "name": "Sober gardener / \"recovery garden\" stickers",
+      "verification": "not re-queried this cycle \u2014 still inferred, not directly verified",
+      "risk": "weakest entry, audience size uncertain",
+      "nearMissCount": null,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": null
+    }
+  ],
+  "history": [
+    {
+      "cycle": 1,
+      "date": "2026-08-19",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        }
+      ]
+    }
+  ],
+  "historyNicheNames": [
+    "Gothmas / gothic Christmas decor",
+    "Nonnacore",
+    "Castlecore / Knightcore",
+    "ADHD / neurodivergent stickers",
+    "Chronic illness / spoonie stickers",
+    "Recovery / sobriety stickers",
+    "Pet breed + hobby combo mugs",
+    "Occupation x sarcasm t-shirts",
+    "Afrohemian decor",
+    "Extra Celestial / alien-core",
+    "Circus-core / Funhaus",
+    "Neo Deco",
+    "Tumbler general (teachers/nurses/moms)"
+  ],
+  "productTypes": [
+    "mugs",
+    "stickers",
+    "t-shirts",
+    "tumblers",
+    "wall art"
+  ]
+};
+const FAV_KEY = 'etsypod_favorites_v1';
+
+function escapeHtml(s){
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function mdInline(s){
+  let t = escapeHtml(s);
+  t = t.replace(/`([^`]+)`/g, '<code>$1</code>');
+  t = t.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  t = t.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  return t;
+}
+function mdBlock(s){
+  const lines = (s || '').split('\n').map(l => l.trim()).filter(l => l.length);
+  let out = '', inList = false;
+  for (const line of lines) {
+    if (line.startsWith('- ')) {
+      if (!inList) { out += '<ul>'; inList = true; }
+      out += `<li>${mdInline(line.slice(2))}</li>`;
+    } else {
+      if (inList) { out += '</ul>'; inList = false; }
+      out += `<p>${mdInline(line)}</p>`;
+    }
+  }
+  if (inList) out += '</ul>';
+  return out;
+}
+
+function loadFavorites(){
+  try { return JSON.parse(localStorage.getItem(FAV_KEY) || '{}'); }
+  catch (e) { console.warn('favorites: localStorage read failed', e); return {}; }
+}
+function saveFavorites(obj){
+  try { localStorage.setItem(FAV_KEY, JSON.stringify(obj)); }
+  catch (e) { console.warn('favorites: localStorage write failed', e); }
+}
+let favorites = loadFavorites();
+function isFavorited(id){ return !!favorites[id]; }
+function toggleFavorite(id, snapshot){
+  if (favorites[id]) delete favorites[id];
+  else favorites[id] = { ...snapshot, flaggedAt: new Date().toISOString() };
+  saveFavorites(favorites);
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast._h);
+  toast._h = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function nicheCardHTML(n){
+  const id = 'niche:' + n.name;
+  const fav = isFavorited(id);
+  const thumb = n.img
+    ? `<a class="thumb-link" href="${n.url || '#'}" target="_blank" rel="noopener"><div class="thumb photo"><img src="${n.img}" alt="${escapeHtml(n.name)}" loading="lazy"></div></a>`
+    : `<div class="thumb nodata"><span class="nodata-icon">🚫</span>NO DATA AVAILABLE</div>`;
+  return `
+    <div class="card">
+      ${thumb}
+      <div class="card-body">
+        <div class="card-top">
+          <p class="card-title">${escapeHtml(n.name)}</p>
+          <button class="fav-btn ${fav ? 'active' : ''}" data-id="${escapeHtml(id)}" data-type="niche"
+            data-title="${escapeHtml(n.name)}" data-url="${escapeHtml(n.url || '')}" data-price="${escapeHtml(n.price || '')}"
+            title="Flag as favorite">${fav ? '★' : '☆'}</button>
+        </div>
+        <div class="card-cat">${escapeHtml(n.category.join(' · '))}</div>
+        <div class="badges">
+          <span class="badge status-${escapeHtml(n.status)}">${escapeHtml(n.status)}</span>
+          <span class="badge sat-${escapeHtml(n.satLevel)}">${escapeHtml(n.satLevel)} saturation${n.count != null ? ` (${n.count.toLocaleString()})` : ''}</span>
+        </div>
+        ${n.title ? `<div class="example">Example: <b>${escapeHtml(n.title)}</b></div>` : '<div class="example na">No confirmed example listing</div>'}
+        <div class="row"><span>Price</span><b>${n.price ? escapeHtml(n.price) : '<span class="na">not captured</span>'}</b></div>
+        <div class="row"><span>Reviews</span><b>${n.reviews != null ? n.reviews : '<span class="na">not captured</span>'}</b></div>
+        <div class="row"><span>Listed</span><b>${n.listed ? escapeHtml(n.listed) : '<span class="na">not captured</span>'}</b></div>
+        ${n.statusNote ? `<div class="row"><span>Note</span><b>${escapeHtml(n.statusNote)}</b></div>` : ''}
+        ${n.note ? `<div class="row"><span>Note</span><b>${escapeHtml(n.note)}</b></div>` : ''}
+      </div>
+    </div>`;
+}
+
+function gapCardHTML(g){
+  const id = 'gap:' + g.rank + ':' + g.name;
+  const fav = isFavorited(id);
+  const b = g.brief;
+  return `
+    <div class="card">
+      <div class="thumb nodata"><span class="nodata-icon">🚫</span>NO DATA AVAILABLE</div>
+      <div class="card-body">
+        <div class="card-top">
+          <p class="card-title">#${g.rankLabel} · ${escapeHtml(g.name)}</p>
+          <button class="fav-btn ${fav ? 'active' : ''}" data-id="${escapeHtml(id)}" data-type="gap"
+            data-title="${escapeHtml(g.name)}" data-url="" data-price="${escapeHtml(b && b.price || '')}"
+            title="Flag as favorite">${fav ? '★' : '☆'}</button>
+        </div>
+        ${b ? `
+          <div class="card-cat">${escapeHtml(b.productType || '')}</div>
+          ${b.exactText ? `<div class="example">${mdInline(b.exactText)}</div>` : ''}
+          <div class="row"><span>Suggested price</span><b>${escapeHtml(b.price || '—')}</b></div>
+          ${b.audience ? `<div class="row"><span>Audience</span><b>${escapeHtml(b.audience)}</b></div>` : ''}
+          ${b.style ? `<div class="example"><i>Style:</i> ${escapeHtml(b.style)}</div>` : ''}
+        ` : `<div class="example na">No design brief written for this gap yet.</div>`}
+        <div class="example">Verification: ${mdInline(g.verification)}</div>
+        ${g.risk ? `<div class="example"><i>Risk:</i> ${escapeHtml(g.risk)}</div>` : ''}
+      </div>
+    </div>`;
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.fav-btn');
+  if (btn) {
+    const id = btn.dataset.id;
+    const snapshot = { type: btn.dataset.type, title: btn.dataset.title, url: btn.dataset.url || null, price: btn.dataset.price || null };
+    toggleFavorite(id, snapshot);
+    const nowFav = btn.classList.toggle('active');
+    btn.textContent = nowFav ? '★' : '☆';
+    return;
+  }
+  const typeChip = e.target.closest('.chip[data-type]');
+  if (typeChip) {
+    const t = typeChip.dataset.type;
+    if (activeTypes.has(t)) activeTypes.delete(t); else activeTypes.add(t);
+    typeChip.classList.toggle('active');
+    renderNiches();
+    return;
+  }
+  const satChip = e.target.closest('.chip[data-sat]');
+  if (satChip) {
+    const s = satChip.dataset.sat;
+    if (activeSats.has(s)) activeSats.delete(s); else activeSats.add(s);
+    satChip.classList.toggle('active');
+    renderNiches();
+    return;
+  }
+  if (e.target.id === 'clear-filters') {
+    activeTypes.clear(); activeSats.clear();
+    document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+    renderNiches();
+    return;
+  }
+  const tab = e.target.closest('.tab');
+  if (tab) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  }
+});
+
+let activeTypes = new Set();
+let activeSats = new Set();
+
+function renderTypeFilters(){
+  document.getElementById('filter-type').innerHTML = DATA.productTypes
+    .map(t => `<button class="chip" data-type="${escapeHtml(t)}">${escapeHtml(t)}</button>`).join('');
+}
+
+function renderNiches(){
+  const grid = document.getElementById('niche-grid');
+  const filtered = DATA.niches.filter(n => {
+    const typeOk = activeTypes.size === 0 || n.category.some(c => activeTypes.has(c));
+    const satOk = activeSats.size === 0 || activeSats.has(n.satLevel);
+    return typeOk && satOk;
+  });
+  grid.innerHTML = filtered.length ? filtered.map(nicheCardHTML).join('') : '<p class="na">No niches match these filters.</p>';
+}
+
+function renderHistory(){
+  const wrap = document.getElementById('history-body');
+  if (!DATA.history.length) { wrap.innerHTML = '<p class="na">No cycle history yet.</p>'; return; }
+  let h = '<div class="table-wrap"><table><thead><tr><th>Niche</th>';
+  for (const c of DATA.history) h += `<th>Cycle ${c.cycle}<span class="muted">${c.date || ''}</span></th>`;
+  h += '</tr></thead><tbody>';
+  for (const name of DATA.historyNicheNames) {
+    h += `<tr><td>${escapeHtml(name)}</td>`;
+    for (const c of DATA.history) {
+      const n = c.niches.find(x => x.name === name);
+      h += n
+        ? `<td><span class="badge status-${escapeHtml(n.status)}">${escapeHtml(n.status)}</span> <span class="badge sat-${escapeHtml(n.satLevel)}">${escapeHtml(n.satLevel)}</span></td>`
+        : '<td class="na">—</td>';
+    }
+    h += '</tr>';
+  }
+  h += '</tbody></table></div>';
+  if (DATA.history.length < 2) h += '<p class="na" style="margin-top:10px">Only one cycle recorded so far — trends will appear here as more cycles run.</p>';
+  wrap.innerHTML = h;
+}
+
+function renderStatus(){
+  const p = DATA.pipeline;
+  let h = `<div class="status-grid">
+    <div class="stat"><span class="stat-label">Last run</span><span class="stat-val">${escapeHtml(p.lastRun || 'unknown')}</span></div>
+    <div class="stat"><span class="stat-label">Next scheduled</span><span class="stat-val">${escapeHtml(p.nextScheduled || 'not scheduled')}</span></div>
+  </div>
+  <h3>Agent status (last cycle)</h3>
+  <div class="agent-row">`;
+  if (p.agents.length) {
+    for (const a of p.agents) {
+      h += `<span class="badge agent-${escapeHtml(a.status)}">${escapeHtml(a.name)}: ${escapeHtml(a.status)}${a.detail ? ` (${escapeHtml(a.detail)})` : ''}</span>`;
+    }
+  } else {
+    h += '<span class="na">No run log recorded for this cycle.</span>';
+  }
+  h += '</div>';
+  if (p.summary) h += `<h3>What happened this cycle</h3><div class="ceo-summary">${mdBlock(p.summary)}</div>`;
+  document.getElementById('status-body').innerHTML = h;
+}
+
+function buildFavoritesMarkdown(){
+  const entries = Object.entries(favorites);
+  let md = `# Favorites — flagged for design\n\nGenerated ${new Date().toISOString()} from the Etsy POD dashboard.\n\n`;
+  if (!entries.length) { md += '_No favorites flagged yet._\n'; return md; }
+  const niches = entries.filter(([, v]) => v.type === 'niche');
+  const gaps = entries.filter(([, v]) => v.type === 'gap');
+  if (niches.length) {
+    md += '## Niches\n\n';
+    for (const [, v] of niches) md += `- **${v.title}**${v.price ? ` — ${v.price}` : ''}${v.url ? ` — [listing](${v.url})` : ''} _(flagged ${(v.flaggedAt || '').slice(0, 10)})_\n`;
+    md += '\n';
+  }
+  if (gaps.length) {
+    md += '## Design brief gaps\n\n';
+    for (const [, v] of gaps) md += `- **${v.title}**${v.price ? ` — ${v.price}` : ''} _(flagged ${(v.flaggedAt || '').slice(0, 10)})_\n`;
+    md += '\n';
+  }
+  return md;
+}
+
+async function exportFavorites(){
+  const md = buildFavoritesMarkdown();
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: 'favorites.md',
+        types: [{ description: 'Markdown', accept: { 'text/markdown': ['.md'] } }],
+      });
+      const writable = await handle.createWritable();
+      await writable.write(md);
+      await writable.close();
+      toast('Saved favorites.md');
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+      console.warn('File System Access export failed, falling back to download', e);
+    }
+  }
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'favorites.md';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  toast('Downloaded favorites.md — move it into etsy-pod-agent/ to keep it with the project');
+}
+
+document.getElementById('meta-line').textContent =
+  `Cycle ${DATA.cycle.number} — ${DATA.cycle.date || ''} · generated ${DATA.generatedAt.replace('T', ' ')}`;
+renderTypeFilters();
+renderNiches();
+document.getElementById('gap-grid').innerHTML = DATA.gaps.slice().sort((a, b) => a.rank - b.rank).map(gapCardHTML).join('');
+renderHistory();
+renderStatus();
+document.getElementById('export-btn').addEventListener('click', exportFavorites);
+</script>
+
+</body>
+</html>

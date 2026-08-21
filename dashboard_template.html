@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Etsy POD Pipeline Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#14120f; --panel:#1e1b17; --panel2:#242019; --ink:#f1ece3; --muted:#a89e91;
+    --line:#332d25; --accent:#d99a7c;
+    --badge-active-bg:#1d3540; --badge-active-fg:#a9d4e3;
+    --badge-unresolved-bg:#2c281f; --badge-unresolved-fg:#a89e91;
+    --badge-caution-bg:#3a2a17; --badge-caution-fg:#e3b57f;
+    --sat-low-bg:#22331d; --sat-low-fg:#a6d69a;
+    --sat-med-bg:#372f18; --sat-med-fg:#e0c47c;
+    --sat-high-bg:#3a221d; --sat-high-fg:#e79c8c;
+    --sat-unknown-bg:#2c281f; --sat-unknown-fg:#a89e91;
+    --ok-bg:#1d3a24; --ok-fg:#8fd6a0;
+    --err-bg:#3a1d1d; --err-fg:#e79c8c;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.35);
+    --star: #e0c47c;
+  }
+  *{box-sizing:border-box}
+  html,body{ overflow-x:hidden; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.4; padding-bottom:84px;
+  }
+  a{ color:var(--accent); }
+  header{ max-width:1180px; margin:0 auto; padding:24px 16px 4px; }
+  header h1{ font-size:1.4rem; margin:0 0 4px; letter-spacing:-.01em; }
+  header .meta{ color:var(--muted); font-size:.82rem; }
+
+  nav.tabs{
+    max-width:1180px; margin:16px auto 0; padding:0 16px;
+    display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  nav.tabs::-webkit-scrollbar{ display:none; }
+  .tab{
+    flex:0 0 auto; background:var(--panel); color:var(--muted); border:1px solid var(--line);
+    border-radius:999px; padding:8px 16px; font-size:.85rem; font-weight:600; cursor:pointer;
+    white-space:nowrap;
+  }
+  .tab.active{ background:var(--accent); color:#241209; border-color:var(--accent); }
+
+  main{ max-width:1180px; margin:0 auto; padding:20px 16px 40px; }
+  .panel{ display:none; }
+  .panel.active{ display:block; }
+
+  .filters{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:16px; }
+  .filter-group{ display:flex; flex-wrap:wrap; gap:6px; }
+  .filter-label{ font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-right:2px; align-self:center; }
+  .chip{
+    background:var(--panel); color:var(--muted); border:1px solid var(--line); border-radius:999px;
+    padding:5px 12px; font-size:.75rem; cursor:pointer; font-weight:600;
+  }
+  .chip.active{ background:var(--sat-med-bg); color:var(--ink); border-color:var(--accent); }
+  .clear-link{ background:none; border:none; color:var(--muted); font-size:.75rem; text-decoration:underline; cursor:pointer; padding:5px 4px; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; }
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column;
+  }
+  .thumb{ height:110px; position:relative; }
+  .thumb.photo{ overflow:hidden; }
+  .thumb.photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .thumb.nodata{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    background:repeating-linear-gradient(135deg, var(--line), var(--line) 6px, transparent 6px, transparent 12px);
+    color:var(--muted); font-size:.62rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  }
+  .thumb.nodata .nodata-icon{ font-size:1.2rem; }
+  a.thumb-link{ display:block; }
+  .card-body{ padding:12px 14px 14px; display:flex; flex-direction:column; gap:7px; flex:1; }
+  .card-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:6px; }
+  .card-title{ font-size:.92rem; font-weight:600; margin:0; }
+  .fav-btn{
+    background:none; border:none; font-size:1.15rem; line-height:1; cursor:pointer; color:var(--muted);
+    padding:0 2px; flex:0 0 auto;
+  }
+  .fav-btn.active{ color:var(--star); }
+  .card-cat{ font-size:.72rem; color:var(--muted); }
+  .badges{ display:flex; flex-wrap:wrap; gap:6px; margin-top:1px; }
+  .badge{
+    font-size:.64rem; font-weight:600; padding:3px 8px; border-radius:999px;
+    letter-spacing:.02em; text-transform:uppercase; white-space:nowrap;
+  }
+  .badge.status-active{ background:var(--badge-active-bg); color:var(--badge-active-fg); }
+  .badge.status-unresolved{ background:var(--badge-unresolved-bg); color:var(--badge-unresolved-fg); }
+  .badge.status-caution{ background:var(--badge-caution-bg); color:var(--badge-caution-fg); }
+  .badge.sat-low{ background:var(--sat-low-bg); color:var(--sat-low-fg); }
+  .badge.sat-medium{ background:var(--sat-med-bg); color:var(--sat-med-fg); }
+  .badge.sat-high{ background:var(--sat-high-bg); color:var(--sat-high-fg); }
+  .badge.sat-unknown{ background:var(--sat-unknown-bg); color:var(--sat-unknown-fg); }
+  .badge.agent-success{ background:var(--ok-bg); color:var(--ok-fg); }
+  .badge.agent-error, .badge.agent-fail, .badge.agent-failed{ background:var(--err-bg); color:var(--err-fg); }
+  .row{ display:flex; justify-content:space-between; gap:8px; font-size:.74rem; color:var(--muted); border-top:1px dashed var(--line); padding-top:7px; margin-top:1px; }
+  .row b{ color:var(--ink); font-weight:600; text-align:right; }
+  .example{ font-size:.74rem; color:var(--muted); font-style:italic; }
+  .example b{ font-style:normal; color:var(--ink); }
+  .na{ opacity:.6; }
+
+  h3{ font-size:.95rem; margin:20px 0 10px; }
+  .status-grid{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:8px; }
+  .stat{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px;
+    box-shadow:var(--shadow); min-width:150px; flex:1 1 150px;
+  }
+  .stat-label{ display:block; font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+  .stat-val{ display:block; font-size:1.1rem; font-weight:700; margin-top:2px; }
+  .agent-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .ceo-summary{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; font-size:.85rem; color:var(--muted); }
+  .ceo-summary p{ margin:0 0 10px; }
+  .ceo-summary ul{ margin:0 0 10px; padding-left:20px; }
+  .ceo-summary li{ margin-bottom:6px; }
+  .ceo-summary b{ color:var(--ink); }
+  .ceo-summary code{ background:var(--panel2); padding:1px 5px; border-radius:4px; font-size:.85em; }
+
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--panel); }
+  table{ border-collapse:collapse; width:100%; font-size:.78rem; }
+  th,td{ padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th{ color:var(--muted); font-weight:600; font-size:.7rem; text-transform:uppercase; letter-spacing:.03em; }
+  th .muted{ display:block; font-weight:400; text-transform:none; letter-spacing:0; font-size:.7rem; margin-top:2px; }
+  tbody tr:last-child td{ border-bottom:none; }
+
+  .fab-row{ position:fixed; left:0; right:0; bottom:0; display:flex; justify-content:center; padding:14px; pointer-events:none; }
+  #export-btn{
+    pointer-events:auto; background:var(--accent); color:#241209; border:none; border-radius:999px;
+    padding:12px 22px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
+  }
+  #toast{
+    position:fixed; left:50%; bottom:70px; transform:translate(-50%,10px); background:var(--panel2);
+    color:var(--ink); border:1px solid var(--line); padding:10px 16px; border-radius:10px;
+    font-size:.8rem; box-shadow:var(--shadow); opacity:0; transition:opacity .2s, transform .2s; pointer-events:none;
+  }
+  #toast.show{ opacity:1; transform:translate(-50%,0); }
+
+  @media (max-width: 480px){
+    .grid{ grid-template-columns:1fr; }
+    .status-grid{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Etsy POD Pipeline Dashboard</h1>
+  <div class="meta" id="meta-line"></div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="niches">Live Niches</button>
+  <button class="tab" data-tab="briefs">Design Briefs</button>
+  <button class="tab" data-tab="history">History</button>
+  <button class="tab" data-tab="status">Pipeline Status</button>
+</nav>
+
+<main>
+  <section id="panel-niches" class="panel active">
+    <div class="filters">
+      <span class="filter-label">Type</span>
+      <div class="filter-group" id="filter-type"></div>
+      <span class="filter-label">Saturation</span>
+      <div class="filter-group" id="filter-sat">
+        <button class="chip" data-sat="low">Low</button>
+        <button class="chip" data-sat="medium">Medium</button>
+        <button class="chip" data-sat="high">High</button>
+      </div>
+      <button class="clear-link" id="clear-filters">Clear filters</button>
+    </div>
+    <div class="grid" id="niche-grid"></div>
+  </section>
+
+  <section id="panel-briefs" class="panel">
+    <div class="grid" id="gap-grid"></div>
+  </section>
+
+  <section id="panel-history" class="panel">
+    <div id="history-body"></div>
+  </section>
+
+  <section id="panel-status" class="panel">
+    <div id="status-body"></div>
+  </section>
+</main>
+
+<div class="fab-row"><button id="export-btn">⭐ Export favorites.md</button></div>
+<div id="toast"></div>
+
+<script>
+const DATA = /*__DATA_JSON__*/null;
+const FAV_KEY = 'etsypod_favorites_v1';
+
+function escapeHtml(s){
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function mdInline(s){
+  let t = escapeHtml(s);
+  t = t.replace(/`([^`]+)`/g, '<code>$1</code>');
+  t = t.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  t = t.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  return t;
+}
+function mdBlock(s){
+  const lines = (s || '').split('\n').map(l => l.trim()).filter(l => l.length);
+  let out = '', inList = false;
+  for (const line of lines) {
+    if (line.startsWith('- ')) {
+      if (!inList) { out += '<ul>'; inList = true; }
+      out += `<li>${mdInline(line.slice(2))}</li>`;
+    } else {
+      if (inList) { out += '</ul>'; inList = false; }
+      out += `<p>${mdInline(line)}</p>`;
+    }
+  }
+  if (inList) out += '</ul>';
+  return out;
+}
+
+function loadFavorites(){
+  try { return JSON.parse(localStorage.getItem(FAV_KEY) || '{}'); }
+  catch (e) { console.warn('favorites: localStorage read failed', e); return {}; }
+}
+function saveFavorites(obj){
+  try { localStorage.setItem(FAV_KEY, JSON.stringify(obj)); }
+  catch (e) { console.warn('favorites: localStorage write failed', e); }
+}
+let favorites = loadFavorites();
+function isFavorited(id){ return !!favorites[id]; }
+function toggleFavorite(id, snapshot){
+  if (favorites[id]) delete favorites[id];
+  else favorites[id] = { ...snapshot, flaggedAt: new Date().toISOString() };
+  saveFavorites(favorites);
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast._h);
+  toast._h = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function nicheCardHTML(n){
+  const id = 'niche:' + n.name;
+  const fav = isFavorited(id);
+  const thumb = n.img
+    ? `<a class="thumb-link" href="${n.url || '#'}" target="_blank" rel="noopener"><div class="thumb photo"><img src="${n.img}" alt="${escapeHtml(n.name)}" loading="lazy"></div></a>`
+    : `<div class="thumb nodata"><span class="nodata-icon">🚫</span>NO DATA AVAILABLE</div>`;
+  return `
+    <div class="card">
+      ${thumb}
+      <div class="card-body">
+        <div class="card-top">
+          <p class="card-title">${escapeHtml(n.name)}</p>
+          <button class="fav-btn ${fav ? 'active' : ''}" data-id="${escapeHtml(id)}" data-type="niche"
+            data-title="${escapeHtml(n.name)}" data-url="${escapeHtml(n.url || '')}" data-price="${escapeHtml(n.price || '')}"
+            title="Flag as favorite">${fav ? '★' : '☆'}</button>
+        </div>
+        <div class="card-cat">${escapeHtml(n.category.join(' · '))}</div>
+        <div class="badges">
+          <span class="badge status-${escapeHtml(n.status)}">${escapeHtml(n.status)}</span>
+          <span class="badge sat-${escapeHtml(n.satLevel)}">${escapeHtml(n.satLevel)} saturation${n.count != null ? ` (${n.count.toLocaleString()})` : ''}</span>
+        </div>
+        ${n.title ? `<div class="example">Example: <b>${escapeHtml(n.title)}</b></div>` : '<div class="example na">No confirmed example listing</div>'}
+        <div class="row"><span>Price</span><b>${n.price ? escapeHtml(n.price) : '<span class="na">not captured</span>'}</b></div>
+        <div class="row"><span>Reviews</span><b>${n.reviews != null ? n.reviews : '<span class="na">not captured</span>'}</b></div>
+        <div class="row"><span>Listed</span><b>${n.listed ? escapeHtml(n.listed) : '<span class="na">not captured</span>'}</b></div>
+        ${n.statusNote ? `<div class="row"><span>Note</span><b>${escapeHtml(n.statusNote)}</b></div>` : ''}
+        ${n.note ? `<div class="row"><span>Note</span><b>${escapeHtml(n.note)}</b></div>` : ''}
+      </div>
+    </div>`;
+}
+
+function gapCardHTML(g){
+  const id = 'gap:' + g.rank + ':' + g.name;
+  const fav = isFavorited(id);
+  const b = g.brief;
+  return `
+    <div class="card">
+      <div class="thumb nodata"><span class="nodata-icon">🚫</span>NO DATA AVAILABLE</div>
+      <div class="card-body">
+        <div class="card-top">
+          <p class="card-title">#${g.rankLabel} · ${escapeHtml(g.name)}</p>
+          <button class="fav-btn ${fav ? 'active' : ''}" data-id="${escapeHtml(id)}" data-type="gap"
+            data-title="${escapeHtml(g.name)}" data-url="" data-price="${escapeHtml(b && b.price || '')}"
+            title="Flag as favorite">${fav ? '★' : '☆'}</button>
+        </div>
+        ${b ? `
+          <div class="card-cat">${escapeHtml(b.productType || '')}</div>
+          ${b.exactText ? `<div class="example">${mdInline(b.exactText)}</div>` : ''}
+          <div class="row"><span>Suggested price</span><b>${escapeHtml(b.price || '—')}</b></div>
+          ${b.audience ? `<div class="row"><span>Audience</span><b>${escapeHtml(b.audience)}</b></div>` : ''}
+          ${b.style ? `<div class="example"><i>Style:</i> ${escapeHtml(b.style)}</div>` : ''}
+        ` : `<div class="example na">No design brief written for this gap yet.</div>`}
+        <div class="example">Verification: ${mdInline(g.verification)}</div>
+        ${g.risk ? `<div class="example"><i>Risk:</i> ${escapeHtml(g.risk)}</div>` : ''}
+      </div>
+    </div>`;
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.fav-btn');
+  if (btn) {
+    const id = btn.dataset.id;
+    const snapshot = { type: btn.dataset.type, title: btn.dataset.title, url: btn.dataset.url || null, price: btn.dataset.price || null };
+    toggleFavorite(id, snapshot);
+    const nowFav = btn.classList.toggle('active');
+    btn.textContent = nowFav ? '★' : '☆';
+    return;
+  }
+  const typeChip = e.target.closest('.chip[data-type]');
+  if (typeChip) {
+    const t = typeChip.dataset.type;
+    if (activeTypes.has(t)) activeTypes.delete(t); else activeTypes.add(t);
+    typeChip.classList.toggle('active');
+    renderNiches();
+    return;
+  }
+  const satChip = e.target.closest('.chip[data-sat]');
+  if (satChip) {
+    const s = satChip.dataset.sat;
+    if (activeSats.has(s)) activeSats.delete(s); else activeSats.add(s);
+    satChip.classList.toggle('active');
+    renderNiches();
+    return;
+  }
+  if (e.target.id === 'clear-filters') {
+    activeTypes.clear(); activeSats.clear();
+    document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+    renderNiches();
+    return;
+  }
+  const tab = e.target.closest('.tab');
+  if (tab) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  }
+});
+
+let activeTypes = new Set();
+let activeSats = new Set();
+
+function renderTypeFilters(){
+  document.getElementById('filter-type').innerHTML = DATA.productTypes
+    .map(t => `<button class="chip" data-type="${escapeHtml(t)}">${escapeHtml(t)}</button>`).join('');
+}
+
+function renderNiches(){
+  const grid = document.getElementById('niche-grid');
+  const filtered = DATA.niches.filter(n => {
+    const typeOk = activeTypes.size === 0 || n.category.some(c => activeTypes.has(c));
+    const satOk = activeSats.size === 0 || activeSats.has(n.satLevel);
+    return typeOk && satOk;
+  });
+  grid.innerHTML = filtered.length ? filtered.map(nicheCardHTML).join('') : '<p class="na">No niches match these filters.</p>';
+}
+
+function renderHistory(){
+  const wrap = document.getElementById('history-body');
+  if (!DATA.history.length) { wrap.innerHTML = '<p class="na">No cycle history yet.</p>'; return; }
+  let h = '<div class="table-wrap"><table><thead><tr><th>Niche</th>';
+  for (const c of DATA.history) h += `<th>Cycle ${c.cycle}<span class="muted">${c.date || ''}</span></th>`;
+  h += '</tr></thead><tbody>';
+  for (const name of DATA.historyNicheNames) {
+    h += `<tr><td>${escapeHtml(name)}</td>`;
+    for (const c of DATA.history) {
+      const n = c.niches.find(x => x.name === name);
+      h += n
+        ? `<td><span class="badge status-${escapeHtml(n.status)}">${escapeHtml(n.status)}</span> <span class="badge sat-${escapeHtml(n.satLevel)}">${escapeHtml(n.satLevel)}</span></td>`
+        : '<td class="na">—</td>';
+    }
+    h += '</tr>';
+  }
+  h += '</tbody></table></div>';
+  if (DATA.history.length < 2) h += '<p class="na" style="margin-top:10px">Only one cycle recorded so far — trends will appear here as more cycles run.</p>';
+  wrap.innerHTML = h;
+}
+
+function renderStatus(){
+  const p = DATA.pipeline;
+  let h = `<div class="status-grid">
+    <div class="stat"><span class="stat-label">Last run</span><span class="stat-val">${escapeHtml(p.lastRun || 'unknown')}</span></div>
+    <div class="stat"><span class="stat-label">Next scheduled</span><span class="stat-val">${escapeHtml(p.nextScheduled || 'not scheduled')}</span></div>
+  </div>
+  <h3>Agent status (last cycle)</h3>
+  <div class="agent-row">`;
+  if (p.agents.length) {
+    for (const a of p.agents) {
+      h += `<span class="badge agent-${escapeHtml(a.status)}">${escapeHtml(a.name)}: ${escapeHtml(a.status)}${a.detail ? ` (${escapeHtml(a.detail)})` : ''}</span>`;
+    }
+  } else {
+    h += '<span class="na">No run log recorded for this cycle.</span>';
+  }
+  h += '</div>';
+  if (p.summary) h += `<h3>What happened this cycle</h3><div class="ceo-summary">${mdBlock(p.summary)}</div>`;
+  document.getElementById('status-body').innerHTML = h;
+}
+
+function buildFavoritesMarkdown(){
+  const entries = Object.entries(favorites);
+  let md = `# Favorites — flagged for design\n\nGenerated ${new Date().toISOString()} from the Etsy POD dashboard.\n\n`;
+  if (!entries.length) { md += '_No favorites flagged yet._\n'; return md; }
+  const niches = entries.filter(([, v]) => v.type === 'niche');
+  const gaps = entries.filter(([, v]) => v.type === 'gap');
+  if (niches.length) {
+    md += '## Niches\n\n';
+    for (const [, v] of niches) md += `- **${v.title}**${v.price ? ` — ${v.price}` : ''}${v.url ? ` — [listing](${v.url})` : ''} _(flagged ${(v.flaggedAt || '').slice(0, 10)})_\n`;
+    md += '\n';
+  }
+  if (gaps.length) {
+    md += '## Design brief gaps\n\n';
+    for (const [, v] of gaps) md += `- **${v.title}**${v.price ? ` — ${v.price}` : ''} _(flagged ${(v.flaggedAt || '').slice(0, 10)})_\n`;
+    md += '\n';
+  }
+  return md;
+}
+
+async function exportFavorites(){
+  const md = buildFavoritesMarkdown();
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: 'favorites.md',
+        types: [{ description: 'Markdown', accept: { 'text/markdown': ['.md'] } }],
+      });
+      const writable = await handle.createWritable();
+      await writable.write(md);
+      await writable.close();
+      toast('Saved favorites.md');
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+      console.warn('File System Access export failed, falling back to download', e);
+    }
+  }
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'favorites.md';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  toast('Downloaded favorites.md — move it into etsy-pod-agent/ to keep it with the project');
+}
+
+document.getElementById('meta-line').textContent =
+  `Cycle ${DATA.cycle.number} — ${DATA.cycle.date || ''} · generated ${DATA.generatedAt.replace('T', ' ')}`;
+renderTypeFilters();
+renderNiches();
+document.getElementById('gap-grid').innerHTML = DATA.gaps.slice().sort((a, b) => a.rank - b.rank).map(gapCardHTML).join('');
+renderHistory();
+renderStatus();
+document.getElementById('export-btn').addEventListener('click', exportFavorites);
+</script>
+
+</body>
+</html>
