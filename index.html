@@ -210,6 +210,26 @@
   #earnings-table tfoot td{ font-weight:700; color:var(--ink); border-top:2px solid var(--line); }
   .profit-positive{ color:var(--sat-low-fg); }
   .profit-negative{ color:var(--sat-high-fg); }
+
+  .score-row{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:2px; }
+  .score-chip{
+    font-size:.66rem; font-weight:700; padding:3px 7px; border-radius:6px; letter-spacing:.02em;
+  }
+  .score-chip.score-hi{ background:var(--sat-low-bg); color:var(--sat-low-fg); }
+  .score-chip.score-mid{ background:var(--sat-med-bg); color:var(--sat-med-fg); }
+  .score-chip.score-lo{ background:var(--sat-high-bg); color:var(--sat-high-fg); }
+  .score-total{
+    margin-left:auto; font-size:.72rem; font-weight:800; color:#fff; background:var(--accent);
+    padding:3px 9px; border-radius:999px;
+  }
+  .score-rationale{ font-style:normal; color:var(--muted); }
+
+  .tiers{ display:flex; flex-direction:column; gap:8px; margin-top:4px; border-top:1px dashed var(--line); padding-top:8px; }
+  .tier-label{
+    font-size:.64rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--accent2);
+    margin-bottom:2px;
+  }
+  .tier-text{ font-size:.74rem; color:var(--muted); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -313,7 +333,7 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-08-20T23:04:03",
+  "generatedAt": "2026-08-20T23:14:40",
   "cycle": {
     "number": 1,
     "date": "2026-08-19",
@@ -324,17 +344,17 @@ const DATA = {
     "nextScheduled": "2026-09-02",
     "agents": [
       {
-        "name": "Review Miner",
+        "name": "Gap Finder",
         "status": "success",
-        "detail": "API, 5/7 niches cleared threshold"
+        "detail": "retroactive scoring pass, no new API calls"
       },
       {
         "name": "Design Briefer",
         "status": "success",
-        "detail": null
+        "detail": "retroactive tiers pass"
       }
     ],
-    "summary": "Ran the newly wired Review Miner sub-agent for the first time, then a Design Briefer re-pass applying the new copywriting rules (see `.claude/agents/design-briefer.md`). **Scope: partial cycle** \u2014 Trend Scout/Phrase Miner/Gap Finder were skipped since Cycle 1's real-API refresh happened only yesterday and nothing meaningful would change by re-running them today; this run exists specifically to exercise the two new/updated agents end to end, per pipeline rule 2 (skip what wouldn't meaningfully change). What happened:\n\n- **Review Miner sampled real reviews for the 7 niches behind this cycle's ranked gaps** (top 10 listings per niche via `listings/active`, then `/reviews` on each listing) \u2014 zero API errors, every call returned HTTP 200.\n- **5 of 7 niches cleared the 15-review threshold** and got real buyer-language findings: ADHD/neurodivergent stickers (52 reviews), Chronic illness/spoonie stickers (54), Gothmas/gothic Christmas decor (52), Recovery/sobriety stickers (43), Pet breed+hobby combo mugs (15, right at the line).\n- **2 of 7 fell short and are correctly reported as insufficient data, not guessed**: Castlecore/Knightcore (11 reviews) and Nonnacore (3 reviews), both below the 15-review floor. Brief 1 and part of Brief 2 are written from Phrase Miner's existing style/phrase formulas alone as a result \u2014 flagged explicitly in each brief's confidence note rather than papered over.\n- **A real, recurring complaint surfaced independently in two niches' review samples**: shipping delay / seller non-responsiveness, including two 1\u2605 reviews in Gothmas citing month-plus delivery with an unresponsive seller, and one 1\u2605 in Pet breed+hobby with the same pattern. This became a genuine differentiator baked into Briefs 3 and 4's descriptions (fast, communicative shipping) \u2014 grounded in quoted complaints, not invented positioning.\n- **All 5 previously-written briefs were revised**: new titles (keyword front-loaded in the first 3 words, \"best/amazing/premium/quality\" banned outright) and a new **Listing description** field (hook \u2192 identity line \u2192 feature\u2192benefit bullets \u2192 CTA) that didn't exist in the brief format before this cycle.\n- **Brief 6 (the \"sober gardener\" stretch gap) stays unbriefed.** Recovery/sobriety cleared the review threshold, but no Phrase Miner pass ran this cycle for that specific sub-angle \u2014 writing a brief now would mean inventing a phrase formula that was never actually reported, which is exactly what Design Briefer's grounding rule prohibits.\n- **Nothing was retired or re-scored.** This was a copy-quality upgrade to existing gaps, not a niche/gap re-scoring pass."
+    "summary": "Folded a niche-validation framework into the existing pipeline rather than running it standalone, per instruction. Two additions, both now permanent in the agent instruction files (not one-time):\n\n- **Gap Finder now scores every gap it ranks, 1-10 on Market Opportunity / Ease of Entry / User Fit / Profit Potential** (see `.claude/agents/gap-finder.md`), with User Fit specifically weighted for this operator (CS student, technical/automation-minded, limited budget and time). Applied retroactively to all 6 of this cycle's gaps using data already gathered (listing counts, saturation, Review Miner findings) \u2014 no new API calls needed. See the new \"Gap Scores\" table below.\n- **Design Briefer now includes three action-path tiers on every brief** \u2014 Under $100 to test / Under $1,000 to scale / Fully scalable \u2014 with real dollar figures grounded in actual POD costs, and the \"Fully scalable\" tier favoring concrete automation paths (scripted variant generation, Printify's bulk/API tooling) given this operator's profile. Applied to all 5 existing briefs.\n- **The scoring didn't change Gap Finder's existing rank order** \u2014 it explains that order in concrete terms. Gap 4 (Sobriety \u00d7 Pet-Mom) scores highest overall (32/40); Gap 6 (the stretch entry) scores lowest (20/40), consistent with Gap Finder's own prior \"weakest entry\" note. This is the explicit version of a bias the pipeline already had implicitly: favoring micro-niches with a real, validated buyer base over broad/generic ones.\n- **Nothing was retired or re-ranked.** This cycle only added scoring/tiers to existing gaps and briefs."
   },
   "niches": [
     {
@@ -609,7 +629,18 @@ const DATA = {
         "style": "Comfort Colors garment-dyed faded tee (sage or faded black); minimalist medieval line-art icon \u2014 a caduceus redrawn as a crossed sword-and-staff crest; goth-floral border (roses/thorns) around the crest; centered badge/crest layout, single ink color for the linework.",
         "productType": "T-shirt",
         "audience": "School nurses and clinical educators who read fantasy romance/romantasy or are into cottagecore-adjacent medieval aesthetics \u2014 gift-buyable for nurse appreciation week/graduation.",
-        "price": "$26\u2013$28 (comp-verified: real castlecore/knightcore Comfort Colors tees on Etsy run $26.05\u2013$28; one outlier listing at $68.89, treat as non-representative)."
+        "price": "$26\u2013$28 (comp-verified: real castlecore/knightcore Comfort Colors tees on Etsy run $26.05\u2013$28; one outlier listing at $68.89, treat as non-representative).",
+        "tier100": "Commission a single crest illustration via Fiverr (~$25\u201340), upload to Printify (free), order one physical sample tee (~$15\u201320 incl. shipping), list on Etsy ($0.20 fee). Total: ~$45\u201365.",
+        "tier1000": "Commission 3\u20134 colorway/subtext variants of the crest (~$100\u2013150), list across 2\u20133 blank colors (sage, faded black, faded navy), run a small Etsy Ads test (~$150\u2013300 over 1\u20132 months), sample each variant (~$60\u201380). Total: ~$400\u2013700.",
+        "tierScale": "Template the same crest-and-motto formula across other occupation\u00d7subculture combos (medic, vet-tech, dental-hygienist) \u2014 swap subtext programmatically via Printify's API, batch-upload via their bulk tooling, and feed real sales data back into this tracker next cycle to replace the assumed conversion rate with actuals."
+      },
+      "score": {
+        "marketOpportunity": 7,
+        "easeOfEntry": 6,
+        "userFit": 5,
+        "profitPotential": 7,
+        "total": 25,
+        "rationale": "Real 0-listing gap against a medium-size validated niche (501 listings), but Review Miner had insufficient data (11 reviews) and t-shirt crest linework needs more illustration skill than a sticker \u2014 moderate fit for a solo operator starting out."
       }
     },
     {
@@ -629,7 +660,18 @@ const DATA = {
         "style": "Warm terracotta/olive palette from Nonnacore, retro Italian majolica floral border around the rim; soft rounded script typography for \"Nonna Said...\" (cozy permission-giving tone, not edgy/sarcastic); small holographic spoon icon tucked into the floral border as a nod to spoon theory.",
         "productType": "Mug",
         "audience": "Women 25\u201345 managing chronic illness/ADHD who respond to \"cozy grandmother energy\" self-care messaging rather than clinical or sarcastic framing.",
-        "price": "$18\u2013$22 (comp-verified: real spoonie mugs on Etsy cluster $14\u2013$27, personalized/custom listings trend toward the upper half)."
+        "price": "$18\u2013$22 (comp-verified: real spoonie mugs on Etsy cluster $14\u2013$27, personalized/custom listings trend toward the upper half).",
+        "tier100": "Commission the floral-border + spoon-icon art (~$30\u201350), set up Printify's personalization app for the custom-name field (free), order one sample mug (~$15\u201320 incl. shipping), list on Etsy ($0.20). Total: ~$50\u201375.",
+        "tier1000": "A/B test two taglines against the review-grounded \"cozy, not clinical\" framing, add 2 more colorway/rim-border variants, run a small Etsy Ads test (~$150\u2013250), sample 3\u20134 variants (~$60). Total: ~$300\u2013500.",
+        "tierScale": "Script personalization-field validation to catch typos/formatting before production \u2014 directly addresses the wording-accuracy complaint pattern Review Miner surfaced elsewhere in this niche family \u2014 and extend the same \"cozy identity + custom name\" template to adjacent self-care products (candles, tote bags) via Printify's catalog API."
+      },
+      "score": {
+        "marketOpportunity": 8,
+        "easeOfEntry": 6,
+        "userFit": 7,
+        "profitPotential": 7,
+        "total": 28,
+        "rationale": "0-listing gap sitting between two large, active niches (3,962 + 3,204 listings) with strong real review grounding (52 + 54 reviews). Mug personalization adds per-order load, but it's a genuinely automatable field-templating problem \u2014 good fit for an automation-minded operator."
       }
     },
     {
@@ -649,7 +691,18 @@ const DATA = {
         "style": "Black, dark green, and blood-red palette; blackletter/gothic type for the headline; skull-and-ornament hybrid iconography (skull with holly instead of a Santa hat); die-cut kiss-cut vinyl sticker.",
         "productType": "Sticker (kiss-cut, waterproof vinyl)",
         "audience": "Goth-identifying pet owners already buying from \"goth mommy\"/\"gothic dog\" Etsy sellers, wanting a seasonal add-on.",
-        "price": "$3.50\u2013$5 (standard Etsy sticker convention \u2014 not comp-verified, flagged as estimate)."
+        "price": "$3.50\u2013$5 (standard Etsy sticker convention \u2014 not comp-verified, flagged as estimate).",
+        "tier100": "Commission the skull-and-ornament design (~$25\u201340), order a small physical proof pack (~$10\u201315), list on Etsy ($0.20). Total: ~$35\u201355.",
+        "tier1000": "Commission 3\u20134 breed-specific variants (review data shows buyers care about their dog matching), add a holographic-finish upsell, run a small Etsy Ads test (~$150\u2013250) timed for the Nov\u2013Dec window, hold buffer stock for ship-time. Total: ~$300\u2013500.",
+        "tierScale": "Template the \"gothic + [holiday] + [pet-mom]\" formula across other holidays (Halloween, Valentine's) via scripted seasonal-icon swaps on the same base vector art, and cross-list via Printify's multi-channel tools once the Etsy version validates."
+      },
+      "score": {
+        "marketOpportunity": 6,
+        "easeOfEntry": 9,
+        "userFit": 9,
+        "profitPotential": 5,
+        "total": 29,
+        "rationale": "Near-empty gap (1 loose near-miss) with strong review grounding on both sides (52 + 15 reviews) including a real, actionable shipping-reliability differentiator. Sticker = easiest possible entry and fully templatable, but Christmas-only seasonality and small per-unit sticker margin cap the profit ceiling."
       }
     },
     {
@@ -669,7 +722,18 @@ const DATA = {
         "style": "Clean inspirational-quote minimalism (not clinical) crossed with a simple line-art dog icon; broken-chain motif reworked as a dog-leash link breaking open; soft neutral palette (sage, cream, warm gray) to keep pet-mom warmth in the mix.",
         "productType": "Sticker (primary); same design adaptable to a Comfort Colors tee as a secondary SKU.",
         "audience": "People in recovery (1+ year sobriety milestone, sponsors buying for sponsees) who are also active pet owners \u2014 sold as a milestone/anniversary gift, not daily-wear identity statement.",
-        "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps)."
+        "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).",
+        "tier100": "Commission the leash-link + dog-icon design (~$25\u201340), order a sticker proof pack (~$10\u201315), list the sticker SKU on Etsy ($0.20) \u2014 defer the tee SKU to the next tier. Total: ~$35\u201355.",
+        "tier1000": "Add the Comfort Colors tee SKU (sample 2\u20133 tees, ~$60\u201390), proof-read wording carefully before production \u2014 directly addresses the real wording-accuracy complaint Review Miner found in this niche \u2014 run a small Etsy Ads test (~$150\u2013250) targeting recovery-community and pet-owner interest overlap. Total: ~$300\u2013450.",
+        "tierScale": "This is the **highest-scoring gap this cycle (32/40)** \u2014 worth building a small template family around it (sponsor/sponsee milestone variants: 30-day, 90-day, 1-year) using the same base art with swapped milestone text, scripted the same way as Brief 1/2's variant automation, cross-listed once validated."
+      },
+      "score": {
+        "marketOpportunity": 7,
+        "easeOfEntry": 9,
+        "userFit": 9,
+        "profitPotential": 7,
+        "total": 32,
+        "rationale": "**Highest-scoring gap this cycle.** Functionally open gap between two solid niches (598 + 152 listings), strong review grounding (43 + 15 reviews), sticker-first entry with a tee upsell, and \u2014 unlike Gap 3 \u2014 no seasonality cap, so volume can be sustained year-round (sponsor/sponsee gifting, sobriety-anniversary milestones happen every month)."
       }
     },
     {
@@ -689,7 +753,18 @@ const DATA = {
         "style": "Pastel pride-flag color coding (from the ADHD/neurodivergent niche) combined with sobriety niche's clean inspirational-quote minimalism \u2014 no broken-chain/addiction iconography (avoid glamorizing/trivializing); soft rounded sans-serif type; simple sun-rising icon (shared growth/new-day motif).",
         "productType": "Sticker (kiss-cut vinyl), holographic finish optional.",
         "audience": "Adults in dual-diagnosis recovery (neurodivergence + substance recovery) seeking community-affirming, non-mocking representation \u2014 likely reached via recovery support groups and ADHD community spaces, not general gift-shopping traffic.",
-        "price": "$3.50\u2013$5 (convention, not comp-verified \u2014 recommend a small test batch given the smaller, more specific audience)."
+        "price": "$3.50\u2013$5 (convention, not comp-verified \u2014 recommend a small test batch given the smaller, more specific audience).",
+        "tier100": "Commission the sun-rising icon + typography (~$25\u201340), order a small proof batch (~$10\u201315), list on Etsy ($0.20). Total: ~$35\u201355.",
+        "tier1000": "This gap scored lowest on Profit Potential (4/10) of the five briefed \u2014 resist over-investing before the $100 test validates real demand. If it does, add 1\u20132 colorway variants and a very small Etsy Ads test (~$75\u2013150) rather than the full budget used on higher-scoring gaps. Total: ~$110\u2013190.",
+        "tierScale": "Only pursue past the $1,000 tier if the small test clearly outperforms this gap's below-average Profit Potential score \u2014 otherwise redirect scaling budget toward Gap 4 or Gap 2, which scored higher on both Market Opportunity and Profit Potential from the same review data."
+      },
+      "score": {
+        "marketOpportunity": 6,
+        "easeOfEntry": 9,
+        "userFit": 9,
+        "profitPotential": 4,
+        "total": 28,
+        "rationale": "Fully open gap (0 listings) with strong review grounding on both sides (52 + 43 reviews), easy sticker entry, but the design brief's own audience note (\"smaller, more specific audience\") caps realistic volume \u2014 lowest Profit Potential of the five briefed gaps despite otherwise strong scores."
       }
     },
     {
@@ -701,7 +776,15 @@ const DATA = {
       "nearMissCount": null,
       "nearMissUrl": null,
       "nearMissTitle": null,
-      "brief": null
+      "brief": null,
+      "score": {
+        "marketOpportunity": 4,
+        "easeOfEntry": 6,
+        "userFit": 7,
+        "profitPotential": 3,
+        "total": 20,
+        "rationale": "Lowest total, consistent with Gap Finder's own original \"weakest entry\" note \u2014 verification was never re-queried this cycle (still inferred) and no Phrase Miner formula exists for this sub-angle, so both the opportunity and the entry cost are unverified."
+      }
     }
   ],
   "history": [
@@ -995,7 +1078,8 @@ const DATA = {
         "example": "\"School Nurse Knight Tee, Healer of the Realm Medieval Shirt, Comfort Colors Ren Faire Nurse Gift, Fantasy Educator Appreciation\"",
         "price": "$26\u2013$28 (comp-verified: real castlecore/knightcore Comfort Colors tees on Etsy run $26.05\u2013$28; one outlier listing at $68.89, treat as non-representative).",
         "url": null,
-        "r": 32
+        "r": 32,
+        "score": 25
       },
       {
         "id": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
@@ -1009,7 +1093,8 @@ const DATA = {
         "example": "\"Spoonie Self-Care Mug, Nonna Says Rest Now, Personalized Chronic Illness Gift, Cozy Permission To Pause\"",
         "price": "$18\u2013$22 (comp-verified: real spoonie mugs on Etsy cluster $14\u2013$27, personalized/custom listings trend toward the upper half).",
         "url": null,
-        "r": 32
+        "r": 32,
+        "score": 28
       },
       {
         "id": "gap:3:Gothmas \u00d7 pet-mom Christmas stickers",
@@ -1023,7 +1108,8 @@ const DATA = {
         "example": "\"Gothic Dog Mom Sticker, Skull & Ornament Christmas Decal, Kiss-Cut Vinyl Holiday Gift For Goth Pet Owners\"",
         "price": "$3.50\u2013$5 (standard Etsy sticker convention \u2014 not comp-verified, flagged as estimate).",
         "url": null,
-        "r": 28
+        "r": 28,
+        "score": 29
       },
       {
         "id": "gap:4:Sobriety \u00d7 pet-mom stickers/shirts",
@@ -1037,7 +1123,8 @@ const DATA = {
         "example": "\"Sober Dog Mom Sticker, Subtle Recovery Decal For Sponsor Sponsee Gifts, Waterproof ODAAT Pet Owner Design\"",
         "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).",
         "url": null,
-        "r": 28
+        "r": 28,
+        "score": 32
       },
       {
         "id": "gap:5:ADHD \u00d7 sobriety/recovery",
@@ -1051,7 +1138,8 @@ const DATA = {
         "example": "\"Neurodivergent Sober Sticker, Dual Diagnosis Recovery Decal, Subtle ADHD Sobriety Support Gift\"",
         "price": "$3.50\u2013$5 (convention, not comp-verified \u2014 recommend a small test batch given the smaller, more specific audience).",
         "url": null,
-        "r": 32
+        "r": 32,
+        "score": 28
       },
       {
         "id": "gap:6:Sober gardener / \"recovery garden\" stickers",
@@ -1065,7 +1153,8 @@ const DATA = {
         "example": null,
         "price": null,
         "url": null,
-        "r": 30
+        "r": 30,
+        "score": 20
       }
     ],
     "links": [
@@ -1232,6 +1321,38 @@ function nicheCardHTML(n){
     </div>`;
 }
 
+function scoreClass(n){
+  if (n == null) return '';
+  return n >= 7 ? 'score-hi' : n >= 4 ? 'score-mid' : 'score-lo';
+}
+
+function scoreBlockHTML(s){
+  if (!s) return '';
+  const chips = [
+    ['MO', s.marketOpportunity], ['EE', s.easeOfEntry], ['UF', s.userFit], ['PP', s.profitPotential],
+  ].map(([label, val]) => `<span class="score-chip ${scoreClass(val)}" title="${scoreLabel(label)}">${label} ${val ?? '—'}</span>`).join('');
+  return `
+    <div class="score-row">
+      ${chips}
+      <span class="score-total">${s.total ?? '—'}/40</span>
+    </div>
+    ${s.rationale ? `<div class="example score-rationale">${mdInline(s.rationale)}</div>` : ''}`;
+}
+function scoreLabel(abbr){
+  return { MO: 'Market Opportunity', EE: 'Ease of Entry', UF: 'User Fit', PP: 'Profit Potential' }[abbr] || abbr;
+}
+
+function actionTiersHTML(b){
+  if (!b || (!b.tier100 && !b.tier1000 && !b.tierScale)) return '';
+  const rows = [
+    ['Under $100 to test', b.tier100],
+    ['Under $1,000 to scale', b.tier1000],
+    ['Fully scalable', b.tierScale],
+  ].filter(([, text]) => text);
+  return `<div class="tiers">${rows.map(([label, text]) => `
+    <div class="tier"><div class="tier-label">${escapeHtml(label)}</div><div class="tier-text">${mdInline(text)}</div></div>`).join('')}</div>`;
+}
+
 function gapCardHTML(g){
   const id = 'gap:' + g.rank + ':' + g.name;
   const fav = isFavorited(id);
@@ -1246,6 +1367,7 @@ function gapCardHTML(g){
             data-title="${escapeHtml(g.name)}" data-url="" data-price="${escapeHtml(b && b.price || '')}"
             title="Flag as favorite">${fav ? '★' : '☆'}</button>
         </div>
+        ${scoreBlockHTML(g.score)}
         ${b ? `
           <div class="card-cat">${escapeHtml(b.productType || '')}</div>
           ${b.exactText ? `<div class="example"><i>Title:</i> ${mdInline(b.exactText)}</div>` : ''}
@@ -1254,6 +1376,7 @@ function gapCardHTML(g){
           <div class="row"><span>Suggested price</span><b>${escapeHtml(b.price || '—')}</b></div>
           ${b.audience ? `<div class="row"><span>Audience</span><b>${escapeHtml(b.audience)}</b></div>` : ''}
           ${b.style ? `<div class="example"><i>Style:</i> ${escapeHtml(b.style)}</div>` : ''}
+          ${actionTiersHTML(b)}
         ` : `<div class="example na">No design brief written for this gap yet.</div>`}
         <div class="example">Verification: ${mdInline(g.verification)}</div>
         ${g.risk ? `<div class="example"><i>Risk:</i> ${escapeHtml(g.risk)}</div>` : ''}
@@ -1405,6 +1528,7 @@ function showGraphTooltip(event, d, wrap, tooltip){
   if (d.satLevel) h += `<div class="gt-row"><span>Saturation</span><b>${escapeHtml(d.satLevel)}${d.count != null ? ` (${d.count.toLocaleString()})` : ''}</b></div>`;
   if (d.example) h += `<div class="gt-example">${mdInline(d.example)}</div>`;
   if (d.price) h += `<div class="gt-row"><span>Price</span><b>${escapeHtml(d.price)}</b></div>`;
+  if (d.score != null) h += `<div class="gt-row"><span>Validation score</span><b>${d.score}/40</b></div>`;
   tooltip.innerHTML = h;
   tooltip.classList.add('show');
   positionGraphTooltip(event, wrap, tooltip);

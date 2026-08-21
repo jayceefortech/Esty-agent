@@ -2,7 +2,7 @@
 
 Persistent log across pipeline cycles. After 2 weeks, saturation is re-checked and each niche/gap is marked rising / stable / saturated. Rising patterns get fed back into the next cycle as priority search terms.
 
-**Pipeline structure (as of 2026-08-21):** A persistent CEO orchestrator (`.claude/agents/ceo.md`) runs every cycle. It reads this file first, decides the cycle's scope, delegates to five sub-agents in order (`trend-scout` → `phrase-miner` → `gap-finder` → `review-miner` → `design-briefer` — see `.claude/agents/`), reviews their combined output for contradictions/low-confidence/silent failures, and is the *only* agent that writes this file, `report.html`, or pushes to GitHub. Review Miner mines real Etsy review text for buyer language (desired outcomes, complaints, pre-purchase phrases, purchase drivers, unmet needs), skipping any niche with fewer than 15 real pooled reviews rather than guessing; Design Briefer's titles/descriptions follow fixed copywriting rules (keyword-front-loaded titles, banned filler words, hook/identity/feature→benefit/CTA descriptions) and use Review Miner's findings when available. Sub-agents report to the CEO only — none of them have file-write access. **This file is the single source of truth for `index.html`** too — a dashboard (Live Niches / Design Briefs / History / Pipeline Status / Node Map / Earnings Estimate tabs, with favorite-flagging to `favorites.md`) regenerated from this file by `python3 generate_dashboard.py` at the end of every cycle; never hand-edit `index.html`. The Node Map tab is a force-directed constellation graph (d3.js, bundled inline from `vendor/d3.v7.min.js`) — one node per niche/gap, sized by saturation and linked by shared keywords/gap intersections, derived automatically at generation time.
+**Pipeline structure (as of 2026-08-21):** A persistent CEO orchestrator (`.claude/agents/ceo.md`) runs every cycle. It reads this file first, decides the cycle's scope, delegates to five sub-agents in order (`trend-scout` → `phrase-miner` → `gap-finder` → `review-miner` → `design-briefer` — see `.claude/agents/`), reviews their combined output for contradictions/low-confidence/silent failures, and is the *only* agent that writes this file, `report.html`, or pushes to GitHub. Review Miner mines real Etsy review text for buyer language (desired outcomes, complaints, pre-purchase phrases, purchase drivers, unmet needs), skipping any niche with fewer than 15 real pooled reviews rather than guessing; Gap Finder scores every gap it ranks 1-10 on Market Opportunity / Ease of Entry / User Fit / Profit Potential (User Fit weighted for a CS-student, technical/automation-minded, limited-budget-and-time operator), making the pipeline's micro-niche-over-broad bias explicit; Design Briefer's titles/descriptions follow fixed copywriting rules (keyword-front-loaded titles, banned filler words, hook/identity/feature→benefit/CTA descriptions), use Review Miner's findings when available, and every brief includes three action-path tiers (under $100 to test / under $1,000 to scale / fully scalable). Sub-agents report to the CEO only — none of them have file-write access. **This file is the single source of truth for `index.html`** too — a dashboard (Live Niches / Design Briefs / History / Pipeline Status / Node Map / Earnings Estimate tabs, with favorite-flagging to `favorites.md`) regenerated from this file by `python3 generate_dashboard.py` at the end of every cycle; never hand-edit `index.html`. The Node Map tab is a force-directed constellation graph (d3.js, bundled inline from `vendor/d3.v7.min.js`) — one node per niche/gap, sized by saturation and linked by shared keywords/gap intersections, derived automatically at generation time.
 
 Every cycle section below starts with a `## CEO Summary` — what ran, what changed, what the CEO decided and why. Anything the CEO wouldn't resolve unilaterally (e.g. retiring a previously flagged niche/gap) is marked `⚠️ NEEDS YOUR CALL` and stays in the tracker, unresolved, until the user explicitly says to drop it — the CEO never silently deletes tracked history.
 
@@ -18,6 +18,17 @@ Secondary sources (Pinterest Predicts, POD seller blogs, Reddit) remain fine for
 ---
 
 ## Cycle 1 — flagged 2026-08-19
+
+### CEO Summary — niche-validation rubric + action-path tiers, 2026-08-21
+
+**Run log:** completed 2026-08-21 · next cycle scheduled 2026-09-02 · Gap Finder: success (retroactive scoring pass, no new API calls) · Design Briefer: success (retroactive tiers pass)
+
+Folded a niche-validation framework into the existing pipeline rather than running it standalone, per instruction. Two additions, both now permanent in the agent instruction files (not one-time):
+
+- **Gap Finder now scores every gap it ranks, 1-10 on Market Opportunity / Ease of Entry / User Fit / Profit Potential** (see `.claude/agents/gap-finder.md`), with User Fit specifically weighted for this operator (CS student, technical/automation-minded, limited budget and time). Applied retroactively to all 6 of this cycle's gaps using data already gathered (listing counts, saturation, Review Miner findings) — no new API calls needed. See the new "Gap Scores" table below.
+- **Design Briefer now includes three action-path tiers on every brief** — Under $100 to test / Under $1,000 to scale / Fully scalable — with real dollar figures grounded in actual POD costs, and the "Fully scalable" tier favoring concrete automation paths (scripted variant generation, Printify's bulk/API tooling) given this operator's profile. Applied to all 5 existing briefs.
+- **The scoring didn't change Gap Finder's existing rank order** — it explains that order in concrete terms. Gap 4 (Sobriety × Pet-Mom) scores highest overall (32/40); Gap 6 (the stretch entry) scores lowest (20/40), consistent with Gap Finder's own prior "weakest entry" note. This is the explicit version of a bias the pipeline already had implicitly: favoring micro-niches with a real, validated buyer base over broad/generic ones.
+- **Nothing was retired or re-ranked.** This cycle only added scoring/tiers to existing gaps and briefs.
 
 ### CEO Summary — Review Miner + Design Briefer upgrade run, 2026-08-21
 
@@ -124,6 +135,21 @@ Per niche, drawn only from pooled real review text across the sampled listings (
 
 **Ruled out (do not re-brief as gaps):** goth × nurse (saturated), wrestling coach × funny (saturated).
 
+### Gap Scores — niche-validation rubric, first applied 2026-08-21
+
+1-10 per category, scored from real data gathered this cycle (Etsy listing counts, saturation levels, Review Miner findings where available) — never inferred from vibes alone. User Fit is scored specifically for this operator: CS student, technical/automation-minded, limited budget and time. Total = sum out of 40. Full scoring guidance lives in `.claude/agents/gap-finder.md`.
+
+| Rank | Gap | Market Opportunity | Ease of Entry | User Fit | Profit Potential | Total | Rationale |
+|---|---|---|---|---|---|---|---|
+| 1 | Knightcore/Castlecore × teacher/nurse shirts | 7 | 6 | 5 | 7 | 25 | Real 0-listing gap against a medium-size validated niche (501 listings), but Review Miner had insufficient data (11 reviews) and t-shirt crest linework needs more illustration skill than a sticker — moderate fit for a solo operator starting out. |
+| 2 | Nonnacore × ADHD/spoonie self-care mugs | 8 | 6 | 7 | 7 | 28 | 0-listing gap sitting between two large, active niches (3,962 + 3,204 listings) with strong real review grounding (52 + 54 reviews). Mug personalization adds per-order load, but it's a genuinely automatable field-templating problem — good fit for an automation-minded operator. |
+| 3 | Gothmas × pet-mom Christmas stickers | 6 | 9 | 9 | 5 | 29 | Near-empty gap (1 loose near-miss) with strong review grounding on both sides (52 + 15 reviews) including a real, actionable shipping-reliability differentiator. Sticker = easiest possible entry and fully templatable, but Christmas-only seasonality and small per-unit sticker margin cap the profit ceiling. |
+| 4 | Sobriety × pet-mom stickers/shirts | 7 | 9 | 9 | 7 | 32 | **Highest-scoring gap this cycle.** Functionally open gap between two solid niches (598 + 152 listings), strong review grounding (43 + 15 reviews), sticker-first entry with a tee upsell, and — unlike Gap 3 — no seasonality cap, so volume can be sustained year-round (sponsor/sponsee gifting, sobriety-anniversary milestones happen every month). |
+| 5 | ADHD × sobriety/recovery | 6 | 9 | 9 | 4 | 28 | Fully open gap (0 listings) with strong review grounding on both sides (52 + 43 reviews), easy sticker entry, but the design brief's own audience note ("smaller, more specific audience") caps realistic volume — lowest Profit Potential of the five briefed gaps despite otherwise strong scores. |
+| 6 (stretch) | Sober gardener / "recovery garden" stickers | 4 | 6 | 7 | 3 | 20 | Lowest total, consistent with Gap Finder's own original "weakest entry" note — verification was never re-queried this cycle (still inferred) and no Phrase Miner formula exists for this sub-angle, so both the opportunity and the entry cost are unverified. |
+
+**What this makes explicit:** the two highest-scoring gaps (4 and 2) both combine a genuinely near-empty intersection with large, real, review-validated parent niches — exactly the "micro-niche with a clear buyer base" pattern this pipeline has favored implicitly since Cycle 1. The lowest scorer (6) is the one gap that's still running on inference rather than real API/review data. The rubric didn't change the ranking order Gap Finder already had — it explains *why* that order makes sense in terms concrete enough to act on.
+
 ### Design briefs (from Agent 4) — revised 2026-08-21 per new copywriting rules + Review Miner findings
 
 Titles: primary keyword front-loaded in the first 3 words, lead with outcome not feature, "best/amazing/premium/quality" banned outright. Descriptions: hook → "who this is for" line → `[Feature] → [benefit]` bullets → specific CTA. See `.claude/agents/design-briefer.md` for the full rule set.
@@ -136,6 +162,9 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - **Product type:** T-shirt
 - **Target audience:** School nurses and clinical educators who read fantasy romance/romantasy or are into cottagecore-adjacent medieval aesthetics — gift-buyable for nurse appreciation week/graduation.
 - **Suggested price:** $26–$28 (comp-verified: real castlecore/knightcore Comfort Colors tees on Etsy run $26.05–$28; one outlier listing at $68.89, treat as non-representative).
+- **Under $100 to test:** Commission a single crest illustration via Fiverr (~$25–40), upload to Printify (free), order one physical sample tee (~$15–20 incl. shipping), list on Etsy ($0.20 fee). Total: ~$45–65.
+- **Under $1,000 to scale:** Commission 3–4 colorway/subtext variants of the crest (~$100–150), list across 2–3 blank colors (sage, faded black, faded navy), run a small Etsy Ads test (~$150–300 over 1–2 months), sample each variant (~$60–80). Total: ~$400–700.
+- **Fully scalable:** Template the same crest-and-motto formula across other occupation×subculture combos (medic, vet-tech, dental-hygienist) — swap subtext programmatically via Printify's API, batch-upload via their bulk tooling, and feed real sales data back into this tracker next cycle to replace the assumed conversion rate with actuals.
 - Confidence: partially grounded — style/phrase formulas solid, but Castlecore/Knightcore's review sample this cycle was too thin (11 reviews, need 15+) for real buyer-language grounding. **Review Miner: not used** (insufficient data) — description hook is written from general market positioning, not quoted buyers.
 
 **BRIEF 2 — Nonnacore × ADHD/Spoonie Self-Care Mug**
@@ -146,6 +175,9 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - **Product type:** Mug
 - **Target audience:** Women 25–45 managing chronic illness/ADHD who respond to "cozy grandmother energy" self-care messaging rather than clinical or sarcastic framing.
 - **Suggested price:** $18–$22 (comp-verified: real spoonie mugs on Etsy cluster $14–$27, personalized/custom listings trend toward the upper half).
+- **Under $100 to test:** Commission the floral-border + spoon-icon art (~$30–50), set up Printify's personalization app for the custom-name field (free), order one sample mug (~$15–20 incl. shipping), list on Etsy ($0.20). Total: ~$50–75.
+- **Under $1,000 to scale:** A/B test two taglines against the review-grounded "cozy, not clinical" framing, add 2 more colorway/rim-border variants, run a small Etsy Ads test (~$150–250), sample 3–4 variants (~$60). Total: ~$300–500.
+- **Fully scalable:** Script personalization-field validation to catch typos/formatting before production — directly addresses the wording-accuracy complaint pattern Review Miner surfaced elsewhere in this niche family — and extend the same "cozy identity + custom name" template to adjacent self-care products (candles, tote bags) via Printify's catalog API.
 - Confidence: well-grounded for the ADHD/spoonie half (52 + 54 real reviews — strong pattern: relatable humor as coping, non-clinical framing preferred). **Review Miner: partially used** — Nonnacore itself had only 3 reviews sampled (insufficient), so the "cozy grandmother" framing still comes from Phrase Miner's formula, not quoted Nonnacore buyers.
 
 **BRIEF 3 — Gothmas × Pet-Mom Christmas Sticker**
@@ -156,6 +188,9 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - **Product type:** Sticker (kiss-cut, waterproof vinyl)
 - **Target audience:** Goth-identifying pet owners already buying from "goth mommy"/"gothic dog" Etsy sellers, wanting a seasonal add-on.
 - **Suggested price:** $3.50–$5 (standard Etsy sticker convention — not comp-verified, flagged as estimate).
+- **Under $100 to test:** Commission the skull-and-ornament design (~$25–40), order a small physical proof pack (~$10–15), list on Etsy ($0.20). Total: ~$35–55.
+- **Under $1,000 to scale:** Commission 3–4 breed-specific variants (review data shows buyers care about their dog matching), add a holographic-finish upsell, run a small Etsy Ads test (~$150–250) timed for the Nov–Dec window, hold buffer stock for ship-time. Total: ~$300–500.
+- **Fully scalable:** Template the "gothic + [holiday] + [pet-mom]" formula across other holidays (Halloween, Valentine's) via scripted seasonal-icon swaps on the same base vector art, and cross-list via Printify's multi-channel tools once the Etsy version validates.
 - Confidence: well-grounded — both source niches (Gothmas 52 reviews, Pet breed+hobby 15) cleared the review threshold. **Review Miner: used** — the fast/communicative-shipping promise in the description is drawn directly from repeated real shipping complaints in both pooled samples (including two 1★ reviews), not invented positioning.
 
 **BRIEF 4 — Sobriety × Pet-Mom Sticker/Shirt**
@@ -166,6 +201,9 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - **Product type:** Sticker (primary); same design adaptable to a Comfort Colors tee as a secondary SKU.
 - **Target audience:** People in recovery (1+ year sobriety milestone, sponsors buying for sponsees) who are also active pet owners — sold as a milestone/anniversary gift, not daily-wear identity statement.
 - **Suggested price:** $4–$5 sticker pack (convention, not comp-verified); $24–$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).
+- **Under $100 to test:** Commission the leash-link + dog-icon design (~$25–40), order a sticker proof pack (~$10–15), list the sticker SKU on Etsy ($0.20) — defer the tee SKU to the next tier. Total: ~$35–55.
+- **Under $1,000 to scale:** Add the Comfort Colors tee SKU (sample 2–3 tees, ~$60–90), proof-read wording carefully before production — directly addresses the real wording-accuracy complaint Review Miner found in this niche — run a small Etsy Ads test (~$150–250) targeting recovery-community and pet-owner interest overlap. Total: ~$300–450.
+- **Fully scalable:** This is the **highest-scoring gap this cycle (32/40)** — worth building a small template family around it (sponsor/sponsee milestone variants: 30-day, 90-day, 1-year) using the same base art with swapped milestone text, scripted the same way as Brief 1/2's variant automation, cross-listed once validated.
 - Confidence: well-grounded — both source niches (Recovery/sobriety 43 reviews, Pet breed+hobby 15) cleared the threshold. **Review Miner: used** — the wording-accuracy feature and shipping-reliability promise are drawn from real quoted complaints, not invented.
 
 **BRIEF 5 — ADHD/Neurodivergent × Sobriety/Recovery** *(sensitive intersection — kept supportive/in-community, not sarcastic or mocking; grounded in genuine dual-diagnosis community language, not novelty)*
@@ -176,6 +214,9 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - **Product type:** Sticker (kiss-cut vinyl), holographic finish optional.
 - **Target audience:** Adults in dual-diagnosis recovery (neurodivergence + substance recovery) seeking community-affirming, non-mocking representation — likely reached via recovery support groups and ADHD community spaces, not general gift-shopping traffic.
 - **Suggested price:** $3.50–$5 (convention, not comp-verified — recommend a small test batch given the smaller, more specific audience).
+- **Under $100 to test:** Commission the sun-rising icon + typography (~$25–40), order a small proof batch (~$10–15), list on Etsy ($0.20). Total: ~$35–55.
+- **Under $1,000 to scale:** This gap scored lowest on Profit Potential (4/10) of the five briefed — resist over-investing before the $100 test validates real demand. If it does, add 1–2 colorway variants and a very small Etsy Ads test (~$75–150) rather than the full budget used on higher-scoring gaps. Total: ~$110–190.
+- **Fully scalable:** Only pursue past the $1,000 tier if the small test clearly outperforms this gap's below-average Profit Potential score — otherwise redirect scaling budget toward Gap 4 or Gap 2, which scored higher on both Market Opportunity and Profit Potential from the same review data.
 - Confidence: well-grounded — both source niches (ADHD 52 reviews, Recovery/sobriety 43) cleared the threshold. **Review Miner: used** — the wording-accuracy feature is drawn from a real 3★ complaint in the sobriety sample, not invented.
 
 **Brief 6 (Sober gardener / "recovery garden" stickers): still unbriefed.** Recovery/sobriety cleared the review threshold this cycle, but no Phrase Miner pass ran for that specific sub-angle — writing a brief now would mean inventing a phrase formula never actually reported, which Design Briefer's grounding rule prohibits. Candidate for a future cycle once Phrase Miner covers it.

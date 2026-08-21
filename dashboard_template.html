@@ -210,6 +210,26 @@
   #earnings-table tfoot td{ font-weight:700; color:var(--ink); border-top:2px solid var(--line); }
   .profit-positive{ color:var(--sat-low-fg); }
   .profit-negative{ color:var(--sat-high-fg); }
+
+  .score-row{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:2px; }
+  .score-chip{
+    font-size:.66rem; font-weight:700; padding:3px 7px; border-radius:6px; letter-spacing:.02em;
+  }
+  .score-chip.score-hi{ background:var(--sat-low-bg); color:var(--sat-low-fg); }
+  .score-chip.score-mid{ background:var(--sat-med-bg); color:var(--sat-med-fg); }
+  .score-chip.score-lo{ background:var(--sat-high-bg); color:var(--sat-high-fg); }
+  .score-total{
+    margin-left:auto; font-size:.72rem; font-weight:800; color:#fff; background:var(--accent);
+    padding:3px 9px; border-radius:999px;
+  }
+  .score-rationale{ font-style:normal; color:var(--muted); }
+
+  .tiers{ display:flex; flex-direction:column; gap:8px; margin-top:4px; border-top:1px dashed var(--line); padding-top:8px; }
+  .tier-label{
+    font-size:.64rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--accent2);
+    margin-bottom:2px;
+  }
+  .tier-text{ font-size:.74rem; color:var(--muted); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -394,6 +414,38 @@ function nicheCardHTML(n){
     </div>`;
 }
 
+function scoreClass(n){
+  if (n == null) return '';
+  return n >= 7 ? 'score-hi' : n >= 4 ? 'score-mid' : 'score-lo';
+}
+
+function scoreBlockHTML(s){
+  if (!s) return '';
+  const chips = [
+    ['MO', s.marketOpportunity], ['EE', s.easeOfEntry], ['UF', s.userFit], ['PP', s.profitPotential],
+  ].map(([label, val]) => `<span class="score-chip ${scoreClass(val)}" title="${scoreLabel(label)}">${label} ${val ?? '—'}</span>`).join('');
+  return `
+    <div class="score-row">
+      ${chips}
+      <span class="score-total">${s.total ?? '—'}/40</span>
+    </div>
+    ${s.rationale ? `<div class="example score-rationale">${mdInline(s.rationale)}</div>` : ''}`;
+}
+function scoreLabel(abbr){
+  return { MO: 'Market Opportunity', EE: 'Ease of Entry', UF: 'User Fit', PP: 'Profit Potential' }[abbr] || abbr;
+}
+
+function actionTiersHTML(b){
+  if (!b || (!b.tier100 && !b.tier1000 && !b.tierScale)) return '';
+  const rows = [
+    ['Under $100 to test', b.tier100],
+    ['Under $1,000 to scale', b.tier1000],
+    ['Fully scalable', b.tierScale],
+  ].filter(([, text]) => text);
+  return `<div class="tiers">${rows.map(([label, text]) => `
+    <div class="tier"><div class="tier-label">${escapeHtml(label)}</div><div class="tier-text">${mdInline(text)}</div></div>`).join('')}</div>`;
+}
+
 function gapCardHTML(g){
   const id = 'gap:' + g.rank + ':' + g.name;
   const fav = isFavorited(id);
@@ -408,6 +460,7 @@ function gapCardHTML(g){
             data-title="${escapeHtml(g.name)}" data-url="" data-price="${escapeHtml(b && b.price || '')}"
             title="Flag as favorite">${fav ? '★' : '☆'}</button>
         </div>
+        ${scoreBlockHTML(g.score)}
         ${b ? `
           <div class="card-cat">${escapeHtml(b.productType || '')}</div>
           ${b.exactText ? `<div class="example"><i>Title:</i> ${mdInline(b.exactText)}</div>` : ''}
@@ -416,6 +469,7 @@ function gapCardHTML(g){
           <div class="row"><span>Suggested price</span><b>${escapeHtml(b.price || '—')}</b></div>
           ${b.audience ? `<div class="row"><span>Audience</span><b>${escapeHtml(b.audience)}</b></div>` : ''}
           ${b.style ? `<div class="example"><i>Style:</i> ${escapeHtml(b.style)}</div>` : ''}
+          ${actionTiersHTML(b)}
         ` : `<div class="example na">No design brief written for this gap yet.</div>`}
         <div class="example">Verification: ${mdInline(g.verification)}</div>
         ${g.risk ? `<div class="example"><i>Risk:</i> ${escapeHtml(g.risk)}</div>` : ''}
@@ -567,6 +621,7 @@ function showGraphTooltip(event, d, wrap, tooltip){
   if (d.satLevel) h += `<div class="gt-row"><span>Saturation</span><b>${escapeHtml(d.satLevel)}${d.count != null ? ` (${d.count.toLocaleString()})` : ''}</b></div>`;
   if (d.example) h += `<div class="gt-example">${mdInline(d.example)}</div>`;
   if (d.price) h += `<div class="gt-row"><span>Price</span><b>${escapeHtml(d.price)}</b></div>`;
+  if (d.score != null) h += `<div class="gt-row"><span>Validation score</span><b>${d.score}/40</b></div>`;
   tooltip.innerHTML = h;
   tooltip.classList.add('show');
   positionGraphTooltip(event, wrap, tooltip);

@@ -6,9 +6,9 @@ A persistent **CEO orchestrator** runs every cycle (scheduled via the "Etsy POD 
 
 - `.claude/agents/trend-scout.md` — raw niche findings
 - `.claude/agents/phrase-miner.md` — title/copy and visual-style formulas
-- `.claude/agents/gap-finder.md` — ranked underserved niche intersections
+- `.claude/agents/gap-finder.md` — ranked underserved niche intersections, each scored 1-10 on Market Opportunity / Ease of Entry / User Fit / Profit Potential (User Fit specifically weighted for a CS-student, technical/automation-minded, limited-budget-and-time operator) — makes the pipeline's existing micro-niche-over-broad bias explicit instead of implicit in the rank order
 - `.claude/agents/review-miner.md` — real Etsy buyer-review language (desired outcomes, complaints, pre-purchase problem phrases, purchase-driving details, unmet needs) for the niches behind this cycle's ranked gaps; skips a niche with `insufficient data` rather than guessing when fewer than 15 real reviews are pooled for it
-- `.claude/agents/design-briefer.md` — draft design briefs, informed by Review Miner's findings when available; titles and descriptions follow fixed copywriting rules (keyword-front-loaded titles with banned filler words; hook/identity-line/feature→benefit/CTA descriptions) documented in the agent file itself
+- `.claude/agents/design-briefer.md` — draft design briefs, informed by Review Miner's findings and Gap Finder's rubric scores when available; titles and descriptions follow fixed copywriting rules (keyword-front-loaded titles with banned filler words; hook/identity-line/feature→benefit/CTA descriptions), and every brief includes three action-path tiers (under $100 to test / under $1,000 to scale / fully scalable) — all documented in the agent file itself
 
 ## Rules
 

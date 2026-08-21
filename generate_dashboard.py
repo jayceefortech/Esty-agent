@@ -192,7 +192,44 @@ FIELD_KEY_MAP = [
     ("product type", "productType"),
     ("target audience", "audience"),
     ("suggested price", "price"),
+    ("under $100", "tier100"),
+    ("under $1,000", "tier1000"),
+    ("fully scalable", "tierScale"),
 ]
+
+
+def parse_gap_scores_table(body):
+    tbl = parse_table(body)
+    if not tbl:
+        return {}
+    header, rows = tbl
+    i_rank = col_index(header, "rank")
+    i_mkt = col_index(header, "market opportunity")
+    i_ease = col_index(header, "ease of entry")
+    i_fit = col_index(header, "user fit")
+    i_profit = col_index(header, "profit potential")
+    i_total = col_index(header, "total")
+    i_rationale = col_index(header, "rationale")
+    if None in (i_rank, i_mkt, i_ease, i_fit, i_profit):
+        raise TrackerParseError("Gap Scores table is missing a required rubric column")
+
+    scores = {}
+    for cells in rows:
+        rank_m = re.search(r"\d+", cells[i_rank])
+        if not rank_m:
+            continue
+        rank = int(rank_m.group())
+
+        def num(i):
+            m = re.search(r"\d+", cells[i]) if i is not None else None
+            return int(m.group()) if m else None
+
+        scores[rank] = {
+            "marketOpportunity": num(i_mkt), "easeOfEntry": num(i_ease),
+            "userFit": num(i_fit), "profitPotential": num(i_profit),
+            "total": num(i_total), "rationale": cells[i_rationale] if i_rationale is not None else None,
+        }
+    return scores
 
 
 def parse_briefs(body):
@@ -322,6 +359,7 @@ def build_graph(niches, gaps):
             "satLevel": None, "count": None,
             "example": (g.get("brief") or {}).get("exactText"),
             "price": (g.get("brief") or {}).get("price"), "url": None, "r": round(r, 1),
+            "score": (g.get("score") or {}).get("total"),
         })
         kw_by_id[gid] = keywords(g["name"])
 
@@ -371,10 +409,13 @@ def main():
             if latest is None or num > latest["num"]:
                 gaps_sec = find_section(sub, "gaps")
                 gaps = parse_gaps_table(gaps_sec["body"]) if gaps_sec else []
+                scores_sec = find_section(sub, "gap scores")
+                scores = parse_gap_scores_table(scores_sec["body"]) if scores_sec else {}
                 briefs_sec = find_section(sub, "design briefs")
                 briefs = parse_briefs(briefs_sec["body"]) if briefs_sec else {}
                 for g in gaps:
                     g["brief"] = briefs.get(g["rank"])
+                    g["score"] = scores.get(g["rank"])
                 ceo_sec = find_section(sub, "ceo summary")
                 run_log = parse_run_log(ceo_sec["body"]) if ceo_sec else None
                 ceo_text = None
