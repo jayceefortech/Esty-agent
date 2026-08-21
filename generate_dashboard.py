@@ -14,6 +14,7 @@ Usage: python3 generate_dashboard.py [--no-open]
 import datetime
 import html
 import json
+import math
 import re
 import subprocess
 import sys
@@ -238,6 +239,104 @@ def parse_run_log(body):
 
 CYCLE_DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
 
+GRAPH_STOPWORDS = {
+    "and", "the", "of", "for", "in", "on", "to", "x", "general", "decor", "combo", "hobby",
+    "stickers", "sticker", "mugs", "mug", "shirts", "shirt", "t", "tumblers", "tumbler",
+    "self", "care", "core", "gift", "gifts",
+}
+WORD_RE = re.compile(r"[a-z0-9]+")
+CATEGORY_COLORS = {
+    "wall art": "#7dd3fc",
+    "mugs": "#fbbf6f",
+    "stickers": "#f472b6",
+    "t-shirts": "#a78bfa",
+    "tumblers": "#34d399",
+}
+DEFAULT_NODE_COLOR = "#94a3b8"
+
+
+def keywords(text):
+    out = []
+    for w in WORD_RE.findall(text.lower()):
+        if len(w) < 3 or w in GRAPH_STOPWORDS:
+            continue
+        if w.endswith("s") and len(w) > 3:
+            w = w[:-1]
+        out.append(w)
+    return set(out)
+
+
+def gap_product_category(brief):
+    if not brief or not brief.get("productType"):
+        return None
+    p = brief["productType"].lower()
+    if "shirt" in p or "tee" in p:
+        return "t-shirts"
+    if "mug" in p:
+        return "mugs"
+    if "sticker" in p:
+        return "stickers"
+    if "tumbler" in p:
+        return "tumblers"
+    if "wall" in p or "print" in p or "canvas" in p or "art" in p:
+        return "wall art"
+    return None
+
+
+def build_graph(niches, gaps):
+    nodes = []
+    kw_by_id = {}
+
+    counts = [n["count"] for n in niches if n["count"] is not None]
+    min_c, max_c = (min(counts), max(counts)) if counts else (1, 1)
+
+    def niche_radius(count):
+        if count is None or max_c <= min_c:
+            return 18
+        lo, hi = 10, 26
+        t = (math.log(count) - math.log(min_c)) / (math.log(max_c) - math.log(min_c))
+        return hi - t * (hi - lo)  # smaller count -> bigger radius
+
+    for n in niches:
+        nid = "niche:" + n["name"]
+        primary_cat = n["category"][0] if n["category"] else None
+        nodes.append({
+            "id": nid, "kind": "niche", "label": n["name"], "name": n["name"],
+            "category": primary_cat, "color": CATEGORY_COLORS.get(primary_cat, DEFAULT_NODE_COLOR),
+            "satLevel": n["satLevel"], "count": n["count"], "example": n["title"] or None,
+            "price": n["price"], "url": n["url"], "r": round(niche_radius(n["count"]), 1),
+        })
+        kw_by_id[nid] = keywords(n["name"])
+
+    for g in gaps:
+        gid = f"gap:{g['rank']}:{g['name']}"
+        cat = gap_product_category(g.get("brief"))
+        nmc = g.get("nearMissCount")
+        r = 32 - (nmc * 4 if nmc else 0) if nmc is not None else 30
+        nodes.append({
+            "id": gid, "kind": "gap", "label": g["name"], "name": g["name"],
+            "category": cat, "color": CATEGORY_COLORS.get(cat, DEFAULT_NODE_COLOR),
+            "satLevel": None, "count": None,
+            "example": (g.get("brief") or {}).get("exactText"),
+            "price": (g.get("brief") or {}).get("price"), "url": None, "r": round(r, 1),
+        })
+        kw_by_id[gid] = keywords(g["name"])
+
+    links = []
+    ids = [n["id"] for n in nodes]
+    for i in range(len(ids)):
+        for j in range(i + 1, len(ids)):
+            a, b = ids[i], ids[j]
+            a_is_gap = a.startswith("gap:")
+            b_is_gap = b.startswith("gap:")
+            if a_is_gap == b_is_gap and a_is_gap:
+                continue  # skip gap-gap edges; clustering happens via shared niche hubs
+            shared = kw_by_id[a] & kw_by_id[b]
+            if shared:
+                links.append({"source": a, "target": b, "weight": len(shared)})
+
+    return {"nodes": nodes, "links": links}
+
 
 def main():
     if not TRACKER.exists():
@@ -324,6 +423,8 @@ def main():
         "history": history,
         "historyNicheNames": history_niche_names,
         "productTypes": product_types,
+        "graph": build_graph(latest["niches"], latest["gaps"]),
+        "categoryColors": CATEGORY_COLORS,
     }
 
     render(data)
@@ -338,10 +439,17 @@ def main():
                   file=sys.stderr)
 
 
+D3_BUNDLE = ROOT / "vendor" / "d3.v7.min.js"
+
+
 def render(data):
+    if not D3_BUNDLE.exists():
+        raise TrackerParseError(f"{D3_BUNDLE} is missing — the node-graph tab needs it "
+                                 f"bundled inline so index.html stays a single offline file")
     data_json = json.dumps(data, indent=2)
     tpl = (ROOT / "dashboard_template.html").read_text()
     out = tpl.replace("/*__DATA_JSON__*/null", data_json)
+    out = out.replace("/*__D3_BUNDLE__*/", D3_BUNDLE.read_text())
     OUTPUT.write_text(out)
 
 

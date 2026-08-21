@@ -142,6 +142,40 @@
     .grid{ grid-template-columns:1fr; }
     .status-grid{ flex-direction:column; }
   }
+
+  .graph-hint{ font-size:.72rem; color:var(--muted); margin-bottom:10px; }
+  #graph-wrap{
+    position:relative; width:100%; height:560px; border-radius:14px; overflow:hidden;
+    border:1px solid var(--line);
+    background: radial-gradient(ellipse at 50% 38%, #101c33 0%, #060a14 65%, #030509 100%);
+  }
+  #graph-svg{ width:100%; height:100%; display:block; cursor:grab; }
+  #graph-svg:active{ cursor:grabbing; }
+  .graph-node{ cursor:pointer; }
+  .node-label{
+    fill:#c9d6ea; font-size:9px; font-weight:600; pointer-events:none;
+    paint-order:stroke; stroke:#060a14; stroke-width:3px; stroke-linejoin:round;
+  }
+  .graph-link{ stroke:#9cc4ff; }
+  #graph-tooltip{
+    position:absolute; max-width:240px; background:var(--panel2); border:1px solid var(--line);
+    border-radius:10px; padding:10px 12px; font-size:.72rem; color:var(--muted); pointer-events:none;
+    opacity:0; transition:opacity .12s; box-shadow:var(--shadow); z-index:5;
+  }
+  #graph-tooltip.show{ opacity:1; }
+  .gt-title{ font-size:.8rem; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .gt-row{ display:flex; justify-content:space-between; gap:8px; margin-top:2px; }
+  .gt-row b{ color:var(--ink); text-align:right; }
+  .gt-example{ margin-top:6px; font-style:italic; }
+  .graph-legend{ display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; font-size:.72rem; color:var(--muted); }
+  .graph-legend .swatch{
+    display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle;
+  }
+  .graph-legend .swatch.gap-swatch{ background:transparent; border:1.5px solid #fff8; }
+
+  @media (max-width: 480px){
+    #graph-wrap{ height:420px; }
+  }
 </style>
 </head>
 <body>
@@ -156,6 +190,7 @@
   <button class="tab" data-tab="briefs">Design Briefs</button>
   <button class="tab" data-tab="history">History</button>
   <button class="tab" data-tab="status">Pipeline Status</button>
+  <button class="tab" data-tab="graph">Node Map</button>
 </nav>
 
 <main>
@@ -185,11 +220,21 @@
   <section id="panel-status" class="panel">
     <div id="status-body"></div>
   </section>
+
+  <section id="panel-graph" class="panel">
+    <div class="graph-hint">Drag nodes to rearrange · scroll/pinch to zoom · hover for details · click a niche node to open its Etsy listing</div>
+    <div id="graph-wrap">
+      <svg id="graph-svg"></svg>
+      <div id="graph-tooltip"></div>
+    </div>
+    <div class="graph-legend" id="graph-legend"></div>
+  </section>
 </main>
 
 <div class="fab-row"><button id="export-btn">⭐ Export favorites.md</button></div>
 <div id="toast"></div>
 
+<script>/*__D3_BUNDLE__*/</script>
 <script>
 const DATA = /*__DATA_JSON__*/null;
 const FAV_KEY = 'etsypod_favorites_v1';
@@ -340,8 +385,125 @@ document.addEventListener('click', (e) => {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    if (tab.dataset.tab === 'graph' && !graphInitialized) {
+      graphInitialized = true;
+      initGraph();
+    }
   }
 });
+
+let graphInitialized = false;
+
+function renderGraphLegend(){
+  const el = document.getElementById('graph-legend');
+  const items = Object.entries(DATA.categoryColors || {})
+    .map(([cat, color]) => `<span><span class="swatch" style="background:${color}"></span>${escapeHtml(cat)}</span>`);
+  items.push('<span><span class="swatch gap-swatch"></span>design gap (larger = bigger opportunity)</span>');
+  el.innerHTML = items.join('');
+}
+
+function initGraph(){
+  const wrap = document.getElementById('graph-wrap');
+  const tooltip = document.getElementById('graph-tooltip');
+  const gdata = DATA.graph;
+  if (!gdata || !gdata.nodes || !gdata.nodes.length) {
+    wrap.innerHTML = '<p class="na" style="padding:20px">No graph data available.</p>';
+    return;
+  }
+
+  const w = wrap.clientWidth || 800;
+  const h = wrap.clientHeight || 560;
+  const svg = d3.select('#graph-svg').attr('viewBox', `0 0 ${w} ${h}`).attr('preserveAspectRatio', 'xMidYMid meet');
+
+  const defs = svg.append('defs');
+  const filter = defs.append('filter').attr('id', 'node-glow')
+    .attr('x', '-150%').attr('y', '-150%').attr('width', '400%').attr('height', '400%');
+  filter.append('feGaussianBlur').attr('stdDeviation', 4).attr('result', 'blur');
+  const merge = filter.append('feMerge');
+  merge.append('feMergeNode').attr('in', 'blur');
+  merge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+  const starLayer = svg.append('g').attr('class', 'starfield');
+  const stars = d3.range(80).map(() => ({
+    x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.1 + 0.3, o: Math.random() * 0.4 + 0.12,
+  }));
+  starLayer.selectAll('circle').data(stars).join('circle')
+    .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r).attr('fill', '#cfe0ff').attr('opacity', d => d.o);
+
+  const container = svg.append('g');
+  svg.call(d3.zoom().scaleExtent([0.3, 3]).on('zoom', (event) => container.attr('transform', event.transform)));
+
+  const nodes = gdata.nodes.map(d => Object.assign({}, d));
+  const links = gdata.links.map(d => Object.assign({}, d));
+
+  const simulation = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(d => d.id).distance(d => 95 - d.weight * 12).strength(d => 0.15 + 0.1 * d.weight))
+    .force('charge', d3.forceManyBody().strength(-170))
+    .force('center', d3.forceCenter(w / 2, h / 2))
+    .force('x', d3.forceX(w / 2).strength(0.04))
+    .force('y', d3.forceY(h / 2).strength(0.05))
+    .force('collide', d3.forceCollide().radius(d => d.r + 10));
+
+  const linkSel = container.append('g').selectAll('line')
+    .data(links).join('line')
+    .attr('class', 'graph-link')
+    .attr('stroke-width', d => 1 + d.weight * 0.8)
+    .attr('stroke-opacity', d => 0.16 + d.weight * 0.14);
+
+  const nodeSel = container.append('g').selectAll('g')
+    .data(nodes).join('g')
+    .attr('class', d => 'graph-node ' + (d.kind === 'gap' ? 'is-gap' : 'is-niche'))
+    .call(d3.drag()
+      .on('start', (event, d) => { if (!event.active) simulation.alphaTarget(0.25).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', (event, d) => { d.fx = event.x; d.fy = event.y; })
+      .on('end', (event) => { if (!event.active) simulation.alphaTarget(0); }));
+
+  nodeSel.append('circle').attr('class', 'node-halo')
+    .attr('r', d => d.r * 1.7).attr('fill', d => d.color).attr('opacity', 0.3).attr('filter', 'url(#node-glow)');
+  nodeSel.append('circle').attr('class', 'node-core')
+    .attr('r', d => d.r).attr('fill', d => d.color)
+    .attr('stroke', d => d.kind === 'gap' ? '#ffffffaa' : 'none').attr('stroke-width', d => d.kind === 'gap' ? 1.2 : 0);
+  nodeSel.append('text').attr('class', 'node-label')
+    .attr('dy', d => d.r + 13).attr('text-anchor', 'middle')
+    .text(d => d.label.length > 24 ? d.label.slice(0, 22) + '…' : d.label);
+
+  nodeSel.on('mouseenter', (event, d) => showGraphTooltip(event, d, wrap, tooltip))
+    .on('mousemove', (event) => positionGraphTooltip(event, wrap, tooltip))
+    .on('mouseleave', () => tooltip.classList.remove('show'))
+    .on('click', (event, d) => { if (d.url) window.open(d.url, '_blank', 'noopener'); });
+
+  simulation.on('tick', () => {
+    nodes.forEach(d => {
+      d.x = Math.max(d.r + 6, Math.min(w - d.r - 6, d.x));
+      d.y = Math.max(d.r + 20, Math.min(h - d.r - 6, d.y));
+    });
+    linkSel
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    nodeSel.attr('transform', d => `translate(${d.x},${d.y})`);
+  });
+}
+
+function showGraphTooltip(event, d, wrap, tooltip){
+  let h = `<div class="gt-title">${escapeHtml(d.name)}</div>`;
+  h += `<div class="gt-row"><span>Type</span><b>${d.kind === 'gap' ? 'Design gap' : 'Niche'}</b></div>`;
+  if (d.category) h += `<div class="gt-row"><span>Category</span><b>${escapeHtml(d.category)}</b></div>`;
+  if (d.satLevel) h += `<div class="gt-row"><span>Saturation</span><b>${escapeHtml(d.satLevel)}${d.count != null ? ` (${d.count.toLocaleString()})` : ''}</b></div>`;
+  if (d.example) h += `<div class="gt-example">${mdInline(d.example)}</div>`;
+  if (d.price) h += `<div class="gt-row"><span>Price</span><b>${escapeHtml(d.price)}</b></div>`;
+  tooltip.innerHTML = h;
+  tooltip.classList.add('show');
+  positionGraphTooltip(event, wrap, tooltip);
+}
+function positionGraphTooltip(event, wrap, tooltip){
+  const rect = wrap.getBoundingClientRect();
+  let x = event.clientX - rect.left + 16;
+  let y = event.clientY - rect.top + 16;
+  if (x > rect.width - 250) x = event.clientX - rect.left - 250;
+  if (y > rect.height - 130) y = rect.height - 130;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top = y + 'px';
+}
 
 let activeTypes = new Set();
 let activeSats = new Set();
@@ -455,6 +617,7 @@ renderNiches();
 document.getElementById('gap-grid').innerHTML = DATA.gaps.slice().sort((a, b) => a.rank - b.rank).map(gapCardHTML).join('');
 renderHistory();
 renderStatus();
+renderGraphLegend();
 document.getElementById('export-btn').addEventListener('click', exportFavorites);
 </script>
 
