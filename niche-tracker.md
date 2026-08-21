@@ -6,47 +6,57 @@ Persistent log across pipeline cycles. After 2 weeks, saturation is re-checked a
 
 Every cycle section below starts with a `## CEO Summary` — what ran, what changed, what the CEO decided and why. Anything the CEO wouldn't resolve unilaterally (e.g. retiring a previously flagged niche/gap) is marked `⚠️ NEEDS YOUR CALL` and stays in the tracker, unresolved, until the user explicitly says to drop it — the CEO never silently deletes tracked history.
 
-**Data quality caveat (carries forward every cycle):** Direct Etsy scraping (WebFetch/browser) is blocked (HTTP 403 / bot detection).
+**Data quality caveat (carries forward every cycle):** Direct Etsy scraping (WebFetch/browser) is blocked (HTTP 403 / bot detection) — the Open API is the only real-data path.
 
-**Data sourcing priority (as of 2026-08-19, applies to every cycle going forward):**
-1. **Etsy Open API (preferred).** If an `ETSY_API_KEY` is available in the environment, use Etsy's official Open API v3 (`https://openapi.etsy.com/v3/application/listings/active`, header `x-api-key: $ETSY_API_KEY`) for real listing title, price, image URL, and listing URL (`https://www.etsy.com/listing/{listing_id}`). No key is configured yet — pending signup at developers.etsy.com and a decision on where the key gets stored for the cloud routine.
-2. **Search fallback.** If no API key is set, use Google-indexed `site:etsy.com` WebSearch queries as before. A result only counts as "real" if it contains an actual resolvable `etsy.com/listing/...` URL — a bare title snippet with no URL does not qualify as verified for image/URL purposes, only for confirming the niche/phrase exists.
-3. **No fabrication, ever.** If neither path returns a real image, price, or listing URL for a niche/gap, record it as `NO DATA AVAILABLE` — do not invent a plausible-looking placeholder (no fake swatch styled to look like a photo, no estimated price presented as if verified). Loud, visible gaps are correct; fabricated-but-plausible entries are not. This applies to report.html card rendering too: a card with no real `image`/`url` renders a `NO DATA AVAILABLE` placeholder, not a stand-in graphic.
+**Data sourcing priority (as of 2026-08-20, applies to every cycle going forward):**
+1. **Etsy Open API (preferred, now active).** `ETSY_API_KEY` (stored in `.env` as `keystring:sharedsecret`, per Etsy's required `x-api-key` format) went live 2026-08-20, confirmed via `openapi-ping` → HTTP 200. `https://openapi.etsy.com/v3/application/listings/active` returns real listing title, price, dates, and a true total `count` for the search term (used for computed saturation); `.../listings/{id}/images` and `.../listings/{id}/reviews` supply the thumbnail and review count for the top-ranked listing.
+2. **Search fallback.** If the API key is unset or a call errors, use Google-indexed `site:etsy.com` WebSearch queries. A result only counts as "real" if it contains an actual resolvable `etsy.com/listing/...` URL — a bare title snippet with no URL does not qualify as verified for image/URL purposes, only for confirming the niche/phrase exists. **This fallback must never trigger silently — an API error is logged and reported to the user, not swallowed.**
+3. **No fabrication, ever.** If no path returns a real image, price, or listing URL for a niche/gap, record it as `NO DATA AVAILABLE` — do not invent a plausible-looking placeholder. This applies to report.html card rendering too: a card with no real `image`/`url` renders a `NO DATA AVAILABLE` placeholder, not a stand-in graphic. Gap cards stay `NO DATA AVAILABLE` by design even post-API — a gap is by definition a combination no real listing fills; showing a loosely-related near-miss as if it were the gap's product would misrepresent it.
 
-Secondary sources (Pinterest Predicts, POD seller blogs, Reddit) remain fine for directional trend commentary, always tagged as inferred. Saturation scores are directional estimates, not computed ratios, unless a real listing-count number was captured.
+Secondary sources (Pinterest Predicts, POD seller blogs, Reddit) remain fine for directional trend commentary, always tagged as inferred. As of this cycle, all 13 tracked niches have a **computed** saturation label (real Etsy listing count for the niche's search term) rather than a directional estimate; gap verification is now API-confirmed rather than search-inferred.
 
 ---
 
 ## Cycle 1 — flagged 2026-08-19
 
-### Niches (from Agent 1, phrase-confirmed by Agent 2)
+### CEO Summary — real-API data refresh, 2026-08-20
 
-| Niche | Category | Status | Confidence | Notes |
-|---|---|---|---|---|
-| Gothmas / gothic Christmas decor | wall art, mugs, stickers | active | medium | real listing titles confirmed |
-| Nonnacore | mugs, wall art | active | medium | named in Etsy's own 2026 trend report |
-| Castlecore / Knightcore | wall art, t-shirts | active | medium-high | strong real-listing depth, Comfort Colors tee convention |
-| ADHD / neurodivergent stickers | stickers | active | high | strong real-listing depth |
-| Chronic illness / spoonie stickers | stickers | active | high | strong real-listing depth |
-| Recovery / sobriety stickers | stickers | active | high | strong real-listing depth |
-| Pet breed + hobby combo mugs | mugs | active | low-medium | "hiking club" specific angle unconfirmed in real listings |
-| Occupation x sarcasm t-shirts | t-shirts | active | medium | parent niche broadly saturated, sub-combos less so |
-| Afrohemian decor | wall art | unresolved | low | Pinterest volume only (+220% "afrobohemian"), no Etsy listing check yet |
-| Extra Celestial / alien-core | wall art, stickers, tumblers | unresolved | low | Pinterest volume only (+80-115%), no Etsy listing check yet |
-| Circus-core / Funhaus | wall art | unresolved | low | Pinterest volume only (+130%), no Etsy listing check yet |
-| Neo Deco | wall art | unresolved | low | Pinterest volume only (+35%), no Etsy listing check yet |
-| Tumbler general (teachers/nurses/moms) | tumblers | caution | medium | explicitly flagged SATURATED, not an opportunity |
+`ETSY_API_KEY` went live today (confirmed via `openapi-ping` → HTTP 200). Re-ran all 13 tracked niches and all 5 ranked gaps against the real Etsy Open API — no search-scraping fallback was needed anywhere in this refresh; every call below returned HTTP 200 on the first try. What changed:
 
-### Gaps (from Agent 3, ranked)
+- **Saturation is now computed, not estimated**, for all 13 niches — each niche's search term returned a real Etsy `count` (total matching active listings), shown in the table below.
+- **Four niches promoted from `unresolved` → `active`**: Afrohemian Decor (167 listings), Extra Celestial/Alien-Core (89), Circus-Core/Funhaus (145), Neo Deco (1,448). These were previously Pinterest-volume-only with no listing check; real listings now exist for all four, so "no signal yet" no longer applies. This is routine re-scoring (new evidence, not a retirement), so no `⚠️ NEEDS YOUR CALL` flag needed per pipeline rule 5.
+- **Tumbler General stays `caution`/saturated**, and the real numbers make the case harder than before: the narrow term ("teacher nurse mom tumbler") returns a moderate 688, but the parent category ("tumbler") returns **1,624,589** listings — confirms this was correctly flagged as an oversaturated category, not an opportunity.
+- **All 5 ranked gaps remain valid** — API-verified instead of search-inferred. Gaps 1, 2, 5 returned **0** matching listings (genuinely unfilled). Gaps 3 and 4 returned exactly **1** listing each, but in both cases it's a loose near-miss (a gothic dog-mom sticker with no Christmas tie-in; a generic dog-lover sticker with no sobriety/recovery framing) — not a real match for the specific intersection, so the gap stands. Per the no-fabrication rule, these near-miss listings are *not* shown as the gap's product image on its card — a gap card stays `NO DATA AVAILABLE` since no real product fills that intersection yet.
+- **Nothing was retired.** No niche or gap needed removal this cycle.
 
-| Rank | Gap | Verification | Risk note |
+### Niches (from Agent 1, phrase-confirmed by Agent 2; saturation computed via Etsy Open API 2026-08-20)
+
+| Niche | Category | Status | Saturation (computed) | Etsy listings found | Real example listing (top match) |
+|---|---|---|---|---|---|
+| Gothmas / gothic Christmas decor | wall art, mugs, stickers | active | medium (1,978) | 1,978 | ["Gothic Moon Face Sticker: Sleepy Celestial Moon Art"](https://www.etsy.com/listing/4527674043/gothic-moon-face-sticker-sleepy) — $4.49, 0 reviews, listed 2026-06-25 |
+| Nonnacore | mugs, wall art | active | medium (687) | 687 | ["Pregnancy Announcement to Grandparents Mug Set"](https://www.etsy.com/listing/1775546945/pregnancy-announcement-to-grandparents) — $19.99, 5 reviews, listed 2024-08-09 |
+| Castlecore / Knightcore | wall art, t-shirts | active | medium (501) | 501 | ["Tartaria Griffin Crest Shirt, Medieval Fantasy Graphic Tee"](https://www.etsy.com/listing/4489223103/tartaria-griffin-crest-shirt-medieval) — $36.23, 0 reviews, listed 2026-04-15 |
+| ADHD / neurodivergent stickers | stickers | active | high (3,962) | 3,962 | ["I Have To Say Weird Stuff Or I'll Die Sticker"](https://www.etsy.com/listing/4404433752/i-have-to-say-weird-stuff-or-ill-die) — $3.50, 38 reviews, listed 2025-11-13 |
+| Chronic illness / spoonie stickers | stickers | active | high (3,204) | 3,204 | ["Chronic Illness Sticker, Hidden Disability, Spoonie Sticker"](https://www.etsy.com/listing/1536789034/chronic-illness-sticker-hidden) — $4.99, 0 reviews, listed 2023-08-23 |
+| Recovery / sobriety stickers | stickers | active | medium (598) | 598 | ["Vintage Floral Pretty Sobriety Birthday Celebration Sticker"](https://www.etsy.com/listing/1768692507/vintage-floral-pretty-sobriety-birthday) — $5.00, 3 reviews, listed 2024-07-26 |
+| Pet breed + hobby combo mugs | mugs | active | low (152) | 152 | ["Vizsla Mountain Mug, Out Offline Caffeinated, Dog Mom Gift"](https://www.etsy.com/listing/4559650270/vizsla-mountain-mug-out-offline) — $16.65, 0 reviews, listed 2026-08-20 |
+| Occupation x sarcasm t-shirts | t-shirts | active | high (4,811) | 4,811 | ["My Badge is the Only Thing Keeping This Conversation Professional" (Halloween Nurse Shirt)](https://www.etsy.com/listing/4559704859/my-badge-is-the-only-thing-keeping-this) — $29.99, 0 reviews, listed 2026-08-21 |
+| Afrohemian decor | wall art | active *(promoted from unresolved)* | low (167) | 167 | ["Modern Black Women Horizontal Wall Art - Afrocentric Boho Folk Print"](https://www.etsy.com/listing/4474469102/modern-black-women-horizontal-wall-art) — $6.80, 2 reviews, listed 2026-03-19 |
+| Extra Celestial / alien-core | wall art, stickers, tumblers | active *(promoted from unresolved)* | low (89) | 89 | ["Cute Alien Cat Emotes for Twitch, Discord, YouTube"](https://www.etsy.com/listing/4337379977/cute-alien-cat-emotes-for-twitch-discord) — $6.00, 7 reviews, listed 2025-07-18 |
+| Circus-core / Funhaus | wall art | active *(promoted from unresolved)* | low (145) | 145 | ["Bite Me Art Print"](https://www.etsy.com/listing/1501174256/bite-me-art-print) — $4.00, 1 review, listed 2023-07-02 |
+| Neo Deco | wall art | active *(promoted from unresolved)* | medium (1,448) | 1,448 | ["Quiet Elegance — Expressionist Woman in a Modern Interior"](https://www.etsy.com/listing/4559701357/quiet-elegance-expressionist-woman-in-a) — $550.00, 0 reviews, listed 2026-08-21 |
+| Tumbler general (teachers/nurses/moms) | tumblers | caution | high — narrow term medium (688), parent category 1,624,589 | 688 (narrow) / 1,624,589 (broad "tumbler") | ["Cinnamoroll Owala Tumbler 32oz"](https://www.etsy.com/listing/4525007672/cinnamoroll-owala-tumbler-32oz-pastel) — $49.99, 0 reviews, listed 2026-06-20 — explicitly flagged SATURATED, not an opportunity |
+
+### Gaps (from Agent 3, ranked; verification now API-confirmed 2026-08-20)
+
+| Rank | Gap | Verification (API-confirmed) | Risk note |
 |---|---|---|---|
-| 1 | Knightcore/Castlecore × teacher/nurse shirts | real search-verified, confirmed sparse | audience overlap (fantasy-fandom vs. practical-gift-buyer) uncertain |
-| 2 | Nonnacore × ADHD/spoonie self-care mugs | real search-verified, confirmed sparse | aesthetic fit is genuinely strong (cozy/comfort language overlaps) |
-| 3 | Gothmas × pet-mom Christmas stickers | real search-verified, confirmed sparse | low risk — line extension of already-validated goth-pet-mom niche |
-| 4 | Sobriety × pet-mom stickers/shirts | real search-verified, confirmed sparse | different buying occasions, audience-merge unclear |
-| 5 | ADHD × sobriety/recovery | real search-verified, confirmed sparse | real clinical/community overlap; execution must stay supportive, not exploitative |
-| 6 (stretch) | Sober gardener / "recovery garden" stickers | inferred, not directly verified | weakest entry, audience size uncertain |
+| 1 | Knightcore/Castlecore × teacher/nurse shirts | **0** matching listings (Etsy API, term "knight nurse teacher shirt") — confirmed sparse | audience overlap (fantasy-fandom vs. practical-gift-buyer) uncertain |
+| 2 | Nonnacore × ADHD/spoonie self-care mugs | **0** matching listings (term "nonna spoonie adhd mug") — confirmed sparse | aesthetic fit is genuinely strong (cozy/comfort language overlaps) |
+| 3 | Gothmas × pet-mom Christmas stickers | **1** loose near-miss (["Tired As Hell Sticker, Gothic Dog Mom Vinyl Decal"](https://www.etsy.com/listing/4322820743/gothic-dog-mom-vinyl-stickers-tired-as) — real gothic dog-mom sticker, but no Christmas element) — gap confirmed still open | low risk — line extension of already-validated goth-pet-mom niche |
+| 4 | Sobriety × pet-mom stickers/shirts | **1** loose near-miss (["Enjoy The Simple Things Sticker, Dog Lover Gift"](https://www.etsy.com/listing/1749798508/enjoy-the-simple-things-sticker-dog) — generic mindfulness/dog-lover sticker, no sobriety/recovery framing) — gap confirmed still open | different buying occasions, audience-merge unclear |
+| 5 | ADHD × sobriety/recovery | **0** matching listings (term "neurodivergent sober recovery sticker") — confirmed sparse | real clinical/community overlap; execution must stay supportive, not exploitative |
+| 6 (stretch) | Sober gardener / "recovery garden" stickers | not re-queried this cycle — still inferred, not directly verified | weakest entry, audience size uncertain |
 
 **Ruled out (do not re-brief as gaps):** goth × nurse (saturated), wrestling coach × funny (saturated).
 
@@ -90,9 +100,11 @@ Secondary sources (Pinterest Predicts, POD seller blogs, Reddit) remain fine for
 **Pricing scope note:** All 3 sticker prices (Briefs 3, 4, 5) are convention-based estimates, not live comps — verify against `site:etsy.com` sticker pack pricing in these specific sub-niches before finalizing.
 
 ### Open follow-ups for next cycle
-- Re-run Etsy listing-count checks (via Everbee/EtsyHunt-style tool or authenticated access) for niches currently at "estimated" confidence — no niche yet has a real computed saturation ratio.
-- Give Afrohemian, alien-core, circus-core, Neo Deco a dedicated Etsy-listing search pass — currently Pinterest-volume-only, unverified as gaps.
-- Verify sticker pricing comps directly (Briefs 3, 4, 5 used convention pricing, not live comps).
+- ~~Re-run Etsy listing-count checks for niches at "estimated" confidence.~~ **Done 2026-08-20** — all 13 niches now have a computed saturation count via the live Etsy Open API.
+- ~~Give Afrohemian, alien-core, circus-core, Neo Deco a dedicated Etsy-listing search pass.~~ **Done 2026-08-20** — all four promoted from `unresolved` to `active`; see table above.
+- Verify sticker pricing comps directly (Briefs 3, 4, 5 used convention pricing, not live comps) — the niche-level sticker prices captured this cycle (Gothmas $4.49, ADHD $3.50, Spoonie $4.99, Sobriety $5.00) are a reasonable proxy but weren't queried against the exact brief sub-niches; do a targeted pass next cycle.
+- Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — a single near-miss today doesn't guarantee the gap stays open.
+- The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
 
 ---
 

@@ -84,8 +84,8 @@
   .badge.sat-low{ background:var(--sat-low-bg); color:var(--sat-low-fg); }
   .badge.sat-med{ background:var(--sat-med-bg); color:var(--sat-med-fg); }
   .badge.sat-high{ background:var(--sat-high-bg); color:var(--sat-high-fg); }
-  .row{ display:flex; justify-content:space-between; font-size:.78rem; color:var(--muted); border-top:1px dashed var(--line); padding-top:8px; margin-top:2px; }
-  .row b{ color:var(--ink); font-weight:600; }
+  .row{ display:flex; justify-content:space-between; gap:8px; font-size:.78rem; color:var(--muted); border-top:1px dashed var(--line); padding-top:8px; margin-top:2px; }
+  .row b{ color:var(--ink); font-weight:600; text-align:right; }
   .example{ font-size:.78rem; color:var(--muted); font-style:italic; }
   .example b{ font-style:normal; color:var(--ink); }
   .na{ opacity:.6; }
@@ -96,16 +96,16 @@
 
 <header>
   <h1>Etsy POD Niche Tracker</h1>
-  <div class="meta">Cycle 1 — flagged 2026-08-19 · generated from Agents 1–4 pipeline output</div>
+  <div class="meta">Cycle 1 — flagged 2026-08-19 · real-API data refresh 2026-08-20 · generated from Agents 1–4 pipeline output</div>
 </header>
 
 <div class="caveat">
-  <b>Data quality note:</b> Direct Etsy access is blocked (HTTP 403 / bot detection) — listing titles below are real, pulled via Google-indexed <code>site:etsy.com</code> search snippets, but no niche has a verified live listing count, so <b>saturation is a directional estimate</b>, not a computed ratio. <b>No real product photo, price, or confirmed listing URL was captured for any card this cycle</b> — cards are marked <b>NO DATA AVAILABLE</b> rather than shown with a styled placeholder that could pass for a real thumbnail. Once the Etsy Open API is wired up with a key, real images/prices/URLs will populate here and each thumbnail will become a clickable link to the live listing.
+  <b>Data quality note:</b> The Etsy Open API key went live 2026-08-20 (confirmed via <code>openapi-ping</code> → HTTP 200). Every niche card below shows a <b>real</b> product photo, price, review count, and listing date pulled directly from <code>listings/active</code>, <code>/images</code>, and <code>/reviews</code> — thumbnails are clickable links to the live Etsy listing. Saturation is now a <b>computed</b> ratio (the API's real total-match <code>count</code> for that niche's search term), not a directional estimate. Gap cards intentionally still show <b>NO DATA AVAILABLE</b> — a gap is by definition a niche intersection no real listing fills yet, so no product image exists to show honestly, even post-API. Two gaps returned a single loosely-related near-miss listing (noted in their card) that was <i>not</i> used as the card image, since it isn't a genuine match for the intersection.
 </div>
 
 <main>
 
-  <h2 class="section">Flagged Niches <span>13 tracked — 8 active, 4 unresolved, 1 caution</span></h2>
+  <h2 class="section">Flagged Niches <span>13 tracked — 12 active, 1 caution · saturation computed via Etsy Open API 2026-08-20</span></h2>
   <div class="grid" id="niche-grid"></div>
 
   <h2 class="section">Gap Opportunities → Design Briefs <span>top 5, ranked by Agent 3, priced by Agent 4</span></h2>
@@ -116,10 +116,11 @@
 <footer>report.html · regenerated each cycle from niche-tracker.md · full source of truth: github.com/jayceefortech/Esty-agent</footer>
 
 <script>
-const satBadge = (level) => {
-  const map = { low: ['sat-low','Low saturation (est.)'], med: ['sat-med','Medium saturation (est.)'], high: ['sat-high','High saturation (est.)'] };
+const satBadge = (level, count) => {
+  const map = { low: ['sat-low','Low'], med: ['sat-med','Medium'], high: ['sat-high','High'] };
   const [cls,label] = map[level];
-  return `<span class="badge ${cls}">${label}</span>`;
+  const countStr = typeof count === 'number' ? ` (${count.toLocaleString()} listings, computed)` : '';
+  return `<span class="badge ${cls}">${label} saturation${countStr}</span>`;
 };
 const statusBadge = (status) => {
   const map = { active: ['active','Active'], unresolved: ['unresolved','Unresolved'], caution: ['caution','Caution — Saturated'] };
@@ -127,32 +128,35 @@ const statusBadge = (status) => {
   return `<span class="badge ${cls}">${label}</span>`;
 };
 
-// image: real Etsy CDN image URL, or null if none was captured this cycle.
-// url: real https://www.etsy.com/listing/... URL, or null if none was captured this cycle.
-// Both must come from an actual API response or a search result containing a resolvable
-// listing URL — never fabricate either field just to populate a card.
+// image/url: real Etsy CDN image URL + https://www.etsy.com/listing/... URL for the top-ranked
+// listing returned by the live Etsy Open API (listings/active + /images), captured 2026-08-20.
+// count: real total-match count from the API for that niche's search term — the basis for the
+// "computed" saturation label. reviews/created: real fields from /reviews and listings/active.
+// Gap cards deliberately keep image/url null — a gap is a real product that doesn't exist yet,
+// so no photo can honestly represent it, even with the API live. nearMiss records a loosely
+// related single result (if any) without treating it as the gap's product.
 const niches = [
-  { name:'Gothmas / Gothic Christmas', cat:'wall art · mugs · stickers', status:'active', sat:'low', example:'"Gothic Christmas Sticker Bundle"', image:null, url:null },
-  { name:'Nonnacore', cat:'mugs · wall art', status:'active', sat:'med', example:'"Personalized Nonna Coffee Mug"', image:null, url:null },
-  { name:'Castlecore / Knightcore', cat:'wall art · t-shirts', status:'active', sat:'med', example:'"King Arthur Pendragon Castle Core Shirt"', image:null, url:null },
-  { name:'ADHD / Neurodivergent Stickers', cat:'stickers', status:'active', sat:'low', example:'"Unapologetically Neurodivergent Sticker"', image:null, url:null },
-  { name:'Chronic Illness / Spoonie Stickers', cat:'stickers', status:'active', sat:'low', example:'"Super Spoonie Sticker Holographic"', image:null, url:null },
-  { name:'Recovery / Sobriety Stickers', cat:'stickers', status:'active', sat:'low', example:'"Sobriety Sticker Pack: AA & NA Recovery Gifts"', image:null, url:null },
-  { name:'Pet Breed + Hobby Combo Mugs', cat:'mugs', status:'active', sat:'med', example:'"Golden Retriever Mug… Dog Mom Era"', image:null, url:null },
-  { name:'Occupation × Sarcasm T-Shirts', cat:'t-shirts', status:'active', sat:'high', example:'"Skeleton Nurse Meme Group Tshirt"', image:null, url:null },
-  { name:'Afrohemian Decor', cat:'wall art', status:'unresolved', sat:'low', example:null, image:null, url:null },
-  { name:'Extra Celestial / Alien-Core', cat:'wall art · stickers · tumblers', status:'unresolved', sat:'low', example:null, image:null, url:null },
-  { name:'Circus-Core / Funhaus', cat:'wall art', status:'unresolved', sat:'low', example:null, image:null, url:null },
-  { name:'Neo Deco', cat:'wall art', status:'unresolved', sat:'low', example:null, image:null, url:null },
-  { name:'Tumbler General (teachers/nurses/moms)', cat:'tumblers', status:'caution', sat:'high', example:null, image:null, url:null },
+  { name:'Gothmas / Gothic Christmas', cat:'wall art · mugs · stickers', status:'active', sat:'med', count:1978, example:'"Gothic Moon Face Sticker: Sleepy Celestial Moon Art"', price:'$4.49', reviews:0, created:'2026-06-25', image:'https://i.etsystatic.com/53477225/r/il/dd3022/8176191342/il_170x135.8176191342_gc4o.jpg', url:'https://www.etsy.com/listing/4527674043/gothic-moon-face-sticker-sleepy' },
+  { name:'Nonnacore', cat:'mugs · wall art', status:'active', sat:'med', count:687, example:'"Pregnancy Announcement to Grandparents Mug Set"', price:'$19.99', reviews:5, created:'2024-08-09', image:'https://i.etsystatic.com/43194460/r/il/d8fd4d/6987654855/il_170x135.6987654855_oq6a.jpg', url:'https://www.etsy.com/listing/1775546945/pregnancy-announcement-to-grandparents' },
+  { name:'Castlecore / Knightcore', cat:'wall art · t-shirts', status:'active', sat:'med', count:501, example:'"Tartaria Griffin Crest Shirt, Medieval Fantasy Graphic Tee"', price:'$36.23', reviews:0, created:'2026-04-15', image:'https://i.etsystatic.com/51155994/c/1150/1150/444/448/il/7ff6e5/8055594433/il_170x135.8055594433_9dxu.jpg', url:'https://www.etsy.com/listing/4489223103/tartaria-griffin-crest-shirt-medieval' },
+  { name:'ADHD / Neurodivergent Stickers', cat:'stickers', status:'active', sat:'high', count:3962, example:'"I Have To Say Weird Stuff Or I’ll Die Sticker"', price:'$3.50', reviews:38, created:'2025-11-13', image:'https://i.etsystatic.com/49019040/r/il/b5eb31/7441532039/il_170x135.7441532039_ogiu.jpg', url:'https://www.etsy.com/listing/4404433752/i-have-to-say-weird-stuff-or-ill-die' },
+  { name:'Chronic Illness / Spoonie Stickers', cat:'stickers', status:'active', sat:'high', count:3204, example:'"Chronic Illness Sticker, Hidden Disability, Spoonie Sticker"', price:'$4.99', reviews:0, created:'2023-08-23', image:'https://i.etsystatic.com/29211463/r/il/cec6bf/5217369566/il_170x135.5217369566_1pf7.jpg', url:'https://www.etsy.com/listing/1536789034/chronic-illness-sticker-hidden' },
+  { name:'Recovery / Sobriety Stickers', cat:'stickers', status:'active', sat:'med', count:598, example:'"Vintage Floral Pretty Sobriety Birthday Celebration Sticker"', price:'$5.00', reviews:3, created:'2024-07-26', image:'https://i.etsystatic.com/22651894/r/il/2362c2/6153066914/il_170x135.6153066914_pzjs.jpg', url:'https://www.etsy.com/listing/1768692507/vintage-floral-pretty-sobriety-birthday' },
+  { name:'Pet Breed + Hobby Combo Mugs', cat:'mugs', status:'active', sat:'low', count:152, example:'"Vizsla Mountain Mug, Out Offline Caffeinated, Dog Mom Gift"', price:'$16.65', reviews:0, created:'2026-08-20', image:'https://i.etsystatic.com/67444181/r/il/d55eb3/8409836344/il_170x135.8409836344_ohz9.jpg', url:'https://www.etsy.com/listing/4559650270/vizsla-mountain-mug-out-offline' },
+  { name:'Occupation × Sarcasm T-Shirts', cat:'t-shirts', status:'active', sat:'high', count:4811, example:'"My Badge is the Only Thing Keeping This Conversation Professional" (Halloween Nurse Shirt)', price:'$29.99', reviews:0, created:'2026-08-21', image:'https://i.etsystatic.com/61085669/r/il/555939/8410374892/il_170x135.8410374892_3egp.jpg', url:'https://www.etsy.com/listing/4559704859/my-badge-is-the-only-thing-keeping-this' },
+  { name:'Afrohemian Decor', cat:'wall art', status:'active', sat:'low', count:167, example:'"Modern Black Women Horizontal Wall Art – Afrocentric Boho Folk Print"', price:'$6.80', reviews:2, created:'2026-03-19', image:'https://i.etsystatic.com/63505572/r/il/a3f2e0/7821772798/il_170x135.7821772798_8ffb.jpg', url:'https://www.etsy.com/listing/4474469102/modern-black-women-horizontal-wall-art', note:'promoted from unresolved 2026-08-20' },
+  { name:'Extra Celestial / Alien-Core', cat:'wall art · stickers · tumblers', status:'active', sat:'low', count:89, example:'"Cute Alien Cat Emotes for Twitch, Discord, YouTube"', price:'$6.00', reviews:7, created:'2025-07-18', image:'https://i.etsystatic.com/37948217/r/il/1b67c3/7077827605/il_170x135.7077827605_2mh2.jpg', url:'https://www.etsy.com/listing/4337379977/cute-alien-cat-emotes-for-twitch-discord', note:'promoted from unresolved 2026-08-20' },
+  { name:'Circus-Core / Funhaus', cat:'wall art', status:'active', sat:'low', count:145, example:'"Bite Me Art Print"', price:'$4.00', reviews:1, created:'2023-07-02', image:'https://i.etsystatic.com/20724047/r/il/6c9a11/5101401697/il_170x135.5101401697_hm82.jpg', url:'https://www.etsy.com/listing/1501174256/bite-me-art-print', note:'promoted from unresolved 2026-08-20' },
+  { name:'Neo Deco', cat:'wall art', status:'active', sat:'med', count:1448, example:'"Quiet Elegance — Expressionist Woman in a Modern Interior"', price:'$550.00', reviews:0, created:'2026-08-21', image:'https://i.etsystatic.com/51694178/r/il/ce1d53/8410348766/il_170x135.8410348766_b7ge.jpg', url:'https://www.etsy.com/listing/4559701357/quiet-elegance-expressionist-woman-in-a', note:'promoted from unresolved 2026-08-20' },
+  { name:'Tumbler General (teachers/nurses/moms)', cat:'tumblers', status:'caution', sat:'high', count:688, example:'"Cinnamoroll Owala Tumbler 32oz" — SATURATED, not an opportunity', price:'$49.99', reviews:0, created:'2026-06-20', image:'https://i.etsystatic.com/35785171/r/il/a78681/8207817815/il_170x135.8207817815_ky2i.jpg', url:'https://www.etsy.com/listing/4525007672/cinnamoroll-owala-tumbler-32oz-pastel', note:'parent category "tumbler" alone = 1,624,589 listings' },
 ];
 
 const gaps = [
-  { rank:1, name:'Knightcore × School Nurse/Teacher', product:'"Healer of the Realm" tee', price:'$26–28', sat:'med', image:null, url:null },
-  { rank:2, name:'Nonnacore × ADHD/Spoonie Mug', product:'"Nonna Said Sit Down And Rest" mug', price:'$18–22', sat:'low', image:null, url:null },
-  { rank:3, name:'Gothmas × Pet-Mom Christmas', product:'"Goth Mom, Merry Christmas" sticker', price:'$3.50–5 (est.)', sat:'low', image:null, url:null },
-  { rank:4, name:'Sobriety × Pet-Mom', product:'"Sober AND a Dog Mom" sticker/tee', price:'$4–5 / $24–26', sat:'med', image:null, url:null },
-  { rank:5, name:'ADHD × Sobriety/Recovery', product:'"Neurodivergent AND Sober" sticker', price:'$3.50–5 (est.)', sat:'low', image:null, url:null },
+  { rank:1, name:'Knightcore × School Nurse/Teacher', product:'"Healer of the Realm" tee', price:'$26–28', verify:'0 matching listings (API-confirmed 2026-08-20)', image:null, url:null },
+  { rank:2, name:'Nonnacore × ADHD/Spoonie Mug', product:'"Nonna Said Sit Down And Rest" mug', price:'$18–22', verify:'0 matching listings (API-confirmed 2026-08-20)', image:null, url:null },
+  { rank:3, name:'Gothmas × Pet-Mom Christmas', product:'"Goth Mom, Merry Christmas" sticker', price:'$3.50–5 (est.)', verify:'1 loose near-miss found, not a true match — <a href="https://www.etsy.com/listing/4322820743/gothic-dog-mom-vinyl-stickers-tired-as" target="_blank" rel="noopener">gothic dog-mom sticker, no Christmas tie-in</a>', image:null, url:null },
+  { rank:4, name:'Sobriety × Pet-Mom', product:'"Sober AND a Dog Mom" sticker/tee', price:'$4–5 / $24–26', verify:'1 loose near-miss found, not a true match — <a href="https://www.etsy.com/listing/1749798508/enjoy-the-simple-things-sticker-dog" target="_blank" rel="noopener">dog-lover sticker, no sobriety framing</a>', image:null, url:null },
+  { rank:5, name:'ADHD × Sobriety/Recovery', product:'"Neurodivergent AND Sober" sticker', price:'$3.50–5 (est.)', verify:'0 matching listings (API-confirmed 2026-08-20)', image:null, url:null },
 ];
 
 function thumbHTML(item){
@@ -173,9 +177,12 @@ niches.forEach(n => {
     <div class="card-body">
       <p class="card-title">${n.name}</p>
       <div class="card-cat">${n.cat}</div>
-      <div class="badges">${statusBadge(n.status)}${satBadge(n.sat)}</div>
+      <div class="badges">${statusBadge(n.status)}${satBadge(n.sat, n.count)}</div>
       <div class="example">${n.example ? `Example: <b>${n.example}</b>` : '<span class="na">No confirmed example listing yet</span>'}</div>
-      <div class="row"><span>Review count</span><b class="na">not captured</b></div>
+      <div class="row"><span>Price</span><b>${n.price ?? '<span class="na">not captured</span>'}</b></div>
+      <div class="row"><span>Reviews</span><b>${typeof n.reviews === 'number' ? n.reviews : '<span class="na">not captured</span>'}</b></div>
+      <div class="row"><span>Listed</span><b>${n.created ?? '<span class="na">not captured</span>'}</b></div>
+      ${n.note ? `<div class="row"><span>Note</span><b>${n.note}</b></div>` : ''}
     </div>`;
   nicheGrid.appendChild(el);
 });
@@ -189,9 +196,8 @@ gaps.forEach(g => {
     <div class="card-body">
       <p class="card-title">#${g.rank} · ${g.name}</p>
       <div class="card-cat">${g.product}</div>
-      <div class="badges">${satBadge(g.sat)}</div>
       <div class="row"><span>Suggested price</span><b>${g.price}</b></div>
-      <div class="row"><span>Review count</span><b class="na">not captured</b></div>
+      <div class="example">Verification: ${g.verify}</div>
     </div>`;
   gapGrid.appendChild(el);
 });
