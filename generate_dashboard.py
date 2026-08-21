@@ -184,7 +184,10 @@ def parse_gaps_table(body):
 BRIEF_HEAD_RE = re.compile(r"\*\*BRIEF (\d+)\s*—\s*(.*?)\*\*")
 BRIEF_FIELD_RE = re.compile(r"^-\s*\*\*(.*?):\*\*\s*(.*)$", re.M)
 FIELD_KEY_MAP = [
-    ("exact text", "exactText"),
+    ("exact title text", "exactText"),
+    ("exact text", "exactText"),  # older briefs (pre copywriting-rules) used this label
+    ("listing description", "description"),
+    ("on-product graphic text", "onProduct"),
     ("style direction", "style"),
     ("product type", "productType"),
     ("target audience", "audience"),

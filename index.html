@@ -313,30 +313,20 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-08-20T22:54:03",
+  "generatedAt": "2026-08-20T23:04:03",
   "cycle": {
     "number": 1,
     "date": "2026-08-19",
     "title": "Cycle 1 \u2014 flagged 2026-08-19"
   },
   "pipeline": {
-    "lastRun": "2026-08-20",
+    "lastRun": "2026-08-21",
     "nextScheduled": "2026-09-02",
     "agents": [
       {
-        "name": "Trend Scout",
+        "name": "Review Miner",
         "status": "success",
-        "detail": "API"
-      },
-      {
-        "name": "Phrase Miner",
-        "status": "success",
-        "detail": null
-      },
-      {
-        "name": "Gap Finder",
-        "status": "success",
-        "detail": null
+        "detail": "API, 5/7 niches cleared threshold"
       },
       {
         "name": "Design Briefer",
@@ -344,7 +334,7 @@ const DATA = {
         "detail": null
       }
     ],
-    "summary": "`ETSY_API_KEY` went live today (confirmed via `openapi-ping` \u2192 HTTP 200). Re-ran all 13 tracked niches and all 5 ranked gaps against the real Etsy Open API \u2014 no search-scraping fallback was needed anywhere in this refresh; every call below returned HTTP 200 on the first try. What changed:\n\n- **Saturation is now computed, not estimated**, for all 13 niches \u2014 each niche's search term returned a real Etsy `count` (total matching active listings), shown in the table below.\n- **Four niches promoted from `unresolved` \u2192 `active`**: Afrohemian Decor (167 listings), Extra Celestial/Alien-Core (89), Circus-Core/Funhaus (145), Neo Deco (1,448). These were previously Pinterest-volume-only with no listing check; real listings now exist for all four, so \"no signal yet\" no longer applies. This is routine re-scoring (new evidence, not a retirement), so no `\u26a0\ufe0f NEEDS YOUR CALL` flag needed per pipeline rule 5.\n- **Tumbler General stays `caution`/saturated**, and the real numbers make the case harder than before: the narrow term (\"teacher nurse mom tumbler\") returns a moderate 688, but the parent category (\"tumbler\") returns **1,624,589** listings \u2014 confirms this was correctly flagged as an oversaturated category, not an opportunity.\n- **All 5 ranked gaps remain valid** \u2014 API-verified instead of search-inferred. Gaps 1, 2, 5 returned **0** matching listings (genuinely unfilled). Gaps 3 and 4 returned exactly **1** listing each, but in both cases it's a loose near-miss (a gothic dog-mom sticker with no Christmas tie-in; a generic dog-lover sticker with no sobriety/recovery framing) \u2014 not a real match for the specific intersection, so the gap stands. Per the no-fabrication rule, these near-miss listings are *not* shown as the gap's product image on its card \u2014 a gap card stays `NO DATA AVAILABLE` since no real product fills that intersection yet.\n- **Nothing was retired.** No niche or gap needed removal this cycle."
+    "summary": "Ran the newly wired Review Miner sub-agent for the first time, then a Design Briefer re-pass applying the new copywriting rules (see `.claude/agents/design-briefer.md`). **Scope: partial cycle** \u2014 Trend Scout/Phrase Miner/Gap Finder were skipped since Cycle 1's real-API refresh happened only yesterday and nothing meaningful would change by re-running them today; this run exists specifically to exercise the two new/updated agents end to end, per pipeline rule 2 (skip what wouldn't meaningfully change). What happened:\n\n- **Review Miner sampled real reviews for the 7 niches behind this cycle's ranked gaps** (top 10 listings per niche via `listings/active`, then `/reviews` on each listing) \u2014 zero API errors, every call returned HTTP 200.\n- **5 of 7 niches cleared the 15-review threshold** and got real buyer-language findings: ADHD/neurodivergent stickers (52 reviews), Chronic illness/spoonie stickers (54), Gothmas/gothic Christmas decor (52), Recovery/sobriety stickers (43), Pet breed+hobby combo mugs (15, right at the line).\n- **2 of 7 fell short and are correctly reported as insufficient data, not guessed**: Castlecore/Knightcore (11 reviews) and Nonnacore (3 reviews), both below the 15-review floor. Brief 1 and part of Brief 2 are written from Phrase Miner's existing style/phrase formulas alone as a result \u2014 flagged explicitly in each brief's confidence note rather than papered over.\n- **A real, recurring complaint surfaced independently in two niches' review samples**: shipping delay / seller non-responsiveness, including two 1\u2605 reviews in Gothmas citing month-plus delivery with an unresponsive seller, and one 1\u2605 in Pet breed+hobby with the same pattern. This became a genuine differentiator baked into Briefs 3 and 4's descriptions (fast, communicative shipping) \u2014 grounded in quoted complaints, not invented positioning.\n- **All 5 previously-written briefs were revised**: new titles (keyword front-loaded in the first 3 words, \"best/amazing/premium/quality\" banned outright) and a new **Listing description** field (hook \u2192 identity line \u2192 feature\u2192benefit bullets \u2192 CTA) that didn't exist in the brief format before this cycle.\n- **Brief 6 (the \"sober gardener\" stretch gap) stays unbriefed.** Recovery/sobriety cleared the review threshold, but no Phrase Miner pass ran this cycle for that specific sub-angle \u2014 writing a brief now would mean inventing a phrase formula that was never actually reported, which is exactly what Design Briefer's grounding rule prohibits.\n- **Nothing was retired or re-scored.** This was a copy-quality upgrade to existing gaps, not a niche/gap re-scoring pass."
   },
   "niches": [
     {
@@ -613,7 +603,9 @@ const DATA = {
       "nearMissTitle": null,
       "brief": {
         "title": "Knightcore \u00d7 School Nurse/Teacher",
-        "exactText": "Title: \"Knight Nurse Educator, Unisex Medieval Tee, School Nurse Aesthetic, Comfort Colors\u00ae Meme Shirt, Healer of the Realm, Ren Faire Nurse Life\". On-garment graphic: **\"HEALER OF THE REALM\"** with small subtext **\"School Nurse Est. [Year]\"**",
+        "exactText": "\"School Nurse Knight Tee, Healer of the Realm Medieval Shirt, Comfort Colors Ren Faire Nurse Gift, Fantasy Educator Appreciation\"",
+        "description": "Tired of nurse-week gifts that could've come from anyone? This one couldn't. Made for school nurses and clinical educators who'd rather wear a crest than a cartoon cupcake mug \u2014 the ones who read romantasy on lunch break and know exactly what \"Healer of the Realm\" means. Comfort Colors garment-dyed cotton \u2192 broken-in soft the day it arrives, not after ten washes. Hand-drawn medieval crest linework \u2192 reads as real art up close, not clipart across a classroom. Unisex fit \u2192 grab your size off the standard chart, no guessing. Order before nurse appreciation week to guarantee it's on her desk, not in transit.",
+        "onProduct": "**\"HEALER OF THE REALM\"** with small subtext **\"School Nurse Est. [Year]\"**",
         "style": "Comfort Colors garment-dyed faded tee (sage or faded black); minimalist medieval line-art icon \u2014 a caduceus redrawn as a crossed sword-and-staff crest; goth-floral border (roses/thorns) around the crest; centered badge/crest layout, single ink color for the linework.",
         "productType": "T-shirt",
         "audience": "School nurses and clinical educators who read fantasy romance/romantasy or are into cottagecore-adjacent medieval aesthetics \u2014 gift-buyable for nurse appreciation week/graduation.",
@@ -631,7 +623,9 @@ const DATA = {
       "nearMissTitle": null,
       "brief": {
         "title": "Nonnacore \u00d7 ADHD/Spoonie Self-Care Mug",
-        "exactText": "Title: \"Personalized Nonna Spoonie Mug: Rest Is Productive Too, Custom Name Chronic Illness Self-Care Gift\". On-mug graphic: **\"Nonna Said Sit Down And Rest\"** with small script tagline **\"[Custom Name]'s Spoonie Corner\"**",
+        "exactText": "\"Spoonie Self-Care Mug, Nonna Says Rest Now, Personalized Chronic Illness Gift, Cozy Permission To Pause\"",
+        "description": "Some mornings the only productive thing you do is convince yourself it's okay to sit back down. This mug says that out loud, gently, before you even ask. Made for spoonies who want their self-care merch to feel like a hug from Nonna, not another wellness lecture. Custom name on the rim \u2192 unmistakably yours, or exactly right as a gift for the spoonie in your life. Dishwasher-safe ceramic \u2192 survives real mornings, not just the photo shoot. Cozy majolica-floral border \u2192 doesn't announce \"sick\" to anyone who glances at your desk, it just looks like your favorite mug. Add the name that needs the reminder most and let Nonna do the talking.",
+        "onProduct": "**\"Nonna Said Sit Down And Rest\"** with small script tagline **\"[Custom Name]'s Spoonie Corner\"**",
         "style": "Warm terracotta/olive palette from Nonnacore, retro Italian majolica floral border around the rim; soft rounded script typography for \"Nonna Said...\" (cozy permission-giving tone, not edgy/sarcastic); small holographic spoon icon tucked into the floral border as a nod to spoon theory.",
         "productType": "Mug",
         "audience": "Women 25\u201345 managing chronic illness/ADHD who respond to \"cozy grandmother energy\" self-care messaging rather than clinical or sarcastic framing.",
@@ -649,7 +643,9 @@ const DATA = {
       "nearMissTitle": "\"Tired As Hell Sticker, Gothic Dog Mom Vinyl Decal\"",
       "brief": {
         "title": "Gothmas \u00d7 Pet-Mom Christmas Sticker",
-        "exactText": "Title: \"Gothic Christmas Dog Mom Sticker Bundle, Skull & Ornament Pet Mom Holiday Decal\". On-sticker text: **\"Goth Mom, Merry Christmas\"** styled as blackletter, wrapped around a dog silhouette wearing a small ornament collar.",
+        "exactText": "\"Gothic Dog Mom Sticker, Skull & Ornament Christmas Decal, Kiss-Cut Vinyl Holiday Gift For Goth Pet Owners\"",
+        "description": "Every \"gothic Christmas\" sticker on Etsy right now either isn't goth enough or takes six weeks to show up. This one's neither. For dog moms who decorate in black and green before they decorate in red and gold. Thick kiss-cut vinyl \u2192 survives your water bottle, your car window, and your dog's curiosity, not the thin, flimsy stuff other shops sell. Blackletter type + skull-and-holly design \u2192 reads as intentional gothic style, not a last-minute craft-store add-on. Shipped fast with real tracking updates \u2192 no \"still processing\" three weeks later. Grab it now \u2014 Christmas doesn't wait for slow shipping, and neither should your dog's ornament collar.",
+        "onProduct": "**\"Goth Mom, Merry Christmas\"** styled as blackletter, wrapped around a dog silhouette wearing a small ornament collar.",
         "style": "Black, dark green, and blood-red palette; blackletter/gothic type for the headline; skull-and-ornament hybrid iconography (skull with holly instead of a Santa hat); die-cut kiss-cut vinyl sticker.",
         "productType": "Sticker (kiss-cut, waterproof vinyl)",
         "audience": "Goth-identifying pet owners already buying from \"goth mommy\"/\"gothic dog\" Etsy sellers, wanting a seasonal add-on.",
@@ -667,7 +663,9 @@ const DATA = {
       "nearMissTitle": "\"Enjoy The Simple Things Sticker, Dog Lover Gift\"",
       "brief": {
         "title": "Sobriety \u00d7 Pet-Mom Sticker/Shirt",
-        "exactText": "Title: \"Sobriety Pet Mom Sticker Pack: Recovery Gift, Dog Mom Sponsor Sponsee Decals\". On-sticker text: **\"Sober AND a Dog Mom (Barely Surviving Either)\"**",
+        "exactText": "\"Sober Dog Mom Sticker, Subtle Recovery Decal For Sponsor Sponsee Gifts, Waterproof ODAAT Pet Owner Design\"",
+        "description": "Most recovery merch either shouts it from across the room or hides it so well it means nothing to the one person you're gifting it to. Made for sponsors and sponsees who want a reminder that reads clearly to the people who need to see it \u2014 and as \"just a cute dog sticker\" to everyone else. Waterproof, dishwasher-tested vinyl \u2192 stays put on a tumbler through months of real use, not just the first wash. Correct, checked wording \u2192 no misprints or out-of-order text to second-guess when you give it as a gift. Sized for water bottles, laptops, and car windows \u2192 one sticker, everywhere you actually are. Pick one up for a sponsee's next milestone, or for the dog mom who's earned both titles.",
+        "onProduct": "**\"Sober AND a Dog Mom (Barely Surviving Either)\"** *(Review Miner flag: real buyers in this niche describe wanting **discreet** signaling \u2014 \"not super obvious to people who don't know what it means\" \u2014 this overt/playful graphic may be worth revisiting with a fresh Phrase Miner pass next cycle; not changed unilaterally here since no new phrase formula was reported this cycle.)*",
         "style": "Clean inspirational-quote minimalism (not clinical) crossed with a simple line-art dog icon; broken-chain motif reworked as a dog-leash link breaking open; soft neutral palette (sage, cream, warm gray) to keep pet-mom warmth in the mix.",
         "productType": "Sticker (primary); same design adaptable to a Comfort Colors tee as a secondary SKU.",
         "audience": "People in recovery (1+ year sobriety milestone, sponsors buying for sponsees) who are also active pet owners \u2014 sold as a milestone/anniversary gift, not daily-wear identity statement.",
@@ -685,7 +683,9 @@ const DATA = {
       "nearMissTitle": null,
       "brief": {
         "title": "ADHD/Neurodivergent \u00d7 Sobriety/Recovery",
-        "exactText": "Title: \"Neurodivergent in Recovery Sticker: ADHD Sobriety Support, Dual Diagnosis Pride\". On-sticker text: **\"Neurodivergent AND Sober \u2014 Both Are Hard, Both Are Worth It\"**",
+        "exactText": "\"Neurodivergent Sober Sticker, Dual Diagnosis Recovery Decal, Subtle ADHD Sobriety Support Gift\"",
+        "description": "You've probably had someone explain either your brain or your recovery to you like it's simple. It's not, and you don't need a sticker that pretends otherwise. For adults holding both a neurodivergent diagnosis and a recovery journey \u2014 not a novelty item, a nod from someone who gets the overlap. Kiss-cut waterproof vinyl \u2192 holds up on a water bottle or laptop through daily use, not just the unboxing photo. Pastel neurodivergent color coding + sobriety's clean typography \u2192 reads as community-specific, not generic inspirational-quote merch. Correct, proofed wording \u2192 nothing to wince at when you hand it to someone. Add it to a recovery-milestone gift, or keep it for the days you need the reminder yourself.",
+        "onProduct": "**\"Neurodivergent AND Sober \u2014 Both Are Hard, Both Are Worth It\"**",
         "style": "Pastel pride-flag color coding (from the ADHD/neurodivergent niche) combined with sobriety niche's clean inspirational-quote minimalism \u2014 no broken-chain/addiction iconography (avoid glamorizing/trivializing); soft rounded sans-serif type; simple sun-rising icon (shared growth/new-day motif).",
         "productType": "Sticker (kiss-cut vinyl), holographic finish optional.",
         "audience": "Adults in dual-diagnosis recovery (neurodivergence + substance recovery) seeking community-affirming, non-mocking representation \u2014 likely reached via recovery support groups and ADHD community spaces, not general gift-shopping traffic.",
@@ -992,7 +992,7 @@ const DATA = {
         "color": "#f87171",
         "satLevel": null,
         "count": null,
-        "example": "Title: \"Knight Nurse Educator, Unisex Medieval Tee, School Nurse Aesthetic, Comfort Colors\u00ae Meme Shirt, Healer of the Realm, Ren Faire Nurse Life\". On-garment graphic: **\"HEALER OF THE REALM\"** with small subtext **\"School Nurse Est. [Year]\"**",
+        "example": "\"School Nurse Knight Tee, Healer of the Realm Medieval Shirt, Comfort Colors Ren Faire Nurse Gift, Fantasy Educator Appreciation\"",
         "price": "$26\u2013$28 (comp-verified: real castlecore/knightcore Comfort Colors tees on Etsy run $26.05\u2013$28; one outlier listing at $68.89, treat as non-representative).",
         "url": null,
         "r": 32
@@ -1006,7 +1006,7 @@ const DATA = {
         "color": "#fbbf6f",
         "satLevel": null,
         "count": null,
-        "example": "Title: \"Personalized Nonna Spoonie Mug: Rest Is Productive Too, Custom Name Chronic Illness Self-Care Gift\". On-mug graphic: **\"Nonna Said Sit Down And Rest\"** with small script tagline **\"[Custom Name]'s Spoonie Corner\"**",
+        "example": "\"Spoonie Self-Care Mug, Nonna Says Rest Now, Personalized Chronic Illness Gift, Cozy Permission To Pause\"",
         "price": "$18\u2013$22 (comp-verified: real spoonie mugs on Etsy cluster $14\u2013$27, personalized/custom listings trend toward the upper half).",
         "url": null,
         "r": 32
@@ -1020,7 +1020,7 @@ const DATA = {
         "color": "#f472b6",
         "satLevel": null,
         "count": null,
-        "example": "Title: \"Gothic Christmas Dog Mom Sticker Bundle, Skull & Ornament Pet Mom Holiday Decal\". On-sticker text: **\"Goth Mom, Merry Christmas\"** styled as blackletter, wrapped around a dog silhouette wearing a small ornament collar.",
+        "example": "\"Gothic Dog Mom Sticker, Skull & Ornament Christmas Decal, Kiss-Cut Vinyl Holiday Gift For Goth Pet Owners\"",
         "price": "$3.50\u2013$5 (standard Etsy sticker convention \u2014 not comp-verified, flagged as estimate).",
         "url": null,
         "r": 28
@@ -1034,7 +1034,7 @@ const DATA = {
         "color": "#f87171",
         "satLevel": null,
         "count": null,
-        "example": "Title: \"Sobriety Pet Mom Sticker Pack: Recovery Gift, Dog Mom Sponsor Sponsee Decals\". On-sticker text: **\"Sober AND a Dog Mom (Barely Surviving Either)\"**",
+        "example": "\"Sober Dog Mom Sticker, Subtle Recovery Decal For Sponsor Sponsee Gifts, Waterproof ODAAT Pet Owner Design\"",
         "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).",
         "url": null,
         "r": 28
@@ -1048,7 +1048,7 @@ const DATA = {
         "color": "#f472b6",
         "satLevel": null,
         "count": null,
-        "example": "Title: \"Neurodivergent in Recovery Sticker: ADHD Sobriety Support, Dual Diagnosis Pride\". On-sticker text: **\"Neurodivergent AND Sober \u2014 Both Are Hard, Both Are Worth It\"**",
+        "example": "\"Neurodivergent Sober Sticker, Dual Diagnosis Recovery Decal, Subtle ADHD Sobriety Support Gift\"",
         "price": "$3.50\u2013$5 (convention, not comp-verified \u2014 recommend a small test batch given the smaller, more specific audience).",
         "url": null,
         "r": 32
@@ -1248,7 +1248,9 @@ function gapCardHTML(g){
         </div>
         ${b ? `
           <div class="card-cat">${escapeHtml(b.productType || '')}</div>
-          ${b.exactText ? `<div class="example">${mdInline(b.exactText)}</div>` : ''}
+          ${b.exactText ? `<div class="example"><i>Title:</i> ${mdInline(b.exactText)}</div>` : ''}
+          ${b.description ? `<div class="example">${mdInline(b.description)}</div>` : ''}
+          ${b.onProduct ? `<div class="example"><i>On-product:</i> ${mdInline(b.onProduct)}</div>` : ''}
           <div class="row"><span>Suggested price</span><b>${escapeHtml(b.price || '—')}</b></div>
           ${b.audience ? `<div class="row"><span>Audience</span><b>${escapeHtml(b.audience)}</b></div>` : ''}
           ${b.style ? `<div class="example"><i>Style:</i> ${escapeHtml(b.style)}</div>` : ''}

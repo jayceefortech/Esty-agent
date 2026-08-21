@@ -410,7 +410,9 @@ function gapCardHTML(g){
         </div>
         ${b ? `
           <div class="card-cat">${escapeHtml(b.productType || '')}</div>
-          ${b.exactText ? `<div class="example">${mdInline(b.exactText)}</div>` : ''}
+          ${b.exactText ? `<div class="example"><i>Title:</i> ${mdInline(b.exactText)}</div>` : ''}
+          ${b.description ? `<div class="example">${mdInline(b.description)}</div>` : ''}
+          ${b.onProduct ? `<div class="example"><i>On-product:</i> ${mdInline(b.onProduct)}</div>` : ''}
           <div class="row"><span>Suggested price</span><b>${escapeHtml(b.price || '—')}</b></div>
           ${b.audience ? `<div class="row"><span>Audience</span><b>${escapeHtml(b.audience)}</b></div>` : ''}
           ${b.style ? `<div class="example"><i>Style:</i> ${escapeHtml(b.style)}</div>` : ''}

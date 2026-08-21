@@ -19,6 +19,68 @@ Secondary sources (Pinterest Predicts, POD seller blogs, Reddit) remain fine for
 
 ## Cycle 1 — flagged 2026-08-19
 
+### CEO Summary — Review Miner + Design Briefer upgrade run, 2026-08-21
+
+**Run log:** completed 2026-08-21 · next cycle scheduled 2026-09-02 · Review Miner: success (API, 5/7 niches cleared threshold) · Design Briefer: success
+
+Ran the newly wired Review Miner sub-agent for the first time, then a Design Briefer re-pass applying the new copywriting rules (see `.claude/agents/design-briefer.md`). **Scope: partial cycle** — Trend Scout/Phrase Miner/Gap Finder were skipped since Cycle 1's real-API refresh happened only yesterday and nothing meaningful would change by re-running them today; this run exists specifically to exercise the two new/updated agents end to end, per pipeline rule 2 (skip what wouldn't meaningfully change). What happened:
+
+- **Review Miner sampled real reviews for the 7 niches behind this cycle's ranked gaps** (top 10 listings per niche via `listings/active`, then `/reviews` on each listing) — zero API errors, every call returned HTTP 200.
+- **5 of 7 niches cleared the 15-review threshold** and got real buyer-language findings: ADHD/neurodivergent stickers (52 reviews), Chronic illness/spoonie stickers (54), Gothmas/gothic Christmas decor (52), Recovery/sobriety stickers (43), Pet breed+hobby combo mugs (15, right at the line).
+- **2 of 7 fell short and are correctly reported as insufficient data, not guessed**: Castlecore/Knightcore (11 reviews) and Nonnacore (3 reviews), both below the 15-review floor. Brief 1 and part of Brief 2 are written from Phrase Miner's existing style/phrase formulas alone as a result — flagged explicitly in each brief's confidence note rather than papered over.
+- **A real, recurring complaint surfaced independently in two niches' review samples**: shipping delay / seller non-responsiveness, including two 1★ reviews in Gothmas citing month-plus delivery with an unresponsive seller, and one 1★ in Pet breed+hobby with the same pattern. This became a genuine differentiator baked into Briefs 3 and 4's descriptions (fast, communicative shipping) — grounded in quoted complaints, not invented positioning.
+- **All 5 previously-written briefs were revised**: new titles (keyword front-loaded in the first 3 words, "best/amazing/premium/quality" banned outright) and a new **Listing description** field (hook → identity line → feature→benefit bullets → CTA) that didn't exist in the brief format before this cycle.
+- **Brief 6 (the "sober gardener" stretch gap) stays unbriefed.** Recovery/sobriety cleared the review threshold, but no Phrase Miner pass ran this cycle for that specific sub-angle — writing a brief now would mean inventing a phrase formula that was never actually reported, which is exactly what Design Briefer's grounding rule prohibits.
+- **Nothing was retired or re-scored.** This was a copy-quality upgrade to existing gaps, not a niche/gap re-scoring pass.
+
+### Review Miner findings — first run, 2026-08-21
+
+Per niche, drawn only from pooled real review text across the sampled listings (never a single listing's reviews treated as representative) — quotes are verbatim from real Etsy buyers.
+
+**Castlecore / Knightcore** — `INSUFFICIENT DATA (11 reviews found across 10 sampled listings, need 15+)`. No pattern extracted.
+
+**Nonnacore** — `INSUFFICIENT DATA (3 reviews found across 10 sampled listings, need 15+)`. No pattern extracted.
+
+**ADHD / neurodivergent stickers** (10 listings sampled, 52 real reviews pooled)
+- Desired outcomes: self-expression/identity signaling — *"felt his soul resonate with it,"* *"I had to have it to express myself,"* *"so me lol"* (8 of 52 reviews touched on relatability-as-identity).
+- Complaints: durability under real use — *"unfortunately this sticker faded after like a week"* (1★); minor peel-off friction (2 of 52).
+- Pre-purchase problem phrases: *"felt appropriate,"* *"resonate with it"* — buyers describing wanting something that captures a very specific inside joke/identity.
+- Purchase-driving detail: humor that reads as genuinely relatable, not generic — *"hilariously relatable"* — plus water-bottle/laptop use-case named in ~10 of 52 reviews.
+- Unmet needs: print/color durability over time; one buyer wanted size variants — *"I wish this sticker was still available because I would be buying a lot more in various sizes."*
+- Confidence: strong pattern (52 reviews, consistent theme).
+
+**Chronic illness / spoonie stickers** (10 listings sampled, 54 real reviews pooled)
+- Desired outcomes: comedic coping specific to chronic illness — *"Sometimes I like a little comedic relief to cope with my multiple chronic illnesses,"* *"It captures my humor about chronic illness."*
+- Complaints: shipping speed variability (*"took quite a while to receive the stickers"*) — otherwise very few complaints; this niche's buyers are largely satisfied once the product arrives.
+- Pre-purchase problem phrases: *"just what I needed,"* *"needed a pick me up,"* *"asks the question that plagues everyone"* — buyers pre-select for validation/humor about a specific lived experience.
+- Purchase-driving detail: bonus/freebie stickers included unprompted by sellers, mentioned in 6+ of 54 reviews — a real loyalty driver worth replicating.
+- Unmet needs: few surfaced directly — the honest finding is that this niche's existing sellers already satisfy buyers well; the opportunity is matching that bar, not fixing a broken experience.
+- Confidence: strong pattern (54 reviews).
+
+**Gothmas / gothic Christmas decor** (10 listings sampled, 52 real reviews pooled)
+- Desired outcomes: collector/aesthetic appreciation — *"the most beautiful stickers I've ever seen"* — decorating laptops, water bottles, journals, e-readers, phone cases.
+- Complaints: **shipping delay and seller non-responsiveness — a clear, repeated pattern**, including two 1★ reviews (*"shipped 11/24... it is 12/4 and I have not received my items, the seller is also not responsive"*; *"Never got it, waste of money"*) and a third otherwise-happy 5★ review noting a month-long delay.
+- Pre-purchase problem phrases: *"been eyeing for ages,"* *"obsessed with [franchise],"* *"I'm a big fan"* — collector-driven, aesthetic-first purchase intent.
+- Purchase-driving detail: perceived material durability vs. competitors — *"not super thin and flimsy like a lot of stickers, i feel confident they'll last a long time"* — plus unboxing extras (handwritten notes, bonus stickers) repeatedly called out as a delight factor.
+- Unmet needs: **reliable, communicated shipping** is the single clearest gap in this niche.
+- Confidence: strong pattern (52 reviews); shipping complaint corroborated by 3+ independent reviews including two 1★s.
+
+**Recovery / sobriety stickers** (10 listings sampled, 43 real reviews pooled)
+- Desired outcomes: **discreet identity signaling** — *"a fun way to subtly advertise my sobriety,"* *"not super obvious to people who don't know what it means"* — buyers explicitly want recognition without outing themselves to strangers.
+- Complaints: wording/layout accuracy (one 3★: *"the words are out of order... I won't use these stickers because of"* it) and one 1★ non-delivery.
+- Pre-purchase problem phrases: buyers fluent in recovery-community shorthand before they search — *"Big Book," "AA stickers," "ODAAT," "sponsor/sponsee"* — the product needs to speak that exact in-group language.
+- Purchase-driving detail: durability under real daily use, stated explicitly — *"I have it on a tumbler I have put through the dishwasher at least five times and the sticker has not budged."*
+- Unmet needs: precise, proofed wording (a real quality-control gap, not a design-direction gap) and reliable delivery.
+- Confidence: strong pattern (43 reviews).
+
+**Pet breed + hobby combo mugs** (10 listings sampled, 15 real reviews pooled — right at the threshold)
+- Desired outcomes: milestone-gift purchases — wedding, engagement, birthday, baby/bridal shower — personalization has to be correct for the occasion to land.
+- Complaints: **shipping delay is the single loudest complaint** (one 1★: *"Delivery time is crazy. It's been a month... Trying to get a hold of customer service is impossible"*); a material-expectation gap surfaced once (*"Thought it would be an acrylic mug but was metal"*).
+- Pre-purchase problem phrases: occasion-driven rather than problem-driven — *"for our micro-wedding guests," "Brother's Wedding," "my sister's shower"* — buyers search with the event already in mind.
+- Purchase-driving detail: direct communication with the maker about personalization eased buyer anxiety — *"Getting in touch with the artist helped ease my mind regarding the personalized information."*
+- Unmet needs: shipping reliability and proactive customer service; clearer material description up front.
+- Confidence: pattern present but thinner sample (15 reviews, right at the floor) — treat as directional, revisit with a larger sample next cycle.
+
 ### CEO Summary — real-API data refresh, 2026-08-20
 
 **Run log:** completed 2026-08-20 · next cycle scheduled 2026-09-02 · Trend Scout: success (API) · Phrase Miner: success · Gap Finder: success · Design Briefer: success
@@ -62,42 +124,61 @@ Secondary sources (Pinterest Predicts, POD seller blogs, Reddit) remain fine for
 
 **Ruled out (do not re-brief as gaps):** goth × nurse (saturated), wrestling coach × funny (saturated).
 
-### Design briefs (from Agent 4) — 5 produced, ready for Canva/Fiverr
+### Design briefs (from Agent 4) — revised 2026-08-21 per new copywriting rules + Review Miner findings
+
+Titles: primary keyword front-loaded in the first 3 words, lead with outcome not feature, "best/amazing/premium/quality" banned outright. Descriptions: hook → "who this is for" line → `[Feature] → [benefit]` bullets → specific CTA. See `.claude/agents/design-briefer.md` for the full rule set.
 
 **BRIEF 1 — Knightcore × School Nurse/Teacher**
-- **Exact text:** Title: "Knight Nurse Educator, Unisex Medieval Tee, School Nurse Aesthetic, Comfort Colors® Meme Shirt, Healer of the Realm, Ren Faire Nurse Life". On-garment graphic: **"HEALER OF THE REALM"** with small subtext **"School Nurse Est. [Year]"**
+- **Exact title text:** "School Nurse Knight Tee, Healer of the Realm Medieval Shirt, Comfort Colors Ren Faire Nurse Gift, Fantasy Educator Appreciation"
+- **Listing description:** Tired of nurse-week gifts that could've come from anyone? This one couldn't. Made for school nurses and clinical educators who'd rather wear a crest than a cartoon cupcake mug — the ones who read romantasy on lunch break and know exactly what "Healer of the Realm" means. Comfort Colors garment-dyed cotton → broken-in soft the day it arrives, not after ten washes. Hand-drawn medieval crest linework → reads as real art up close, not clipart across a classroom. Unisex fit → grab your size off the standard chart, no guessing. Order before nurse appreciation week to guarantee it's on her desk, not in transit.
+- **On-product graphic text:** **"HEALER OF THE REALM"** with small subtext **"School Nurse Est. [Year]"**
 - **Style direction:** Comfort Colors garment-dyed faded tee (sage or faded black); minimalist medieval line-art icon — a caduceus redrawn as a crossed sword-and-staff crest; goth-floral border (roses/thorns) around the crest; centered badge/crest layout, single ink color for the linework.
 - **Product type:** T-shirt
 - **Target audience:** School nurses and clinical educators who read fantasy romance/romantasy or are into cottagecore-adjacent medieval aesthetics — gift-buyable for nurse appreciation week/graduation.
 - **Suggested price:** $26–$28 (comp-verified: real castlecore/knightcore Comfort Colors tees on Etsy run $26.05–$28; one outlier listing at $68.89, treat as non-representative).
+- Confidence: partially grounded — style/phrase formulas solid, but Castlecore/Knightcore's review sample this cycle was too thin (11 reviews, need 15+) for real buyer-language grounding. **Review Miner: not used** (insufficient data) — description hook is written from general market positioning, not quoted buyers.
 
 **BRIEF 2 — Nonnacore × ADHD/Spoonie Self-Care Mug**
-- **Exact text:** Title: "Personalized Nonna Spoonie Mug: Rest Is Productive Too, Custom Name Chronic Illness Self-Care Gift". On-mug graphic: **"Nonna Said Sit Down And Rest"** with small script tagline **"[Custom Name]'s Spoonie Corner"**
+- **Exact title text:** "Spoonie Self-Care Mug, Nonna Says Rest Now, Personalized Chronic Illness Gift, Cozy Permission To Pause"
+- **Listing description:** Some mornings the only productive thing you do is convince yourself it's okay to sit back down. This mug says that out loud, gently, before you even ask. Made for spoonies who want their self-care merch to feel like a hug from Nonna, not another wellness lecture. Custom name on the rim → unmistakably yours, or exactly right as a gift for the spoonie in your life. Dishwasher-safe ceramic → survives real mornings, not just the photo shoot. Cozy majolica-floral border → doesn't announce "sick" to anyone who glances at your desk, it just looks like your favorite mug. Add the name that needs the reminder most and let Nonna do the talking.
+- **On-product graphic text:** **"Nonna Said Sit Down And Rest"** with small script tagline **"[Custom Name]'s Spoonie Corner"**
 - **Style direction:** Warm terracotta/olive palette from Nonnacore, retro Italian majolica floral border around the rim; soft rounded script typography for "Nonna Said..." (cozy permission-giving tone, not edgy/sarcastic); small holographic spoon icon tucked into the floral border as a nod to spoon theory.
 - **Product type:** Mug
 - **Target audience:** Women 25–45 managing chronic illness/ADHD who respond to "cozy grandmother energy" self-care messaging rather than clinical or sarcastic framing.
 - **Suggested price:** $18–$22 (comp-verified: real spoonie mugs on Etsy cluster $14–$27, personalized/custom listings trend toward the upper half).
+- Confidence: well-grounded for the ADHD/spoonie half (52 + 54 real reviews — strong pattern: relatable humor as coping, non-clinical framing preferred). **Review Miner: partially used** — Nonnacore itself had only 3 reviews sampled (insufficient), so the "cozy grandmother" framing still comes from Phrase Miner's formula, not quoted Nonnacore buyers.
 
 **BRIEF 3 — Gothmas × Pet-Mom Christmas Sticker**
-- **Exact text:** Title: "Gothic Christmas Dog Mom Sticker Bundle, Skull & Ornament Pet Mom Holiday Decal". On-sticker text: **"Goth Mom, Merry Christmas"** styled as blackletter, wrapped around a dog silhouette wearing a small ornament collar.
+- **Exact title text:** "Gothic Dog Mom Sticker, Skull & Ornament Christmas Decal, Kiss-Cut Vinyl Holiday Gift For Goth Pet Owners"
+- **Listing description:** Every "gothic Christmas" sticker on Etsy right now either isn't goth enough or takes six weeks to show up. This one's neither. For dog moms who decorate in black and green before they decorate in red and gold. Thick kiss-cut vinyl → survives your water bottle, your car window, and your dog's curiosity, not the thin, flimsy stuff other shops sell. Blackletter type + skull-and-holly design → reads as intentional gothic style, not a last-minute craft-store add-on. Shipped fast with real tracking updates → no "still processing" three weeks later. Grab it now — Christmas doesn't wait for slow shipping, and neither should your dog's ornament collar.
+- **On-product graphic text:** **"Goth Mom, Merry Christmas"** styled as blackletter, wrapped around a dog silhouette wearing a small ornament collar.
 - **Style direction:** Black, dark green, and blood-red palette; blackletter/gothic type for the headline; skull-and-ornament hybrid iconography (skull with holly instead of a Santa hat); die-cut kiss-cut vinyl sticker.
 - **Product type:** Sticker (kiss-cut, waterproof vinyl)
 - **Target audience:** Goth-identifying pet owners already buying from "goth mommy"/"gothic dog" Etsy sellers, wanting a seasonal add-on.
 - **Suggested price:** $3.50–$5 (standard Etsy sticker convention — not comp-verified, flagged as estimate).
+- Confidence: well-grounded — both source niches (Gothmas 52 reviews, Pet breed+hobby 15) cleared the review threshold. **Review Miner: used** — the fast/communicative-shipping promise in the description is drawn directly from repeated real shipping complaints in both pooled samples (including two 1★ reviews), not invented positioning.
 
 **BRIEF 4 — Sobriety × Pet-Mom Sticker/Shirt**
-- **Exact text (sticker):** Title: "Sobriety Pet Mom Sticker Pack: Recovery Gift, Dog Mom Sponsor Sponsee Decals". On-sticker text: **"Sober AND a Dog Mom (Barely Surviving Either)"**
+- **Exact title text:** "Sober Dog Mom Sticker, Subtle Recovery Decal For Sponsor Sponsee Gifts, Waterproof ODAAT Pet Owner Design"
+- **Listing description:** Most recovery merch either shouts it from across the room or hides it so well it means nothing to the one person you're gifting it to. Made for sponsors and sponsees who want a reminder that reads clearly to the people who need to see it — and as "just a cute dog sticker" to everyone else. Waterproof, dishwasher-tested vinyl → stays put on a tumbler through months of real use, not just the first wash. Correct, checked wording → no misprints or out-of-order text to second-guess when you give it as a gift. Sized for water bottles, laptops, and car windows → one sticker, everywhere you actually are. Pick one up for a sponsee's next milestone, or for the dog mom who's earned both titles.
+- **On-product graphic text:** **"Sober AND a Dog Mom (Barely Surviving Either)"** *(Review Miner flag: real buyers in this niche describe wanting **discreet** signaling — "not super obvious to people who don't know what it means" — this overt/playful graphic may be worth revisiting with a fresh Phrase Miner pass next cycle; not changed unilaterally here since no new phrase formula was reported this cycle.)*
 - **Style direction:** Clean inspirational-quote minimalism (not clinical) crossed with a simple line-art dog icon; broken-chain motif reworked as a dog-leash link breaking open; soft neutral palette (sage, cream, warm gray) to keep pet-mom warmth in the mix.
 - **Product type:** Sticker (primary); same design adaptable to a Comfort Colors tee as a secondary SKU.
 - **Target audience:** People in recovery (1+ year sobriety milestone, sponsors buying for sponsees) who are also active pet owners — sold as a milestone/anniversary gift, not daily-wear identity statement.
 - **Suggested price:** $4–$5 sticker pack (convention, not comp-verified); $24–$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).
+- Confidence: well-grounded — both source niches (Recovery/sobriety 43 reviews, Pet breed+hobby 15) cleared the threshold. **Review Miner: used** — the wording-accuracy feature and shipping-reliability promise are drawn from real quoted complaints, not invented.
 
 **BRIEF 5 — ADHD/Neurodivergent × Sobriety/Recovery** *(sensitive intersection — kept supportive/in-community, not sarcastic or mocking; grounded in genuine dual-diagnosis community language, not novelty)*
-- **Exact text:** Title: "Neurodivergent in Recovery Sticker: ADHD Sobriety Support, Dual Diagnosis Pride". On-sticker text: **"Neurodivergent AND Sober — Both Are Hard, Both Are Worth It"**
+- **Exact title text:** "Neurodivergent Sober Sticker, Dual Diagnosis Recovery Decal, Subtle ADHD Sobriety Support Gift"
+- **Listing description:** You've probably had someone explain either your brain or your recovery to you like it's simple. It's not, and you don't need a sticker that pretends otherwise. For adults holding both a neurodivergent diagnosis and a recovery journey — not a novelty item, a nod from someone who gets the overlap. Kiss-cut waterproof vinyl → holds up on a water bottle or laptop through daily use, not just the unboxing photo. Pastel neurodivergent color coding + sobriety's clean typography → reads as community-specific, not generic inspirational-quote merch. Correct, proofed wording → nothing to wince at when you hand it to someone. Add it to a recovery-milestone gift, or keep it for the days you need the reminder yourself.
+- **On-product graphic text:** **"Neurodivergent AND Sober — Both Are Hard, Both Are Worth It"**
 - **Style direction:** Pastel pride-flag color coding (from the ADHD/neurodivergent niche) combined with sobriety niche's clean inspirational-quote minimalism — no broken-chain/addiction iconography (avoid glamorizing/trivializing); soft rounded sans-serif type; simple sun-rising icon (shared growth/new-day motif).
 - **Product type:** Sticker (kiss-cut vinyl), holographic finish optional.
 - **Target audience:** Adults in dual-diagnosis recovery (neurodivergence + substance recovery) seeking community-affirming, non-mocking representation — likely reached via recovery support groups and ADHD community spaces, not general gift-shopping traffic.
 - **Suggested price:** $3.50–$5 (convention, not comp-verified — recommend a small test batch given the smaller, more specific audience).
+- Confidence: well-grounded — both source niches (ADHD 52 reviews, Recovery/sobriety 43) cleared the threshold. **Review Miner: used** — the wording-accuracy feature is drawn from a real 3★ complaint in the sobriety sample, not invented.
+
+**Brief 6 (Sober gardener / "recovery garden" stickers): still unbriefed.** Recovery/sobriety cleared the review threshold this cycle, but no Phrase Miner pass ran for that specific sub-angle — writing a brief now would mean inventing a phrase formula never actually reported, which Design Briefer's grounding rule prohibits. Candidate for a future cycle once Phrase Miner covers it.
 
 **Pricing scope note:** All 3 sticker prices (Briefs 3, 4, 5) are convention-based estimates, not live comps — verify against `site:etsy.com` sticker pack pricing in these specific sub-niches before finalizing.
 
