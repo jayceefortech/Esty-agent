@@ -249,7 +249,7 @@ CATEGORY_COLORS = {
     "wall art": "#7dd3fc",
     "mugs": "#fbbf6f",
     "stickers": "#f472b6",
-    "t-shirts": "#a78bfa",
+    "t-shirts": "#f87171",
     "tumblers": "#34d399",
 }
 DEFAULT_NODE_COLOR = "#94a3b8"
