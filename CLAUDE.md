@@ -21,3 +21,15 @@ A persistent **CEO orchestrator** runs every cycle (scheduled via the "Etsy POD 
 ## Etsy Open API
 
 Key/secret live only in `.env` (gitignored, never committed) — see `.env.example` for the expected shape. The CEO and Trend Scout check for `ETSY_API_KEY` automatically; no code changes are needed when the key becomes active, only confirmation that it works.
+
+## Live dashboard (Nichescope)
+
+**Live URL: https://jayceefortech.github.io/Esty-agent/** — served by GitHub Pages from the `main` branch root, publishing `index.html` directly.
+
+- The repo was made **public** on 2026-08-20 specifically so GitHub Pages could serve it (Pages on a private repo requires a paid GitHub plan). That means the full repo — code, `niche-tracker.md`'s research history, agent prompts — is publicly visible on GitHub now, not just the dashboard page.
+- No extra publish step is needed: the CEO's existing end-of-cycle `git push` to `main` (see `.claude/agents/ceo.md`) is what GitHub Pages watches, so every cycle's `python3 generate_dashboard.py` + push auto-rebuilds the live site within a few minutes.
+- `index.html` is a generated file (see `generate_dashboard.py`) — never hand-edit it directly; edit `niche-tracker.md` (data) or `dashboard_template.html` (layout/design) and regenerate.
+
+## Earnings Estimate tab — assumptions, not real data
+
+The "Earnings Estimate" tab models potential monthly revenue/profit per niche from **assumed** inputs the user controls (views/listing, conversion rate, listings live) plus each niche's real suggested price and saturation level — it is a planning tool, not a forecast, since no niche has been published or sold yet. **Once real Etsy sales data exists for a published niche, replace that niche's assumed conversion rate with its actual historical conversion rate** rather than the shared default — this is a deliberate placeholder, not a permanent design choice.
