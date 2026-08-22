@@ -234,4 +234,24 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 
 ## Cycle 2 — scheduled 2026-08-22 (next daily run)
 
-*(To be filled by the daily cloud routine's next fire, ~9am ET 2026-08-22: CEO decides full-run/partial-recheck/skip per ceo.md rule 2, re-scores Cycle 1 niches as rising/stable/saturated if warranted, logs the new date, feeds rising niches back to Trend Scout as priority search terms.)*
+### CEO Summary — scoped pricing-comp recheck, blocked by missing API key, 2026-08-22
+
+**Run log:** completed 2026-08-22 · next cycle scheduled 2026-08-23 · Trend Scout: partial (search fallback only — no `ETSY_API_KEY` in this session; sub-niche pricing not resolved) · Phrase Miner: skipped (not needed for this scope) · Gap Finder: skipped (not needed for this scope) · Review Miner: skipped (not needed for this scope) · Design Briefer: skipped (not needed for this scope)
+
+**Scope decision: narrow partial recheck, not a full run.** Cycle 1's real-API refresh completed just yesterday (2026-08-21), so re-running all 5 sub-agents across all 13 niches today would not meaningfully change anything already tracked. Instead of skipping outright, I picked the single most useful open item off last cycle's follow-up list — "verify sticker pricing comps directly (Briefs 3, 4, 5 used convention pricing, not live comps)" — and sent Trend Scout after just that, scoped to the three specific Brief sub-niches (Gothic dog-mom Christmas sticker, Sober dog-mom sticker, Neurodivergent/sobriety dual-diagnosis sticker).
+
+**⚠️ NEEDS YOUR CALL — infrastructure, not a niche/gap judgment call:** `ETSY_API_KEY` is **not set** in this cloud session (`echo $ETSY_API_KEY` and `env | grep -i ETSY` both came back empty, and no `.env` file exists in this fresh container checkout). This matters beyond today: `.env` is gitignored by design (correctly — it shouldn't be committed), but that also means it will **never** be present in a freshly-provisioned cloud/remote session unless the key is set as an actual environment variable on this Claude Code Remote environment itself, not just in a local `.env` file on someone's machine. If the key was only ever added to a local `.env`, every future daily cloud run will hit this same wall. Please set `ETSY_API_KEY` as an environment variable on this environment's configuration so the scheduled daily routine can keep using real Etsy data. This isn't a niche/gap retirement call, so it doesn't block routine logging, but it directly limits what this pipeline can verify going forward — flagging per the spirit of rule 5 since it needs your action, not mine.
+
+**What Trend Scout found (search-fallback only, no page-fetch tool available to read prices off listing pages):**
+- Confirmed the three *parent* niches are real and actively listed on Etsy (dog-mom stickers, sober/recovery stickers, neurodivergent stickers each have resolvable listing URLs).
+- Found **zero listings combining the exact Brief sub-niche themes** (e.g. nothing that's simultaneously gothic + dog-mom + Christmas in one sticker listing) — closest matches were adjacent-but-not-matching (a "sober dog mom" item that's a coin, not a sticker; a general "goth dog" item with no Christmas tie-in).
+- Found **zero real price data** for any of the three searches — WebSearch result snippets don't carry price, and Trend Scout has no page-fetch/browse tool to read a listing page directly (its Bash access is scoped to Etsy API `curl` calls only, per `.claude/agents/trend-scout.md`).
+- **This follow-up stays open, unresolved** — recorded honestly as attempted-but-blocked rather than papered over with an estimate. No pricing changes were made to Briefs 3/4/5; their "convention pricing, not comp-verified" flags stand exactly as Cycle 1 left them.
+
+**Nothing retired, nothing re-scored, nothing added.** No niche, gap, or brief changed this cycle beyond this note — Cycle 1's data (all 13 niches, all 6 gaps, all 5 briefs, the Review Miner findings) carries forward unchanged. See the follow-up list below for what's still open.
+
+### Open follow-ups for next cycle
+- **Verify sticker pricing comps for Briefs 3/4/5 — attempted 2026-08-22, still unresolved.** Blocked by (a) missing `ETSY_API_KEY` in this session and (b) no page-fetch-capable tool available to Trend Scout to read prices off a live listing page. Needs either the API key restored (preferred — gives real `price` directly) or a page-fetch tool authorized for Trend Scout.
+- Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — deferred this cycle rather than done via degraded search-only data, since overwriting yesterday's exact API-confirmed counts with an approximate search-inferred number would be a downgrade, not an update. Do this once the API key is available again.
+- The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
+- Brief 6 (Sober gardener / "recovery garden" stickers) still has no Phrase Miner pass — candidate for a future full-run cycle.
