@@ -287,4 +287,29 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - Verify sticker pricing comps for Briefs 3/4/5 — still unresolved, still blocked by missing `ETSY_API_KEY` (carried from Cycle 2).
 - Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — still deferred pending API key restoration, to avoid downgrading API-confirmed counts with search-inferred ones.
 - The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
-- The "mental health × plant-parent" crossover (surfaced tangentially this cycle) is a candidate for a future full-run cycle's Trend Scout scope, if you want it explored as a genuinely new gap rather than a substitute for Gap 6.
+- ~~The "mental health × plant-parent" crossover (surfaced tangentially in Cycle 3) is a candidate for a future full-run cycle's Trend Scout scope.~~ **Investigated 2026-08-24 — ruled out as a gap** (see Cycle 4 below); niche is already populated.
+
+---
+
+## Cycle 4 — 2026-08-24
+
+### CEO Summary — mental-health × plant-parent crossover investigated and ruled out, still blocked on API key, 2026-08-24
+
+**Run log:** completed 2026-08-24 · next cycle scheduled 2026-08-25 · Trend Scout: success (search fallback — no `ETSY_API_KEY` in this session) · Phrase Miner: skipped (no gap opened, nothing to extract a formula from) · Gap Finder: skipped (no new opportunity to score — finding was negative) · Review Miner: skipped (no gap/niche opened this cycle) · Design Briefer: skipped (no brief to write)
+
+**Scope decision: narrow partial recheck, not a full run.** No CEO Summary existed yet for today when this cycle started, so per the daily-cadence rule scope was considered fresh rather than auto-skipped. `ETSY_API_KEY` is still unset in this session (re-confirmed via `echo $ETSY_API_KEY` — empty, same as Cycles 2 and 3), which continues to rule out a full 13-niche/6-gap API refresh (re-running it on search-fallback data would downgrade Cycle 1's real API-confirmed counts, not update them). The one genuinely open, non-blocked item left on the follow-up list was Cycle 3's tangential lead — the "mental health × plant-parent" crossover ("Plants RX Antidepressants" sticker) — which had never gotten its own dedicated investigation. I sent Trend Scout after exactly that, independent of Gap 6.
+
+**Finding: this niche is already populated — not a gap.** Trend Scout ran 10 search-fallback queries and found real, resolvable-URL listings across all three POD-relevant categories (stickers, mugs/planters, wall art) from at least 6 distinct sellers, plus five of Etsy's own auto-generated category/market pages for this exact keyword space (`plant_mental_health_print`, `mental_health_plant_pot`, `gardening_is_therapy`, `anti_anxiety_plant`, `plant_therapy`) — a stronger populated-market signal than any single listing, since Etsy only builds those browsable buckets when real seller supply and buyer search volume exist. This is meaningfully more crowded than the sobriety × gardening pairing (Gap 6), which found zero combined listings under the same search-fallback method. **I'm not adding this as a tracked gap.**
+
+**One narrower thread worth keeping, not acting on today:** most competing listings in this space lean on a loose "plant therapy" pun or a generic mental-health message paired with only a floral/botanical *design* motif — the specific mock-prescription-label conceit ("Plants RX...") that first caught attention in Cycle 3 is comparatively rare within the broader crowded space. That's a Phrase Miner/execution-formula question, not an audience-intersection gap, and I'm not sending Phrase Miner after a single listing's formula unprompted — noting it below as a possible narrow angle for a future cycle if you want it pursued, not queuing it myself.
+
+**Nothing retired, nothing re-scored, nothing added.** Gap 6 remains exactly where Cycle 3 left it — still `⚠️ NEEDS YOUR CALL`, still unresolved, still awaiting your decision on retiring vs. keeping the stretch bet. All 13 niches, all 5 existing (non-Gap-6) gaps, and all 5 existing briefs carry forward unchanged.
+
+**`ETSY_API_KEY` reminder:** still not set in this cloud session, unchanged since Cycle 2 — still blocking the sticker-pricing-comp follow-up, the near-miss gap requery, and any real review mining or quantified saturation numbers. See Cycle 2's CEO Summary for the full explanation (needs to be set as an environment variable on this Claude Code Remote environment, not just a local `.env` file, to survive fresh container checkouts).
+
+### Open follow-ups for next cycle
+- **⚠️ Still awaiting your call on Gap 6** (see Cycle 3 CEO Summary) — keep as a tracked stretch bet, or mark for retirement.
+- Verify sticker pricing comps for Briefs 3/4/5 — still unresolved, still blocked by missing `ETSY_API_KEY` (carried from Cycle 2).
+- Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — still deferred pending API key restoration.
+- The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
+- **New, optional:** the "Plants RX"-style mock-prescription-label execution within the mental-health × plant-parent space is a narrower angle that could be worth a dedicated Phrase Miner pass in a future cycle, if you want it pursued — not queued automatically since it wasn't asked for and rests on a single listing's formula.
