@@ -313,3 +313,33 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — still deferred pending API key restoration.
 - The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
 - **New, optional:** the "Plants RX"-style mock-prescription-label execution within the mental-health × plant-parent space is a narrower angle that could be worth a dedicated Phrase Miner pass in a future cycle, if you want it pursued — not queued automatically since it wasn't asked for and rests on a single listing's formula.
+
+---
+
+## Cycle 5 — 2026-08-25
+
+### CEO Summary — skip scope: no unblocked open item left, still waiting on API key + your Gap 6 call, 2026-08-25
+
+**Run log:** completed 2026-08-25 · next cycle scheduled 2026-08-26 · Trend Scout: skipped (no unblocked open item to investigate) · Phrase Miner: skipped (scope skipped) · Gap Finder: skipped (scope skipped) · Review Miner: skipped (scope skipped) · Design Briefer: skipped (scope skipped)
+
+**Scope decision: skip, not a partial recheck.** No CEO Summary existed yet for today when this cycle started, so per the daily-cadence rule I gave today's scope a fresh look rather than auto-skipping on that basis alone. I went through every item on Cycle 4's follow-up list and found none that's both open and unblocked today:
+
+- `ETSY_API_KEY` is still unset in this session (re-confirmed via `echo $ETSY_API_KEY` — empty, unchanged since Cycle 2). This continues to block a real full pipeline refresh, and specifically blocks the two concrete follow-ups that would otherwise be actionable: verifying sticker pricing comps for Briefs 3/4/5 (Cycle 2 already established this is *also* blocked structurally — Trend Scout has no page-fetch tool, only Etsy-API `curl` access, so re-running the same WebSearch queries would just reproduce the identical "no price in snippet" result already on record, not new information), and re-querying the two 1-listing near-miss gaps without downgrading their API-confirmed counts (same reasoning as Cycles 2 and 3).
+- Gap 6's retire-vs-keep decision is explicitly your call (rule 4) — Cycle 3's own follow-up note says re-running the same search queries "won't produce a different answer," and nothing about that has changed.
+- The one open "new" item — a dedicated Phrase Miner pass on the "Plants RX"-style mock-prescription-label execution — was flagged in Cycle 4 as optional and explicitly *not* queued without your go-ahead. Following that same restraint, I didn't send it unprompted today either.
+
+Unlike Cycles 3 and 4, which each found one genuinely fresh, unblocked thread to send Trend Scout after, today's follow-up list has nothing left that fits that description — everything remaining is either blocked on infrastructure I can't fix myself or waiting on a decision that's explicitly yours. Sending Trend Scout out again today would only re-confirm facts already on record, not surface anything new. So today's cycle is a **documented skip**, not a further partial recheck.
+
+**Nothing retired, nothing re-scored, nothing added.** All 13 niches, all 5 non-Gap-6 gaps (plus Gap 6, unresolved), and all 5 briefs carry forward unchanged from Cycle 4.
+
+**⚠️ Still needs your call — Gap 6** (unchanged from Cycle 3): keep as a tracked stretch bet, or mark for retirement.
+
+**⚠️ Still needs your action — `ETSY_API_KEY`**: unset in this cloud session for the fourth cycle running now. It must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts — see Cycle 2's CEO Summary for the full explanation. This is the single blocker behind nearly every open follow-up at this point.
+
+### Open follow-ups for next cycle
+- **⚠️ Still awaiting your call on Gap 6** (see Cycle 3 CEO Summary) — keep as a tracked stretch bet, or mark for retirement.
+- **⚠️ Still awaiting your action: set `ETSY_API_KEY`** as an environment variable on this Claude Code Remote environment — unblocks the pricing-comp follow-up, the near-miss gap requery, and a real full-pipeline refresh, all at once.
+- Verify sticker pricing comps for Briefs 3/4/5 — still unresolved, still blocked by missing `ETSY_API_KEY` and by Trend Scout having no page-fetch tool (carried from Cycle 2).
+- Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — still deferred pending API key restoration.
+- The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
+- **Optional, still not queued:** the "Plants RX"-style mock-prescription-label execution within the mental-health × plant-parent space could be worth a dedicated Phrase Miner pass, if you want it pursued.
