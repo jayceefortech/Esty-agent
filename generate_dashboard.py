@@ -388,8 +388,18 @@ def main():
     if not cycles:
         raise TrackerParseError("no '## Cycle N — ...' sections found")
 
+    # Most cycles are partial rechecks/skips that don't redefine every table — a cycle that only
+    # adds one niche shouldn't have to retype the gaps/scores/briefs tables too, and a cycle with
+    # no niches table at all (a pure skip) shouldn't blank out the CEO-summary side of the
+    # dashboard. So each of these tracks the most recent cycle that actually redefined it,
+    # independently of the others, and everything else carries forward unchanged.
     history = []
-    latest = None
+    latest_niches = None   # {"num", "niches"}
+    latest_gaps = None     # {"num", "gaps"} (gaps here have no brief/score attached yet)
+    latest_scores = None   # {"num", "scores"}
+    latest_briefs = None   # {"num", "briefs"}
+    latest_overall = None  # {"num", "date", "title", "runLog", "ceoText"}
+
     for cyc in cycles:
         num_m = re.search(r"cycle\s+(\d+)", cyc["title"], re.I)
         if not num_m:
@@ -398,6 +408,7 @@ def main():
         date_m = CYCLE_DATE_RE.search(cyc["title"])
         cyc_date = date_m.group(1) if date_m else None
         sub = sectionize(cyc["body"])
+
         niches_sec = find_section(sub, "niches")
         niches = parse_niches_table(niches_sec["body"]) if niches_sec else []
         if niches:
@@ -406,29 +417,51 @@ def main():
                 "niches": [{"name": n["name"], "status": n["status"], "satLevel": n["satLevel"]}
                            for n in niches],
             })
-            if latest is None or num > latest["num"]:
-                gaps_sec = find_section(sub, "gaps")
-                gaps = parse_gaps_table(gaps_sec["body"]) if gaps_sec else []
-                scores_sec = find_section(sub, "gap scores")
-                scores = parse_gap_scores_table(scores_sec["body"]) if scores_sec else {}
-                briefs_sec = find_section(sub, "design briefs")
-                briefs = parse_briefs(briefs_sec["body"]) if briefs_sec else {}
-                for g in gaps:
-                    g["brief"] = briefs.get(g["rank"])
-                    g["score"] = scores.get(g["rank"])
-                ceo_sec = find_section(sub, "ceo summary")
-                run_log = parse_run_log(ceo_sec["body"]) if ceo_sec else None
-                ceo_text = None
-                if ceo_sec:
-                    ceo_text = RUN_LOG_RE.sub("", ceo_sec["body"]).strip()
-                latest = {
-                    "num": num, "date": cyc_date, "title": cyc["title"],
-                    "niches": niches, "gaps": gaps, "runLog": run_log,
-                    "ceoText": ceo_text,
-                }
+            if latest_niches is None or num > latest_niches["num"]:
+                latest_niches = {"num": num, "niches": niches}
 
-    if latest is None:
+        gaps_sec = find_section(sub, "gaps")
+        gaps = parse_gaps_table(gaps_sec["body"]) if gaps_sec else []
+        if gaps and (latest_gaps is None or num > latest_gaps["num"]):
+            latest_gaps = {"num": num, "gaps": gaps}
+
+        scores_sec = find_section(sub, "gap scores")
+        scores = parse_gap_scores_table(scores_sec["body"]) if scores_sec else {}
+        if scores and (latest_scores is None or num > latest_scores["num"]):
+            latest_scores = {"num": num, "scores": scores}
+
+        briefs_sec = find_section(sub, "design briefs")
+        briefs = parse_briefs(briefs_sec["body"]) if briefs_sec else {}
+        if briefs and (latest_briefs is None or num > latest_briefs["num"]):
+            latest_briefs = {"num": num, "briefs": briefs}
+
+        ceo_sec = find_section(sub, "ceo summary")
+        if ceo_sec and (latest_overall is None or num > latest_overall["num"]):
+            run_log = parse_run_log(ceo_sec["body"])
+            ceo_text = RUN_LOG_RE.sub("", ceo_sec["body"]).strip()
+            latest_overall = {
+                "num": num, "date": cyc_date, "title": cyc["title"],
+                "runLog": run_log, "ceoText": ceo_text,
+            }
+
+    if latest_niches is None:
         raise TrackerParseError("no cycle with a parseable Niches table was found")
+    if latest_overall is None:
+        raise TrackerParseError("no cycle with a parseable CEO Summary was found")
+
+    scores = (latest_scores or {}).get("scores", {})
+    briefs = (latest_briefs or {}).get("briefs", {})
+    gaps = list((latest_gaps or {}).get("gaps", []))
+    for g in gaps:
+        g["brief"] = briefs.get(g["rank"])
+        g["score"] = scores.get(g["rank"])
+
+    latest = {
+        "num": latest_overall["num"], "date": latest_overall["date"], "title": latest_overall["title"],
+        "niches": latest_niches["niches"], "gaps": gaps,
+        "runLog": latest_overall["runLog"], "ceoText": latest_overall["ceoText"],
+        "dataAsOfCycle": latest_niches["num"],
+    }
 
     next_scheduled = None
     if latest["runLog"] and latest["runLog"]["nextScheduled"]:
@@ -455,7 +488,10 @@ def main():
 
     data = {
         "generatedAt": datetime.datetime.now().isoformat(timespec="seconds"),
-        "cycle": {"number": latest["num"], "date": latest["date"], "title": latest["title"]},
+        "cycle": {
+            "number": latest["num"], "date": latest["date"], "title": latest["title"],
+            "dataAsOfCycle": latest["dataAsOfCycle"] if latest["dataAsOfCycle"] != latest["num"] else None,
+        },
         "pipeline": {
             "lastRun": (latest["runLog"] or {}).get("completed") or latest["date"],
             "nextScheduled": next_scheduled,

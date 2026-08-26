@@ -826,7 +826,8 @@ function initEarnings(){
 }
 
 document.getElementById('meta-line').textContent =
-  `Cycle ${DATA.cycle.number} — ${DATA.cycle.date || ''} · generated ${DATA.generatedAt.replace('T', ' ')}`;
+  `Cycle ${DATA.cycle.number} — ${DATA.cycle.date || ''} · generated ${DATA.generatedAt.replace('T', ' ')}` +
+  (DATA.cycle.dataAsOfCycle ? ` · niche/gap data as of Cycle ${DATA.cycle.dataAsOfCycle} (unchanged since)` : '');
 renderTypeFilters();
 renderNiches();
 document.getElementById('gap-grid').innerHTML = DATA.gaps.slice().sort((a, b) => a.rank - b.rank).map(gapCardHTML).join('');
