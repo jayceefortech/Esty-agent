@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-08-26T13:35:58",
+  "generatedAt": "2026-08-27T13:27:33",
   "cycle": {
-    "number": 6,
-    "date": "2026-08-26",
-    "title": "Cycle 6 \u2014 2026-08-26",
-    "dataAsOfCycle": null
+    "number": 7,
+    "date": "2026-08-27",
+    "title": "Cycle 7 \u2014 2026-08-27",
+    "dataAsOfCycle": 6
   },
   "pipeline": {
-    "lastRun": "2026-08-26",
-    "nextScheduled": "2026-08-27",
+    "lastRun": "2026-08-27",
+    "nextScheduled": "2026-08-28",
     "agents": [
       {
         "name": "Trend Scout",
-        "status": "success",
-        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session"
+        "status": "skipped",
+        "detail": "see scope reasoning below"
       },
       {
         "name": "Phrase Miner",
         "status": "skipped",
-        "detail": "no scored gap opened this cycle"
+        "detail": "new gap has no formula coverage yet \u2014 deferred, same as Gap 6"
       },
       {
         "name": "Gap Finder",
-        "status": "skipped",
-        "detail": "a single new niche isn't yet an intersection to score"
+        "status": "success",
+        "detail": "evaluated whether Cycle 6's new \"romantasy reader mug\" niche pairs with anything tracked into a genuine gap"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`, no gap opened"
+        "detail": "no `ETSY_API_KEY`, no brief queued this cycle"
       },
       {
         "name": "Design Briefer",
         "status": "skipped",
-        "detail": "no gap to brief"
+        "detail": "new gap not yet briefed \u2014 deferred pending Phrase Miner/Review Miner grounding"
       }
     ],
-    "summary": "**Scope decision: partial recheck, not a second consecutive skip.** No CEO Summary existed yet for today. Every carried-over follow-up item (Gap 6's retire/keep call, sticker pricing comps, the near-miss gap requery) is still genuinely blocked today for the same unchanged reasons Cycle 5 already established, so re-running any of those again would only reproduce facts already on record. Per the scheduling note's own guidance, a new calendar day is reason enough to at least consider a fresh Trend Scout pass \u2014 so instead of a second documented skip, I sent Trend Scout after six candidate micro-niches this pipeline has never looked at before (none overlapping the 13 tracked niches or the two already-investigated threads \u2014 mental-health \u00d7 plant-parent, Gap 6).\n\n**Finding: five of six candidates are already mature/saturated, one shows real early-stage signal.**\n- **Dark academia \u00d7 cat lover** (t-shirts) \u2014 real multi-seller signal, but already past early-stage.\n- **Cottagecore witch home decor** (wall art) \u2014 Etsy already auto-generates dedicated `/market/...` taxonomy pages for this exact term; in this pipeline's experience that only happens once a term has sustained real search volume, so this reads as established, not emerging.\n- **Y2K revival stickers** (stickers) \u2014 same tell: multiple existing Etsy market taxonomy pages.\n- **Plant dad merch** (t-shirts/mugs/stickers) \u2014 same market-taxonomy tell as the two above.\n- **Side hustle \u00d7 sarcasm shirt** (t-shirts) \u2014 no coherent distinct-niche signal at all; reads as keyword overlap between two already-large broad categories, not a real micro-niche. Not carrying this forward as a candidate.\n- **Cozy fantasy / \"romantasy\" reader mug** (mugs) \u2014 the one candidate that reads as genuinely early-stage: current book-genre trend language (\"romantasy,\" \"cozy fantasy,\" fae-realm imagery) tied to a real, resolvable listing, and \u2014 unlike the other four active ones \u2014 Etsy hasn't yet built a dedicated market taxonomy page for this specific phrase.\n\n**Decision: logging \"Cozy fantasy / romantasy reader mug\" as a new tracked niche, status `unresolved`** (search-verified existence only \u2014 no `ETSY_API_KEY` means no computed listing count, no price, no image, no review count; all correctly `NO DATA AVAILABLE` per the no-fabrication rule, not estimated \u2014 see updated Niches table below, appended as row 14). This is routine logging, not a retirement, so it proceeds without flagging. **Not sending Phrase Miner/Gap Finder/Review Miner/Design Briefer after it this cycle** \u2014 it's a single fresh niche, not yet an underserved *intersection* with anything else tracked, and Gap Finder's rubric needs real opportunity/cost data this cycle's search-only pass can't supply. Candidate for a future cycle's Gap Finder pass once the API key is live or it pairs with something else tracked into a genuine intersection.\n\n**\u26a0\ufe0f Real finding, not a niche/gap call: the live dashboard has been silently stale for 5 days.** While reviewing today's data before writing it, I found that `generate_dashboard.py`'s cycle-selection logic only advanced its \"latest cycle\" pointer when a cycle section contained its own `### Niches` table. Cycles 2\u20135 correctly *didn't* re-emit that table each day (nothing about the niches list itself changed \u2014 re-stating it would've been redundant), but that meant the generator kept silently treating **Cycle 1 (2026-08-21) as \"latest\"** for the CEO Summary and pipeline-status data shown on the live site \u2014 confirmed directly: before today's fix, `index.html` still contained Cycle 1's \"flagged 2026-08-19\" text and none of Cycle 5's \"documented skip\" language, even though `git log` confirms Cycles 2\u20135 were correctly committed *and pushed* to `origin/main` days ago. **This was a real dashboard bug, not a git/push failure** \u2014 the data was safely in `niche-tracker.md` and on GitHub the whole time, it just never reached the rendered site. Fixed today in `generate_dashboard.py` \u2014 it now tracks the most recent CEO Summary, Niches table, Gaps table, Gap Scores table, and Design Briefs each independently (whichever cycle most recently redefined that specific piece), instead of requiring one cycle to redefine everything at once just to update its CEO narrative. This is also why today's Niches table below could add one new row without needing to retype the Gaps/Scores/Briefs tables too \u2014 they correctly carry forward from Cycle 1 on their own now. Also updated `dashboard_template.html` to note on-page when niche data is carried forward from an earlier cycle than the CEO narrative. Verified the fix locally before regenerating today's `index.html`: re-running the generator against the tracker as it stood *before* today's edits now correctly surfaces Cycle 5's actual CEO Summary instead of Cycle 1's. This is a mechanical parsing fix per this repo's own rule that dashboard bugs get fixed in the generator, not hand-patched into the generated file \u2014 not a niche/gap judgment call, so it proceeds without flagging.\n\n**report.html was not updated this cycle** (consistent with Cycles 2\u20135) \u2014 it's a point-in-time snapshot from Cycle 1's real-API refresh and, unlike `index.html`, isn't actually parsed from `niche-tracker.md` by any script (confirmed: `generate_dashboard.py` only mentions it in a comment). `niche-tracker.md` remains the single real source of truth the live dashboard is generated from every cycle.\n\n**Nothing retired, nothing re-scored.** All 13 previously-tracked niches, all 5 non-Gap-6 gaps, Gap 6, and all 5 briefs carry forward unchanged. Only addition this cycle is the one new unresolved niche below, plus the dashboard-generator fix.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the fifth cycle running now (Cycles 2\u20136). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Also now blocking real saturation/price/review data for today's new candidate niche.\n\n**Good news worth surfacing:** now that the dashboard bug is fixed, the live site at https://jayceefortech.github.io/Esty-agent/ will actually show this cycle's real CEO Summary and the days of work from Cycles 2\u20135 that were previously invisible on the public page (they were always safely recorded in this file and on GitHub, just not rendered)."
+    "summary": "**Scope decision: partial recheck, one sub-agent only.** No CEO Summary existed yet for today, so this wasn't a duplicate-run skip. But the two blockers open since Cycle 2 \u2014 no `ETSY_API_KEY`, and your still-pending call on Gap 6 \u2014 are genuinely unchanged today; re-touching either would just restate Cycle 5/6 facts. I did weigh sending Trend Scout after fresh terms again, per the scheduling note's standing guidance to at least consider it on a new day \u2014 but Cycle 6 already ran a fairly thorough 6-candidate sweep yesterday, and the one open thread it left behind (does the new romantasy-mug niche pair with anything already tracked into a real gap \u2014 explicitly listed in Cycle 6's own follow-ups) was higher-value to close out than searching yet more brand-new terms one day later. So this cycle sent only Gap Finder, scoped to that specific question.\n\n**Finding: the obvious pairings are already taken; one narrower gap survives.** Gap Finder checked whether \"cozy fantasy / romantasy reader mug\" forms a genuine underserved intersection with any of the 13 previously-tracked niches (search-only verification \u2014 no API key this cycle either). Castlecore/Knightcore \u00d7 romantasy, Gothmas \u00d7 romantasy, and generic \"cat/dog reading a fantasy book\" mugs are all **already live, multi-seller intersections on Etsy** (specific resolvable listing URLs found for each) \u2014 ruled out, not gaps. ADHD/spoonie \u00d7 cozy-fantasy self-care stickers showed likely overlap too (category-page language, no hard listing URL), weak enough that it's ruled out rather than carried forward on thin evidence. The one candidate that survived four separate targeted searches with zero resolvable listing combining both identity markers: **breed-identity pet-mom mugs \u00d7 romantasy/fantasy-reader identity** (e.g. \"Corgi Mom\" phrasing stacked with \"dragon rider\"/\"romantasy\" phrasing) \u2014 narrower than the obvious \"pet lover reads fantasy\" framing already ruled out, genuinely sparse across the searches run, but still search-only confidence, not an API-confirmed zero. **Logging this as Gap 7** (see updated Gaps and Gap Scores tables below), scored 27/40 \u2014 real Ease of Entry (8) and User Fit (8) for this operator, moderate Market Opportunity (6) and the lowest Profit Potential of any tracked gap (5) given how narrow a breed\u00d7hobby\u00d7genre intersection realistically is. This is routine logging (a new gap, not a retirement), so it proceeds without flagging.\n\n**\u26a0\ufe0f Framing correction, not a retirement call:** Gap Finder's search today surfaced live Etsy market-taxonomy pages at `/market/romantasy_mug` and `/market/romantasy_stickers`. Cycle 6 used the *absence* of exactly this kind of taxonomy page as its signal that \"romantasy reader mug\" was still early-stage (the same tell that ruled out four other candidates that day for being already mature). That signal has apparently shifted in the roughly 24 hours since \u2014 or Trend Scout's search simply didn't surface that URL yesterday. Either way, I'm not treating this as grounds to un-track or retire the niche myself (nothing here says it's saturated, and it's still logged correctly as `unresolved` pending real API data) \u2014 but Cycle 6's \"genuinely early-stage\" framing should be read as weaker than it was written, and I'm flagging that discrepancy explicitly rather than letting it stand uncorrected in the record. No table change needed for this (the niche's `unresolved` status and `NO DATA AVAILABLE` fields were already appropriately conservative); this is a confidence-language correction, captured here in the CEO Summary.\n\n**Design Briefer not sent this cycle.** Gap 7 has neither a Phrase Miner copy/style formula nor Review Miner buyer-language grounding (no `ETSY_API_KEY`, so Review Miner has no real review text to pool) \u2014 writing a brief now would mean inventing positioning language never actually reported, which this pipeline's grounding rule prohibits. Deferred, same pattern as the still-unbriefed Gap 6 stretch entry. Candidate for a future cycle once either a Phrase Miner pass or the API key unblocks Review Miner.\n\n**Nothing retired, nothing removed.** All 13 niches, the 1 niche added in Cycle 6, all 5 previously-briefed gaps, and all 5 briefs carry forward unchanged. Only addition this cycle is Gap 7 below (unbriefed) plus the framing correction above.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the sixth cycle running now (Cycles 2\u20137). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real saturation/price/review data for the romantasy-mug niche and now also for grounding Gap 7's brief."
   },
   "niches": [
     {
@@ -768,7 +768,7 @@ const DATA = {
         "userFit": 9,
         "profitPotential": 7,
         "total": 32,
-        "rationale": "**Highest-scoring gap this cycle.** Functionally open gap between two solid niches (598 + 152 listings), strong review grounding (43 + 15 reviews), sticker-first entry with a tee upsell, and \u2014 unlike Gap 3 \u2014 no seasonality cap, so volume can be sustained year-round (sponsor/sponsee gifting, sobriety-anniversary milestones happen every month)."
+        "rationale": "**Highest-scoring gap.** Functionally open gap between two solid niches (598 + 152 listings), strong review grounding (43 + 15 reviews), sticker-first entry with a tee upsell, and \u2014 unlike Gap 3 \u2014 no seasonality cap, so volume can be sustained year-round (sponsor/sponsee gifting, sobriety-anniversary milestones happen every month)."
       }
     },
     {
@@ -799,7 +799,7 @@ const DATA = {
         "userFit": 9,
         "profitPotential": 4,
         "total": 28,
-        "rationale": "Fully open gap (0 listings) with strong review grounding on both sides (52 + 43 reviews), easy sticker entry, but the design brief's own audience note (\"smaller, more specific audience\") caps realistic volume \u2014 lowest Profit Potential of the five briefed gaps despite otherwise strong scores."
+        "rationale": "Fully open gap (0 listings) with strong review grounding on both sides (52 + 43 reviews), easy sticker entry, but the design brief's own audience note (\"smaller, more specific audience\") caps realistic volume \u2014 lowest Profit Potential among the five briefed gaps despite otherwise strong scores."
       }
     },
     {
@@ -819,6 +819,25 @@ const DATA = {
         "profitPotential": 3,
         "total": 20,
         "rationale": "Lowest total, consistent with Gap Finder's own original \"weakest entry\" note \u2014 verification was never re-queried this cycle (still inferred) and no Phrase Miner formula exists for this sub-angle, so both the opportunity and the entry cost are unverified."
+      }
+    },
+    {
+      "rank": 7,
+      "rankLabel": "7 (new, unbriefed)",
+      "name": "Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
+      "verification": "**0** matching listings across 4 search-only query variants this cycle (no `ETSY_API_KEY` \u2014 see CEO Summary; not an API-confirmed zero) \u2014 confirmed sparse at search-only confidence",
+      "risk": "audience-merge unconfirmed (two real audiences, no confirmed combined-buyer data); scaling across many breeds multiplies illustration cost without a template system",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": null,
+      "score": {
+        "marketOpportunity": 6,
+        "easeOfEntry": 8,
+        "userFit": 8,
+        "profitPotential": 5,
+        "total": 27,
+        "rationale": "0 resolvable listings across 4 search-only query variants, sitting between one real-listing-count niche (pet breed combo mugs, 152 listings tracked) and one trending but still search-only-verified niche (romantasy mug). Ease of Entry and User Fit score well \u2014 static design, no personalization required, scriptable across breeds via Printify variants. Profit Potential is the lowest of any tracked gap: this is a niche-within-a-niche-within-a-niche (specific breed \u00d7 hobby \u00d7 book genre), so even at decent margin the realistic addressable audience ceiling is narrow. Market Opportunity capped at 6, not higher, because neither side's true overlap size is API-confirmed this cycle."
       }
     }
   ],
@@ -1281,6 +1300,21 @@ const DATA = {
         "url": null,
         "r": 30,
         "score": 20
+      },
+      {
+        "id": "gap:7:Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
+        "kind": "gap",
+        "label": "Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
+        "name": "Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
+        "category": null,
+        "color": "#94a3b8",
+        "satLevel": null,
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 32,
+        "score": 27
       }
     ],
     "links": [
@@ -1340,6 +1374,11 @@ const DATA = {
         "weight": 1
       },
       {
+        "source": "niche:Pet breed + hobby combo mugs",
+        "target": "gap:7:Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
+        "weight": 2
+      },
+      {
         "source": "niche:Tumbler general (teachers/nurses/moms)",
         "target": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
         "weight": 2
@@ -1353,6 +1392,11 @@ const DATA = {
         "source": "niche:Tumbler general (teachers/nurses/moms)",
         "target": "gap:4:Sobriety \u00d7 pet-mom stickers/shirts",
         "weight": 1
+      },
+      {
+        "source": "niche:Cozy fantasy / \"romantasy\" reader mug",
+        "target": "gap:7:Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
+        "weight": 4
       }
     ]
   },
