@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-08-27T13:27:33",
+  "generatedAt": "2026-08-28T13:32:35",
   "cycle": {
-    "number": 7,
-    "date": "2026-08-27",
-    "title": "Cycle 7 \u2014 2026-08-27",
+    "number": 8,
+    "date": "2026-08-28",
+    "title": "Cycle 8 \u2014 2026-08-28",
     "dataAsOfCycle": 6
   },
   "pipeline": {
-    "lastRun": "2026-08-27",
-    "nextScheduled": "2026-08-28",
+    "lastRun": "2026-08-28",
+    "nextScheduled": "2026-08-29",
     "agents": [
       {
         "name": "Trend Scout",
-        "status": "skipped",
-        "detail": "see scope reasoning below"
+        "status": "success",
+        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session"
       },
       {
         "name": "Phrase Miner",
-        "status": "skipped",
-        "detail": "new gap has no formula coverage yet \u2014 deferred, same as Gap 6"
+        "status": "success",
+        "detail": null
       },
       {
         "name": "Gap Finder",
-        "status": "success",
-        "detail": "evaluated whether Cycle 6's new \"romantasy reader mug\" niche pairs with anything tracked into a genuine gap"
+        "status": "skipped",
+        "detail": "Cycle 7's scores carried forward unchanged \u2014 no new opportunity/cost data this cycle to re-score"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`, no brief queued this cycle"
+        "detail": "no `ETSY_API_KEY`, so no real review text exists to mine"
       },
       {
         "name": "Design Briefer",
-        "status": "skipped",
-        "detail": "new gap not yet briefed \u2014 deferred pending Phrase Miner/Review Miner grounding"
+        "status": "success",
+        "detail": null
       }
     ],
-    "summary": "**Scope decision: partial recheck, one sub-agent only.** No CEO Summary existed yet for today, so this wasn't a duplicate-run skip. But the two blockers open since Cycle 2 \u2014 no `ETSY_API_KEY`, and your still-pending call on Gap 6 \u2014 are genuinely unchanged today; re-touching either would just restate Cycle 5/6 facts. I did weigh sending Trend Scout after fresh terms again, per the scheduling note's standing guidance to at least consider it on a new day \u2014 but Cycle 6 already ran a fairly thorough 6-candidate sweep yesterday, and the one open thread it left behind (does the new romantasy-mug niche pair with anything already tracked into a real gap \u2014 explicitly listed in Cycle 6's own follow-ups) was higher-value to close out than searching yet more brand-new terms one day later. So this cycle sent only Gap Finder, scoped to that specific question.\n\n**Finding: the obvious pairings are already taken; one narrower gap survives.** Gap Finder checked whether \"cozy fantasy / romantasy reader mug\" forms a genuine underserved intersection with any of the 13 previously-tracked niches (search-only verification \u2014 no API key this cycle either). Castlecore/Knightcore \u00d7 romantasy, Gothmas \u00d7 romantasy, and generic \"cat/dog reading a fantasy book\" mugs are all **already live, multi-seller intersections on Etsy** (specific resolvable listing URLs found for each) \u2014 ruled out, not gaps. ADHD/spoonie \u00d7 cozy-fantasy self-care stickers showed likely overlap too (category-page language, no hard listing URL), weak enough that it's ruled out rather than carried forward on thin evidence. The one candidate that survived four separate targeted searches with zero resolvable listing combining both identity markers: **breed-identity pet-mom mugs \u00d7 romantasy/fantasy-reader identity** (e.g. \"Corgi Mom\" phrasing stacked with \"dragon rider\"/\"romantasy\" phrasing) \u2014 narrower than the obvious \"pet lover reads fantasy\" framing already ruled out, genuinely sparse across the searches run, but still search-only confidence, not an API-confirmed zero. **Logging this as Gap 7** (see updated Gaps and Gap Scores tables below), scored 27/40 \u2014 real Ease of Entry (8) and User Fit (8) for this operator, moderate Market Opportunity (6) and the lowest Profit Potential of any tracked gap (5) given how narrow a breed\u00d7hobby\u00d7genre intersection realistically is. This is routine logging (a new gap, not a retirement), so it proceeds without flagging.\n\n**\u26a0\ufe0f Framing correction, not a retirement call:** Gap Finder's search today surfaced live Etsy market-taxonomy pages at `/market/romantasy_mug` and `/market/romantasy_stickers`. Cycle 6 used the *absence* of exactly this kind of taxonomy page as its signal that \"romantasy reader mug\" was still early-stage (the same tell that ruled out four other candidates that day for being already mature). That signal has apparently shifted in the roughly 24 hours since \u2014 or Trend Scout's search simply didn't surface that URL yesterday. Either way, I'm not treating this as grounds to un-track or retire the niche myself (nothing here says it's saturated, and it's still logged correctly as `unresolved` pending real API data) \u2014 but Cycle 6's \"genuinely early-stage\" framing should be read as weaker than it was written, and I'm flagging that discrepancy explicitly rather than letting it stand uncorrected in the record. No table change needed for this (the niche's `unresolved` status and `NO DATA AVAILABLE` fields were already appropriately conservative); this is a confidence-language correction, captured here in the CEO Summary.\n\n**Design Briefer not sent this cycle.** Gap 7 has neither a Phrase Miner copy/style formula nor Review Miner buyer-language grounding (no `ETSY_API_KEY`, so Review Miner has no real review text to pool) \u2014 writing a brief now would mean inventing positioning language never actually reported, which this pipeline's grounding rule prohibits. Deferred, same pattern as the still-unbriefed Gap 6 stretch entry. Candidate for a future cycle once either a Phrase Miner pass or the API key unblocks Review Miner.\n\n**Nothing retired, nothing removed.** All 13 niches, the 1 niche added in Cycle 6, all 5 previously-briefed gaps, and all 5 briefs carry forward unchanged. Only addition this cycle is Gap 7 below (unbriefed) plus the framing correction above.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the sixth cycle running now (Cycles 2\u20137). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real saturation/price/review data for the romantasy-mug niche and now also for grounding Gap 7's brief."
+    "summary": "**Scope decision: partial recheck, three sub-agents.** No CEO Summary existed yet for today. The two blockers open since Cycle 2/3 \u2014 `ETSY_API_KEY` still unset, Gap 6's retire/keep call still pending \u2014 are genuinely unchanged today, so re-touching either would just restate facts already on record. Instead I closed out the one open, unblocked item on Cycle 7's own follow-up list: **\"Gap 7 needs either a Phrase Miner formula pass or Review Miner buyer-language grounding before Design Briefer can responsibly brief it.\"** Review Miner's path stays blocked (no API key, no real review text), but the Phrase Miner path doesn't need the API key \u2014 it works from real search-verified listings. So I sent Trend Scout to gather real listings for Gap 7's two parent niches specifically (not a fresh 13-niche sweep), then Phrase Miner to extract formulas from them, then Design Briefer to write Brief 7.\n\n**Trend Scout: 15 real, resolvable-URL listings gathered (search fallback, no API key \u2014 7th consecutive cycle unset).** 8 for \"Pet breed + hobby combo mugs,\" 7 for \"Cozy fantasy / romantasy reader mug.\" No price/image/review-count/date data was available from search snippets for any of them \u2014 all such fields correctly recorded as unavailable rather than guessed. Trend Scout also flagged a real pattern worth checking: across the 8 pet-breed-mug titles, no listing actually combines a specific breed with a specific hobby \u2014 sellers pick one axis or the other.\n\n**Phrase Miner confirmed Trend Scout's flag, and it's a real finding: this tracked niche's own name is measurably inaccurate.** \"Pet breed + hobby combo mugs\" (tracked since Cycle 1, one of the original 13 niches) has been carried in this tracker as a breed\u00d7hobby combination this whole time. Phrase Miner's read of the real title data says otherwise: the actual combined axis sellers use is **breed identity + parental identity** (Dog Mom/Dad) \u2014 when the product format changes to something hobby-adjacent (e.g. a wine glass instead of a mug), breed specificity disappears entirely and the copy reverts to generic \"dog mom.\" Two supporting examples on file: \"Personalized Pet Gift Dog Mom Wine Glass Dog Lover Gift\" and \"Best Dog Mom Ever Wine Glass Dog Mom Gifts for Her\" \u2014 neither names a breed. **\u26a0\ufe0f Framing correction, not a retirement call** (same category as Cycle 7's romantasy-market-taxonomy correction): I'm not renaming the tracked niche or changing its status/count myself \u2014 that's more than a wording fix and isn't mine to decide unilaterally. I *did* correct Gap 7's own Gap Scores rationale cell below, since leaving a rationale that cites a disproven \"hobby\" axis as fact would let inaccurate reasoning stand uncorrected in the record \u2014 the score itself (5/10 Profit Potential) is unchanged, only the wording explaining it. Flagging here in case you want the niche's name/description in the Niches table formally revised in a future cycle; I'm not doing that on my own read of one search pass.\n\n**Design Briefer wrote Brief 7 \u2014 appropriately hedged, and it correctly declined to fill in what it doesn't know.** Since Gap 7 itself still has zero real combined listings (confirmed in Cycle 7), Design Briefer synthesized the title/description/on-product copy from the two separately-verified formulas above, explicitly labeled as a \"structural hypothesis, not a found pattern\" per Phrase Miner's own honest framing \u2014 not dressed up as more confident than it is. Notably, **Style Direction was left deliberately blank**: neither source niche returned any image data this cycle (no API key, and search snippets don't carry images), so inventing a palette/typography recommendation would have crossed from synthesis into fabrication. The action-path tiers are explicitly gated \u2014 Design Briefer recommends staying at the $100 test tier and not funding the $1,000 scale tier until real signal disproves this gap's own lowest-of-any-tracked-gap Profit Potential score (5/10). Full brief is below.\n\n**Nothing retired, nothing removed.** All 13 niches, all 5 previously-briefed gaps, Gap 6, and Briefs 1\u20136 carry forward unchanged. This cycle's only substantive changes: Brief 7 added, and Gap 7's Gap Scores rationale cell corrected for accuracy (score unchanged).\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u20137) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now six cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 7th consecutive cycle now (Cycles 2\u20138). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real image/price/review data for Brief 7's Style Direction, the romantasy niche's real API pass, the sticker-pricing-comp follow-up, and the near-miss gap requery."
   },
   "niches": [
     {
@@ -823,21 +823,33 @@ const DATA = {
     },
     {
       "rank": 7,
-      "rankLabel": "7 (new, unbriefed)",
+      "rankLabel": "7 (briefed 2026-08-28)",
       "name": "Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
-      "verification": "**0** matching listings across 4 search-only query variants this cycle (no `ETSY_API_KEY` \u2014 see CEO Summary; not an API-confirmed zero) \u2014 confirmed sparse at search-only confidence",
+      "verification": "**0** matching listings across 4 search-only query variants (Cycle 7; no `ETSY_API_KEY` \u2014 not an API-confirmed zero) \u2014 confirmed sparse at search-only confidence",
       "risk": "audience-merge unconfirmed (two real audiences, no confirmed combined-buyer data); scaling across many breeds multiplies illustration cost without a template system",
       "nearMissCount": 0,
       "nearMissUrl": null,
       "nearMissTitle": null,
-      "brief": null,
+      "brief": {
+        "title": "Pet Breed Identity \u00d7 Romantasy/Cozy-Fantasy Reader Mug",
+        "exactText": "\"Custom [Breed] Dog Mom Mug, Fantasy Familiar Design, Romantasy Reader Gift for Dragon Rider Book Lovers\" *(caveat: this exact title has zero real listing precedent \u2014 a mechanical combination of two verified-separately formulas, not something Phrase Miner or Trend Scout observed on a live listing)*",
+        "description": "Your [Breed] isn't just a dog \u2014 she's the loyal, slightly feral companion who'd absolutely survive an enemies-to-lovers arc right alongside you, and she deserves to be on your mug, not just your camera roll. Made for romantasy readers who love their dog like a familiar and want their exact breed represented \u2014 not a generic \"dog mom\" mug that could belong to anyone. Custom breed name (purebred or portmanteau crossbreed) \u2192 your [Breed] gets the same specific recognition as any purebred, no generic \"dog silhouette\" filler. Trope-tag design (Dragon Rider / Fae / Morally Gray, your pick) \u2192 instantly signals your bookish identity to every fellow reader who spots it on your desk. Dishwasher- and microwave-safe ceramic \u2192 survives your actual morning routine, not just the photo. Personalize yours with your dog's breed before your next spicy fantasy read-through \u2014 because your familiar deserves main-character energy too. *(Hook is drafted copy, not a pulled buyer quote \u2014 Review Miner did not run this cycle.)*",
+        "onProduct": "Two synthesized options, neither with real-listing precedent: **\"MY FAMILIAR IS A [BREED NAME]\"** (front, large), or **\"DO NOT DISTURB: BOOK BOYFRIEND & DOG MOM ERA\"** (side wrap, pulling Niche 2's verified \"Do Not Disturb\" framing).",
+        "style": "**Not specified \u2014 insufficient grounding.** Neither source niche returned any image data this cycle (no `ETSY_API_KEY`, and search snippets don't carry images). Producing a palette/typography/iconography recommendation here would be invention, not synthesis, so Design Briefer declined to fill this field. An image-focused Trend Scout/Phrase Miner pass on both source niches is recommended before ordering any physical sample.",
+        "productType": "Mug (11oz ceramic, standard POD default) \u2014 the only product type either source formula names.",
+        "audience": "Romantasy/cozy-fantasy readers (BookTok/Bookstagram-adjacent) who own a specific, nameable dog breed and identify publicly as \"dog mom/dad\" \u2014 narrower than either source niche alone, consistent with Gap Finder's own \"niche-within-a-niche-within-a-niche\" framing.",
+        "price": "$19\u2013$24 (convention-based estimate, **not comp-verified** \u2014 Gap Finder logged 0 resolvable listings for this combined gap, so there is no real comp price to anchor to).",
+        "tier100": "One design commission spanning both formulas (~$35\u201350 on Fiverr), one physical Printify sample mug (~$9\u201313 + shipping), Etsy's $0.20 listing fee, phone-shot listing photos. Total comfortably under $100 \u2014 treat this as a genuine unknown test given the gap's lowest Profit Potential score of any tracked gap, not a formality.",
+        "tier1000": "Recommend staying at the $100 tier until the Tier 1 listing produces real sales or favorite/view signal that disproves the gap's low Market Opportunity/Profit Potential scores. If it does: 3\u20135 popular-breed variants (Golden Retriever, French Bulldog, Australian Shepherd, Corgi, Dachshund) crossed with 2\u20133 trope tags (Dragon Rider, Fae, Morally Gray), a modest $150\u2013300 Etsy Ads test, spot-check samples across variants. Total if funded: ~$300\u2013450.",
+        "tierScale": "Once Tier 1 disproves the low Profit Potential score, a CSV of breed names \u00d7 portmanteau crossbreed names \u00d7 trope tags scripted into Printify's bulk/API tooling, cross-listed to Redbubble/TeePublic once validated on Etsy. Caveat: given the \"niche-within-a-niche-within-a-niche\" framing, automate only after Tier 1/2 signal justifies the addressable audience actually being large enough to matter."
+      },
       "score": {
         "marketOpportunity": 6,
         "easeOfEntry": 8,
         "userFit": 8,
         "profitPotential": 5,
         "total": 27,
-        "rationale": "0 resolvable listings across 4 search-only query variants, sitting between one real-listing-count niche (pet breed combo mugs, 152 listings tracked) and one trending but still search-only-verified niche (romantasy mug). Ease of Entry and User Fit score well \u2014 static design, no personalization required, scriptable across breeds via Printify variants. Profit Potential is the lowest of any tracked gap: this is a niche-within-a-niche-within-a-niche (specific breed \u00d7 hobby \u00d7 book genre), so even at decent margin the realistic addressable audience ceiling is narrow. Market Opportunity capped at 6, not higher, because neither side's true overlap size is API-confirmed this cycle."
+        "rationale": "0 resolvable listings across 4 search-only query variants, sitting between one real-listing-count niche (pet breed combo mugs, 152 listings tracked) and one trending but still search-only-verified niche (romantasy mug). Ease of Entry and User Fit score well \u2014 personalization (breed/name selection) is scriptable via Printify variants. Profit Potential is the lowest of any tracked gap: this is a niche-within-a-niche-within-a-niche \u2014 **corrected 2026-08-28:** the second axis is breed identity \u00d7 book-genre/fandom identity, not breed \u00d7 hobby as originally written; Cycle 8's Phrase Miner pass found the real combined axis in the parent niche is breed \u00d7 parental/gift identity, with no real \"hobby\" pairing pattern on Etsy. The addressable-audience math behind the score is unchanged by this wording fix. Market Opportunity capped at 6, not higher, because neither side's true overlap size is API-confirmed this cycle."
       }
     }
   ],
@@ -1306,12 +1318,12 @@ const DATA = {
         "kind": "gap",
         "label": "Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
         "name": "Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
-        "category": null,
-        "color": "#94a3b8",
+        "category": "mugs",
+        "color": "#fbbf6f",
         "satLevel": null,
         "count": null,
-        "example": null,
-        "price": null,
+        "example": "\"Custom [Breed] Dog Mom Mug, Fantasy Familiar Design, Romantasy Reader Gift for Dragon Rider Book Lovers\" *(caveat: this exact title has zero real listing precedent \u2014 a mechanical combination of two verified-separately formulas, not something Phrase Miner or Trend Scout observed on a live listing)*",
+        "price": "$19\u2013$24 (convention-based estimate, **not comp-verified** \u2014 Gap Finder logged 0 resolvable listings for this combined gap, so there is no real comp price to anchor to).",
         "url": null,
         "r": 32,
         "score": 27
