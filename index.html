@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-08-29T13:22:37",
+  "generatedAt": "2026-08-30T13:15:59",
   "cycle": {
-    "number": 9,
-    "date": "2026-08-29",
-    "title": "Cycle 9 \u2014 2026-08-29",
+    "number": 10,
+    "date": "2026-08-30",
+    "title": "Cycle 10 \u2014 2026-08-30",
     "dataAsOfCycle": 6
   },
   "pipeline": {
-    "lastRun": "2026-08-29",
-    "nextScheduled": "2026-08-30",
+    "lastRun": "2026-08-30",
+    "nextScheduled": "2026-08-31",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 9th consecutive cycle unset; ran a dedicated image-focused pass"
+        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 9th consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
-        "status": "success",
-        "detail": null
+        "status": "skipped",
+        "detail": "no new/rising candidate this cycle to extract formulas from"
       },
       {
         "name": "Gap Finder",
         "status": "skipped",
-        "detail": "no new opportunity/cost data this cycle to re-score"
+        "detail": "no new niche or intersection this cycle to score"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`, so no real review text exists to mine"
+        "detail": "no `ETSY_API_KEY`; no new niche needing buyer-language grounding"
       },
       {
         "name": "Design Briefer",
-        "status": "success",
-        "detail": "updated one field only \u2014 Brief 7's Style Direction \u2014 all other briefs unchanged"
+        "status": "skipped",
+        "detail": "nothing to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, three sub-agents, one field updated.** No CEO Summary existed yet for today. The two blockers open since Cycles 2/3 \u2014 `ETSY_API_KEY` still unset, Gap 6's retire/keep call still pending \u2014 are genuinely unchanged today, so re-touching either would only restate facts already on record. Cycle 8 left one concrete, unblocked open item: \"an image-focused Trend Scout/Phrase Miner pass on Brief 7's two source niches would let Style Direction be filled in responsibly.\" I ran exactly that today instead of a fresh 13-niche sweep or a second documented skip.\n\n**Trend Scout: definitively confirmed no image data is retrievable via this pipeline's tools \u2014 a real, tested result, not a carried-forward assumption.** Re-checked `ETSY_API_KEY` fresh (still unset, confirmed empty \u2014 length 0). Ran a dedicated pass across 6 `site:etsy.com` search-fallback queries specifically checking whether WebSearch results ever carry image/thumbnail metadata for either of Brief 7's two source niches (pet-breed-identity mugs, romantasy/cozy-fantasy reader mugs). They don't: every result across all 6 queries returned a title plus text summary only, never an image field \u2014 this closes an open question definitively (Trend Scout has no page-fetch/browse tool) rather than leaving it as an assumption carried since Cycle 8. Along the way it also surfaced 13 additional real, resolvable `etsy.com/listing/...` URLs (5 for the pet-breed niche, 8 for the romantasy niche) beyond what Cycle 8 had gathered, plus real descriptive text pulled directly from listing titles/descriptions (never from an image) \u2014 e.g. \"simple, classy doodle of your pet's face,\" \"personalized watercolor photo pet pottery mug,\" \"lavender dragon wrapped in a soft blanket... surrounded by florals, candlelight, and books,\" \"hand-drawn female fairy with luminescent wings.\" No API error to report (no call was attempted \u2014 key absent, not a failed auth).\n\n**Phrase Miner: a real, honestly-bounded pattern \u2014 but explicitly two incompatible registers, not one formula, and zero evidence for the actual crossover.** Per Phrase Miner's own read, no listing anywhere in the data actually combines pet-breed identity with romantasy/fantasy identity \u2014 everything is drawn from the two parent niches separately, so any merged Style Direction is a synthesis, not an observed pattern. Niche 1 (pet-breed mugs) has only a weak, contradictory signal \u2014 \"doodle line-art\" and \"watercolor portrait\" are two different techniques attested by one example each, and can't be collapsed into one formula. Niche 2 (romantasy mugs) has a moderate signal for \"hand-drawn dragon or fae as central motif\" (3 examples) but splits into two incompatible palettes \u2014 soft pastel/cottagecore vs. darker moody/epic \u2014 each supported by only one example.\n\n**Design Briefer: filled in Brief 7's Style Direction as two explicitly labeled candidate hypotheses rather than one confident spec.** Design Briefer judged the material thin but not so thin it should stay blank \u2014 it wrote two parallel directions (\"Direction A \u2014 Soft/cozy hybrid,\" \"Direction B \u2014 Line-art/doodle hybrid\"), traced each element back to the specific one-or-few real examples backing it, left typography/iconography unspecified where no example supported one, and recommended a manual visual comp scan of real listings as a prerequisite before any design commission \u2014 deliberately declining to pick one direction unilaterally, since that would be a judgment call beyond what the data supports. This is the only change in the restated Design Briefs table below; Briefs 1\u20136 and every other field of Brief 7 are unchanged from Cycle 1/8.\n\n**Nothing retired, nothing re-scored, nothing added as a new niche/gap.** All 13 niches, all 7 gaps, Gap 6 (still unresolved), and Briefs 1\u20136 carry forward unchanged. The only substantive change this cycle is Brief 7's Style Direction field, filled from real (if thin) textual signal instead of left blank.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u20138) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now seven cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 9th consecutive cycle now (Cycles 2\u20139). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real image/price/review data pipeline-wide, including the real visual comp scan that would let Brief 7's Style Direction be resolved with actual evidence instead of a synthesized hypothesis."
+    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. The two blockers open since Cycles 2/3 \u2014 `ETSY_API_KEY` still unset, Gap 6's retire/keep call still pending \u2014 are genuinely unchanged today, so re-touching either would only restate facts already on record. The last fresh scouting pass for brand-new candidate micro-niches was Cycle 6, four days ago. Per the scheduling note's standing guidance to at least consider a fresh Trend Scout pass on a new calendar day, I sent Trend Scout after six new candidate micro-niches this pipeline has never looked at before, rather than running a second consecutive blocked-items-only cycle.\n\n**Finding: all six candidates are already mature/saturated \u2014 a genuinely negative result, reported honestly rather than padded.** Trend Scout confirmed `ETSY_API_KEY` is still unset (empty, length 0) and used the `site:etsy.com` search fallback throughout \u2014 no API error to report, since no call was attempted. It scouted Mob Wife Aesthetic, Menopause/Perimenopause Humor, Cryptidcore/Cryptid Hunter, Coquette/Bowcore Wall Art, Grandmillennial/Cluttercore Maximalist Decor, and Weirdcore/Dreamcore Wall Art. Applying the same maturity tell established in Cycle 6 (a dedicated Etsy `/market/...` taxonomy page indicates sustained volume, i.e. already saturated, not emerging): every single one of the six has multiple `/market/...` sub-pages, and two (menopause_jokes, weirdcore_dreamcore) show deep pagination (page 3 and page 9 respectively) \u2014 the strongest saturation signal this pipeline has seen from a search-only pass. Beyond title/URL, no candidate returned real price, image, review count, or listing-count data (WebSearch snippets don't reliably carry those, and there's no API access this cycle) \u2014 confidence across all six is correctly recorded as unverified, not inferred or real-verified.\n\n**Nothing was added to the tracker, nothing retired, nothing re-scored.** All 14 tracked niches, all 7 gaps, and Briefs 1\u20137 carry forward unchanged (no table restated below since none of them changed this cycle \u2014 per the dashboard-generator fix from Cycle 6, each table independently carries forward from whichever cycle most recently redefined it). Trend Scout itself flagged, correctly, that whether to log six confirmed-real-but-mature candidates as a formal \"ruled out\" record (versus omitting them entirely) was a CEO call, not its own \u2014 logging them below as ruled out, consistent with how Cycle 6's five saturated candidates were handled, so a future cycle doesn't waste a pass re-scouting the same six terms.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u20139) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now eight cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 9th consecutive cycle now (Cycles 2\u201310). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real image/price/review/listing-count data pipeline-wide, including a real check on whether today's six candidates are truly as saturated as their market-page presence suggests."
   },
   "niches": [
     {
