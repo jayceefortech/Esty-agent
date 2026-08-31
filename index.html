@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-08-30T13:15:59",
+  "generatedAt": "2026-08-31T13:35:08",
   "cycle": {
-    "number": 10,
-    "date": "2026-08-30",
-    "title": "Cycle 10 \u2014 2026-08-30",
+    "number": 11,
+    "date": "2026-08-31",
+    "title": "Cycle 11 \u2014 2026-08-31",
     "dataAsOfCycle": 6
   },
   "pipeline": {
-    "lastRun": "2026-08-30",
-    "nextScheduled": "2026-08-31",
+    "lastRun": "2026-08-31",
+    "nextScheduled": "2026-09-01",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 9th consecutive cycle unset"
+        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 10th consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
-        "status": "skipped",
-        "detail": "no new/rising candidate this cycle to extract formulas from"
+        "status": "success",
+        "detail": null
       },
       {
         "name": "Gap Finder",
-        "status": "skipped",
-        "detail": "no new niche or intersection this cycle to score"
+        "status": "success",
+        "detail": null
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`; no new niche needing buyer-language grounding"
+        "detail": "no `ETSY_API_KEY`, so no real review text exists to mine"
       },
       {
         "name": "Design Briefer",
-        "status": "skipped",
-        "detail": "nothing to brief"
+        "status": "success",
+        "detail": null
       }
     ],
-    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. The two blockers open since Cycles 2/3 \u2014 `ETSY_API_KEY` still unset, Gap 6's retire/keep call still pending \u2014 are genuinely unchanged today, so re-touching either would only restate facts already on record. The last fresh scouting pass for brand-new candidate micro-niches was Cycle 6, four days ago. Per the scheduling note's standing guidance to at least consider a fresh Trend Scout pass on a new calendar day, I sent Trend Scout after six new candidate micro-niches this pipeline has never looked at before, rather than running a second consecutive blocked-items-only cycle.\n\n**Finding: all six candidates are already mature/saturated \u2014 a genuinely negative result, reported honestly rather than padded.** Trend Scout confirmed `ETSY_API_KEY` is still unset (empty, length 0) and used the `site:etsy.com` search fallback throughout \u2014 no API error to report, since no call was attempted. It scouted Mob Wife Aesthetic, Menopause/Perimenopause Humor, Cryptidcore/Cryptid Hunter, Coquette/Bowcore Wall Art, Grandmillennial/Cluttercore Maximalist Decor, and Weirdcore/Dreamcore Wall Art. Applying the same maturity tell established in Cycle 6 (a dedicated Etsy `/market/...` taxonomy page indicates sustained volume, i.e. already saturated, not emerging): every single one of the six has multiple `/market/...` sub-pages, and two (menopause_jokes, weirdcore_dreamcore) show deep pagination (page 3 and page 9 respectively) \u2014 the strongest saturation signal this pipeline has seen from a search-only pass. Beyond title/URL, no candidate returned real price, image, review count, or listing-count data (WebSearch snippets don't reliably carry those, and there's no API access this cycle) \u2014 confidence across all six is correctly recorded as unverified, not inferred or real-verified.\n\n**Nothing was added to the tracker, nothing retired, nothing re-scored.** All 14 tracked niches, all 7 gaps, and Briefs 1\u20137 carry forward unchanged (no table restated below since none of them changed this cycle \u2014 per the dashboard-generator fix from Cycle 6, each table independently carries forward from whichever cycle most recently redefined it). Trend Scout itself flagged, correctly, that whether to log six confirmed-real-but-mature candidates as a formal \"ruled out\" record (versus omitting them entirely) was a CEO call, not its own \u2014 logging them below as ruled out, consistent with how Cycle 6's five saturated candidates were handled, so a future cycle doesn't waste a pass re-scouting the same six terms.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u20139) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now eight cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 9th consecutive cycle now (Cycles 2\u201310). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real image/price/review/listing-count data pipeline-wide, including a real check on whether today's six candidates are truly as saturated as their market-page presence suggests."
+    "summary": "**Scope decision: partial recheck, four sub-agents.** No CEO Summary existed yet for today. The two blockers open since Cycles 2/3 \u2014 `ETSY_API_KEY` still unset, Gap 6's retire/keep call still pending \u2014 are genuinely unchanged today, so re-touching either would only restate facts already on record. Cycle 10's own follow-up explicitly recommended narrower micro-intersections (a hobby/identity crossed with an aesthetic) over the broad aesthetic terms that all six of Cycle 10's candidates turned out to be saturated on. I sent Trend Scout after exactly three such narrower candidates \u2014 one already-queued item from the backlog (\"Plants RX\" mock-prescription execution) and two new ones (dog-breed \u00d7 profession \u00d7 parent-identity; horse-girl \u00d7 dark academia) \u2014 then, unlike Cycle 10, this pass surfaced real signal worth carrying through the rest of the pipeline, so I continued to Phrase Miner, Gap Finder, and Design Briefer rather than stopping at Trend Scout alone.\n\n**Finding: two of three candidates cleared the bar as genuine, scoreable gaps; one stayed correctly unscored on thin data.** All three investigations used the search fallback only (`ETSY_API_KEY` confirmed unset, empty, length 0 \u2014 no API error, since no call was attempted) \u2014 every listing cited below is real and resolvable by URL, but none carries price/image/review-count data.\n\n- **Candidate 1 \u2014 \"Plants RX\" mock-prescription-label execution:** Trend Scout found exactly one real listing in this specific execution style (an \"antidepressants gag jar\" sticker), which Phrase Miner correctly flagged as too thin (n=1) to extract a formula from. Gap Finder declined to score it \u2014 the one data point found is actually a different execution (an \"antidepressants\" gag) from the originally-flagged narrower angle (\"plant care instructions formatted as a literal Rx label\"), which remains completely untested either way, and the one adjacent execution found sits next to Etsy market pages Trend Scout describes as mature and page-6-deep, a real signal cutting against rather than for freshness here. **Not added as a gap** \u2014 correctly reported as not-yet-scoreable rather than forced into a number.\n- **Candidate 2 \u2192 Gap 8 \u2014 Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament:** Real, verified demand exists on all three individual axes (breed\u00d7parent, profession\u00d7parent, breed\u00d7profession are each separately mature Etsy market categories with multiple dedicated pages), but Gap Finder independently spot-checked two breed/profession combinations itself and found **zero** listings combining all three in one title \u2014 corroborating Trend Scout's original finding rather than just relaying it. Scored **28/40** (Market Opportunity 6, Ease of Entry 8, User Fit 8, Profit Potential 6). Real risk flagged by Gap Finder: stacking three identity axes may narrow the addressable buyer for that exact SKU below what two-axis demand would suggest \u2014 this is a genuine open question, not a proven opportunity. Mug format recommended over ornament (year-round vs. Q4-only).\n- **Candidate 3 \u2192 Gap 9 \u2014 Equestrian-imagery \u00d7 dark-academia wall art/prints:** No dedicated Etsy market page exists for this intersection across 3 phrasing variants tested, but 3 real, resolvable listings (all wall-art/prints) already sell in exactly this moody-Victorian-equestrian space \u2014 early/thin, not virgin territory, and Phrase Miner's strongest evidence base of the three candidates (3/3 examples support the same title and visual-style formula). Scored **28/40** (Market Opportunity 6, Ease of Entry 7, User Fit 8, Profit Potential 7). **Important reframe, not the originally-proposed angle:** Trend Scout could not find any listing using youth/hobbyist \"horse girl\" identity language crossed with dark academia \u2014 every real example found is equestrian-imagery-as-decor (horse/rider paintings in a moody gothic style), not identity-driven horse-girl merch. I renamed the gap accordingly rather than scoring the unverified identity-driven angle as if it were the same thing; the identity-driven \"horse girl\" angle itself remains a genuinely open, unscored candidate for a future cycle.\n\n**Design Briefer wrote Brief 8 and Brief 9, both explicitly hedged where the evidence is thin.** Brief 8's exact combined title/on-product copy has zero real-listing precedent (it merges a 2-example pattern with a 1-example pattern) and is labeled a synthesized hypothesis throughout, same as Brief 7's precedent; its Style Direction field was left blank rather than invented, since Phrase Miner reported no visual-style formula for this gap. Brief 9's title and visual-style direction are both grounded in the strong 3/3 real-listing pattern and are correspondingly more confident, but its description and target-audience framing explicitly stick to the decor angle rather than assuming unverified horse-girl identity positioning. Neither brief uses Review Miner findings (not run this cycle, no API key) \u2014 no buyer-language quotes were invented to fill that gap.\n\n**Nothing retired, nothing removed, nothing re-scored among prior entries.** All 13 niches, Gaps 1\u20137 and their scores, Gap 6 (still unresolved), and Briefs 1\u20137 carry forward unchanged. This cycle's only substantive additions: Gap 8 + Brief 8, Gap 9 + Brief 9 (renamed from the original \"horse girl\" framing per the finding above), plus Candidate 1 logged as not-yet-scoreable (not a gap, not ruled out) in the follow-ups below.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201310) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now nine cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 10th consecutive cycle now (Cycles 2\u201311). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real price/image/review/listing-count verification for both new gaps, including a real check on whether Gap 8's triple-identity-stack risk is as narrow as Gap Finder's search-only spot-check suggests."
   },
   "niches": [
     {
@@ -799,7 +799,7 @@ const DATA = {
         "userFit": 9,
         "profitPotential": 4,
         "total": 28,
-        "rationale": "Fully open gap (0 listings) with strong review grounding on both sides (52 + 43 reviews), easy sticker entry, but the design brief's own audience note (\"smaller, more specific audience\") caps realistic volume \u2014 lowest Profit Potential among the five briefed gaps despite otherwise strong scores."
+        "rationale": "Fully open gap (0 listings) with strong review grounding on both sides (52 + 43 reviews), easy sticker entry, but the design brief's own audience note (\"smaller, more specific audience\") caps realistic volume \u2014 lowest Profit Potential among the original five briefed gaps despite otherwise strong scores."
       }
     },
     {
@@ -835,7 +835,7 @@ const DATA = {
         "exactText": "\"Custom [Breed] Dog Mom Mug, Fantasy Familiar Design, Romantasy Reader Gift for Dragon Rider Book Lovers\" *(caveat: this exact title has zero real listing precedent \u2014 a mechanical combination of two verified-separately formulas, not something Phrase Miner or Trend Scout observed on a live listing)*",
         "description": "Your [Breed] isn't just a dog \u2014 she's the loyal, slightly feral companion who'd absolutely survive an enemies-to-lovers arc right alongside you, and she deserves to be on your mug, not just your camera roll. Made for romantasy readers who love their dog like a familiar and want their exact breed represented \u2014 not a generic \"dog mom\" mug that could belong to anyone. Custom breed name (purebred or portmanteau crossbreed) \u2192 your [Breed] gets the same specific recognition as any purebred, no generic \"dog silhouette\" filler. Trope-tag design (Dragon Rider / Fae / Morally Gray, your pick) \u2192 instantly signals your bookish identity to every fellow reader who spots it on your desk. Dishwasher- and microwave-safe ceramic \u2192 survives your actual morning routine, not just the photo. Personalize yours with your dog's breed before your next spicy fantasy read-through \u2014 because your familiar deserves main-character energy too. *(Hook is drafted copy, not a pulled buyer quote \u2014 Review Miner did not run this cycle.)*",
         "onProduct": "Two synthesized options, neither with real-listing precedent: **\"MY FAMILIAR IS A [BREED NAME]\"** (front, large), or **\"DO NOT DISTURB: BOOK BOYFRIEND & DOG MOM ERA\"** (side wrap, pulling Niche 2's verified \"Do Not Disturb\" framing).",
-        "style": "**Synthesized hypothesis, not an observed pattern \u2014 updated 2026-08-29.** No listing in the actual pet-breed \u00d7 romantasy intersection was found in any Trend Scout pass, including a dedicated image-focused pass run this cycle that came back with zero real image data. Everything below is stitched together from two separate parent niches, each itself split into two incompatible registers on 1\u20133 examples \u2014 treat as two candidate directions to check against real comps (a manual visual scan of actual listings), not as comp-verified art direction. **Direction A \u2014 Soft/cozy hybrid:** watercolor-style portrait of the pet's face with a subtle synthesized fantasy-creature accent (small wings or soft glow \u2014 this fusion itself is not attested in any real listing); soft pastel palette (lavender, blush, warm gold, drawn from one real \"lavender dragon... candlelight\" example); florals and candlelight as secondary elements (from the same real example). **Direction B \u2014 Line-art/doodle hybrid:** simple line-doodle of the pet's face with small fae/dragon sparkle accents (drawn from one real \"diamond sparkle\" fae example); higher-contrast palette (from one real \"black dragon/gold dragon over mountains\" example, treat as a single data point); optional \"peekaboo\" partial-pet framing behind a castle motif (combining one real Niche 1 layout term with one real recurring Niche 2 motif \u2014 the specific combination is synthesized, not observed). Typography/iconography intentionally left unspecified in both directions \u2014 no real example in either niche's data supports a specific lettering style or icon set. Recommend treating a manual visual comp scan of real pet-breed-mug and romantasy-mug listings as a Tier-1 prerequisite before committing to either direction.",
+        "style": "**Synthesized hypothesis, not an observed pattern.** No listing in the actual pet-breed \u00d7 romantasy intersection was found in any Trend Scout pass, including a dedicated image-focused pass. Everything below is stitched together from two separate parent niches, each itself split into two incompatible registers on 1\u20133 examples \u2014 treat as two candidate directions to check against real comps (a manual visual scan of actual listings), not as comp-verified art direction. **Direction A \u2014 Soft/cozy hybrid:** watercolor-style portrait of the pet's face with a subtle synthesized fantasy-creature accent (small wings or soft glow \u2014 this fusion itself is not attested in any real listing); soft pastel palette (lavender, blush, warm gold, drawn from one real \"lavender dragon... candlelight\" example); florals and candlelight as secondary elements (from the same real example). **Direction B \u2014 Line-art/doodle hybrid:** simple line-doodle of the pet's face with small fae/dragon sparkle accents (drawn from one real \"diamond sparkle\" fae example); higher-contrast palette (from one real \"black dragon/gold dragon over mountains\" example, treat as a single data point); optional \"peekaboo\" partial-pet framing behind a castle motif (combining one real Niche 1 layout term with one real recurring Niche 2 motif \u2014 the specific combination is synthesized, not observed). Typography/iconography intentionally left unspecified in both directions \u2014 no real example in either niche's data supports a specific lettering style or icon set. Recommend treating a manual visual comp scan of real pet-breed-mug and romantasy-mug listings as a Tier-1 prerequisite before committing to either direction.",
         "productType": "Mug (11oz ceramic, standard POD default) \u2014 the only product type either source formula names.",
         "audience": "Romantasy/cozy-fantasy readers (BookTok/Bookstagram-adjacent) who own a specific, nameable dog breed and identify publicly as \"dog mom/dad\" \u2014 narrower than either source niche alone, consistent with Gap Finder's own \"niche-within-a-niche-within-a-niche\" framing.",
         "price": "$19\u2013$24 (convention-based estimate, **not comp-verified** \u2014 Gap Finder logged 0 resolvable listings for this combined gap, so there is no real comp price to anchor to).",
@@ -849,7 +849,69 @@ const DATA = {
         "userFit": 8,
         "profitPotential": 5,
         "total": 27,
-        "rationale": "0 resolvable listings across 4 search-only query variants, sitting between one real-listing-count niche (pet breed combo mugs, 152 listings tracked) and one trending but still search-only-verified niche (romantasy mug). Ease of Entry and User Fit score well \u2014 personalization (breed/name selection) is scriptable via Printify variants. Profit Potential is the lowest of any tracked gap: this is a niche-within-a-niche-within-a-niche \u2014 **corrected 2026-08-28:** the second axis is breed identity \u00d7 book-genre/fandom identity, not breed \u00d7 hobby as originally written; Cycle 8's Phrase Miner pass found the real combined axis in the parent niche is breed \u00d7 parental/gift identity, with no real \"hobby\" pairing pattern on Etsy. The addressable-audience math behind the score is unchanged by this wording fix. Market Opportunity capped at 6, not higher, because neither side's true overlap size is API-confirmed this cycle."
+        "rationale": "0 resolvable listings across 4 search-only query variants, sitting between one real-listing-count niche (pet breed combo mugs, 152 listings tracked) and one trending but still search-only-verified niche (romantasy mug). Ease of Entry and User Fit score well \u2014 personalization (breed/name selection) is scriptable via Printify variants. Profit Potential is the lowest of any tracked gap: this is a niche-within-a-niche-within-a-niche \u2014 the second axis is breed identity \u00d7 book-genre/fandom identity (Cycle 8 corrected this from an originally-assumed \"hobby\" framing; score unchanged). Market Opportunity capped at 6, not higher, because neither side's true overlap size is API-confirmed."
+      }
+    },
+    {
+      "rank": 8,
+      "rankLabel": "8 (briefed 2026-08-31)",
+      "name": "Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
+      "verification": "**0** matching listings combining all three axes, across 2 independent search-fallback spot-checks this cycle (\"golden retriever\" nurse mom mug, \"corgi\" teacher dog mom ornament) \u2014 confirmed sparse at search-only confidence; each pairwise axis (breed\u00d7parent, profession\u00d7parent, breed\u00d7profession) separately has multiple mature Etsy market pages",
+      "risk": "triple-identity-stack may over-narrow the addressable buyer for this exact SKU vs. the proven two-axis versions; ornament format is Q4-only (mug format, year-round, is the recommended lead SKU)",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": {
+        "title": "Nurse \u00d7 Golden Retriever \u00d7 Dog-Mom Mug",
+        "exactText": "\"Nurse Dog Mom Mug, Golden Retriever Owner Gift, Nurse by Day Dog Mom by Night\" *(caveat: this exact combination is a synthesized hypothesis, not an observed listing \u2014 it merges a 2-example \"[Profession] + [Parent Role]\" pattern with a 1-example \"Personalized [Breed] Mom\" pattern; no real listing in the data stacks profession + breed + parent-identity together)*",
+        "description": "Between a 12-hour shift and a golden retriever who thinks 6am is optional, most \"dog mom\" mugs don't know which identity to lead with \u2014 so they usually pick neither and end up generic. This one doesn't have to choose. Made for nurses who are dog moms first and coffee-dependent second, and want a mug that says both without a paragraph of disclaimers. Wraparound \"Nurse by Day, Dog Mom by Night\" print \u2192 says the whole identity in one glance, no explaining required. Dishwasher- and microwave-safe ceramic \u2192 survives the break room, not just the display shelf. Personalizable breed callout (Golden Retriever, Lab, etc.) \u2192 actually your dog, not a generic paw silhouette. Grab one before your next shift \u2014 because the coffee's not optional either way. *(Hook is drafted copy, not a pulled buyer quote \u2014 Review Miner did not run this cycle.)*",
+        "onProduct": "Front: \"Nurse by Day, Dog Mom by Night\" (2-example pattern); back/wrap: \"Golden Retriever Mom\" personalization line (1-example pattern). No real-listing precedent combines both lines together on one product.",
+        "style": "**Not specified \u2014 insufficient grounding.** Phrase Miner supplied title-formula evidence only for this gap; no visual-style formula (palette, typography, iconography, layout) was reported. A generic-category styling guess (e.g. stethoscope + paw-print iconography) would be invention, not synthesis, so Design Briefer declined to fill this field.",
+        "productType": "Mug \u2014 Gap Finder's recommended lead SKU (year-round, vs. ornament's Q4-only window).",
+        "audience": "Nurses (or other single-shift-profession workers) who identify as dog moms to a specific breed, buying for themselves or receiving as a gift (Mother's Day, National Nurses Week, birthday).",
+        "price": "$16\u2013$22 (convention-based estimate for a personalized ceramic mug \u2014 not comp-verified, no real price data reported for this niche).",
+        "tier100": "One design commission (~$25\u201340, Fiverr), one physical Printify mug sample (~$8\u201313 + shipping), Etsy listing fee ($0.20). Total: ~$35\u201355.",
+        "tier1000": "Given the explicit triple-stack risk Gap Finder flagged and the middling scores (Market Opportunity 6, Profit Potential 6), keep it small and diagnostic: 2\u20133 profession variants (nurse, teacher, vet tech) \u00d7 2\u20133 breed variants (golden retriever, lab, french bulldog), ~$150\u2013250 in design/samples, a modest $150\u2013250 Etsy Ads test targeting the proven two-axis searches (\"nurse dog mom,\" \"golden retriever mom\") to see if the triple-stack converts at all versus the two-axis versions. Total: ~$400\u2013600.",
+        "tierScale": "Only after Tier 2 disproves the narrow-addressable-market risk. If it does, script a profession \u00d7 breed variable matrix (e.g., 10 professions \u00d7 15 breeds) for automated title/graphic generation, bulk-upload via Printify's API. Do not templatize before validating \u2014 automating an unproven, over-narrow SKU multiplies wasted listing fees rather than revenue."
+      },
+      "score": {
+        "marketOpportunity": 6,
+        "easeOfEntry": 8,
+        "userFit": 8,
+        "profitPotential": 6,
+        "total": 28,
+        "rationale": "Real demand confirmed on all three individual pairwise axes (each separately a mature Etsy market category), and Gap Finder's own two spot-checks corroborated zero listings for the actual triple combination \u2014 but \"mature adjacent markets\" is qualitative this cycle (no listing counts available), and whether two-axis demand transfers to the triple-stack is inferred, not proven, so Market Opportunity is held at 6 rather than higher. Ease of Entry and User Fit both score well \u2014 static, template-able design (breed silhouette + profession icon + text) suits scripted variant generation. Profit Potential capped at 6: per-SKU addressable audience is narrow by construction; mug format (year-round) is favored over ornament (Q4-only) to offset that."
+      }
+    },
+    {
+      "rank": 9,
+      "rankLabel": "9 (briefed 2026-08-31, reframed from \"horse girl aesthetic\")",
+      "name": "Equestrian-imagery \u00d7 dark-academia wall art/prints",
+      "verification": "No dedicated Etsy market page across 3 phrasing variants tested (`horse_girl_dark_academia`, `dark_academia_horse_girl`, `equestrian_dark_academia`); 3 real, resolvable listings confirm sellers already blend the two aesthetics (moody Victorian/gothic equestrian wall art/prints) \u2014 early/thin, not virgin territory",
+      "risk": "this is equestrian-**decor**, not youth \"horse girl\" **identity** apparel/merch \u2014 no title evidence supports identity-driven framing; that narrower angle remains completely untested, flagged separately below",
+      "nearMissCount": null,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": {
+        "title": "Equestrian Dark Academia Wall Art",
+        "exactText": "\"Equestrian Dark Academia Print, Gothic Horse Wall Art, Moody Victorian Digital Download\"",
+        "description": "Most equestrian wall art still defaults to bright, sunlit stable photography or pastel farmhouse prints \u2014 if your space leans moody, Victorian, and a little gothic, the horse art aisle hasn't caught up yet. Made for dark academia and gothic-decor lovers who want equestrian imagery without the bright barn-photo aesthetic that dominates the category. Painterly, vintage-reproduction rendering \u2192 reads like a found Victorian oil painting, not a stock photo cropped into a frame. Deep, moody color treatment (forest green, black, aged brown) \u2192 slots into a dark academia or gothic gallery wall without fighting the palette. Instant digital download \u2192 print tonight at home or a local shop, no shipping wait. Download it tonight and have your gothic equestrian print framed by the weekend. *(Hook is drafted copy, not a pulled buyer quote \u2014 Review Miner did not run this cycle.)*",
+        "onProduct": "None \u2014 unbranded fine-art wall d\u00e9cor, matching the 3 real evidenced examples (pure imagery + title/tag copy, no on-print text overlay reported). Any added text treatment would be an untested addition beyond what Phrase Miner reported.",
+        "style": "Deep, moody, desaturated palette (forest green, black, aged brown/sepia); painterly or vintage-reproduction rendering (brushwork, aged-canvas feel); classical/Victorian equestrian scene-setting (horse-into-water, polo player, thoroughbred portraiture); fine-art print composition with generous margin for standard frame sizes; minimal to no text overlay. *(Text-inferred from titles/descriptions only \u2014 no actual images were reviewed this cycle, no `ETSY_API_KEY`.)*",
+        "productType": "Wall art \u2014 digital download primary, mailed physical print as secondary variant.",
+        "audience": "Dark academia / gothic home-decor enthusiasts (skews 20s\u201330s, apartment/rental gallery-wall builders) drawn to the aesthetic tag, not necessarily equestrians or riders \u2014 decor-driven, not identity-driven, per Gap Finder's explicit reframe away from \"horse girl\" identity language.",
+        "price": "$8\u2013$12 digital download; $18\u2013$28 if a mailed physical print variant is offered (convention-based estimate \u2014 not comp-verified, no real prices reported this cycle).",
+        "tier100": "One design commission for a single dark-academia equestrian scene (~$30\u201350, Fiverr). No physical sample strictly required for a digital-only listing; add one Printify print sample (~$15\u201325) if testing the mailed variant too. Etsy listing fees for both variants (~$0.40). Total: well under $100.",
+        "tier1000": "Strongest evidence base of the two new gaps (3/3) and scores support real investment (Ease of Entry 7, User Fit 8). Commission 4\u20136 additional scene variants matching the evidenced subject range (horse-into-lake, polo player, thoroughbred portrait, one more gothic scene) at ~$40\u201360 each (~$200\u2013300); run a $300\u2013400 Etsy Ads test splitting budget across the evidenced keyword tags (\"dark academia,\" \"gothic wall art,\" \"equestrian print\"); a handful of physical print samples across 2\u20133 sizes to check print/color fidelity (~$100\u2013150). Total: ~$650\u2013850.",
+        "tierScale": "Strongest automation fit in this cycle \u2014 near-zero marginal cost per new digital SKU. Script a template pipeline that swaps scene/subject and color-treatment variables to batch-generate a themed collection (10\u201315 equestrian dark-academia scenes); use Printify's bulk/API tooling to auto-generate digital + mailed-print SKU variants per scene; once initial sales validate demand, cross-list validated designs to other print-on-demand/digital-download marketplaces."
+      },
+      "score": {
+        "marketOpportunity": 6,
+        "easeOfEntry": 7,
+        "userFit": 8,
+        "profitPotential": 7,
+        "total": 28,
+        "rationale": "Strongest evidence base of the two new gaps (3/3 real listings support both a title/copy formula and a visual-style formula) \u2014 real transacting demand confirmed on both source aesthetics separately, but Market Opportunity held at 6 rather than higher since 3 active listings means some real competition already exists, not a genuinely near-empty (0-1) gap. Ease of Entry and User Fit both score well for a technical/automation-minded operator \u2014 digital-download wall art has near-zero marginal cost and is highly batchable. Profit Potential highest of the two new gaps (7): digital downloads carry no per-unit Printify cost and no seasonality, though the true dual-aesthetic-audience is narrower than either parent niche alone."
       }
     }
   ],
@@ -1327,6 +1389,36 @@ const DATA = {
         "url": null,
         "r": 32,
         "score": 27
+      },
+      {
+        "id": "gap:8:Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
+        "kind": "gap",
+        "label": "Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
+        "name": "Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
+        "category": "mugs",
+        "color": "#fbbf6f",
+        "satLevel": null,
+        "count": null,
+        "example": "\"Nurse Dog Mom Mug, Golden Retriever Owner Gift, Nurse by Day Dog Mom by Night\" *(caveat: this exact combination is a synthesized hypothesis, not an observed listing \u2014 it merges a 2-example \"[Profession] + [Parent Role]\" pattern with a 1-example \"Personalized [Breed] Mom\" pattern; no real listing in the data stacks profession + breed + parent-identity together)*",
+        "price": "$16\u2013$22 (convention-based estimate for a personalized ceramic mug \u2014 not comp-verified, no real price data reported for this niche).",
+        "url": null,
+        "r": 32,
+        "score": 28
+      },
+      {
+        "id": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "kind": "gap",
+        "label": "Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "name": "Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": null,
+        "count": null,
+        "example": "\"Equestrian Dark Academia Print, Gothic Horse Wall Art, Moody Victorian Digital Download\"",
+        "price": "$8\u2013$12 digital download; $18\u2013$28 if a mailed physical print variant is offered (convention-based estimate \u2014 not comp-verified, no real prices reported this cycle).",
+        "url": null,
+        "r": 30,
+        "score": 28
       }
     ],
     "links": [
@@ -1389,6 +1481,11 @@ const DATA = {
         "source": "niche:Pet breed + hobby combo mugs",
         "target": "gap:7:Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
         "weight": 2
+      },
+      {
+        "source": "niche:Pet breed + hobby combo mugs",
+        "target": "gap:8:Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
+        "weight": 1
       },
       {
         "source": "niche:Tumbler general (teachers/nurses/moms)",
