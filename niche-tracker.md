@@ -967,3 +967,41 @@ Titles: primary keyword front-loaded in the first 3 words, lead with outcome not
 - Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — still deferred pending API key restoration.
 - The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
 - Verify Briefs 8/9 pricing comps and, once the API key or a page-fetch tool is available, do a real price/image/review-count pass for both new gaps.
+
+---
+
+## Cycle 12 — 2026-09-01
+
+### CEO Summary — both of Cycle 11's untested follow-up candidates re-checked, neither found real signal; both now ruled out; still blocked on API key + your Gap 6 call, 2026-09-01
+
+**Run log:** completed 2026-09-01 · next cycle scheduled 2026-09-02 · Trend Scout: success (search fallback — no `ETSY_API_KEY` in this session, 11th consecutive cycle unset) · Phrase Miner: skipped (no new/rising candidate this cycle to extract formulas from) · Gap Finder: skipped (no new niche or intersection this cycle to score) · Review Miner: skipped (no `ETSY_API_KEY`; no new niche needing buyer-language grounding) · Design Briefer: skipped (nothing to brief)
+
+**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. The two standing blockers — `ETSY_API_KEY` still unset, Gap 6's retire/keep call still pending — are genuinely unchanged since Cycle 2/3, so re-touching either would only restate facts already on record. Cycle 11 left two specific, unblocked open items on its follow-up list: a dedicated Trend Scout pass on the youth-identity "horse girl" angle (apparel/stickers/identity-driven copy, distinct from Gap 9's decor framing), and the narrower "plant care instructions as a literal Rx label" execution (distinct from the one adjacent "antidepressants gag jar" listing already found). Per the scheduling note's standing guidance, I sent Trend Scout after exactly these two named candidates rather than a fresh 13-niche sweep or a second consecutive skip.
+
+**Finding: both candidates come back empty — a genuine negative result, not padded into a gap.**
+- **"Horse girl" identity × dark academia (apparel/mugs/stickers):** Trend Scout ran 8 query variants across all three product categories. No listing was found crossing youth/hobbyist "horse girl" identity language with dark-academia aesthetic terms. Everything that surfaced was one of: the same decor-print crossover Cycle 11 already found and reframed into Gap 9 (moody equestrian wall art, no identity language); real "horse girl" identity apparel with no dark-academia element; or real equestrian apparel paired with "college style," not dark academia. One title-only mention ("Dark Academia Horse Skeleton Sweatshirt") never resolved to a real `/listing/` URL across two attempts and was correctly excluded rather than counted.
+- **Plant-care-instructions-as-literal-Rx-label:** 5 query variants, still only the same single adjacent listing from Cycle 11 (the "antidepressants gag jar" sticker — mental-health humor, not plant-care data). A second title ("Plant RX Vinyl Sticker: Funny Prescription") appeared only in search-engine prose with no resolvable URL after two attempts and was correctly excluded, not counted as evidence. Real plant-care-instruction products exist in volume (care cards, printable tags) but none use Rx/prescription-label styling.
+
+No `ETSY_API_KEY` was available this cycle (11th consecutive cycle unset, empty string, length 0 — no API error since no call was attempted); both findings are search-fallback only, and Trend Scout correctly flagged the absence itself as inferred from exhausted query variants, not a proven zero.
+
+**Both candidates moved to Ruled out below — this is closing out two open follow-up items, not retiring a tracked niche or gap.** Neither ever reached gap/brief status (both were logged in Cycle 11 as "not yet scoreable" / "genuinely open, unscored"), so per the same pattern Cycles 7 and 10 used for other never-promoted candidates, closing them out after a second dedicated, multi-variant search pass found nothing is routine logging, not the kind of irreversible retirement that needs your sign-off. All 14 tracked niches, all 9 gaps and their scores, and Briefs 1–9 carry forward completely unchanged — no table restated below since none of them changed this cycle.
+
+**`report.html` was not updated this cycle** (consistent with Cycles 2–11) — it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle.
+
+**⚠️ Still needs your call — Gap 6** (unchanged since Cycle 3, now ten cycles running): keep as a tracked stretch bet, or mark for retirement.
+
+**⚠️ Still needs your action — `ETSY_API_KEY`**: unset in this cloud session for the 11th consecutive cycle now (Cycles 2–12). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts — see Cycle 2's CEO Summary for the full explanation. Still blocking real price/image/review/listing-count data pipeline-wide, and every "confirmed absent" search-fallback finding in this cycle (and prior ones) remains search-only confidence, not API-confirmed.
+
+### Open follow-ups for next cycle
+- **⚠️ Still awaiting your call on Gap 6** — keep as a tracked stretch bet, or mark for retirement.
+- **⚠️ Still awaiting your action: set `ETSY_API_KEY`** as an environment variable on this Claude Code Remote environment.
+- **Ruled out this cycle, no further action needed:** "horse girl" identity × dark academia across apparel/mugs/stickers (8 query variants, no real crossing listing found — Gap 9's decor framing remains the only real version of this intersection); "plant care instructions as a literal Rx/prescription label" (5 query variants, only the same one non-matching adjacent listing found across two cycles).
+- A fuller dog-breed sweep for Gap 8 (French bulldog, dachshund, Australian shepherd) to sharpen the saturation read beyond the 3 breeds spot-checked in Cycle 11.
+- A manual visual comp scan of real pet-breed-mug and romantasy-mug listings (once `ETSY_API_KEY` or a page-fetch tool is available) to check which of Brief 7's two candidate Style Directions — or neither — actually matches real seller execution.
+- Consider whether the "Pet breed + hobby combo mugs" tracked niche's name/description should be formally revised — Cycle 8's Phrase Miner pass found the real market pattern is breed × parental identity, not breed × hobby. Not changed unilaterally.
+- "Cozy fantasy / romantasy reader mug" (the niche itself) still needs a real Etsy API pass (listing count, price, image, review sample) once the key is live.
+- Verify sticker pricing comps for Briefs 3/4/5 — still unresolved, still blocked by missing `ETSY_API_KEY` and no page-fetch tool.
+- Re-query the two 1-listing near-miss gaps (Gothmas × Pet-Mom Christmas, Sobriety × Pet-Mom) periodically — still deferred pending API key restoration.
+- The 1,624,589-listing "tumbler" broad-category count is a strong reason to keep deprioritizing Tumbler General entirely rather than re-checking it every cycle.
+- Verify Briefs 8/9 pricing comps and, once the API key or a page-fetch tool is available, do a real price/image/review-count pass for both new gaps.
+- If Trend Scout is sent scouting again for brand-new candidates (not follow-ups), target specific micro-intersections rather than broad aesthetic terms — the last fresh-candidate sweep was Cycle 10, now confirmed saturated across six terms.
