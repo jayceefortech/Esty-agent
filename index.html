@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-03T13:29:16",
+  "generatedAt": "2026-09-04T13:22:05",
   "cycle": {
-    "number": 14,
-    "date": "2026-09-03",
-    "title": "Cycle 14 \u2014 2026-09-03",
-    "dataAsOfCycle": 6
+    "number": 15,
+    "date": "2026-09-04",
+    "title": "Cycle 15 \u2014 2026-09-04",
+    "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-03",
-    "nextScheduled": "2026-09-04",
+    "lastRun": "2026-09-04",
+    "nextScheduled": "2026-09-05",
     "agents": [
       {
         "name": "Trend Scout",
-        "status": "skipped",
-        "detail": "Cycle 13's 6-breed dog-breed sweep for Gap 8 is already complete, nothing new to scout"
+        "status": "success",
+        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 14th consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
-        "status": "success",
-        "detail": "extracted title/copy formula from Cycle 13's two real French Bulldog listings"
+        "status": "skipped",
+        "detail": "see scope reasoning below"
       },
       {
         "name": "Gap Finder",
-        "status": "success",
-        "detail": "Gap 8 rescored 28\u219230/40"
+        "status": "skipped",
+        "detail": "see scope reasoning below"
       },
       {
         "name": "Review Miner",
-        "status": "success",
-        "detail": "insufficient data \u2014 no `ETSY_API_KEY`, 13th consecutive cycle unset"
+        "status": "skipped",
+        "detail": "no `ETSY_API_KEY`; nothing new yet grounded enough to pool reviews for"
       },
       {
         "name": "Design Briefer",
-        "status": "success",
-        "detail": "Brief 8 revised in place, grounded in real evidence"
+        "status": "skipped",
+        "detail": "nothing scored yet to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, four sub-agents.** No CEO Summary existed yet for today. The two standing blockers (`ETSY_API_KEY` unset, Gap 6's retire/keep call) are unchanged since Cycle 2/3 and re-touching either would only restate facts already on record. Cycle 13 left one specific, unblocked, actionable item on its follow-up list: reassess Gap 8's score and consider a French-bulldog/\"Coach\"-flavored brief variant, grounded in the one real triple-stack listing Cycle 13's breed sweep found. I sent Phrase Miner, Gap Finder, and Review Miner in parallel against that one item, then Design Briefer once all three reported back \u2014 no fresh Trend Scout sweep was needed since the breed sweep itself is already done.\n\n**Phrase Miner extracted a title/copy formula from the two real listings** (\"French Bulldog Coach Mug...\" and the \"Frenchie Pouch... Teacher Vet Tech Nurse Gift\" listing), correctly flagged both as weak (1-example) patterns, and \u2014 importantly \u2014 surfaced a structural correction: the real sellers treat **breed as the fixed axis and profession as the swappable variable** (the pouch listing bundles Teacher/Vet Tech/Nurse on one French Bulldog SKU), the opposite of original Brief 8's assumption (fixed \"Nurse\", variable breed). No real visual-style signal could be extracted from title/copy text alone \u2014 correctly reported as insufficient data rather than guessed.\n\n**Gap Finder rescored Gap 8 from 28/40 to 30/40** (Market Opportunity 6\u21927, User Fit 8\u21929, Ease of Entry and Profit Potential unchanged at 8 and 6) based on the new evidence: one real seller now confirmed operating live in the exact 3-axis space across two breeds/product types (de-risking the templated-variant approach specifically), while 5 of 6 breeds checked (including the original golden-retriever/nurse pairing) still show zero real triple-stack listings \u2014 a direct spot-check this cycle reconfirmed that exact pairing is still a real zero. Profit Potential was deliberately held flat: no sales-volume or review-count data exists for either real listing found, so the score isn't being inflated on the strength of proof-of-existence alone. Full updated rationale is in the Gap Scores table below.\n\n**Review Miner attempted to ground a Brief 8 revision in real buyer language for the French Bulldog Coach mug and the related treat-pouch listing, and correctly reported insufficient data** \u2014 no `ETSY_API_KEY`, zero reviews pooled, no buyer-language quotes fabricated to fill the gap.\n\n**Design Briefer revised Brief 8 in place** \u2014 not as a new numbered brief. This is a deliberate integration choice, not a data-loss shortcut: `generate_dashboard.py` links each Design Brief to a gap strictly by matching brief number to gap rank (`briefs.get(gap[\"rank\"])`), and there is no \"Gap 10\" for a freestanding \"Brief 10\" to attach to \u2014 it would just be orphaned data the dashboard never renders. Revising Brief 8's content in place, grounded in the new real evidence, follows the same precedent as Cycle 8's in-place correction of Gap 7's rationale text and Cycle 9's in-place fill of Brief 7's Style Direction \u2014 both were routine content updates to an existing entry, not the kind of niche/gap *retirement* that requires your sign-off (CLAUDE.md rule 6 explicitly allows routine re-scoring/logging to proceed without sign-off). The revised brief keeps \"Nurse\" alive as one of the documented swappable profession variants (per the real pouch listing's own Teacher/Vet Tech/Nurse bundling) rather than discarding the original concept \u2014 it corrects which axis is fixed vs. variable based on what a real seller is actually doing, and leads with \"Coach\" on French Bulldog because that's the pairing with real, resolvable evidence. Full revised brief is below.\n\n**Nothing retired, nothing removed.** All 14 tracked niches, Gaps 1\u20139 (unchanged in the Gaps table itself \u2014 only Gap 8's *score* and *brief* changed), and Briefs 1\u20137 and 9 carry forward completely unchanged. Only Gap 8's row in the Gap Scores table and Brief 8's content changed this cycle \u2014 both restated below in full per the dashboard generator's convention.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201313) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now twelve cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 13th consecutive cycle now (Cycles 2\u201314). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real price/image/review/listing-count data pipeline-wide, including any real buyer-language grounding for the revised Brief 8."
+    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. The two standing blockers (`ETSY_API_KEY` unset, Gap 6's retire/keep call) are unchanged since Cycle 2/3 and re-touching either would only restate facts already on record, and Cycle 14 closed out its one specific follow-up item cleanly with nothing new left unblocked. Per this routine's standing scheduling guidance, a new calendar day is still reason enough to consider a small Trend Scout pass even with no specific named follow-up \u2014 the last genuinely fresh-candidate sweep (not a recheck of an existing item) was Cycle 10 on 2026-08-30, five days prior, and it's healthy for the pipeline to keep looking for new material rather than only ever re-litigating the same two blockers. I sent Trend Scout alone for a fresh scouting pass targeting narrow micro-intersections (per Cycle 10's own guidance to avoid broad aesthetic terms), and stopped there rather than chaining the rest of the pipeline \u2014 see reasoning below.\n\n**Trend Scout, on search fallback (API key still unset), found four new candidate niches** \u2014 each pairs an audience/identity already validated somewhere in the tracker with a product angle that audience isn't currently tracked under, distinct from all 14 existing tracked niches:\n1. ADHD/neurodivergent \u00d7 wall art (existing audience is currently tracked only via stickers)\n2. Recovery/sobriety \u00d7 tumbler (existing audience is currently tracked only via stickers)\n3. Chronic illness/spoonie \u00d7 wall art (existing audience is currently tracked only via stickers)\n4. Nonnacore \u00d7 kitchen wall art (narrower product-specific cut of the already-tracked broader Nonnacore niche)\n\nAll four cleared the \"real resolvable `etsy.com/listing/...` URL\" bar for existence \u2014 none are guesses. **None have computed saturation, price, image, or review-count data** \u2014 WebSearch snippets don't carry that, and no API call was possible. This is a data-source limitation, not something I'm treating as more solid than it is: I'm logging all four as `unresolved` status (same convention already used for the \"Cozy fantasy / romantasy reader mug\" niche since Cycle 6), not as validated opportunities.\n\n**Two caveats Trend Scout flagged that I'm carrying forward, not resolving:** (1) the Nonnacore \u00d7 kitchen wall art candidate turned up a dedicated shop built entirely around this theme plus one very old-looking listing ID \u2014 a soft signal this specific sub-niche may already be more mature/competitive than the other three, worth weighing once real saturation data exists. (2) The Recovery \u00d7 tumbler candidate sits inside the broader \"tumbler\" product category, which the tracker already flags as saturated/deprioritized at the parent-category level (1,624,589 listings) \u2014 this is a narrow sub-niche within that broader caution, not a reason to discard it outright, but reason for extra scrutiny before investing.\n\n**Why I stopped at Trend Scout this cycle rather than chaining Phrase Miner/Gap Finder:** these four are newly-discovered *niches* (audience\u00d7product pairings that already have real sellers in them), not yet *gaps* (near-zero-listing intersections between two niches) \u2014 scoring them on the Gap Finder rubric or briefing them with Design Briefer now would be premature without at least a Phrase Miner pass to check whether there's a real title/copy formula to extract, and ideally real saturation data once the API key is live. Logging them as tracked niches this cycle, then running Phrase Miner on them next cycle, matches the exact precedent Cycle 6 set the last time Trend Scout surfaced a genuinely new candidate outside a follow-up chain.\n\n**Nothing retired, nothing removed, nothing rescored.** All 14 previously tracked niches, all 9 gaps and their scores, and all 8 written briefs (Brief 6 still deliberately unbriefed) carry forward completely unchanged \u2014 only new rows 15\u201318 are added to the Niches table below.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now thirteen cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 14th consecutive cycle now (Cycles 2\u201315). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Blocking real saturation/price/image/review data for all four of today's new candidates, on top of everything it was already blocking."
   },
   "niches": [
     {
@@ -639,6 +639,82 @@ const DATA = {
       "countDisplay": "search-verified only",
       "title": "\"Do Not Disturb Lost in Fae Realm Mug, Fae Coffee Mug, Fantasy Book Lover Mug\"",
       "url": "https://www.etsy.com/listing/4400524123/fae-mug-cozy-fantasy-coffee-cup-for",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "ADHD/neurodivergent \u00d7 wall art",
+      "category": [
+        "wall art"
+      ],
+      "status": "unresolved",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (multiple resolvable URLs; includes an Etsy `adhd_wall_art` market category page)",
+      "title": "\"ADHD Awareness Wall Art: Neurodiversity Support for Therapy Office and Home Decor, Embrace Differences\"",
+      "url": "https://www.etsy.com/listing/1373867873/adhd-awareness-wall-art-neurodiversity",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Recovery/sobriety \u00d7 tumbler",
+      "category": [
+        "tumblers"
+      ],
+      "status": "unresolved (\u26a0\ufe0f sits inside a category the tracker otherwise flags saturated)",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (multiple resolvable URLs; includes two Etsy market category pages)",
+      "title": "\"Personalized AA Recovery Affirmations Tumbler, Custom Sobriety Travel Mug, AA Recovery Gift for Recovering Addict, Serenity Sober Skinny Cup\"",
+      "url": "https://www.etsy.com/listing/1766002514/personalized-aa-recovery-affirmations",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Chronic illness/spoonie \u00d7 wall art",
+      "category": [
+        "wall art"
+      ],
+      "status": "unresolved",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (multiple resolvable URLs; includes an Etsy `chronic_illness_art_prints` market category page)",
+      "title": "\"Spoonie Print - Spoon Theory Poster - You Got This - Chronic Illness Gift - Endometriosis Get Well Soon - Fibromyalgia - ME & MS\"",
+      "url": "https://www.etsy.com/listing/526931578/spoonie-print-spoon-theory-poster-you",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Nonnacore \u00d7 kitchen wall art",
+      "category": [
+        "wall art"
+      ],
+      "status": "unresolved (\u26a0\ufe0f soft signal of more maturity than the other 3 new candidates \u2014 dedicated shop + one old-looking listing id found)",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (multiple resolvable URLs; includes a dedicated shop and two Etsy market category pages)",
+      "title": "\"Nonna's Garden Italian Kitchen Herbs Art Print Family\"",
+      "url": "https://www.etsy.com/listing/758772060/nonnas-garden-italian-kitchen-herbs-art",
       "img": null,
       "price": null,
       "reviews": null,
@@ -1062,6 +1138,102 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 15,
+      "date": "2026-09-04",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f sits inside a category the tracker otherwise flags saturated)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f soft signal of more maturity than the other 3 new candidates \u2014 dedicated shop + one old-looking listing id found)",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -1078,7 +1250,11 @@ const DATA = {
     "Circus-core / Funhaus",
     "Neo Deco",
     "Tumbler general (teachers/nurses/moms)",
-    "Cozy fantasy / \"romantasy\" reader mug"
+    "Cozy fantasy / \"romantasy\" reader mug",
+    "ADHD/neurodivergent \u00d7 wall art",
+    "Recovery/sobriety \u00d7 tumbler",
+    "Chronic illness/spoonie \u00d7 wall art",
+    "Nonnacore \u00d7 kitchen wall art"
   ],
   "productTypes": [
     "mugs",
@@ -1286,6 +1462,62 @@ const DATA = {
         "r": 18
       },
       {
+        "id": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "kind": "niche",
+        "label": "ADHD/neurodivergent \u00d7 wall art",
+        "name": "ADHD/neurodivergent \u00d7 wall art",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"ADHD Awareness Wall Art: Neurodiversity Support for Therapy Office and Home Decor, Embrace Differences\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1373867873/adhd-awareness-wall-art-neurodiversity",
+        "r": 18
+      },
+      {
+        "id": "niche:Recovery/sobriety \u00d7 tumbler",
+        "kind": "niche",
+        "label": "Recovery/sobriety \u00d7 tumbler",
+        "name": "Recovery/sobriety \u00d7 tumbler",
+        "category": "tumblers",
+        "color": "#34d399",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Personalized AA Recovery Affirmations Tumbler, Custom Sobriety Travel Mug, AA Recovery Gift for Recovering Addict, Serenity Sober Skinny Cup\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1766002514/personalized-aa-recovery-affirmations",
+        "r": 18
+      },
+      {
+        "id": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "kind": "niche",
+        "label": "Chronic illness/spoonie \u00d7 wall art",
+        "name": "Chronic illness/spoonie \u00d7 wall art",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Spoonie Print - Spoon Theory Poster - You Got This - Chronic Illness Gift - Endometriosis Get Well Soon - Fibromyalgia - ME & MS\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/526931578/spoonie-print-spoon-theory-poster-you",
+        "r": 18
+      },
+      {
+        "id": "niche:Nonnacore \u00d7 kitchen wall art",
+        "kind": "niche",
+        "label": "Nonnacore \u00d7 kitchen wall art",
+        "name": "Nonnacore \u00d7 kitchen wall art",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Nonna's Garden Italian Kitchen Herbs Art Print Family\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/758772060/nonnas-garden-italian-kitchen-herbs-art",
+        "r": 18
+      },
+      {
         "id": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
         "kind": "gap",
         "label": "Knightcore/Castlecore \u00d7 teacher/nurse shirts",
@@ -1429,12 +1661,22 @@ const DATA = {
       },
       {
         "source": "niche:Nonnacore",
+        "target": "niche:Nonnacore \u00d7 kitchen wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Nonnacore",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
       },
       {
         "source": "niche:Castlecore / Knightcore",
         "target": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD / neurodivergent stickers",
+        "target": "niche:ADHD/neurodivergent \u00d7 wall art",
         "weight": 2
       },
       {
@@ -1449,8 +1691,18 @@ const DATA = {
       },
       {
         "source": "niche:Chronic illness / spoonie stickers",
+        "target": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "weight": 3
+      },
+      {
+        "source": "niche:Chronic illness / spoonie stickers",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
+      },
+      {
+        "source": "niche:Recovery / sobriety stickers",
+        "target": "niche:Recovery/sobriety \u00d7 tumbler",
+        "weight": 2
       },
       {
         "source": "niche:Recovery / sobriety stickers",
@@ -1506,6 +1758,71 @@ const DATA = {
         "source": "niche:Cozy fantasy / \"romantasy\" reader mug",
         "target": "gap:7:Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
         "weight": 4
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "niche:Nonnacore \u00d7 kitchen wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
+        "weight": 1
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:5:ADHD \u00d7 sobriety/recovery",
+        "weight": 1
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "weight": 2
+      },
+      {
+        "source": "niche:Recovery/sobriety \u00d7 tumbler",
+        "target": "gap:4:Sobriety \u00d7 pet-mom stickers/shirts",
+        "weight": 1
+      },
+      {
+        "source": "niche:Recovery/sobriety \u00d7 tumbler",
+        "target": "gap:5:ADHD \u00d7 sobriety/recovery",
+        "weight": 2
+      },
+      {
+        "source": "niche:Recovery/sobriety \u00d7 tumbler",
+        "target": "gap:6:Sober gardener / \"recovery garden\" stickers",
+        "weight": 1
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "niche:Nonnacore \u00d7 kitchen wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
+        "weight": 1
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "weight": 2
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
+        "weight": 1
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "weight": 2
       }
     ]
   },
