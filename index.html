@@ -333,36 +333,36 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-05T13:19:06",
+  "generatedAt": "2026-09-06T13:17:27",
   "cycle": {
-    "number": 16,
-    "date": "2026-09-05",
-    "title": "Cycle 16 \u2014 2026-09-05",
+    "number": 17,
+    "date": "2026-09-06",
+    "title": "Cycle 17 \u2014 2026-09-06",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-05",
-    "nextScheduled": "2026-09-06",
+    "lastRun": "2026-09-06",
+    "nextScheduled": "2026-09-07",
     "agents": [
       {
         "name": "Trend Scout",
-        "status": "skipped",
-        "detail": "no fresh scouting needed this cycle \u2014 see scope reasoning"
+        "status": "success",
+        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 16th consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
-        "status": "success",
-        "detail": "weak, single-example title formulas extracted for all 4 new niches; flagged low-confidence, no visual-style data available"
+        "status": "skipped",
+        "detail": "no new/rising candidate this cycle to extract formulas from"
       },
       {
         "name": "Gap Finder",
-        "status": "success",
-        "detail": "checked plausible intersections involving the 4 new niches; none scoreable \u2014 see below"
+        "status": "skipped",
+        "detail": "no new gap-worthy opportunity surfaced \u2014 see reasoning below"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no new gap grounded enough to pool reviews for, and `ETSY_API_KEY` still unset"
+        "detail": "no `ETSY_API_KEY`; no new niche needing buyer-language grounding"
       },
       {
         "name": "Design Briefer",
@@ -370,7 +370,7 @@ const DATA = {
         "detail": "nothing new scored to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, two sub-agents.** No CEO Summary existed yet for today. Cycle 15's own \"Open follow-ups\" section named a specific, concrete next step \u2014 run Phrase Miner on the four new niches it had just logged (rows 15\u201318), then have Gap Finder check whether any intersection among them (or against the existing 14 niches) is a genuine near-zero-listing gap. That's a clear, bounded partial-recheck scope, so I ran exactly that: Phrase Miner, then Gap Finder, and stopped there. I did not re-send Trend Scout (nothing named it as needed today and the last scouting pass was only yesterday), and Review Miner/Design Briefer had nothing to work with once Gap Finder came back empty-handed on new gaps (per rule 8/pipeline order \u2014 Design Briefer needs a scored gap, Review Miner needs a niche worth pooling reviews for).\n\n**Phrase Miner** extracted only weak, single-example title formulas for niches 1\u20133 (ADHD/neurodivergent \u00d7 wall art; Recovery/sobriety \u00d7 tumbler; Chronic illness/spoonie \u00d7 wall art) \u2014 Trend Scout's search-fallback findings supplied exactly one full title per niche, so these are directional hypotheses, not confirmed patterns, and I'm logging them as such. It flagged that niches 2 and 3 both show the same dash/comma keyword-synonym-stacking title structure (identity term \u2192 affirmation \u2192 gift clause \u2192 named sub-variants), which may be a platform-wide Etsy SEO convention rather than a niche-specific formula \u2014 unconfirmed with only one example each. For niche 4 (Nonnacore \u00d7 kitchen wall art), Phrase Miner reported **insufficient data** for a title formula (a single four-word title isn't enough to generalize from) and independently corroborated Trend Scout's maturity-risk flag. No visual-style formula could be extracted for any of the four \u2014 no image or description text was available, only titles and category-page confirmations, and Phrase Miner correctly declined to guess a style from subject matter alone.\n\n**Gap Finder checked several plausible intersections and found nothing that clears the bar to be added as a new scored gap.** Rather than force a score onto thin evidence, it reported honestly:\n- **ADHD/neurodivergent \u00d7 Chronic illness/spoonie (dual-identity wall art)** \u2014 ruled out: a live shop and specific listings already fuse these exact identities in wall-art form (e.g. a listing combining ADHD + chronic-illness wordplay, a notepad stacking ADHD + spoonie + invisible-illness + neurodivergent tags together). Not a gap \u2014 sellers already keyword-stack across these communities as routine practice.\n- **ADHD wall art \u00d7 occupation/sarcasm crossover** (mirroring the pipeline's own highest-scoring gap pattern) \u2014 ruled out: \"Funny ADHD Wall Art\" and \"Sarcastic Teacher Posters\" are already established, populated categories with direct combined listings found.\n- **Recovery/sobriety \u00d7 tumbler** (the new niche itself) \u2014 ruled out as an opportunity: multiple real, direct competitor listings found (SoberAF tumblers, AA-anniversary tumblers, personalized recovery-affirmation tumblers). This corroborates the caution the tracker already carried (sits inside the broad, saturated \"tumbler\" category) with real, specific competing listings rather than just the category-level caution.\n- **Chronic illness/spoonie \u00d7 wall art** (the new niche itself) \u2014 ruled out as an opportunity: confirmed as an established real market (a \"Spoon Theory\" posters market category plus multiple named shops), consistent with this audience's already-high sticker saturation carrying over into wall art.\n- **Nonnacore \u00d7 kitchen wall art maturity flag \u2014 left genuinely unresolved, not cleared and not confirmed.** Gap Finder ran an independent external web search for \"nonnacore\" specifically to check Trend Scout/Phrase Miner's maturity-risk flag (a dedicated shop + one old-looking listing ID) and found no matching shop or listing under that exact term. It correctly declined to treat that as overriding Trend Scout's direct-search finding \u2014 an external web search missing a small/slangy term is not equivalent evidence to Trend Scout's own search turning one up, so this stays an open, unresolved question rather than being scored either way. Needs a direct Etsy-search (not external web-search) check next cycle.\n- A few other pairings (chronic illness/ADHD wall-art \u00d7 purely-aesthetic tracked niches with no audience-overlap logic; further sobriety crossovers beyond the two already-gapped) were correctly set aside without a search at all, since Gap Finder judged there was no evidenced audience rationale to test \u2014 appropriately declining to fabricate a rationale just to produce a result.\n\n**What I'm doing with this in the tracker:** nothing retired, nothing rescored, no niche removed. All 9 existing gaps, their scores, and all 8 written briefs carry forward completely unchanged (Brief 6 still deliberately unbriefed). I'm updating the status notes on niche rows 16 and 17 (Recovery/sobriety \u00d7 tumbler; Chronic illness/spoonie \u00d7 wall art) to reflect that they're now confirmed-served markets rather than untested white space \u2014 this is new corroborating information, not a downgrade of anything previously claimed, since both were already logged as \"unresolved\" with no opportunity claim attached. Row 18 (Nonnacore \u00d7 kitchen wall art) keeps its existing caution flag, now noted as neither confirmed nor cleared pending a direct Etsy-search check. Row 15 (ADHD/neurodivergent \u00d7 wall art) is unchanged \u2014 Gap Finder's findings about it were about *adjacent* combinations, not the niche itself.\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL` this cycle** beyond the two standing items below, which are unchanged and carried forward.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now fourteen cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 15th consecutive cycle now (Cycles 2\u201316). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Blocking real saturation/price/image/review data for all four of Cycle 15's new candidates, and blocking a decisive check on the Nonnacore \u00d7 kitchen wall art maturity question above (a direct Etsy API search would settle it; external web search and search-fallback can't).\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201315) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. The two standing blockers (`ETSY_API_KEY` unset, Gap 6's retire/keep call) are unchanged since Cycle 2/3, so re-touching either would only restate facts already on record. Cycle 16's \"Open follow-ups\" named one specific, concrete, unblocked next step: run a **direct Etsy-search** (not external web-search) check on the Nonnacore \u00d7 kitchen wall art maturity question, since Gap Finder's Cycle 16 external web search was a weaker method than a direct Etsy search and couldn't settle it either way. I sent Trend Scout after exactly that one item and stopped there, per this routine's standing guidance to prefer a few priority terms over a full pipeline run when nothing else is named as ready to act on.\n\n**Trend Scout's direct Etsy-search findings, reviewed:** Six `site:etsy.com` query variants for the literal term \"nonnacore\"/\"nonna core\" (plus checking whether Etsy has built one of its auto-generated `/market/` aggregation pages for it, which it has for many comparably obscure \"-core\" terms like normcore, krishnacore, and weirdcore) turned up **no dedicated shop, no market-category page, and no listing matching that exact term.** The one specific listing Cycle 15 originally flagged (ID 758772060, \"Nonna's Garden Italian Kitchen Herbs Art Print Family\") is still real and resolvable, but Trend Scout traced its seller (CarmenHuiArt) and found it's a general pet/botanical-illustration shop with one Nonna-themed print line \u2014 not, as Cycle 15's summary implied, a shop built entirely around a \"nonnacore\" theme. I'm flagging that discrepancy rather than silently correcting Cycle 15's framing: I can't verify from here whether Cycle 15 was looking at a different shop or over-stated what it found, only that this cycle's independent trace doesn't reconfirm \"dedicated shop.\" Separately, the **broader \"nonna kitchen\"/Italian-grandmother-kitchen-decor theme** (distinct from the specific word \"nonnacore\") does show real, current, moderately populated supply \u2014 multiple distinct sellers, live Etsy market pages (`/market/nonnas_kitchen`, `/market/nonnas_garden`), and at least one recently-listed comp (2026-05-02) \u2014 so this is not white space either, just not white space *because of the literal \"nonnacore\" keyword* the way the original flag suggested.\n\n**What I'm doing with this in the tracker:** nothing retired, nothing rescored, no niche removed, no gap added. I'm not sending this to Gap Finder for scoring \u2014 the finding is a downgrade-and-clarify of an existing caution flag, not a new opportunity signal (if anything it points the other way: the exact keyword shows no distinct demand, and the theme it would actually compete inside is already served). I'm updating row 18's (\"Nonnacore \u00d7 kitchen wall art\") status note to reflect: (a) the literal-term maturity signal is now unconfirmed under two independent methods (external web search in Cycle 16, direct Etsy search this cycle) rather than open/pending, (b) the underlying broader theme is confirmed populated regardless, and (c) the \"dedicated shop\" characterization from Cycle 15 is flagged as unverified/possibly overstated. All 9 existing gaps and 8 written briefs carry forward completely unchanged; all other niche rows carry forward byte-for-byte unchanged.\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL` this cycle** beyond the two standing items below, which are unchanged and carried forward.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now fifteen cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 16th consecutive cycle now (Cycles 2\u201317). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real listing-count/price/image/review data for the \"nonna kitchen\" theme and every other search-fallback finding in this cycle and prior ones, which remain search-only confidence, not API-confirmed. Trend Scout also confirmed this cycle that direct `curl` access to etsy.com is blocked by this environment's egress proxy \u2014 not a new blocker (the API key was already the sanctioned path), just noted for completeness.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201316) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -707,12 +707,12 @@ const DATA = {
       "category": [
         "wall art"
       ],
-      "status": "unresolved (\u26a0\ufe0f maturity signal neither confirmed nor cleared as of cycle 16 \u2014 trend scout found a dedicated shop + one old-looking listing id directly on etsy; gap finder's independent external web search for \"nonnacore\" found no matching shop/listing, but that's a weaker/different search method, not a rebuttal \u2014 needs a direct etsy-search check next cycle)",
+      "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
       "count": null,
-      "countDisplay": "search-verified only (multiple resolvable URLs; includes a dedicated shop and two Etsy market category pages)",
+      "countDisplay": "search-verified only (multiple resolvable URLs; includes two Etsy market category pages \u2014 `/market/nonnas_kitchen` and `/market/nonnas_garden`)",
       "title": "\"Nonna's Garden Italian Kitchen Herbs Art Print Family\"",
       "url": "https://www.etsy.com/listing/758772060/nonnas-garden-italian-kitchen-herbs-art",
       "img": null,
@@ -1327,6 +1327,102 @@ const DATA = {
         {
           "name": "Nonnacore \u00d7 kitchen wall art",
           "status": "unresolved (\u26a0\ufe0f maturity signal neither confirmed nor cleared as of cycle 16 \u2014 trend scout found a dedicated shop + one old-looking listing id directly on etsy; gap finder's independent external web search for \"nonnacore\" found no matching shop/listing, but that's a weaker/different search method, not a rebuttal \u2014 needs a direct etsy-search check next cycle)",
+          "satLevel": "unknown"
+        }
+      ]
+    },
+    {
+      "cycle": 17,
+      "date": "2026-09-06",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
           "satLevel": "unknown"
         }
       ]
