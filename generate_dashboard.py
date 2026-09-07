@@ -65,8 +65,13 @@ def parse_table(text):
     rows = []
     for line in lines[2:]:
         cells = [c.strip() for c in line.strip("|").split("|")]
-        if len(cells) == len(header):
-            rows.append(cells)
+        if len(cells) != len(header):
+            raise TrackerParseError(
+                f"table row has {len(cells)} cells but header has {len(header)} — "
+                f"likely a stray literal '|' inside a cell (e.g. in a listing title) "
+                f"that needs escaping/removing: {line!r}"
+            )
+        rows.append(cells)
     return header, rows
 
 
@@ -83,7 +88,7 @@ IMG_LINK_RE = re.compile(r"\[img\]\((https?://[^)]+)\)")
 PRICE_RE = re.compile(r"\$([\d,]+(?:\.\d+)?)")
 REVIEWS_RE = re.compile(r"(\d+)\s+reviews?\b")
 LISTED_RE = re.compile(r"listed (\d{4}-\d{2}-\d{2})")
-COUNT_RE = re.compile(r"([\d,]+)")
+COUNT_RE = re.compile(r"(\d[\d,]*)")
 STATUS_ANNOTATION_RE = re.compile(r"^(\w+)\s*(?:\*\((.*?)\)\*)?\s*$")
 SAT_LEVEL_RE = re.compile(r"\b(low|medium|high)\b", re.I)
 BOLD_NUM_RE = re.compile(r"\*\*(\d+)\*\*")

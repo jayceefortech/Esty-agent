@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-06T13:17:27",
+  "generatedAt": "2026-09-07T13:24:49",
   "cycle": {
-    "number": 17,
-    "date": "2026-09-06",
-    "title": "Cycle 17 \u2014 2026-09-06",
+    "number": 18,
+    "date": "2026-09-07",
+    "title": "Cycle 18 \u2014 2026-09-07",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-06",
-    "nextScheduled": "2026-09-07",
+    "lastRun": "2026-09-07",
+    "nextScheduled": "2026-09-08",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 16th consecutive cycle unset"
+        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 18th consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
         "status": "skipped",
-        "detail": "no new/rising candidate this cycle to extract formulas from"
+        "detail": "deferred to next cycle \u2014 see scope reasoning"
       },
       {
         "name": "Gap Finder",
         "status": "skipped",
-        "detail": "no new gap-worthy opportunity surfaced \u2014 see reasoning below"
+        "detail": "deferred to next cycle \u2014 see scope reasoning"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`; no new niche needing buyer-language grounding"
+        "detail": "no `ETSY_API_KEY`; nothing graduated to gap-scoring yet to pool reviews for"
       },
       {
         "name": "Design Briefer",
         "status": "skipped",
-        "detail": "nothing new scored to brief"
+        "detail": "nothing scored yet to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. The two standing blockers (`ETSY_API_KEY` unset, Gap 6's retire/keep call) are unchanged since Cycle 2/3, so re-touching either would only restate facts already on record. Cycle 16's \"Open follow-ups\" named one specific, concrete, unblocked next step: run a **direct Etsy-search** (not external web-search) check on the Nonnacore \u00d7 kitchen wall art maturity question, since Gap Finder's Cycle 16 external web search was a weaker method than a direct Etsy search and couldn't settle it either way. I sent Trend Scout after exactly that one item and stopped there, per this routine's standing guidance to prefer a few priority terms over a full pipeline run when nothing else is named as ready to act on.\n\n**Trend Scout's direct Etsy-search findings, reviewed:** Six `site:etsy.com` query variants for the literal term \"nonnacore\"/\"nonna core\" (plus checking whether Etsy has built one of its auto-generated `/market/` aggregation pages for it, which it has for many comparably obscure \"-core\" terms like normcore, krishnacore, and weirdcore) turned up **no dedicated shop, no market-category page, and no listing matching that exact term.** The one specific listing Cycle 15 originally flagged (ID 758772060, \"Nonna's Garden Italian Kitchen Herbs Art Print Family\") is still real and resolvable, but Trend Scout traced its seller (CarmenHuiArt) and found it's a general pet/botanical-illustration shop with one Nonna-themed print line \u2014 not, as Cycle 15's summary implied, a shop built entirely around a \"nonnacore\" theme. I'm flagging that discrepancy rather than silently correcting Cycle 15's framing: I can't verify from here whether Cycle 15 was looking at a different shop or over-stated what it found, only that this cycle's independent trace doesn't reconfirm \"dedicated shop.\" Separately, the **broader \"nonna kitchen\"/Italian-grandmother-kitchen-decor theme** (distinct from the specific word \"nonnacore\") does show real, current, moderately populated supply \u2014 multiple distinct sellers, live Etsy market pages (`/market/nonnas_kitchen`, `/market/nonnas_garden`), and at least one recently-listed comp (2026-05-02) \u2014 so this is not white space either, just not white space *because of the literal \"nonnacore\" keyword* the way the original flag suggested.\n\n**What I'm doing with this in the tracker:** nothing retired, nothing rescored, no niche removed, no gap added. I'm not sending this to Gap Finder for scoring \u2014 the finding is a downgrade-and-clarify of an existing caution flag, not a new opportunity signal (if anything it points the other way: the exact keyword shows no distinct demand, and the theme it would actually compete inside is already served). I'm updating row 18's (\"Nonnacore \u00d7 kitchen wall art\") status note to reflect: (a) the literal-term maturity signal is now unconfirmed under two independent methods (external web search in Cycle 16, direct Etsy search this cycle) rather than open/pending, (b) the underlying broader theme is confirmed populated regardless, and (c) the \"dedicated shop\" characterization from Cycle 15 is flagged as unverified/possibly overstated. All 9 existing gaps and 8 written briefs carry forward completely unchanged; all other niche rows carry forward byte-for-byte unchanged.\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL` this cycle** beyond the two standing items below, which are unchanged and carried forward.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now fifteen cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 16th consecutive cycle now (Cycles 2\u201317). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts \u2014 see Cycle 2's CEO Summary for the full explanation. Still blocking real listing-count/price/image/review data for the \"nonna kitchen\" theme and every other search-fallback finding in this cycle and prior ones, which remain search-only confidence, not API-confirmed. Trend Scout also confirmed this cycle that direct `curl` access to etsy.com is blocked by this environment's egress proxy \u2014 not a new blocker (the API key was already the sanctioned path), just noted for completeness.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201316) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today (2026-09-07), so this cycle was not a duplicate. Cycle 17's own \"Open follow-ups\" flagged that a fresh Trend Scout scouting pass was overdue \u2014 the last one was Cycle 15 (2026-09-04), three days ago; Cycles 16\u201317 were both narrow single-item follow-up checks, not new-candidate sweeps. Per this routine's standing guidance (a new calendar day is reason enough to at least reconsider re-running Trend Scout on priority terms, without requiring a full 5-agent pipeline every day), I sent Trend Scout for a broad fresh scouting pass across all five tracked product categories and stopped there \u2014 mirroring the Cycle 15\u219216 pattern (scout first, defer scoring/gap-checking to a following cycle) rather than compressing scouting and scoring into one run.\n\n**Trend Scout's findings, reviewed.** It researched 14 candidate niches via `site:etsy.com` search-fallback (no `ETSY_API_KEY`, so no price/image/review-count/date data \u2014 those fields are honestly `NO DATA AVAILABLE` across the board, not omitted). Every reported niche has at least one real resolvable Etsy URL (a listing or a `/market/` category page) confirming genuine existence; Trend Scout was explicit that it did not independently load listing pages, so titles are accurate-per-search-snippet but price/thumbnail/date fields are unverified beyond that. It also flagged, correctly, that it did not cross-check these against this tracker's existing 18 niches (per its own instructions, it doesn't read this file) \u2014 I did that cross-check myself: none of the 14 duplicate an existing tracked niche by name, though four (AuDHD, HSP, Misophonia, RSD) are adjacent sub-identity terms to the already-tracked broader ADHD/neurodivergent and chronic-illness/spoonie niches, distinct enough to log separately rather than merge.\n\n**What I'm logging and why:**\n- **5 confirmed saturated/mainstream, logged as market intelligence, not opportunities** (same treatment as the existing \"Tumbler general\" row): Perimenopause humor, Coquette aesthetic, Goblincore, Night shift nurse, IBS/gut health humor. Each shows multiple dedicated Etsy `/market/` category pages and/or auto-generated gift-guide pages \u2014 real, mature supply, not white space. Logging them mainly so future cycles don't re-scout the same saturated terms.\n- **1 rejected outright, not added as a tracked niche row: Blokecore.** Trend Scout's own findings were that search results were dominated by actual secondhand jersey resale listings, not print-on-demand graphic designs \u2014 this aesthetic doesn't map to the pipeline's POD product model at all, so it doesn't belong in the Niches table (this is a product-type mismatch, not a market judgment call, so no `\u26a0\ufe0f NEEDS YOUR CALL` flag is warranted).\n- **1 logged as an established mainstream niche:** NICU/preemie mom (real gift-guide category, moderate volume).\n- **1 logged as established but with an incomplete data point:** Foster mom/adoptive parent \u2014 real market pages exist but Trend Scout didn't surface an individual listing URL this pass, so the example-listing cell is `NO DATA AVAILABLE` even though the niche itself is search-verified via market pages.\n- **6 logged as genuinely rising or thin, worth a closer Gap Finder look next cycle:** AuDHD, Highly Sensitive Person (HSP), Misophonia, Rejection Sensitive Dysphoria (RSD), Mob wife aesthetic (thin specifically for wall-art/tumbler product fit), Trad wife aesthetic (very thin, single listing, no dedicated market page yet). **RSD stands out**: Trend Scout found its one existing market page dominated by digital-download therapy worksheets rather than physical merch, with only a single physical sticker listing \u2014 that's a real signal of underserved physical-product supply for a genuine, searched-for identity term, worth prioritizing for Gap Finder next cycle. Mob wife and Trad wife both carry an explicit low-confidence caveat from Trend Scout (can't rule out \"Etsy hasn't built a market page yet\" vs. \"genuinely low supply\") \u2014 I'm carrying that caveat into the tracker rather than treating either as a confirmed gap.\n\n**Nothing retired, nothing rescored, no existing niche/gap/brief touched.** All 18 previously tracked niches, all 9 gaps, and all 8 briefs carry forward completely unchanged. This cycle only adds 13 new niche rows (19\u201331).\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below, unchanged and carried forward.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now sixteen cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 18th consecutive cycle now (Cycles 2\u201318). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Blocking real listing-count/price/image/review-count data for all 13 of this cycle's new candidates \u2014 every field beyond \"does a real listing/market-page exist\" is search-fallback confidence only, not API-confirmed.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201317) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -715,6 +715,263 @@ const DATA = {
       "countDisplay": "search-verified only (multiple resolvable URLs; includes two Etsy market category pages \u2014 `/market/nonnas_kitchen` and `/market/nonnas_garden`)",
       "title": "\"Nonna's Garden Italian Kitchen Herbs Art Print Family\"",
       "url": "https://www.etsy.com/listing/758772060/nonnas-garden-italian-kitchen-herbs-art",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Perimenopause humor",
+      "category": [
+        "mugs (crosses into t-shirts)"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 2,
+      "countDisplay": "search-verified only (market pages: `funny_perimenopause`, `perimenopause_joke`, `menopause_jokes` page 2; plus an auto-generated gift-guide page)",
+      "title": "\"Funny Menopocalypse Menopause Humor Mug Gift, Hot Flash Survivor, in My Menopause Era Midlife Gift\"",
+      "url": "https://www.etsy.com/listing/4319630093/funny-menopocalypse-menopause-humor-mug",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "AuDHD (combined autism+ADHD identity)",
+      "category": [
+        "stickers",
+        "t-shirts"
+      ],
+      "status": "unresolved \u2014 rising, more specific than the tracked broader adhd/neurodivergent niches, not yet gap-scored",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 2,
+      "countDisplay": "search-verified only (market pages: `audhd`, `audhd_stickers`, `audhd_badge`, `audhd_shirt` incl. a page 2)",
+      "title": "\"Empowering Audhd Sticker for Women, ADHD Sticker, Neurodivergent, Autism, Laptop Decal\"",
+      "url": "https://www.etsy.com/listing/1536524388/empowering-audhd-sticker-for-women-adhd",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Mob wife aesthetic",
+      "category": [
+        "wall art",
+        "tumblers"
+      ],
+      "status": "unresolved \u2014 rising as a general aesthetic trend, but thin/tangential signal specifically for wall-art or tumbler product types (most concrete matches were party decor/notebooks); needs a follow-up check before treating as a genuine wall-art/tumbler opportunity",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (wall-art market page exists but no matching individual wall-art listing surfaced this pass)",
+      "title": "\"Mob. Wife. Era. Notebook \u2014 Mob Wife Aesthetic Spiral Notebook\"",
+      "url": "https://www.etsy.com/listing/1704698595/mob-wife-era-notebook-mob-wife-aesthetic",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Coquette aesthetic",
+      "category": [
+        "stickers",
+        "tumblers"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (multiple regional market pages, US and India)",
+      "title": "\"Vinyl Coquette Bow Decal Sticker for Car, Tumbler, Water Bottle, Cup\"",
+      "url": "https://www.etsy.com/listing/1851972380/vinyl-coquette-bow-decal-sticker-for-car",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "NICU / preemie mom",
+      "category": [
+        "wall art",
+        "mugs"
+      ],
+      "status": "active \u2014 established gift-guide category, moderate volume",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only",
+      "title": "\"Preemie Holding Hands Mother and Newborn New Family African American Nicu Art / Neonatology Art\"",
+      "url": "https://www.etsy.com/listing/1009114613/preemie-holding-hands-mother-and-newborn",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Highly Sensitive Person (HSP)",
+      "category": [
+        "mugs",
+        "stickers"
+      ],
+      "status": "unresolved \u2014 rising, an emotional-trait identity distinct from the pipeline's tracked diagnostic categories, not yet gap-scored",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (dedicated market pages for both mugs and stickers)",
+      "title": "\"Highly Sensitive Person Coffee Mug \u2014 White and Beige \u2014 Two Sizes \u2014 HSP \u2014 Mental Health \u2014 Psychology\"",
+      "url": "https://www.etsy.co.uk/listing/1658619126/highly-sensitive-person-coffee-mug-white",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Goblincore",
+      "category": [
+        "wall art",
+        "stickers"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (extensive market pages across stickers, posters, decor, digital downloads)",
+      "title": "\"Goblin Girl Sticker Pack: Goblincore Fall Gremlin Vinyl Stickers\"",
+      "url": "https://www.etsy.com/listing/4345887074/goblin-girl-sticker-pack-goblincore-fall",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Foster mom / adoptive parent",
+      "category": [
+        "wall art",
+        "mugs"
+      ],
+      "status": "active \u2014 established mainstream gift niche, not new",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (market pages across variant terms; no individual listing URL surfaced this pass)",
+      "title": "",
+      "url": null,
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Night shift nurse",
+      "category": [
+        "tumblers",
+        "mugs"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 2,
+      "countDisplay": "search-verified only (deep listing volume, incl. a page-2 market page)",
+      "title": "\"Personalized Night Shift Nurse Tumbler 40oz Custom RN Gift for Nurse\"",
+      "url": "https://www.etsy.com/listing/4465908922/personalized-night-shift-nurse-tumbler",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Misophonia",
+      "category": [
+        "stickers",
+        "t-shirts"
+      ],
+      "status": "unresolved \u2014 rising, appears less crowded than the tracked adhd/spoonie-adjacent niches, not yet gap-scored",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (separate dedicated market pages for shirts and stickers)",
+      "title": "\"Misophonia Awareness Sticker: Boho Rainbow Neurodiversity Sticker\"",
+      "url": "https://www.etsy.com/listing/1089803405/misophonia-awareness-sticker-boho",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "IBS / gut health humor",
+      "category": [
+        "mugs",
+        "t-shirts"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (market pages plus an auto-generated gift-guide page)",
+      "title": "\"Funny IBS Coffee Mug, Broken Gut Cup, Digestive Pun, Gift for IBS, Gastroenterology\"",
+      "url": "https://www.etsy.com/listing/1658025395/funny-ibs-coffee-mug-broken-gut-cup",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Rejection Sensitive Dysphoria (RSD)",
+      "category": [
+        "stickers (ADHD-adjacent; could extend to wall art)"
+      ],
+      "status": "unresolved \u2014 \u2b50 standout candidate: its one existing market page is dominated by digital-download therapy worksheets, not physical merch, with only a single physical sticker listing found \u2014 a real signal of underserved physical-product supply for a genuinely searched-for identity term; prioritize for gap finder next cycle",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (single physical-product listing found)",
+      "title": "\"Rejection Senstive Dik-sphoria Dik-dik Sticker - Rejection Sensitive Dysphoria RSD - Vinyl Sticker - Spoonie - Invisible Illness - ADHD\"",
+      "url": "https://www.etsy.it/listing/1694948493/rejection-senstive-dik-sphoria-dik-dik",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Trad wife aesthetic",
+      "category": [
+        "wall art"
+      ],
+      "status": "unresolved \u2014 very thin etsy pod supply found; no dedicated market page turned up yet, only one specific matching listing; can't rule out \"etsy hasn't built a market page yet\" vs. genuinely low supply \u2014 needs a second pass before treating as a confirmed gap",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (single listing found)",
+      "title": "\"Tradwife Midcentury Modern Poster 1, Conservative Trad Wife Wall Art Mid Century Kitchen Housewife Home Decor\"",
+      "url": "https://www.etsy.com/listing/1891507087/tradwife-midcentury-modern-poster-1",
       "img": null,
       "price": null,
       "reviews": null,
@@ -1426,6 +1683,167 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 18,
+      "date": "2026-09-07",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 rising, more specific than the tracked broader adhd/neurodivergent niches, not yet gap-scored",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "unresolved \u2014 rising as a general aesthetic trend, but thin/tangential signal specifically for wall-art or tumbler product types (most concrete matches were party decor/notebooks); needs a follow-up check before treating as a genuine wall-art/tumbler opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 rising, an emotional-trait identity distinct from the pipeline's tracked diagnostic categories, not yet gap-scored",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 rising, appears less crowded than the tracked adhd/spoonie-adjacent niches, not yet gap-scored",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u2b50 standout candidate: its one existing market page is dominated by digital-download therapy worksheets, not physical merch, with only a single physical sticker listing found \u2014 a real signal of underserved physical-product supply for a genuinely searched-for identity term; prioritize for gap finder next cycle",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 very thin etsy pod supply found; no dedicated market page turned up yet, only one specific matching listing; can't rule out \"etsy hasn't built a market page yet\" vs. genuinely low supply \u2014 needs a second pass before treating as a confirmed gap",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -1446,11 +1864,26 @@ const DATA = {
     "ADHD/neurodivergent \u00d7 wall art",
     "Recovery/sobriety \u00d7 tumbler",
     "Chronic illness/spoonie \u00d7 wall art",
-    "Nonnacore \u00d7 kitchen wall art"
+    "Nonnacore \u00d7 kitchen wall art",
+    "Perimenopause humor",
+    "AuDHD (combined autism+ADHD identity)",
+    "Mob wife aesthetic",
+    "Coquette aesthetic",
+    "NICU / preemie mom",
+    "Highly Sensitive Person (HSP)",
+    "Goblincore",
+    "Foster mom / adoptive parent",
+    "Night shift nurse",
+    "Misophonia",
+    "IBS / gut health humor",
+    "Rejection Sensitive Dysphoria (RSD)",
+    "Trad wife aesthetic"
   ],
   "productTypes": [
     "mugs",
+    "mugs (crosses into t-shirts)",
     "stickers",
+    "stickers (ADHD-adjacent; could extend to wall art)",
     "t-shirts",
     "tumblers",
     "wall art"
@@ -1469,7 +1902,7 @@ const DATA = {
         "example": "\"Gothic Moon Face Sticker: Sleepy Celestial Moon Art\"",
         "price": "$4.49",
         "url": "https://www.etsy.com/listing/4527674043/gothic-moon-face-sticker-sleepy",
-        "r": 13.6
+        "r": 11.8
       },
       {
         "id": "niche:Nonnacore",
@@ -1483,7 +1916,7 @@ const DATA = {
         "example": "\"Pregnancy Announcement to Grandparents Mug Set\"",
         "price": "$19.99",
         "url": "https://www.etsy.com/listing/1775546945/pregnancy-announcement-to-grandparents",
-        "r": 17.8
+        "r": 14.0
       },
       {
         "id": "niche:Castlecore / Knightcore",
@@ -1497,7 +1930,7 @@ const DATA = {
         "example": "\"Tartaria Griffin Crest Shirt, Medieval Fantasy Graphic Tee\"",
         "price": "$36.23",
         "url": "https://www.etsy.com/listing/4489223103/tartaria-griffin-crest-shirt-medieval",
-        "r": 19.1
+        "r": 14.6
       },
       {
         "id": "niche:ADHD / neurodivergent stickers",
@@ -1511,7 +1944,7 @@ const DATA = {
         "example": "\"I Have To Say Weird Stuff Or I'll Die Sticker\"",
         "price": "$3.50",
         "url": "https://www.etsy.com/listing/4404433752/i-have-to-say-weird-stuff-or-ill-die",
-        "r": 10.8
+        "r": 10.4
       },
       {
         "id": "niche:Chronic illness / spoonie stickers",
@@ -1525,7 +1958,7 @@ const DATA = {
         "example": "\"Chronic Illness Sticker, Hidden Disability, Spoonie Sticker\"",
         "price": "$4.99",
         "url": "https://www.etsy.com/listing/1536789034/chronic-illness-sticker-hidden",
-        "r": 11.6
+        "r": 10.8
       },
       {
         "id": "niche:Recovery / sobriety stickers",
@@ -1539,7 +1972,7 @@ const DATA = {
         "example": "\"Vintage Floral Pretty Sobriety Birthday Celebration Sticker\"",
         "price": "$5.00",
         "url": "https://www.etsy.com/listing/1768692507/vintage-floral-pretty-sobriety-birthday",
-        "r": 18.4
+        "r": 14.3
       },
       {
         "id": "niche:Pet breed + hobby combo mugs",
@@ -1553,7 +1986,7 @@ const DATA = {
         "example": "\"Vizsla Mountain Mug, Out Offline Caffeinated, Dog Mom Gift\"",
         "price": "$16.65",
         "url": "https://www.etsy.com/listing/4559650270/vizsla-mountain-mug-out-offline",
-        "r": 23.9
+        "r": 17.1
       },
       {
         "id": "niche:Occupation x sarcasm t-shirts",
@@ -1581,7 +2014,7 @@ const DATA = {
         "example": "\"Modern Black Women Horizontal Wall Art - Afrocentric Boho Folk Print\"",
         "price": "$6.80",
         "url": "https://www.etsy.com/listing/4474469102/modern-black-women-horizontal-wall-art",
-        "r": 23.5
+        "r": 16.9
       },
       {
         "id": "niche:Extra Celestial / alien-core",
@@ -1595,7 +2028,7 @@ const DATA = {
         "example": "\"Cute Alien Cat Emotes for Twitch, Discord, YouTube\"",
         "price": "$6.00",
         "url": "https://www.etsy.com/listing/4337379977/cute-alien-cat-emotes-for-twitch-discord",
-        "r": 26.0
+        "r": 18.2
       },
       {
         "id": "niche:Circus-core / Funhaus",
@@ -1609,7 +2042,7 @@ const DATA = {
         "example": "\"Bite Me Art Print\"",
         "price": "$4.00",
         "url": "https://www.etsy.com/listing/1501174256/bite-me-art-print",
-        "r": 24.0
+        "r": 17.2
       },
       {
         "id": "niche:Neo Deco",
@@ -1623,7 +2056,7 @@ const DATA = {
         "example": "\"Quiet Elegance \u2014 Expressionist Woman in a Modern Interior\"",
         "price": "$550.00",
         "url": "https://www.etsy.com/listing/4559701357/quiet-elegance-expressionist-woman-in-a",
-        "r": 14.8
+        "r": 12.5
       },
       {
         "id": "niche:Tumbler general (teachers/nurses/moms)",
@@ -1637,7 +2070,7 @@ const DATA = {
         "example": "\"Cinnamoroll Owala Tumbler 32oz\"",
         "price": "$49.99",
         "url": "https://www.etsy.com/listing/4525007672/cinnamoroll-owala-tumbler-32oz-pastel",
-        "r": 17.8
+        "r": 14.0
       },
       {
         "id": "niche:Cozy fantasy / \"romantasy\" reader mug",
@@ -1707,6 +2140,188 @@ const DATA = {
         "example": "\"Nonna's Garden Italian Kitchen Herbs Art Print Family\"",
         "price": null,
         "url": "https://www.etsy.com/listing/758772060/nonnas-garden-italian-kitchen-herbs-art",
+        "r": 18
+      },
+      {
+        "id": "niche:Perimenopause humor",
+        "kind": "niche",
+        "label": "Perimenopause humor",
+        "name": "Perimenopause humor",
+        "category": "mugs (crosses into t-shirts)",
+        "color": "#94a3b8",
+        "satLevel": "unknown",
+        "count": 2,
+        "example": "\"Funny Menopocalypse Menopause Humor Mug Gift, Hot Flash Survivor, in My Menopause Era Midlife Gift\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/4319630093/funny-menopocalypse-menopause-humor-mug",
+        "r": 26.0
+      },
+      {
+        "id": "niche:AuDHD (combined autism+ADHD identity)",
+        "kind": "niche",
+        "label": "AuDHD (combined autism+ADHD identity)",
+        "name": "AuDHD (combined autism+ADHD identity)",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": "unknown",
+        "count": 2,
+        "example": "\"Empowering Audhd Sticker for Women, ADHD Sticker, Neurodivergent, Autism, Laptop Decal\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1536524388/empowering-audhd-sticker-for-women-adhd",
+        "r": 26.0
+      },
+      {
+        "id": "niche:Mob wife aesthetic",
+        "kind": "niche",
+        "label": "Mob wife aesthetic",
+        "name": "Mob wife aesthetic",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Mob. Wife. Era. Notebook \u2014 Mob Wife Aesthetic Spiral Notebook\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1704698595/mob-wife-era-notebook-mob-wife-aesthetic",
+        "r": 18
+      },
+      {
+        "id": "niche:Coquette aesthetic",
+        "kind": "niche",
+        "label": "Coquette aesthetic",
+        "name": "Coquette aesthetic",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Vinyl Coquette Bow Decal Sticker for Car, Tumbler, Water Bottle, Cup\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1851972380/vinyl-coquette-bow-decal-sticker-for-car",
+        "r": 18
+      },
+      {
+        "id": "niche:NICU / preemie mom",
+        "kind": "niche",
+        "label": "NICU / preemie mom",
+        "name": "NICU / preemie mom",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Preemie Holding Hands Mother and Newborn New Family African American Nicu Art / Neonatology Art\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1009114613/preemie-holding-hands-mother-and-newborn",
+        "r": 18
+      },
+      {
+        "id": "niche:Highly Sensitive Person (HSP)",
+        "kind": "niche",
+        "label": "Highly Sensitive Person (HSP)",
+        "name": "Highly Sensitive Person (HSP)",
+        "category": "mugs",
+        "color": "#fbbf6f",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Highly Sensitive Person Coffee Mug \u2014 White and Beige \u2014 Two Sizes \u2014 HSP \u2014 Mental Health \u2014 Psychology\"",
+        "price": null,
+        "url": "https://www.etsy.co.uk/listing/1658619126/highly-sensitive-person-coffee-mug-white",
+        "r": 18
+      },
+      {
+        "id": "niche:Goblincore",
+        "kind": "niche",
+        "label": "Goblincore",
+        "name": "Goblincore",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Goblin Girl Sticker Pack: Goblincore Fall Gremlin Vinyl Stickers\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/4345887074/goblin-girl-sticker-pack-goblincore-fall",
+        "r": 18
+      },
+      {
+        "id": "niche:Foster mom / adoptive parent",
+        "kind": "niche",
+        "label": "Foster mom / adoptive parent",
+        "name": "Foster mom / adoptive parent",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 18
+      },
+      {
+        "id": "niche:Night shift nurse",
+        "kind": "niche",
+        "label": "Night shift nurse",
+        "name": "Night shift nurse",
+        "category": "tumblers",
+        "color": "#34d399",
+        "satLevel": "unknown",
+        "count": 2,
+        "example": "\"Personalized Night Shift Nurse Tumbler 40oz Custom RN Gift for Nurse\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/4465908922/personalized-night-shift-nurse-tumbler",
+        "r": 26.0
+      },
+      {
+        "id": "niche:Misophonia",
+        "kind": "niche",
+        "label": "Misophonia",
+        "name": "Misophonia",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Misophonia Awareness Sticker: Boho Rainbow Neurodiversity Sticker\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1089803405/misophonia-awareness-sticker-boho",
+        "r": 18
+      },
+      {
+        "id": "niche:IBS / gut health humor",
+        "kind": "niche",
+        "label": "IBS / gut health humor",
+        "name": "IBS / gut health humor",
+        "category": "mugs",
+        "color": "#fbbf6f",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Funny IBS Coffee Mug, Broken Gut Cup, Digestive Pun, Gift for IBS, Gastroenterology\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1658025395/funny-ibs-coffee-mug-broken-gut-cup",
+        "r": 18
+      },
+      {
+        "id": "niche:Rejection Sensitive Dysphoria (RSD)",
+        "kind": "niche",
+        "label": "Rejection Sensitive Dysphoria (RSD)",
+        "name": "Rejection Sensitive Dysphoria (RSD)",
+        "category": "stickers (ADHD-adjacent; could extend to wall art)",
+        "color": "#94a3b8",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Rejection Senstive Dik-sphoria Dik-dik Sticker - Rejection Sensitive Dysphoria RSD - Vinyl Sticker - Spoonie - Invisible Illness - ADHD\"",
+        "price": null,
+        "url": "https://www.etsy.it/listing/1694948493/rejection-senstive-dik-sphoria-dik-dik",
+        "r": 18
+      },
+      {
+        "id": "niche:Trad wife aesthetic",
+        "kind": "niche",
+        "label": "Trad wife aesthetic",
+        "name": "Trad wife aesthetic",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": "\"Tradwife Midcentury Modern Poster 1, Conservative Trad Wife Wall Art Mid Century Kitchen Housewife Home Decor\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1891507087/tradwife-midcentury-modern-poster-1",
         "r": 18
       },
       {
@@ -1873,6 +2488,11 @@ const DATA = {
       },
       {
         "source": "niche:ADHD / neurodivergent stickers",
+        "target": "niche:AuDHD (combined autism+ADHD identity)",
+        "weight": 1
+      },
+      {
+        "source": "niche:ADHD / neurodivergent stickers",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
       },
@@ -1933,6 +2553,21 @@ const DATA = {
       },
       {
         "source": "niche:Tumbler general (teachers/nurses/moms)",
+        "target": "niche:NICU / preemie mom",
+        "weight": 1
+      },
+      {
+        "source": "niche:Tumbler general (teachers/nurses/moms)",
+        "target": "niche:Foster mom / adoptive parent",
+        "weight": 1
+      },
+      {
+        "source": "niche:Tumbler general (teachers/nurses/moms)",
+        "target": "niche:Night shift nurse",
+        "weight": 1
+      },
+      {
+        "source": "niche:Tumbler general (teachers/nurses/moms)",
         "target": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
         "weight": 2
       },
@@ -1960,6 +2595,11 @@ const DATA = {
         "source": "niche:ADHD/neurodivergent \u00d7 wall art",
         "target": "niche:Nonnacore \u00d7 kitchen wall art",
         "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "niche:AuDHD (combined autism+ADHD identity)",
+        "weight": 1
       },
       {
         "source": "niche:ADHD/neurodivergent \u00d7 wall art",
@@ -2015,6 +2655,86 @@ const DATA = {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
         "weight": 2
+      },
+      {
+        "source": "niche:Perimenopause humor",
+        "target": "niche:IBS / gut health humor",
+        "weight": 1
+      },
+      {
+        "source": "niche:AuDHD (combined autism+ADHD identity)",
+        "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
+        "weight": 1
+      },
+      {
+        "source": "niche:AuDHD (combined autism+ADHD identity)",
+        "target": "gap:5:ADHD \u00d7 sobriety/recovery",
+        "weight": 1
+      },
+      {
+        "source": "niche:AuDHD (combined autism+ADHD identity)",
+        "target": "gap:7:Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
+        "weight": 1
+      },
+      {
+        "source": "niche:AuDHD (combined autism+ADHD identity)",
+        "target": "gap:8:Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
+        "weight": 1
+      },
+      {
+        "source": "niche:Mob wife aesthetic",
+        "target": "niche:Coquette aesthetic",
+        "weight": 1
+      },
+      {
+        "source": "niche:Mob wife aesthetic",
+        "target": "niche:Trad wife aesthetic",
+        "weight": 2
+      },
+      {
+        "source": "niche:Coquette aesthetic",
+        "target": "niche:Trad wife aesthetic",
+        "weight": 1
+      },
+      {
+        "source": "niche:NICU / preemie mom",
+        "target": "niche:Foster mom / adoptive parent",
+        "weight": 1
+      },
+      {
+        "source": "niche:NICU / preemie mom",
+        "target": "gap:3:Gothmas \u00d7 pet-mom Christmas stickers",
+        "weight": 1
+      },
+      {
+        "source": "niche:NICU / preemie mom",
+        "target": "gap:4:Sobriety \u00d7 pet-mom stickers/shirts",
+        "weight": 1
+      },
+      {
+        "source": "niche:Highly Sensitive Person (HSP)",
+        "target": "niche:Rejection Sensitive Dysphoria (RSD)",
+        "weight": 1
+      },
+      {
+        "source": "niche:Foster mom / adoptive parent",
+        "target": "gap:3:Gothmas \u00d7 pet-mom Christmas stickers",
+        "weight": 1
+      },
+      {
+        "source": "niche:Foster mom / adoptive parent",
+        "target": "gap:4:Sobriety \u00d7 pet-mom stickers/shirts",
+        "weight": 1
+      },
+      {
+        "source": "niche:Foster mom / adoptive parent",
+        "target": "gap:8:Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
+        "weight": 1
+      },
+      {
+        "source": "niche:Night shift nurse",
+        "target": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
+        "weight": 1
       }
     ]
   },
