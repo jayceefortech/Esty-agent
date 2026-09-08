@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-07T13:24:49",
+  "generatedAt": "2026-09-08T13:29:13",
   "cycle": {
-    "number": 18,
-    "date": "2026-09-07",
-    "title": "Cycle 18 \u2014 2026-09-07",
+    "number": 19,
+    "date": "2026-09-08",
+    "title": "Cycle 19 \u2014 2026-09-08",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-07",
-    "nextScheduled": "2026-09-08",
+    "lastRun": "2026-09-08",
+    "nextScheduled": "2026-09-09",
     "agents": [
       {
         "name": "Trend Scout",
-        "status": "success",
-        "detail": "search fallback \u2014 no `ETSY_API_KEY` in this session, 18th consecutive cycle unset"
+        "status": "skipped",
+        "detail": "Cycle 18's scouting pass is only one day old; today's actionable item was scoring/briefing its output, not fresh scouting"
       },
       {
         "name": "Phrase Miner",
-        "status": "skipped",
-        "detail": "deferred to next cycle \u2014 see scope reasoning"
+        "status": "success",
+        "detail": "weak, single-example formulas extracted for 6 of Cycle 18's rising/thin candidates"
       },
       {
         "name": "Gap Finder",
-        "status": "skipped",
-        "detail": "deferred to next cycle \u2014 see scope reasoning"
+        "status": "success",
+        "detail": "2 gaps scored \u2014 Gap 10 at 30/40, Gap 11 at 18/40 \u2014 plus 5 candidates ruled out as already-served"
       },
       {
         "name": "Review Miner",
-        "status": "skipped",
-        "detail": "no `ETSY_API_KEY`; nothing graduated to gap-scoring yet to pool reviews for"
+        "status": "success",
+        "detail": "insufficient data \u2014 no `ETSY_API_KEY`, 19th consecutive cycle unset"
       },
       {
         "name": "Design Briefer",
-        "status": "skipped",
-        "detail": "nothing scored yet to brief"
+        "status": "success",
+        "detail": "Brief 10 drafted from phrase/style formulas alone, Review Miner had nothing to contribute"
       }
     ],
-    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today (2026-09-07), so this cycle was not a duplicate. Cycle 17's own \"Open follow-ups\" flagged that a fresh Trend Scout scouting pass was overdue \u2014 the last one was Cycle 15 (2026-09-04), three days ago; Cycles 16\u201317 were both narrow single-item follow-up checks, not new-candidate sweeps. Per this routine's standing guidance (a new calendar day is reason enough to at least reconsider re-running Trend Scout on priority terms, without requiring a full 5-agent pipeline every day), I sent Trend Scout for a broad fresh scouting pass across all five tracked product categories and stopped there \u2014 mirroring the Cycle 15\u219216 pattern (scout first, defer scoring/gap-checking to a following cycle) rather than compressing scouting and scoring into one run.\n\n**Trend Scout's findings, reviewed.** It researched 14 candidate niches via `site:etsy.com` search-fallback (no `ETSY_API_KEY`, so no price/image/review-count/date data \u2014 those fields are honestly `NO DATA AVAILABLE` across the board, not omitted). Every reported niche has at least one real resolvable Etsy URL (a listing or a `/market/` category page) confirming genuine existence; Trend Scout was explicit that it did not independently load listing pages, so titles are accurate-per-search-snippet but price/thumbnail/date fields are unverified beyond that. It also flagged, correctly, that it did not cross-check these against this tracker's existing 18 niches (per its own instructions, it doesn't read this file) \u2014 I did that cross-check myself: none of the 14 duplicate an existing tracked niche by name, though four (AuDHD, HSP, Misophonia, RSD) are adjacent sub-identity terms to the already-tracked broader ADHD/neurodivergent and chronic-illness/spoonie niches, distinct enough to log separately rather than merge.\n\n**What I'm logging and why:**\n- **5 confirmed saturated/mainstream, logged as market intelligence, not opportunities** (same treatment as the existing \"Tumbler general\" row): Perimenopause humor, Coquette aesthetic, Goblincore, Night shift nurse, IBS/gut health humor. Each shows multiple dedicated Etsy `/market/` category pages and/or auto-generated gift-guide pages \u2014 real, mature supply, not white space. Logging them mainly so future cycles don't re-scout the same saturated terms.\n- **1 rejected outright, not added as a tracked niche row: Blokecore.** Trend Scout's own findings were that search results were dominated by actual secondhand jersey resale listings, not print-on-demand graphic designs \u2014 this aesthetic doesn't map to the pipeline's POD product model at all, so it doesn't belong in the Niches table (this is a product-type mismatch, not a market judgment call, so no `\u26a0\ufe0f NEEDS YOUR CALL` flag is warranted).\n- **1 logged as an established mainstream niche:** NICU/preemie mom (real gift-guide category, moderate volume).\n- **1 logged as established but with an incomplete data point:** Foster mom/adoptive parent \u2014 real market pages exist but Trend Scout didn't surface an individual listing URL this pass, so the example-listing cell is `NO DATA AVAILABLE` even though the niche itself is search-verified via market pages.\n- **6 logged as genuinely rising or thin, worth a closer Gap Finder look next cycle:** AuDHD, Highly Sensitive Person (HSP), Misophonia, Rejection Sensitive Dysphoria (RSD), Mob wife aesthetic (thin specifically for wall-art/tumbler product fit), Trad wife aesthetic (very thin, single listing, no dedicated market page yet). **RSD stands out**: Trend Scout found its one existing market page dominated by digital-download therapy worksheets rather than physical merch, with only a single physical sticker listing \u2014 that's a real signal of underserved physical-product supply for a genuine, searched-for identity term, worth prioritizing for Gap Finder next cycle. Mob wife and Trad wife both carry an explicit low-confidence caveat from Trend Scout (can't rule out \"Etsy hasn't built a market page yet\" vs. \"genuinely low supply\") \u2014 I'm carrying that caveat into the tracker rather than treating either as a confirmed gap.\n\n**Nothing retired, nothing rescored, no existing niche/gap/brief touched.** All 18 previously tracked niches, all 9 gaps, and all 8 briefs carry forward completely unchanged. This cycle only adds 13 new niche rows (19\u201331).\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below, unchanged and carried forward.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now sixteen cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 18th consecutive cycle now (Cycles 2\u201318). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Blocking real listing-count/price/image/review-count data for all 13 of this cycle's new candidates \u2014 every field beyond \"does a real listing/market-page exist\" is search-fallback confidence only, not API-confirmed.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201317) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Scope decision: partial recheck, four sub-agents.** No CEO Summary existed yet for today. The two standing blockers (`ETSY_API_KEY` unset, Gap 6's retire/keep call) are unchanged since Cycle 2/3, so re-touching either would only restate facts already on record. Cycle 18's own \"Open follow-ups\" named a specific, concrete, unblocked next step: run Phrase Miner + Gap Finder on the six rising/thin candidates it had just logged (AuDHD, HSP, Misophonia, RSD, Mob wife aesthetic, Trad wife aesthetic), prioritizing RSD as the flagged standout. I sent Phrase Miner first (it needs Trend Scout's raw findings, which I supplied from Cycle 18's own tracker rows since that scouting pass is only a day old \u2014 no need to re-scout), then Gap Finder with Phrase Miner's formulas plus the existing tracked-niche listing counts for cross-referencing. Since Gap Finder's top result (RSD stickers) scored comparably to the pipeline's other briefed gaps (30/40, tied with Gap 8), I continued the pipeline order through Review Miner (expected insufficient data, confirmed) and Design Briefer to produce Brief 10 this same cycle, rather than deferring briefing to a future cycle the way Cycle 18 deferred scoring.\n\n**Phrase Miner** extracted weak, single-example title/copy formulas for all six candidates \u2014 every niche in this batch had exactly one example title surfaced by Trend Scout, so nothing cleared \"strong pattern.\" It correctly declined to invent visual-style formulas where the title gave no textual basis (AuDHD, Mob wife aesthetic), and flagged real but single-source visual cues where they existed (HSP: neutral \"white and beige\" palette; Misophonia: \"boho rainbow\"; Trad wife: explicit \"mid-century modern kitchen\"; RSD: an inferred mascot/character-illustration approach implied by its one comp's pun).\n\n**Gap Finder's findings, reviewed \u2014 including two corrections to Cycle 18's own framing that I'm incorporating into the Niches table below, not silently:**\n- **RSD wall art is not a void \u2014 it's already served.** Cycle 18 logged RSD as \"stickers (ADHD-adjacent; could extend to wall art).\" Gap Finder found 3 real, resolvable poster/wall-art listings already combining RSD with ADHD framing. The RSD *sticker* gap (Gap 10 below) is real and product-type-specific, not a niche-wide opportunity \u2014 I've corrected RSD's Niches-table row to reflect this rather than let the earlier \"could extend to wall art\" framing stand uncorrected.\n- **Mob wife wall art is thinner-served than Cycle 18's search pass suggested, but not empty.** Cycle 18 said \"wall-art market page exists but no matching individual wall-art listing surfaced this pass.\" Gap Finder found 2 real wall-art listings plus a dedicated `mob_wife_aesthetic_decor` market page. I've corrected Mob wife's Niches-table row accordingly. This is new, more thorough search finding a prior pass missed \u2014 not a retirement of the niche itself, which stays tracked and unresolved either way.\n- **Gap 10 \u2014 RSD stickers** (bridging tracked ADHD/neurodivergent stickers [3,962] \u00d7 chronic illness/spoonie stickers [3,204]): scored **30/40** (Market Opportunity 9, Ease of Entry 7, User Fit 8, Profit Potential 6). Near-zero (1) confirmed physical-sticker supply between two large, validated parent niches \u2014 the strongest opportunity signal Gap Finder found this cycle. Real risk: mental-health-topic tone handling, and genuine uncertainty on true demand size since no listing-count data exists for \"RSD\" as a standalone term (no API key). This is the cycle's headline finding \u2014 see Brief 10 below.\n- **Gap 11 (stretch, low confidence) \u2014 Trad wife \u00d7 Nonnacore domestic-homemaker wall art**: scored **18/40** (Market Opportunity 3, Ease of Entry 5, User Fit 6, Profit Potential 4) \u2014 Gap Finder's own words: \"do not prioritize this cycle.\" This is *inferred*, not directly search-confirmed either way (search found separate `nonna` and `tradwife` market pages, no combined listing, but couldn't rule the intersection in or out with confidence). It rests on the weaker of the two source niches (trad wife itself remains unvalidated \u2014 Trend Scout found effectively one listing, no dedicated market page) and carries real audience-merge uncertainty (trad wife skews young/pinup-glam, nonnacore skews elderly/cottage \u2014 they may not share a buyer) plus a genuine tone/political-sensitivity risk distinct from mechanical listing difficulty (trad wife is a contested identity term). Per pipeline rule 4, I'm logging it rather than discarding it \u2014 it's now the tracker's second-weakest scored gap, below even Gap 6 (20/40) \u2014 but I'm not briefing it this cycle; it needs trad wife itself independently validated with real data first, which is now added to the follow-ups list below.\n- **Ruled out (already-served, not gaps):** AuDHD \u00d7 ADHD/neurodivergent stickers (heavily served \u2014 multiple market pages and 5-6 distinct listings found, confirming this reads as a keyword sub-slice of the already-saturated parent niche, not a distinct gap); Misophonia \u00d7 ADHD/spoonie/chronic-illness stickers (already actively claimed \u2014 one listing explicitly stacks all four terms); HSP \u00d7 Empath positioning (not a genuine gap \u2014 sellers already fully conflate the two terms in the same listings); Mob wife \u00d7 Nonnacore/Italian-grandma-kitchen aesthetic (already served, per the correction above). Two pairings (Misophonia \u00d7 Afrohemian decor, HSP \u00d7 Neo Deco wall art) were considered pre-search and correctly not pursued \u2014 no real product-type or audience-overlap signal to justify spending a search on them.\n\n**Review Miner** checked for `ETSY_API_KEY` (still unset, 19th consecutive cycle) and correctly stopped rather than improvising buyer language for the RSD-stickers niche \u2014 reported `insufficient data \u2014 no API key` and nothing else, per its no-fallback rule.\n\n**Design Briefer drafted Brief 10 (RSD Stickers)** from Phrase Miner's single-comp formula and Gap Finder's rubric scores alone, since Review Miner had nothing to contribute this cycle. It explicitly avoided reusing the one real competitor's specific pun (that's their own joke, not a reusable formula element), instead generalizing the formula shape (validation-forward title, mascot/character illustration, clinical-term + community-slang keyword stack) into original copy. Confidence labeled **thin** \u2014 one real comp, no buyer-language grounding, no comp pricing \u2014 with Tier 1 (~$60\u201385) recommended and Tier 2 explicitly framed as signal-gathering (not a scale-up commitment) given Gap Finder's own moderate Profit Potential score (6/10) and the flagged sensitive-topic tone risk. Full brief is below.\n\n**Nothing retired.** All 18 originally-tracked niches, all 13 of Cycle 18's new niches, Gaps 1\u20139, and Briefs 1\u20135/7/8/9 (Brief 6 still deliberately unbriefed) carry forward unchanged except the two corrected Niches-table notes (RSD, Mob wife) described above \u2014 those are corrections from new, more thorough search evidence, not retirements or score changes to anything previously scored. This cycle adds Gap 10 (scored + briefed) and Gap 11 (scored, not briefed) to the Gaps/Gap Scores tables, and Brief 10 to the Design Briefs.\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below, unchanged and carried forward. Gap 11's low score is a routine ranking outcome, not a retirement question \u2014 it stays tracked at its low score, same treatment as Gap 6, no sign-off needed to log it.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now seventeen cycles running): keep as a tracked stretch bet, or mark for retirement.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 19th consecutive cycle now (Cycles 2\u201319). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Still blocking real listing-count/price/image/review data pipeline-wide, including any real buyer-language grounding for Brief 10 and a real demand-size check on Gap 10's core \"RSD\" search term.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2\u201318) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -746,7 +746,7 @@ const DATA = {
         "stickers",
         "t-shirts"
       ],
-      "status": "unresolved \u2014 rising, more specific than the tracked broader adhd/neurodivergent niches, not yet gap-scored",
+      "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out as a niche",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
@@ -766,14 +766,14 @@ const DATA = {
         "wall art",
         "tumblers"
       ],
-      "status": "unresolved \u2014 rising as a general aesthetic trend, but thin/tangential signal specifically for wall-art or tumbler product types (most concrete matches were party decor/notebooks); needs a follow-up check before treating as a genuine wall-art/tumbler opportunity",
+      "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: gap finder's more thorough search found this niche's wall-art product-type fit is real, not absent as cycle 18 read it \u2014 2 real listings ([\"mob wife poster vintage italian restaurant wall art\"](https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian)) plus a dedicated `mob_wife_aesthetic_decor` market page were found, already blending mob-wife glam with italian-american domestic/kitchen imagery \u2014 this also means mob wife \u00d7 nonnacore is already served, not a gap (see gaps section). tumbler product-type fit remains unchecked.",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
-      "count": null,
-      "countDisplay": "search-verified only (wall-art market page exists but no matching individual wall-art listing surfaced this pass)",
-      "title": "\"Mob. Wife. Era. Notebook \u2014 Mob Wife Aesthetic Spiral Notebook\"",
-      "url": "https://www.etsy.com/listing/1704698595/mob-wife-era-notebook-mob-wife-aesthetic",
+      "count": 2,
+      "countDisplay": "search-verified only (wall-art fit now confirmed via 2 real listings + a dedicated market page, per Cycle 19 correction above)",
+      "title": "\"Mob Wife Poster Vintage Italian Restaurant Wall Art\"",
+      "url": "https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian",
       "img": null,
       "price": null,
       "reviews": null,
@@ -826,7 +826,7 @@ const DATA = {
         "mugs",
         "stickers"
       ],
-      "status": "unresolved \u2014 rising, an emotional-trait identity distinct from the pipeline's tracked diagnostic categories, not yet gap-scored",
+      "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
@@ -906,7 +906,7 @@ const DATA = {
         "stickers",
         "t-shirts"
       ],
-      "status": "unresolved \u2014 rising, appears less crowded than the tracked adhd/spoonie-adjacent niches, not yet gap-scored",
+      "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
@@ -943,14 +943,14 @@ const DATA = {
     {
       "name": "Rejection Sensitive Dysphoria (RSD)",
       "category": [
-        "stickers (ADHD-adjacent; could extend to wall art)"
+        "stickers"
       ],
-      "status": "unresolved \u2014 \u2b50 standout candidate: its one existing market page is dominated by digital-download therapy worksheets, not physical merch, with only a single physical sticker listing found \u2014 a real signal of underserved physical-product supply for a genuinely searched-for identity term; prioritize for gap finder next cycle",
+      "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
-      "count": null,
-      "countDisplay": "search-verified only (single physical-product listing found)",
+      "count": 3,
+      "countDisplay": "search-verified only (single physical-sticker listing found; wall art confirmed served via 3 separate listings, see correction above)",
       "title": "\"Rejection Senstive Dik-sphoria Dik-dik Sticker - Rejection Sensitive Dysphoria RSD - Vinyl Sticker - Spoonie - Invisible Illness - ADHD\"",
       "url": "https://www.etsy.it/listing/1694948493/rejection-senstive-dik-sphoria-dik-dik",
       "img": null,
@@ -964,7 +964,7 @@ const DATA = {
       "category": [
         "wall art"
       ],
-      "status": "unresolved \u2014 very thin etsy pod supply found; no dedicated market page turned up yet, only one specific matching listing; can't rule out \"etsy hasn't built a market page yet\" vs. genuinely low supply \u2014 needs a second pass before treating as a confirmed gap",
+      "status": "unresolved \u2014 very thin etsy pod supply found; no dedicated market page turned up yet, only one specific matching listing; can't rule out \"etsy hasn't built a market page yet\" vs. genuinely low supply \u2014 needs a second pass before treating as a confirmed gap. \u26a0\ufe0f cycle 19: a candidate intersection with nonnacore was scored as gap 11 (18/40, low confidence/low priority) but rests partly on this niche's own still-unvalidated status \u2014 see gaps section and follow-ups.",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
@@ -1151,12 +1151,12 @@ const DATA = {
         "userFit": 7,
         "profitPotential": 3,
         "total": 20,
-        "rationale": "Lowest total, consistent with Gap Finder's own original \"weakest entry\" note \u2014 verification was never re-queried this cycle (still inferred) and no Phrase Miner formula exists for this sub-angle, so both the opportunity and the entry cost are unverified."
+        "rationale": "Lowest total among the original entries, consistent with Gap Finder's own original \"weakest entry\" note \u2014 verification was never re-queried (still inferred) and no Phrase Miner formula exists for this sub-angle, so both the opportunity and the entry cost are unverified."
       }
     },
     {
       "rank": 7,
-      "rankLabel": "7 (briefed 2026-08-28)",
+      "rankLabel": "7 (briefed)",
       "name": "Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
       "verification": "**0** matching listings across 4 search-only query variants (Cycle 7; no `ETSY_API_KEY` \u2014 not an API-confirmed zero) \u2014 confirmed sparse at search-only confidence",
       "risk": "audience-merge unconfirmed (two real audiences, no confirmed combined-buyer data); scaling across many breeds multiplies illustration cost without a template system",
@@ -1182,15 +1182,15 @@ const DATA = {
         "userFit": 8,
         "profitPotential": 5,
         "total": 27,
-        "rationale": "0 resolvable listings across 4 search-only query variants, sitting between one real-listing-count niche (pet breed combo mugs, 152 listings tracked) and one trending but still search-only-verified niche (romantasy mug). Ease of Entry and User Fit score well \u2014 personalization (breed/name selection) is scriptable via Printify variants. Profit Potential is the lowest of any tracked gap: this is a niche-within-a-niche-within-a-niche \u2014 the second axis is breed identity \u00d7 book-genre/fandom identity (Cycle 8 corrected this from an originally-assumed \"hobby\" framing; score unchanged). Market Opportunity capped at 6, not higher, because neither side's true overlap size is API-confirmed."
+        "rationale": "0 resolvable listings across 4 search-only query variants, sitting between one real-listing-count niche (pet breed combo mugs, 152 listings tracked) and one trending but still search-only-verified niche (romantasy mug). Ease of Entry and User Fit score well \u2014 personalization (breed/name selection) is scriptable via Printify variants. Profit Potential is the lowest of the original tracked gaps: this is a niche-within-a-niche-within-a-niche \u2014 the second axis is breed identity \u00d7 book-genre/fandom identity. Market Opportunity capped at 6, not higher, because neither side's true overlap size is API-confirmed."
       }
     },
     {
       "rank": 8,
-      "rankLabel": "8 (briefed 2026-08-31)",
+      "rankLabel": "8 (briefed)",
       "name": "Dog-breed \u00d7 profession \u00d7 parent-identity mug/ornament",
-      "verification": "**0** matching listings combining all three axes, across 2 independent search-fallback spot-checks this cycle (\"golden retriever\" nurse mom mug, \"corgi\" teacher dog mom ornament) \u2014 confirmed sparse at search-only confidence; each pairwise axis (breed\u00d7parent, profession\u00d7parent, breed\u00d7profession) separately has multiple mature Etsy market pages",
-      "risk": "triple-identity-stack may over-narrow the addressable buyer for this exact SKU vs. the proven two-axis versions; ornament format is Q4-only (mug format, year-round, is the recommended lead SKU)",
+      "verification": "**0** matching listings combining all three axes, across 2 independent search-fallback spot-checks (Cycle 11), corroborated by a real triple-stack proof-of-concept found in Cycle 13 (French Bulldog \"Coach\" mug + treat pouch) \u2014 confirmed sparse for the specific breed/profession pairings checked, but a real seller now confirmed operating in this exact 3-axis space",
+      "risk": "triple-identity-stack may over-narrow the addressable buyer for most breed/profession pairings vs. the proven two-axis versions; ornament format is Q4-only (mug format, year-round, is the recommended lead SKU)",
       "nearMissCount": 0,
       "nearMissUrl": null,
       "nearMissTitle": null,
@@ -1213,15 +1213,15 @@ const DATA = {
         "userFit": 9,
         "profitPotential": 6,
         "total": 30,
-        "rationale": "**Rescored this cycle.** Original score (6/8/8/6=28) reflected zero known real triple-stack listings. A dedicated 6-breed sweep across Cycles 11 and 13 found one real, resolvable triple-stack listing (French Bulldog \u00d7 \"Coach\" mug) plus a second real listing templating the same profession+breed+dog-mom formula across three professions on one SKU \u2014 genuine proof-of-concept that a real seller operates in this exact 3-axis space, which is why Market Opportunity (+1) and especially User Fit (+1, this operator's templated-variant automation approach is now confirmed working in the wild, not just theoretical) moved up. Ease of Entry unchanged \u2014 nothing about production mechanics changed, this is a market-validation signal not a production-difficulty one. Profit Potential deliberately held flat at 6: no sales-volume or review-count data exists for either real listing, and 5 of the 6 breeds checked (including the original golden-retriever/nurse pairing) still show zero real triple-stack listings \u2014 this is \"validated formula, unclaimed specific lane,\" not blue ocean."
+        "rationale": "One real seller confirmed operating live in the exact 3-axis space across two breeds/product types (de-risking the templated-variant approach specifically), while 5 of 6 breeds checked still show zero real triple-stack listings \u2014 Market Opportunity and User Fit moved up from the original 28/40 on the strength of this proof-of-concept, while Ease of Entry and Profit Potential were held flat since nothing changed about production mechanics or sales-volume evidence."
       }
     },
     {
       "rank": 9,
-      "rankLabel": "9 (briefed 2026-08-31, reframed from \"horse girl aesthetic\")",
+      "rankLabel": "9 (briefed, reframed from \"horse girl aesthetic\")",
       "name": "Equestrian-imagery \u00d7 dark-academia wall art/prints",
       "verification": "No dedicated Etsy market page across 3 phrasing variants tested (`horse_girl_dark_academia`, `dark_academia_horse_girl`, `equestrian_dark_academia`); 3 real, resolvable listings confirm sellers already blend the two aesthetics (moody Victorian/gothic equestrian wall art/prints) \u2014 early/thin, not virgin territory",
-      "risk": "this is equestrian-**decor**, not youth \"horse girl\" **identity** apparel/merch \u2014 no title evidence supports identity-driven framing; that narrower angle remains completely untested, flagged separately below",
+      "risk": "this is equestrian-**decor**, not youth \"horse girl\" **identity** apparel/merch \u2014 no title evidence supports identity-driven framing; that narrower angle remains completely untested",
       "nearMissCount": null,
       "nearMissUrl": null,
       "nearMissTitle": null,
@@ -1244,7 +1244,57 @@ const DATA = {
         "userFit": 8,
         "profitPotential": 7,
         "total": 28,
-        "rationale": "Strongest evidence base of the two new gaps (3/3 real listings support both a title/copy formula and a visual-style formula) \u2014 real transacting demand confirmed on both source aesthetics separately, but Market Opportunity held at 6 rather than higher since 3 active listings means some real competition already exists, not a genuinely near-empty (0-1) gap. Ease of Entry and User Fit both score well for a technical/automation-minded operator \u2014 digital-download wall art has near-zero marginal cost and is highly batchable. Profit Potential highest of the two new gaps (7): digital downloads carry no per-unit Printify cost and no seasonality, though the true dual-aesthetic-audience is narrower than either parent niche alone."
+        "rationale": "Strongest evidence base of the two Cycle 11 gaps (3/3 real listings support both a title/copy formula and a visual-style formula) \u2014 real transacting demand confirmed on both source aesthetics separately, but Market Opportunity held at 6 rather than higher since 3 active listings means some real competition already exists, not a genuinely near-empty (0-1) gap. Ease of Entry and User Fit both score well for a technical/automation-minded operator \u2014 digital-download wall art has near-zero marginal cost and is highly batchable. Profit Potential highest among gaps 1-9 (7): digital downloads carry no per-unit Printify cost and no seasonality, though the true dual-aesthetic-audience is narrower than either parent niche alone."
+      }
+    },
+    {
+      "rank": 10,
+      "rankLabel": "10 (briefed, new 2026-09-08)",
+      "name": "Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+      "verification": "Confirmed sparse at search-only confidence \u2014 only **1** real physical-product listing found across two targeted WebSearches this cycle, against a dedicated `/market/rejection_sensitive_dysphoria` page otherwise dominated by digital-download therapy worksheets. **RSD wall art (a different product type) is confirmed already served (3 real listings) \u2014 this gap is specifically the sticker product type, not the niche as a whole.**",
+      "risk": "mental-health/disability topic \u2014 real tone risk if the humor/mascot approach misfires, though the one existing competitor validates the approach can work; true demand size for \"RSD\" as a standalone term is unverified (no listing-count data, no `ETSY_API_KEY`)",
+      "nearMissCount": 1,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": {
+        "title": "RSD Stickers",
+        "exactText": "\"RSD Isn't Too Much Sticker - Rejection Sensitive Dysphoria ADHD Awareness - Vinyl Decal for Spoonies & Invisible Illness\"",
+        "description": "Ever had a comment roll around in your head for three days when everyone else moved on in three minutes? That's not you being dramatic \u2014 that's RSD. Made for people with ADHD (and the spoonies and invisible-illness folks who already speak this language) who are tired of \"you're too sensitive\" and want a small, honest way to say *this is a real thing, not a personality flaw.* Waterproof matte vinyl \u2192 survives your water bottle, your laptop, your planner, and the days you don't want to explain yourself out loud. Clinical term + acronym on the design \u2192 doubles as quiet self-advocacy \u2014 hand someone the sticker instead of the whole explanation. Small, low-key sticker format \u2192 says it without shouting it, for the days you want the identity marker but not the conversation. Grab one for the water bottle that already has your spoon and your ADHD stickers \u2014 RSD belongs on there too. *(Hook is drafted from the clinically-recognized definition of RSD, not a pulled buyer quote \u2014 Review Miner reported insufficient data this cycle, no `ETSY_API_KEY`.)*",
+        "onProduct": "**\"RSD: The Sting Is Real\"** paired with a small line-art mascot (a soft, rounded creature curling inward \u2014 e.g. hedgehog/armadillo shape \u2014 reading as \"flinching/withdrawing,\" not clinical or diagnostic imagery), with a secondary small-print line beneath it: **\"ADHD \u00b7 Spoonie \u00b7 Rejection Sensitive Dysphoria.\"** Deliberately does not reuse the one real comp's specific pun (that's the competitor's own joke, not a reusable formula element) \u2014 instead generalizes Phrase Miner's observed formula shape (validation-forward phrase + mascot illustration + clinical-term/slang keyword stack).",
+        "style": "Cute, rounded mascot-character illustration as the visual anchor with a small supporting text stack below \u2014 the one concrete visual signal Phrase Miner reported (the single physical product standing out in an otherwise digital-worksheet-dominated category leans on humor + a character, not clinical/typography-only design). Palette/typography are **not comp-grounded** \u2014 convention-based estimate only (soft/muted tones \u2014 dusty rose, sage, lavender \u2014 consistent with the tracker's broader spoonie/chronic-illness sticker aesthetic, rounded sans-serif type): verify against a few more comps before locking palette.",
+        "productType": "Die-cut or kiss-cut vinyl sticker \u2014 this brief is scoped to the sticker gap specifically; RSD wall art already has 3 real listings serving it (see Gaps section), so a wall-art SKU is not part of this brief.",
+        "audience": "Adults with ADHD \u2014 particularly late-diagnosed adults and women, overrepresented in the online ADHD self-diagnosis/community-slang space \u2014 who already use \"spoonie\" and \"invisible illness\" language for themselves and are buying a low-cost identity/validation item (water bottle, laptop, planner), not a clinical or symptom-management product.",
+        "price": "$4.50\u2013$5.50 \u2014 **convention-based estimate only, not comp-verified.** No price was reported for the one real competitor listing found.",
+        "tier100": "Fiverr illustration commission (mascot + text lockup): ~$40\u201360. One physical Printify sample + shipping: ~$8\u201312. A second physical sample specifically to check tone/readability in hand (worth the extra sample given the flagged sensitive-topic tone risk \u2014 a mockup alone won't show whether the mascot+phrase reads as validating vs. flippant): ~$8\u201312. Etsy listing fee: $0.20. Total: ~$60\u201385.",
+        "tier1000": "No buyer-language data exists for this niche (Review Miner had nothing), so there's no signal on which framing (ADHD-forward, spoonie-forward, RSD-only, combined) actually converts \u2014 this tier exists to generate that signal cheaply. 3 text/slang-stack variants on the same base mascot: ~$60\u201390. Physical samples across variants: ~$30\u201340. Conservative Etsy Ads test: $150\u2013300. A small parallel test on a second cheap product format (magnet or pin) using the same art: ~$50\u2013100. Total: ~$300\u2013530, deliberately well under the $1,000 ceiling. Given Gap Finder's Profit Potential score is only 6/10 (sticker price ceiling caps upside even at good margin), don't increase ad spend past this range until real sales data disproves the moderate-profit-potential concern.",
+        "tierScale": "Script variant generation off the one master mascot file \u2014 swap slang-stack text (ADHD-only / spoonie-only / combined / acronym-only) and color to produce a small templated listing family from one base illustration. Use Printify's bulk/API upload to push the validated variant set as multiple SKUs without manual re-uploading. If (and only if) the sticker signal is positive, template the same base art across the adjacent product type already validated elsewhere in this niche family (wall art) via the same automated variant swap, rather than commissioning new art. If the \"clinical-term + acronym + community-slang stack + validating mascot phrase\" formula proves out, it's a reusable template worth testing against other ADHD/chronic-illness slang terms beyond RSD specifically \u2014 a follow-on decision, not part of this brief."
+      },
+      "score": {
+        "marketOpportunity": 9,
+        "easeOfEntry": 7,
+        "userFit": 8,
+        "profitPotential": 6,
+        "total": 30,
+        "rationale": "Near-zero (1) confirmed physical-sticker supply sitting between two large, validated parent niches (3,962 + 3,204 listings) \u2014 the strongest Market Opportunity score of any tracked gap. Ease of Entry docked one point for genuine sensitive-topic tone risk despite otherwise simple static-linework mechanics. User Fit strong \u2014 one base illustration templates/scales across color/text variants with no per-order labor. Profit Potential moderate: sticker price point caps the ceiling even at high margin, and \"RSD\" as a literal acronym is a narrower sub-slice of the validated adjacent audiences, not the full audience size itself. No seasonality."
+      }
+    },
+    {
+      "rank": 11,
+      "rankLabel": "11 (stretch, new 2026-09-08, low confidence \u2014 not briefed)",
+      "name": "Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+      "verification": "Inferred, not confirmed either way \u2014 a direct search found only separate `nonna` and `tradwife` market pages, no combined listing, but the search also couldn't rule out the intersection with confidence",
+      "risk": "highest audience-merge uncertainty of any tracked gap (trad wife skews young/pinup-glam, nonnacore skews elderly/cottage \u2014 may not share a buyer); trad wife is also a politically contested identity term, a real tone/handling risk distinct from mechanical listing difficulty; rests partly on trad wife's own still-unvalidated niche status (Trend Scout found effectively one listing, no dedicated market page)",
+      "nearMissCount": null,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": null,
+      "score": {
+        "marketOpportunity": 3,
+        "easeOfEntry": 5,
+        "userFit": 6,
+        "profitPotential": 4,
+        "total": 18,
+        "rationale": "**Lowest total of any tracked gap.** No real data on either the intersection or on trad wife's own demand, so Market Opportunity is held to a conservative floor. Ease of Entry docked for both a real illustration requirement (mid-century kitchen scene, not simple typography) and genuine tone/political-sensitivity risk. User Fit moderate \u2014 templatable digital-download format once a base illustration exists. Profit Potential low \u2014 good digital-download margin structure, but addressable audience is unverified and likely small given trad wife's own thin, unvalidated supply signal."
       }
     }
   ],
@@ -1844,6 +1894,167 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 19,
+      "date": "2026-09-08",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out as a niche",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: gap finder's more thorough search found this niche's wall-art product-type fit is real, not absent as cycle 18 read it \u2014 2 real listings ([\"mob wife poster vintage italian restaurant wall art\"](https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian)) plus a dedicated `mob_wife_aesthetic_decor` market page were found, already blending mob-wife glam with italian-american domestic/kitchen imagery \u2014 this also means mob wife \u00d7 nonnacore is already served, not a gap (see gaps section). tumbler product-type fit remains unchecked.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 very thin etsy pod supply found; no dedicated market page turned up yet, only one specific matching listing; can't rule out \"etsy hasn't built a market page yet\" vs. genuinely low supply \u2014 needs a second pass before treating as a confirmed gap. \u26a0\ufe0f cycle 19: a candidate intersection with nonnacore was scored as gap 11 (18/40, low confidence/low priority) but rests partly on this niche's own still-unvalidated status \u2014 see gaps section and follow-ups.",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -1883,7 +2094,6 @@ const DATA = {
     "mugs",
     "mugs (crosses into t-shirts)",
     "stickers",
-    "stickers (ADHD-adjacent; could extend to wall art)",
     "t-shirts",
     "tumblers",
     "wall art"
@@ -2178,11 +2388,11 @@ const DATA = {
         "category": "wall art",
         "color": "#7dd3fc",
         "satLevel": "unknown",
-        "count": null,
-        "example": "\"Mob. Wife. Era. Notebook \u2014 Mob Wife Aesthetic Spiral Notebook\"",
+        "count": 2,
+        "example": "\"Mob Wife Poster Vintage Italian Restaurant Wall Art\"",
         "price": null,
-        "url": "https://www.etsy.com/listing/1704698595/mob-wife-era-notebook-mob-wife-aesthetic",
-        "r": 18
+        "url": "https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian",
+        "r": 26.0
       },
       {
         "id": "niche:Coquette aesthetic",
@@ -2301,14 +2511,14 @@ const DATA = {
         "kind": "niche",
         "label": "Rejection Sensitive Dysphoria (RSD)",
         "name": "Rejection Sensitive Dysphoria (RSD)",
-        "category": "stickers (ADHD-adjacent; could extend to wall art)",
-        "color": "#94a3b8",
+        "category": "stickers",
+        "color": "#f472b6",
         "satLevel": "unknown",
-        "count": null,
+        "count": 3,
         "example": "\"Rejection Senstive Dik-sphoria Dik-dik Sticker - Rejection Sensitive Dysphoria RSD - Vinyl Sticker - Spoonie - Invisible Illness - ADHD\"",
         "price": null,
         "url": "https://www.etsy.it/listing/1694948493/rejection-senstive-dik-sphoria-dik-dik",
-        "r": 18
+        "r": 25.2
       },
       {
         "id": "niche:Trad wife aesthetic",
@@ -2458,6 +2668,36 @@ const DATA = {
         "url": null,
         "r": 30,
         "score": 28
+      },
+      {
+        "id": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "kind": "gap",
+        "label": "Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "name": "Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": null,
+        "count": null,
+        "example": "\"RSD Isn't Too Much Sticker - Rejection Sensitive Dysphoria ADHD Awareness - Vinyl Decal for Spoonies & Invisible Illness\"",
+        "price": "$4.50\u2013$5.50 \u2014 **convention-based estimate only, not comp-verified.** No price was reported for the one real competitor listing found.",
+        "url": null,
+        "r": 28,
+        "score": 30
+      },
+      {
+        "id": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "kind": "gap",
+        "label": "Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "name": "Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "category": null,
+        "color": "#94a3b8",
+        "satLevel": null,
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 30,
+        "score": 18
       }
     ],
     "links": [
@@ -2474,6 +2714,11 @@ const DATA = {
       {
         "source": "niche:Nonnacore",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
+        "weight": 1
+      },
+      {
+        "source": "niche:Nonnacore",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
         "weight": 1
       },
       {
@@ -2502,6 +2747,11 @@ const DATA = {
         "weight": 1
       },
       {
+        "source": "niche:ADHD / neurodivergent stickers",
+        "target": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "weight": 2
+      },
+      {
         "source": "niche:Chronic illness / spoonie stickers",
         "target": "niche:Chronic illness/spoonie \u00d7 wall art",
         "weight": 3
@@ -2510,6 +2760,11 @@ const DATA = {
         "source": "niche:Chronic illness / spoonie stickers",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
+      },
+      {
+        "source": "niche:Chronic illness / spoonie stickers",
+        "target": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "weight": 3
       },
       {
         "source": "niche:Recovery / sobriety stickers",
@@ -2617,6 +2872,16 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
         "source": "niche:Recovery/sobriety \u00d7 tumbler",
         "target": "gap:4:Sobriety \u00d7 pet-mom stickers/shirts",
         "weight": 1
@@ -2647,6 +2912,16 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "weight": 3
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
@@ -2655,6 +2930,11 @@ const DATA = {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
         "weight": 2
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 3
       },
       {
         "source": "niche:Perimenopause humor",
@@ -2682,6 +2962,11 @@ const DATA = {
         "weight": 1
       },
       {
+        "source": "niche:AuDHD (combined autism+ADHD identity)",
+        "target": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "weight": 1
+      },
+      {
         "source": "niche:Mob wife aesthetic",
         "target": "niche:Coquette aesthetic",
         "weight": 1
@@ -2690,6 +2975,11 @@ const DATA = {
         "source": "niche:Mob wife aesthetic",
         "target": "niche:Trad wife aesthetic",
         "weight": 2
+      },
+      {
+        "source": "niche:Mob wife aesthetic",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 1
       },
       {
         "source": "niche:Coquette aesthetic",
@@ -2717,6 +3007,11 @@ const DATA = {
         "weight": 1
       },
       {
+        "source": "niche:Highly Sensitive Person (HSP)",
+        "target": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "weight": 1
+      },
+      {
         "source": "niche:Foster mom / adoptive parent",
         "target": "gap:3:Gothmas \u00d7 pet-mom Christmas stickers",
         "weight": 1
@@ -2735,6 +3030,16 @@ const DATA = {
         "source": "niche:Night shift nurse",
         "target": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
         "weight": 1
+      },
+      {
+        "source": "niche:Rejection Sensitive Dysphoria (RSD)",
+        "target": "gap:10:Rejection Sensitive Dysphoria (RSD) stickers, bridging ADHD/neurodivergent \u00d7 chronic illness/spoonie stickers",
+        "weight": 4
+      },
+      {
+        "source": "niche:Trad wife aesthetic",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 2
       }
     ]
   },
