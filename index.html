@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-09T13:25:49",
+  "generatedAt": "2026-09-10T13:29:55",
   "cycle": {
-    "number": 20,
-    "date": "2026-09-09",
-    "title": "Cycle 20 \u2014 2026-09-09",
+    "number": 21,
+    "date": "2026-09-10",
+    "title": "Cycle 21 \u2014 2026-09-10",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-09",
-    "nextScheduled": "2026-09-10",
+    "lastRun": "2026-09-10",
+    "nextScheduled": "2026-09-11",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "targeted single-niche re-check, search fallback \u2014 no `ETSY_API_KEY` in this session, 20th consecutive cycle unset"
+        "detail": "two-term targeted re-check, search fallback \u2014 no `ETSY_API_KEY`, 21st consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
         "status": "skipped",
-        "detail": "no new title/copy pattern to extract \u2014 Trad wife's formula was already captured in Cycle 19, and the new listings this cycle share that same formula, not a distinct one"
+        "detail": "Gap 6's re-check returned zero listings, leaving no real listing to extract a title/copy formula from; Gap 11's Trad-wife-side listings continue to use the formula already captured in Cycle 19"
       },
       {
         "name": "Gap Finder",
         "status": "success",
-        "detail": "Gap 11 rescored, no new gaps searched"
+        "detail": "Gap 6 and Gap 11 re-scored against today's findings, no other gap touched"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`; no new gap briefed this cycle needing buyer-language grounding"
+        "detail": "no `ETSY_API_KEY`; neither gap cleared the briefing bar"
       },
       {
         "name": "Design Briefer",
         "status": "skipped",
-        "detail": "Gap 11 still below the briefing bar per Gap Finder's own conclusion"
+        "detail": "neither gap cleared the briefing bar"
       }
     ],
-    "summary": "**Scope decision: partial recheck, two sub-agents.** No CEO Summary existed yet for today when this cycle started. The two long-standing blockers (`ETSY_API_KEY` unset, Gap 6's retire/keep call) are unchanged and would only restate facts already on record, so I didn't re-touch either. Of Cycle 19's remaining open follow-ups, most are explicitly gated on `ETSY_API_KEY` becoming available (real listing counts for Gap 10/RSD, Review Miner passes, pricing-comp verification) \u2014 not actionable today. One item was concrete and unblocked: Cycle 19 flagged that \"Trad wife aesthetic (the niche itself) needs an independent validation pass... before Gap 11 is worth revisiting \u2014 its 18/40 score rests partly on the niche's own unresolved/thin status.\" Per this routine's standing guidance that a new calendar day is reason enough to reconsider re-running Trend Scout on a few priority terms without requiring a full pipeline sweep, I sent Trend Scout a narrow, single-niche re-check (not a broad scouting pass) on exactly that term. Because its findings materially changed the evidentiary basis Gap 11 rests on, I continued to Gap Finder for a targeted re-score of that one gap \u2014 nothing else. Phrase Miner, Review Miner, and Design Briefer were not needed this cycle: no new title/copy pattern was surfaced, no gap was newly briefed, and Gap Finder's own conclusion was that Gap 11 remains below the briefing bar even after the rescore.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset \u2014 search fallback used, same limitation as every prior cycle). Two real, resolvable-URL findings beyond Cycle 18's single listing: (1) a dedicated market page, `https://www.etsy.com/market/tradwife`, confirmed to exist \u2014 its own snippet describes contents as apparel/accessories (\"aprons, headscarves, and mugs\"), not wall-art-specific, so this resolves the \"no market page found\" caveat but doesn't by itself validate wall-art demand; (2) six additional real wall-art/poster listings (up from the original one), for a total of 6-7 confirmed real listings this cycle. Trend Scout also flagged a real caveat I'm carrying forward rather than glossing over: five of these listings share an almost identical sequential-numbered title formula (\"Poster 1,\" \"Poster 3\"), which it reads as likely evidence of **one seller's templated collection**, not five independent competitors \u2014 inferred, not confirmed (no listing-detail or shop-page access available to verify). Its bottom-line read: \"genuinely thin, likely single-shop-concentrated wall-art supply, sitting inside a real but non-wall-art-specific broader market presence\" \u2014 an incremental upgrade from \"totally open question,\" explicitly not a clean resolution either way. Price, image, review-count, and date fields remain `NO DATA AVAILABLE` for all new listings \u2014 no fabricated figures anywhere in the report.\n\n**Gap Finder's re-score, reviewed.** Gap Finder re-spot-checked the Trad wife \u00d7 Nonnacore intersection itself today (fresh WebSearch) and found it still confirmed sparse \u2014 zero combined listings, unchanged from prior cycles. It then reasoned through the new trad-wife-side evidence explicitly rather than mechanically bumping numbers: the market page + listing-count growth is a mild positive demand-adjacency signal, but is offset by confirming more existing wall-art supply than previously tracked, and the likely single-shop-concentration means the \"6-7 listings\" may functionally represent one competitor rather than five independent validators. Net result: **Gap 11 moves from 18/40 to 21/40** (Market Opportunity 3\u21924, Ease of Entry 5\u21926, User Fit 6\u21926 unchanged, Profit Potential 4\u21925). Gap Finder was explicit that User Fit didn't move \u2014 the new evidence confirms an assumption the original score was already built on, rather than adding information that changes it for this specific operator. Its own conclusion: still a lower-tier gap, **not upgraded to briefing-ready**. I'm not overriding that judgment \u2014 no Design Briefer delegation this cycle.\n\n**Correcting my own Cycle 19 framing:** Cycle 19's summary said Gap 11 was \"the tracker's lowest-scoring entry (18/40), below even Gap 6's long-standing 20/40.\" That's no longer accurate \u2014 at 21/40, Gap 11 now sits *above* Gap 6. **Gap 6 (20/40) is once again the tracker's lowest-scoring tracked gap.** Flagging this explicitly rather than letting a stale claim stand uncorrected in the historical record.\n\n**Nothing retired.** All 31 tracked niches, Gaps 1-10, and Briefs 1-5/7/8/9/10 carry forward completely unchanged. Only the Trad wife aesthetic niche row (new evidence, not a status change) and Gap 11 (rescored, not re-ranked or re-briefed) were touched this cycle.\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below, unchanged and carried forward. Gap 11's score movement is a routine re-score from new evidence, not a retirement question.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (unchanged since Cycle 3, now eighteen cycles running): keep as a tracked stretch bet, or mark for retirement. Note: it is once again the tracker's single lowest-scoring gap as of this cycle (see correction above).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 20th consecutive cycle now (Cycles 2-20). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Still blocking real listing-count/price/image/review data pipeline-wide \u2014 including confirming or ruling out today's single-shop-concentration hypothesis for Trad wife's wall-art supply, which currently rests on inferred title-pattern matching only, not verified shop identity.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-19) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Scope decision: partial recheck, two sub-agents.** No CEO Summary existed yet for today when this cycle started. Per this routine's standing guidance, a new calendar day is reason enough to consider a narrow Trend Scout re-check without requiring a full pipeline sweep. Two concrete, unblocked items stood out from Cycle 20's carryover: (1) Gap 6 (\"sober gardener\" stickers) is the tracker's stalest entry, under a long-running retirement question, and its status cell has read \"not re-queried this cycle\" for many cycles running \u2014 worth actually checking; and (2) Cycle 20 left an explicit open caveat about whether the Trad-wife wall-art listings behind Gap 11 are one seller's templated collection or independent competitors, which materially affects how much real competitive supply Gap 11 is actually up against. I sent Trend Scout a narrow, two-term re-check on exactly those, not a broad scouting pass. Because both findings had scoring implications, I continued to Gap Finder for a targeted re-score of just those two gaps \u2014 nothing else. Phrase Miner, Review Miner, and Design Briefer weren't needed: Gap 6's re-check produced no listing to extract a formula from, no gap newly cleared the briefing bar, and no `ETSY_API_KEY` is available for Review Miner.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 21st consecutive cycle). A direct `curl` to etsy.com was also blocked by the outbound proxy (403) \u2014 noted honestly rather than silently worked around; all findings below are WebSearch-index-based, not a direct Etsy on-site search. **(1) Gap 6:** 7 independently-phrased queries, zero listings combining sobriety/recovery with gardening imagery, and \u2014 new this cycle \u2014 no dedicated Etsy market/category page exists for the combined term, despite plenty of adjacent single-concept market pages (`sober_stickers`, `garden_stickers`, `plant_lover_sticker`) surfacing for related terms. One tangential near-miss (floral, not garden-themed) was found; no real combined-concept listing. **(2) Trad wife wall art:** the templated-collection pattern flagged in Cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-URL listings (up from 5-6), spanning at least 5 distinct sub-themes (Irish American Housewife, Japanese Tradwife, Conservative/anime \"waifu\" wife, Retro Kitchen, generic Midcentury Housewife), all sharing identical production-spec boilerplate (AI-generation credit, paper spec, size range, discount tier) repeated verbatim across nominally different listings. A possible common shop name (\"EnglishArtifex\") surfaced, but \u2014 important caveat I'm carrying forward, not smoothing over \u2014 that name came from the WebSearch tool's own synthesized answer text, not a directly-quoted source snippet, and a direct page load to verify it was blocked by the same proxy issue. I'm treating \"one template system behind many listings\" as better-evidenced than last cycle, and the specific shop-identity attribution as still unverified.\n\n**Gap Finder's re-score, reviewed.** Gap 6 moves **20/40 \u2192 21/40** (Market Opportunity 4\u21925 only; Ease of Entry, User Fit, Profit Potential unchanged) \u2014 the multi-phrasing null result plus the new market-page-absence check is a real (if search-index, not API-confirmed) upgrade from pure inference. Gap Finder was explicit this doesn't clear the briefing bar, and flagged the actual blocker plainly: no Phrase Miner pass has ever run for this specific sub-angle, so briefing now would mean inventing a formula never reported \u2014 exactly what Design Briefer's grounding rule prohibits. That's a legitimate candidate for a *future* cycle, not this one; I'm not expanding today's scope to cover it. Gap 11 moves **21/40 \u2192 23/40** (Ease of Entry 6\u21927, User Fit 6\u21927; Market Opportunity, Profit Potential unchanged) \u2014 Gap Finder was careful to note it did **not** factor the unverified \"EnglishArtifex\" shop-name attribution into scoring at all, only the directly-evidenced fact of identical production specs repeated across 9 listings, which reads as a genuine, replicable mechanical proof-of-concept fitting this operator's automation-minded profile. It held Market Opportunity flat because the Trad-wife\u00d7Nonnacore intersection itself wasn't re-checked this cycle (still stands at 0 combined listings from Cycle 20) \u2014 this evidence speaks to production feasibility on one parent niche, not to whether the two audiences actually overlap, which remains the dominant open question. Not briefing-ready either way. I'm not overriding either judgment.\n\n**Correcting my own delegation framing.** I sent Trend Scout to check Gap 6 on the premise that it had \"never been directly search-verified in 18+ cycles.\" That's wrong, and Gap Finder caught it: Cycle 3 (2026-08-23) already ran a 7-query search-fallback check with the identical 0-listings result \u2014 later cycles' status cells just reverted to \"not re-queried, still inferred\" language rather than carrying that finding forward, which is what let the framing drift. Today's pass is better described as an independent second check, with a more thorough method (Cycle 3's 7 queries alone vs. today's 7 queries plus the market-page-absence check), that reinforces Cycle 3's original finding \u2014 not a first-ever verification. Flagging this plainly rather than letting the inaccurate framing stand in the historical record.\n\n**Score order flips again.** Gap 11 (23/40) now sits above Gap 6 (21/40) \u2014 reversing Cycle 20's note that Gap 6 was \"once again the tracker's single lowest-scoring gap.\" **Gap 6 is once more the lowest-scoring tracked gap**, this time at 21/40.\n\n**Nothing retired.** All 31 niches, Gaps 1-10 (excluding today's rescores), and Briefs 1-5/7/8/9/10 carry forward completely unchanged. Only the Trad wife aesthetic niche row (new evidence) and Gaps 6 and 11 (rescored) were touched this cycle.\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below. Neither rescore is a retirement question on its own.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, now nineteen cycles running): keep as a tracked stretch bet, or mark for retirement. Gap Finder's read on today's finding, for what it's worth: a real (if search-index-only) verification came back \"still genuinely empty\" rather than \"actually exists\" \u2014 a mild argument for keeping it tracked on the merits, separate from the \"it was never checked\" framing I got wrong above (it was checked, in Cycle 3, with the same result).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 21st consecutive cycle now (Cycles 2-21). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. This cycle's own proxy-level `curl` failure to etsy.com (403) is a second, independent reminder that search-fallback confidence is this pipeline's ceiling right now, not just a missing-key issue \u2014 still blocking real listing-count/price/image/review data and first-party shop-identity confirmation pipeline-wide.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-20) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -964,12 +964,12 @@ const DATA = {
       "category": [
         "wall art"
       ],
-      "status": "unresolved \u2014 \u26a0\ufe0f cycle 20 update: a dedicated market page is now confirmed (`/market/tradwife`, apparel/accessories-weighted per its own description, not wall-art-specific) and wall-art/poster listing count grew from 1 to 6-7 real, resolvable-url listings \u2014 a genuine second data point, still search-fallback confidence only. five of the new listings share an almost identical sequential-numbered title formula (\"poster 1,\" \"poster 3\"), inferred (not confirmed \u2014 no shop-page access available) to be one seller's templated collection rather than independent competitors, meaning real supply exists but may be more concentrated than the raw count suggests. this resolves the earlier \"no market page found\" caveat but does not fully resolve \"genuinely low supply vs. thin category infrastructure\" either way. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 18\u219221/40 on this evidence \u2014 still low-tier, not briefed; see gaps section.",
+      "status": "unresolved \u2014 \u26a0\ufe0f cycle 21 update: the single-template-system pattern flagged in cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-url listings (up from 6-7), spanning at least 5 distinct sub-themes (irish american housewife, japanese tradwife, conservative/anime \"waifu\" wife, retro kitchen, generic midcentury housewife), all sharing identical production-spec boilerplate (\"midjourney ai\" design credit, \"museum-grade 175gsm matte archival paper,\" size range \"8x12 to 36x54,\" \"30% off 3+\" discount) repeated verbatim across nominally different listings \u2014 stronger mechanical evidence of one template system than cycle 20's title-numbering pattern alone. a possible common shop name (\"englishartifex\") surfaced via search, but this came from the search tool's own synthesized answer text, not a directly-quoted source snippet or a page load (blocked by an outbound proxy 403 this cycle) \u2014 shop identity itself remains unverified, and gap finder explicitly did not factor it into this cycle's rescore. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 21\u219223/40 on the production-mechanics evidence alone \u2014 the intersection itself was not re-checked this cycle (still 0 combined listings from cycle 20); still low-tier, not briefed; see gaps section.",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
-      "count": 6,
-      "countDisplay": "search-verified only (6-7 listings found this cycle, up from 1 in Cycle 18)",
+      "count": 9,
+      "countDisplay": "search-verified only (9 listings found this cycle, up from 6-7 in Cycle 20)",
       "title": "\"Tradwife Midcentury Modern Poster 1, Conservative Trad Wife Wall Art Mid Century Kitchen Housewife Home Decor\"",
       "url": "https://www.etsy.com/listing/1891507087/tradwife-midcentury-modern-poster-1",
       "img": null,
@@ -1139,19 +1139,19 @@ const DATA = {
       "rank": 6,
       "rankLabel": "6 (stretch)",
       "name": "Sober gardener / \"recovery garden\" stickers",
-      "verification": "not re-queried this cycle \u2014 still inferred, not directly verified",
-      "risk": "weakest entry, audience size uncertain",
-      "nearMissCount": null,
+      "verification": "**Re-verified 2026-09-10** (search fallback, 7 differently-phrased queries) \u2014 **0** listings combining sobriety/recovery with gardening imagery, and no dedicated market/category page exists for the combined term despite adjacent single-concept market pages existing for both parent terms. This reinforces, with a more thorough method, Cycle 3's original 2026-08-23 finding (also 7 queries, also 0 listings) \u2014 not a first-ever check, a second independent one.",
+      "risk": "weakest entry, audience size uncertain; real but moderate (search-index, not API) confidence the gap is genuinely empty rather than merely unresearched",
+      "nearMissCount": 0,
       "nearMissUrl": null,
       "nearMissTitle": null,
       "brief": null,
       "score": {
-        "marketOpportunity": 4,
+        "marketOpportunity": 5,
         "easeOfEntry": 6,
         "userFit": 7,
         "profitPotential": 3,
-        "total": 20,
-        "rationale": "Lowest total among the original entries, consistent with Gap Finder's own original \"weakest entry\" note \u2014 verification was never re-queried (still inferred) and no Phrase Miner formula exists for this sub-angle, so both the opportunity and the entry cost are unverified. **As of Cycle 20, this is once again the tracker's single lowest-scoring gap** \u2014 Gap 11 (below) moved above it on rescore."
+        "total": 21,
+        "rationale": "**Rescored from 20/40.** A second independent search pass (7 differently-phrased queries, plus a new check for market-page absence) reinforces Cycle 3's original null result \u2014 genuine upgrade from pure inference to a moderate-confidence \"near-empty\" read (Market Opportunity +1), capped because it's still search-index absence, not an API-confirmed zero, and only the sobriety side of the pairing has quantified validated demand. Ease of Entry, User Fit, and Profit Potential unchanged \u2014 this evidence is about market emptiness, not execution difficulty, design fit, or price/volume data. **As of Cycle 21, this is once again the tracker's single lowest-scoring gap** \u2014 Gap 11 (below) moved above it on rescore. Not briefing-ready: no Phrase Miner formula pass has ever run for this sub-angle."
       }
     },
     {
@@ -1280,21 +1280,21 @@ const DATA = {
     },
     {
       "rank": 11,
-      "rankLabel": "11 (stretch, rescored 2026-09-09, not briefed)",
+      "rankLabel": "11 (stretch, rescored 2026-09-10, not briefed)",
       "name": "Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
-      "verification": "Intersection itself re-spot-checked this cycle \u2014 still **0** combined listings found, confirmed sparse. Trad wife's own status upgraded: a real market page now confirmed (apparel/accessories-weighted) and wall-art listing count grew from 1 to 6-7 real listings, though likely concentrated in one seller's templated collection (inferred, not confirmed) rather than broad independent supply.",
-      "risk": "highest audience-merge uncertainty of any tracked gap (trad wife skews young/pinup-glam, nonnacore skews elderly/cottage \u2014 may not share a buyer); trad wife is also a politically contested identity term, a real tone/handling risk distinct from mechanical listing difficulty; single-shop-concentration risk (new this cycle) means the apparent wall-art supply growth may overstate how proven/competitive this specific product type actually is",
+      "verification": "Intersection itself not re-checked this cycle \u2014 still stands at **0** combined listings from Cycle 20. Trad wife's own wall-art supply-side evidence strengthened this cycle: 9 real listings (up from 6-7) across 5+ sub-themes sharing identical production-spec boilerplate, a stronger mechanical proof-of-concept for a single templated production approach than Cycle 20's title-numbering pattern alone \u2014 though the possible common shop name remains unverified (search-tool-synthesized, not a quoted source).",
+      "risk": "highest audience-merge uncertainty of any tracked gap (trad wife skews young/pinup-glam, nonnacore skews elderly/cottage \u2014 may not share a buyer); trad wife is also a politically contested identity term, a real tone/handling risk distinct from mechanical listing difficulty; single-template-system evidence (stronger this cycle) means the apparent wall-art supply growth may overstate how proven/competitive this specific product type actually is among independent sellers",
       "nearMissCount": 0,
       "nearMissUrl": null,
       "nearMissTitle": null,
       "brief": null,
       "score": {
         "marketOpportunity": 4,
-        "easeOfEntry": 6,
-        "userFit": 6,
+        "easeOfEntry": 7,
+        "userFit": 7,
         "profitPotential": 5,
-        "total": 21,
-        "rationale": "**Rescored from 18/40.** A confirmed real (if apparel-weighted) market page and wall-art listing growth (1\u21926-7 real listings) is a mild positive demand-adjacency signal (Market Opportunity +1), and doubles as a mechanical proof-of-concept that the templated-variant production model works for this niche (Ease of Entry +1). Both are offset by the same evidence confirming more existing supply than previously tracked, and by a likely single-shop-concentration pattern meaning the raw listing count may overstate independent competition (Market Opportunity held conservative despite the bump). User Fit unchanged \u2014 the new evidence confirms rather than adds to the \"templatable once a base illustration exists\" assumption the original score already rested on. Profit Potential nudged up slightly (+1) on the same mild positive market-page signal, still capped by unverified addressable-audience size and zero price/sales data on any of the new listings."
+        "total": 23,
+        "rationale": "**Rescored from 21/40.** Market Opportunity and Profit Potential held flat \u2014 the intersection itself wasn't re-checked this cycle, so nothing changed about combined-listing evidence or price/sales data. Ease of Entry (+1) and User Fit (+1) moved on the same new evidence: verbatim, repeated production specs (AI-generated art, standard archival paper spec, defined size range, tiered discount) across 9 listings is a genuine, replicable mechanical proof-of-concept for a cheap production pathway, and maps closely onto this operator's automation-minded, low-budget profile \u2014 more concrete than Cycle 20's inference-only read. The unverified shop-name attribution was explicitly **not** used as scoring input. Not briefing-ready: the dominant open question \u2014 whether a Trad-wife audience and a Nonnacore audience genuinely overlap enough to buy a merged product \u2014 is untouched by this cycle's evidence."
       }
     }
   ],
@@ -2216,6 +2216,167 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 21,
+      "date": "2026-09-10",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out as a niche",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: gap finder's more thorough search found this niche's wall-art product-type fit is real, not absent as cycle 18 read it \u2014 2 real listings ([\"mob wife poster vintage italian restaurant wall art\"](https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian)) plus a dedicated `mob_wife_aesthetic_decor` market page were found, already blending mob-wife glam with italian-american domestic/kitchen imagery \u2014 this also means mob wife \u00d7 nonnacore is already served, not a gap (see gaps section). tumbler product-type fit remains unchecked.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 21 update: the single-template-system pattern flagged in cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-url listings (up from 6-7), spanning at least 5 distinct sub-themes (irish american housewife, japanese tradwife, conservative/anime \"waifu\" wife, retro kitchen, generic midcentury housewife), all sharing identical production-spec boilerplate (\"midjourney ai\" design credit, \"museum-grade 175gsm matte archival paper,\" size range \"8x12 to 36x54,\" \"30% off 3+\" discount) repeated verbatim across nominally different listings \u2014 stronger mechanical evidence of one template system than cycle 20's title-numbering pattern alone. a possible common shop name (\"englishartifex\") surfaced via search, but this came from the search tool's own synthesized answer text, not a directly-quoted source snippet or a page load (blocked by an outbound proxy 403 this cycle) \u2014 shop identity itself remains unverified, and gap finder explicitly did not factor it into this cycle's rescore. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 21\u219223/40 on the production-mechanics evidence alone \u2014 the intersection itself was not re-checked this cycle (still 0 combined listings from cycle 20); still low-tier, not briefed; see gaps section.",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -2689,11 +2850,11 @@ const DATA = {
         "category": "wall art",
         "color": "#7dd3fc",
         "satLevel": "unknown",
-        "count": 6,
+        "count": 9,
         "example": "\"Tradwife Midcentury Modern Poster 1, Conservative Trad Wife Wall Art Mid Century Kitchen Housewife Home Decor\"",
         "price": null,
         "url": "https://www.etsy.com/listing/1891507087/tradwife-midcentury-modern-poster-1",
-        "r": 23.7
+        "r": 22.9
       },
       {
         "id": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
@@ -2782,8 +2943,8 @@ const DATA = {
         "example": null,
         "price": null,
         "url": null,
-        "r": 30,
-        "score": 20
+        "r": 32,
+        "score": 21
       },
       {
         "id": "gap:7:Pet breed identity \u00d7 Romantasy/cozy-fantasy reader mugs",
@@ -2858,7 +3019,7 @@ const DATA = {
         "price": null,
         "url": null,
         "r": 32,
-        "score": 21
+        "score": 23
       }
     ],
     "links": [
