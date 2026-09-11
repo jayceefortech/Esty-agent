@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-10T13:29:55",
+  "generatedAt": "2026-09-11T13:30:30",
   "cycle": {
-    "number": 21,
-    "date": "2026-09-10",
-    "title": "Cycle 21 \u2014 2026-09-10",
+    "number": 22,
+    "date": "2026-09-11",
+    "title": "Cycle 22 \u2014 2026-09-11",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-10",
-    "nextScheduled": "2026-09-11",
+    "lastRun": "2026-09-11",
+    "nextScheduled": "2026-09-12",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "two-term targeted re-check, search fallback \u2014 no `ETSY_API_KEY`, 21st consecutive cycle unset"
+        "detail": "two-term targeted re-check of Gaps 3 and 4, search fallback \u2014 no `ETSY_API_KEY`, 22nd consecutive cycle unset; direct `curl` to etsy.com also blocked by the outbound proxy, 403"
       },
       {
         "name": "Phrase Miner",
         "status": "skipped",
-        "detail": "Gap 6's re-check returned zero listings, leaving no real listing to extract a title/copy formula from; Gap 11's Trad-wife-side listings continue to use the formula already captured in Cycle 19"
+        "detail": "neither re-check surfaced a listing in either gap's actual target product category \u2014 sticker/shirt \u2014 to extract a title/copy formula from; the bandana and the coin are both off-category finds"
       },
       {
         "name": "Gap Finder",
         "status": "success",
-        "detail": "Gap 6 and Gap 11 re-scored against today's findings, no other gap touched"
+        "detail": "Gap 4 rescored on new demand-adjacency evidence; Gap 3 reviewed against new evidence, no change"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`; neither gap cleared the briefing bar"
+        "detail": "no `ETSY_API_KEY`; no gap newly cleared the briefing bar"
       },
       {
         "name": "Design Briefer",
         "status": "skipped",
-        "detail": "neither gap cleared the briefing bar"
+        "detail": "Gap 4 already has Brief 4 and the rescore didn't change any design direction \u2014 only a score-citation number, which I updated directly rather than re-running Design Briefer for"
       }
     ],
-    "summary": "**Scope decision: partial recheck, two sub-agents.** No CEO Summary existed yet for today when this cycle started. Per this routine's standing guidance, a new calendar day is reason enough to consider a narrow Trend Scout re-check without requiring a full pipeline sweep. Two concrete, unblocked items stood out from Cycle 20's carryover: (1) Gap 6 (\"sober gardener\" stickers) is the tracker's stalest entry, under a long-running retirement question, and its status cell has read \"not re-queried this cycle\" for many cycles running \u2014 worth actually checking; and (2) Cycle 20 left an explicit open caveat about whether the Trad-wife wall-art listings behind Gap 11 are one seller's templated collection or independent competitors, which materially affects how much real competitive supply Gap 11 is actually up against. I sent Trend Scout a narrow, two-term re-check on exactly those, not a broad scouting pass. Because both findings had scoring implications, I continued to Gap Finder for a targeted re-score of just those two gaps \u2014 nothing else. Phrase Miner, Review Miner, and Design Briefer weren't needed: Gap 6's re-check produced no listing to extract a formula from, no gap newly cleared the briefing bar, and no `ETSY_API_KEY` is available for Review Miner.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 21st consecutive cycle). A direct `curl` to etsy.com was also blocked by the outbound proxy (403) \u2014 noted honestly rather than silently worked around; all findings below are WebSearch-index-based, not a direct Etsy on-site search. **(1) Gap 6:** 7 independently-phrased queries, zero listings combining sobriety/recovery with gardening imagery, and \u2014 new this cycle \u2014 no dedicated Etsy market/category page exists for the combined term, despite plenty of adjacent single-concept market pages (`sober_stickers`, `garden_stickers`, `plant_lover_sticker`) surfacing for related terms. One tangential near-miss (floral, not garden-themed) was found; no real combined-concept listing. **(2) Trad wife wall art:** the templated-collection pattern flagged in Cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-URL listings (up from 5-6), spanning at least 5 distinct sub-themes (Irish American Housewife, Japanese Tradwife, Conservative/anime \"waifu\" wife, Retro Kitchen, generic Midcentury Housewife), all sharing identical production-spec boilerplate (AI-generation credit, paper spec, size range, discount tier) repeated verbatim across nominally different listings. A possible common shop name (\"EnglishArtifex\") surfaced, but \u2014 important caveat I'm carrying forward, not smoothing over \u2014 that name came from the WebSearch tool's own synthesized answer text, not a directly-quoted source snippet, and a direct page load to verify it was blocked by the same proxy issue. I'm treating \"one template system behind many listings\" as better-evidenced than last cycle, and the specific shop-identity attribution as still unverified.\n\n**Gap Finder's re-score, reviewed.** Gap 6 moves **20/40 \u2192 21/40** (Market Opportunity 4\u21925 only; Ease of Entry, User Fit, Profit Potential unchanged) \u2014 the multi-phrasing null result plus the new market-page-absence check is a real (if search-index, not API-confirmed) upgrade from pure inference. Gap Finder was explicit this doesn't clear the briefing bar, and flagged the actual blocker plainly: no Phrase Miner pass has ever run for this specific sub-angle, so briefing now would mean inventing a formula never reported \u2014 exactly what Design Briefer's grounding rule prohibits. That's a legitimate candidate for a *future* cycle, not this one; I'm not expanding today's scope to cover it. Gap 11 moves **21/40 \u2192 23/40** (Ease of Entry 6\u21927, User Fit 6\u21927; Market Opportunity, Profit Potential unchanged) \u2014 Gap Finder was careful to note it did **not** factor the unverified \"EnglishArtifex\" shop-name attribution into scoring at all, only the directly-evidenced fact of identical production specs repeated across 9 listings, which reads as a genuine, replicable mechanical proof-of-concept fitting this operator's automation-minded profile. It held Market Opportunity flat because the Trad-wife\u00d7Nonnacore intersection itself wasn't re-checked this cycle (still stands at 0 combined listings from Cycle 20) \u2014 this evidence speaks to production feasibility on one parent niche, not to whether the two audiences actually overlap, which remains the dominant open question. Not briefing-ready either way. I'm not overriding either judgment.\n\n**Correcting my own delegation framing.** I sent Trend Scout to check Gap 6 on the premise that it had \"never been directly search-verified in 18+ cycles.\" That's wrong, and Gap Finder caught it: Cycle 3 (2026-08-23) already ran a 7-query search-fallback check with the identical 0-listings result \u2014 later cycles' status cells just reverted to \"not re-queried, still inferred\" language rather than carrying that finding forward, which is what let the framing drift. Today's pass is better described as an independent second check, with a more thorough method (Cycle 3's 7 queries alone vs. today's 7 queries plus the market-page-absence check), that reinforces Cycle 3's original finding \u2014 not a first-ever verification. Flagging this plainly rather than letting the inaccurate framing stand in the historical record.\n\n**Score order flips again.** Gap 11 (23/40) now sits above Gap 6 (21/40) \u2014 reversing Cycle 20's note that Gap 6 was \"once again the tracker's single lowest-scoring gap.\" **Gap 6 is once more the lowest-scoring tracked gap**, this time at 21/40.\n\n**Nothing retired.** All 31 niches, Gaps 1-10 (excluding today's rescores), and Briefs 1-5/7/8/9/10 carry forward completely unchanged. Only the Trad wife aesthetic niche row (new evidence) and Gaps 6 and 11 (rescored) were touched this cycle.\n\n**Nothing new flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below. Neither rescore is a retirement question on its own.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, now nineteen cycles running): keep as a tracked stretch bet, or mark for retirement. Gap Finder's read on today's finding, for what it's worth: a real (if search-index-only) verification came back \"still genuinely empty\" rather than \"actually exists\" \u2014 a mild argument for keeping it tracked on the merits, separate from the \"it was never checked\" framing I got wrong above (it was checked, in Cycle 3, with the same result).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 21st consecutive cycle now (Cycles 2-21). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. This cycle's own proxy-level `curl` failure to etsy.com (403) is a second, independent reminder that search-fallback confidence is this pipeline's ceiling right now, not just a missing-key issue \u2014 still blocking real listing-count/price/image/review data and first-party shop-identity confirmation pipeline-wide.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-20) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Scope decision: partial recheck, two sub-agents.** No CEO Summary existed yet for today when this cycle started. Following this routine's standing guidance, a new calendar day is reason enough to consider a narrow re-check without requiring a full pipeline sweep. Cycle 21's own \"Open follow-ups\" list carried an explicit, unblocked item: \"Re-query the two 1-listing near-miss gaps (Gothmas \u00d7 Pet-Mom Christmas, Sobriety \u00d7 Pet-Mom) periodically \u2014 still deferred pending API key restoration.\" Both gaps (rank 3 and rank 4, the latter already the tracker's highest-scoring and already briefed as Brief 4) hadn't been directly re-queried since Cycle 1, so I sent Trend Scout a scoped two-term re-check rather than letting this sit deferred indefinitely \u2014 the \"deferred pending API key\" framing was true for getting real counts, but a search-fallback re-check was always available and hadn't been done. Because one of the two findings had real scoring implications, I continued to Gap Finder for a targeted re-score of just those two gaps. Phrase Miner, Review Miner, and Design Briefer weren't needed: neither re-check surfaced a listing in the actual target product category, no `ETSY_API_KEY` is available for Review Miner, and Gap 4's score bump didn't change any design-direction element of the already-written Brief 4 \u2014 only a number the brief cites, which I updated myself as a factual-consistency correction rather than commissioning a fresh Design Briefer pass over an unchanged design.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 22nd consecutive cycle). Direct `curl` to etsy.com was attempted again and blocked by the outbound proxy (`connect_rejected \u2014 organization policy`, HTTP 403) \u2014 same failure mode as Cycle 21, noted honestly rather than silently worked around. All findings are WebSearch-index-based. **Gap 3 (Gothmas \u00d7 pet-mom Christmas stickers):** still no genuine match across 8 independently-phrased queries. The closest new find \u2014 a \"GOTHMAS BANDANA... Pentagram Candy Cane Bandana\" \u2014 is a real gothic-Christmas pet product, but it's worn by the dog, not a sticker framed around human dog-mom identity, so it's wrong on both product type and framing. No dedicated combined market page exists. Essentially unchanged from Cycle 1's read. **Gap 4 (Sobriety \u00d7 pet-mom stickers/shirts):** a real, resolvable listing \u2014 \"Sober Dog Mom or Dog Dad Coin, Sobriety Gift, Customizable, Personalized, Bronze, Dog Dad, Dog Mom\" \u2014 recurred across 5 of 7 query variants and genuinely fuses sobriety/recovery framing with dog-mom/dog-dad identity, a materially stronger signal than Cycle 1's near-miss (which had zero sobriety framing at all). It's a coin/keychain, though, not a sticker or shirt \u2014 the gap's target product category remains unserved (0 of 7 queries found a sticker/shirt match). No dedicated combined market page exists for either gap.\n\n**Gap Finder's re-score, reviewed.** Gap Finder independently spot-checked both listing URLs before scoring (both resolved). **Gap 3: no change (stays 29/40).** The bandana is weak, off-target signal \u2014 it shows a seller is willing to combine \"Gothmas\" with \"dog,\" but says nothing about the human-identity sticker angle the gap is actually about, and it's not competitive supply in the target category. Nothing here moves Market Opportunity, Ease of Entry, User Fit, or Profit Potential. **Gap 4: Market Opportunity 7\u21928, total 32\u219233/40.** Gap Finder's reasoning, which I'm not overriding: the coin listing is direct evidence that Etsy's own search relevance treats this exact concept intersection as retrievable and (presumably) sellable for at least one seller \u2014 sharper demand-side validation than the aggregate 598+152 parent-niche listing counts alone, while competitive supply in the actual sticker/shirt category stayed at zero (now tested more thoroughly, 7 queries vs. Cycle 1's fewer). Gap Finder deliberately capped the bump at +1 rather than more, since no real price/review-count data exists for the coin listing (Trend Scout flagged `NO DATA AVAILABLE`, and Gap Finder's own spot-check picked up an unverified Star-Seller/review snippet it explicitly declined to treat as confirmed \u2014 correctly, per the pipeline's no-fabrication rule). Ease of Entry, User Fit, and Profit Potential held flat: the coin is a *more* operationally-loaded, personalization-heavy product than a sticker, so it isn't evidence that sticker/shirt entry mechanics, this operator's automation fit, or price/volume data changed at all \u2014 if anything it's a soft argument that the sticker-first path stays the easier one, not something that moves an already-high 9.\n\n**One factual-consistency correction I applied directly (not a Design Briefer task).** Brief 4's \"Fully scalable\" paragraph cited \"(32/40)\" as this gap's score when the brief was last written; I updated that single number to \"(33/40)\" to match today's rescore. Nothing else in Brief 4 \u2014 title, copy, style direction, pricing, action tiers, confidence note \u2014 changed, so this was a citation fix, not new design work requiring Design Briefer.\n\n**Nothing retired, nothing new niche-level.** All 31 niches, Gaps 1-2/5/6-11 (i.e. every gap besides today's two), and Briefs 1-3/5/7/8/9/10 carry forward completely unchanged. Only the Gaps table's rows 3 and 4, Gap Scores rows 3 (rationale addendum only, no score change) and 4, and Brief 4's one score citation were touched this cycle.\n\n**Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for twenty cycles running): keep as a tracked stretch bet, or mark for retirement. Unchanged this cycle \u2014 Gap 6 wasn't touched today, still the tracker's lowest-scoring gap at 21/40.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 22nd consecutive cycle now (Cycles 2-22). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Today's repeat proxy 403 on a direct `curl` to etsy.com is the second cycle running this exact failure mode has been hit and reported \u2014 still blocking real listing-count/price/image/review data pipeline-wide, including real numbers for both of today's re-verified gaps.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-21) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -1046,11 +1046,11 @@ const DATA = {
       "rank": 3,
       "rankLabel": "3",
       "name": "Gothmas \u00d7 pet-mom Christmas stickers",
-      "verification": "**1** loose near-miss ([\"Tired As Hell Sticker, Gothic Dog Mom Vinyl Decal\"](https://www.etsy.com/listing/4322820743/gothic-dog-mom-vinyl-stickers-tired-as) \u2014 real gothic dog-mom sticker, but no Christmas element) \u2014 gap confirmed still open",
+      "verification": "**Re-verified 2026-09-11** (search fallback, 8 differently-phrased queries; direct `curl` to etsy.com blocked, proxy 403) \u2014 still **0** listings genuinely combining gothic/Gothmas Christmas imagery with pet-mom/dog-mom sticker framing. Closest new find: a [\"GOTHMAS BANDANA - Goth Dog Bandana - Christmas Dog Bandana... Pentagram Candy Cane Bandana\"](https://www.etsy.com/listing/1122998257/gothmas-bandana-goth-dog-bandana) \u2014 a real gothic-Christmas pet product, but dog-worn, not a sticker framed around dog-mom identity \u2014 wrong product type and framing. No dedicated combined market page exists (separate generic `/market/gothmas` and `/market/goth_dog_mom` pages do). The original Cycle 1 near-miss listing did not resurface in this pass's 8 queries (not evidence it's gone). Gap confirmed still open.",
       "risk": "low risk \u2014 line extension of already-validated goth-pet-mom niche",
-      "nearMissCount": 1,
-      "nearMissUrl": "https://www.etsy.com/listing/4322820743/gothic-dog-mom-vinyl-stickers-tired-as",
-      "nearMissTitle": "\"Tired As Hell Sticker, Gothic Dog Mom Vinyl Decal\"",
+      "nearMissCount": 0,
+      "nearMissUrl": "https://www.etsy.com/listing/1122998257/gothmas-bandana-goth-dog-bandana",
+      "nearMissTitle": "\"GOTHMAS BANDANA - Goth Dog Bandana - Christmas Dog Bandana... Pentagram Candy Cane Bandana\"",
       "brief": {
         "title": "Gothmas \u00d7 Pet-Mom Christmas Sticker",
         "exactText": "\"Gothic Dog Mom Sticker, Skull & Ornament Christmas Decal, Kiss-Cut Vinyl Holiday Gift For Goth Pet Owners\"",
@@ -1070,18 +1070,18 @@ const DATA = {
         "userFit": 9,
         "profitPotential": 5,
         "total": 29,
-        "rationale": "Near-empty gap (1 loose near-miss) with strong review grounding on both sides (52 + 15 reviews) including a real, actionable shipping-reliability differentiator. Sticker = easiest possible entry and fully templatable, but Christmas-only seasonality and small per-unit sticker margin cap the profit ceiling."
+        "rationale": "Near-empty gap (1 loose near-miss) with strong review grounding on both sides (52 + 15 reviews) including a real, actionable shipping-reliability differentiator. Sticker = easiest possible entry and fully templatable, but Christmas-only seasonality and small per-unit sticker margin cap the profit ceiling. **Re-verified 2026-09-11** (8 search-fallback queries, no `ETSY_API_KEY`) \u2014 still near-empty; no score change."
       }
     },
     {
       "rank": 4,
       "rankLabel": "4",
       "name": "Sobriety \u00d7 pet-mom stickers/shirts",
-      "verification": "**1** loose near-miss ([\"Enjoy The Simple Things Sticker, Dog Lover Gift\"](https://www.etsy.com/listing/1749798508/enjoy-the-simple-things-sticker-dog) \u2014 generic mindfulness/dog-lover sticker, no sobriety/recovery framing) \u2014 gap confirmed still open",
-      "risk": "different buying occasions, audience-merge unclear",
-      "nearMissCount": 1,
-      "nearMissUrl": "https://www.etsy.com/listing/1749798508/enjoy-the-simple-things-sticker-dog",
-      "nearMissTitle": "\"Enjoy The Simple Things Sticker, Dog Lover Gift\"",
+      "verification": "**Re-verified 2026-09-11** (search fallback, 7 differently-phrased queries) \u2014 still **0** listings in the sticker/shirt product category. New this cycle: a real, resolvable listing recurring across 5 of 7 queries \u2014 [\"Sober Dog Mom or Dog Dad Coin, Sobriety Gift, Customizable, Personalized, Bronze, Dog Dad, Dog Mom\"](https://www.etsy.com/listing/1544488205/sober-dog-mom-or-dog-dad-coin-sobriety) \u2014 genuinely fuses both concepts, a materially stronger demand-adjacency signal than Cycle 1's near-miss, but it's a coin/keychain, not a sticker or shirt, so the target product category remains unserved. No dedicated combined market page exists. Gap confirmed still open \u2014 Market Opportunity rescored (see Gap Scores).",
+      "risk": "different buying occasions, audience-merge unclear \u2014 though this cycle's coin listing is a real, recurring data point suggesting the audience-merge concern may be smaller than previously assumed",
+      "nearMissCount": 0,
+      "nearMissUrl": "https://www.etsy.com/listing/1544488205/sober-dog-mom-or-dog-dad-coin-sobriety",
+      "nearMissTitle": "\"Sober Dog Mom or Dog Dad Coin, Sobriety Gift, Customizable, Personalized, Bronze, Dog Dad, Dog Mom\"",
       "brief": {
         "title": "Sobriety \u00d7 Pet-Mom Sticker/Shirt",
         "exactText": "\"Sober Dog Mom Sticker, Subtle Recovery Decal For Sponsor Sponsee Gifts, Waterproof ODAAT Pet Owner Design\"",
@@ -1093,15 +1093,15 @@ const DATA = {
         "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).",
         "tier100": "Commission the leash-link + dog-icon design (~$25\u201340), order a sticker proof pack (~$10\u201315), list the sticker SKU on Etsy ($0.20) \u2014 defer the tee SKU to the next tier. Total: ~$35\u201355.",
         "tier1000": "Add the Comfort Colors tee SKU (sample 2\u20133 tees, ~$60\u201390), proof-read wording carefully before production \u2014 directly addresses the real wording-accuracy complaint Review Miner found in this niche \u2014 run a small Etsy Ads test (~$150\u2013250) targeting recovery-community and pet-owner interest overlap. Total: ~$300\u2013450.",
-        "tierScale": "This is the **highest-scoring gap this cycle (32/40)** \u2014 worth building a small template family around it (sponsor/sponsee milestone variants: 30-day, 90-day, 1-year) using the same base art with swapped milestone text, scripted the same way as Brief 1/2's variant automation, cross-listed once validated."
+        "tierScale": "This is the **highest-scoring gap this cycle (33/40)** \u2014 worth building a small template family around it (sponsor/sponsee milestone variants: 30-day, 90-day, 1-year) using the same base art with swapped milestone text, scripted the same way as Brief 1/2's variant automation, cross-listed once validated."
       },
       "score": {
-        "marketOpportunity": 7,
+        "marketOpportunity": 8,
         "easeOfEntry": 9,
         "userFit": 9,
         "profitPotential": 7,
-        "total": 32,
-        "rationale": "**Highest-scoring gap.** Functionally open gap between two solid niches (598 + 152 listings), strong review grounding (43 + 15 reviews), sticker-first entry with a tee upsell, and \u2014 unlike Gap 3 \u2014 no seasonality cap, so volume can be sustained year-round (sponsor/sponsee gifting, sobriety-anniversary milestones happen every month)."
+        "total": 33,
+        "rationale": "**Rescored from 32/40. Still the tracker's highest-scoring gap.** Functionally open gap between two solid niches (598 + 152 listings), strong review grounding (43 + 15 reviews), sticker-first entry with a tee upsell, and \u2014 unlike Gap 3 \u2014 no seasonality cap, so volume can be sustained year-round (sponsor/sponsee gifting, sobriety-anniversary milestones happen every month). **Market Opportunity 7\u21928:** a real, recurring (5/7 queries) listing directly fusing sobriety and dog-mom/dog-dad identity \u2014 a coin/keychain, not a sticker/shirt \u2014 sharpens confidence that real buyer demand exists at this exact concept intersection, while confirming the sticker/shirt product category itself remains unserved (0 of 7 queries). Ease of Entry, User Fit, and Profit Potential held flat \u2014 no new production, operator-fit, or price/volume data to justify moving them; the coin is, if anything, a *harder* production model (personalization-heavy) than the sticker-first path already scored here."
       }
     },
     {
@@ -1151,7 +1151,7 @@ const DATA = {
         "userFit": 7,
         "profitPotential": 3,
         "total": 21,
-        "rationale": "**Rescored from 20/40.** A second independent search pass (7 differently-phrased queries, plus a new check for market-page absence) reinforces Cycle 3's original null result \u2014 genuine upgrade from pure inference to a moderate-confidence \"near-empty\" read (Market Opportunity +1), capped because it's still search-index absence, not an API-confirmed zero, and only the sobriety side of the pairing has quantified validated demand. Ease of Entry, User Fit, and Profit Potential unchanged \u2014 this evidence is about market emptiness, not execution difficulty, design fit, or price/volume data. **As of Cycle 21, this is once again the tracker's single lowest-scoring gap** \u2014 Gap 11 (below) moved above it on rescore. Not briefing-ready: no Phrase Miner formula pass has ever run for this sub-angle."
+        "rationale": "**Rescored from 20/40.** A second independent search pass (7 differently-phrased queries, plus a new check for market-page absence) reinforces Cycle 3's original null result \u2014 genuine upgrade from pure inference to a moderate-confidence \"near-empty\" read (Market Opportunity +1), capped because it's still search-index absence, not an API-confirmed zero, and only the sobriety side of the pairing has quantified validated demand. Ease of Entry, User Fit, and Profit Potential unchanged \u2014 this evidence is about market emptiness, not execution difficulty, design fit, or price/volume data. **As of this cycle, this is the tracker's single lowest-scoring gap** (Gap 4's rescore this cycle didn't change that \u2014 Gap 11 at 23/40 already sat above it). Not briefing-ready: no Phrase Miner formula pass has ever run for this sub-angle."
       }
     },
     {
@@ -2377,6 +2377,167 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 22,
+      "date": "2026-09-11",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out as a niche",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: gap finder's more thorough search found this niche's wall-art product-type fit is real, not absent as cycle 18 read it \u2014 2 real listings ([\"mob wife poster vintage italian restaurant wall art\"](https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian)) plus a dedicated `mob_wife_aesthetic_decor` market page were found, already blending mob-wife glam with italian-american domestic/kitchen imagery \u2014 this also means mob wife \u00d7 nonnacore is already served, not a gap (see gaps section). tumbler product-type fit remains unchecked.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 21 update: the single-template-system pattern flagged in cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-url listings (up from 6-7), spanning at least 5 distinct sub-themes (irish american housewife, japanese tradwife, conservative/anime \"waifu\" wife, retro kitchen, generic midcentury housewife), all sharing identical production-spec boilerplate (\"midjourney ai\" design credit, \"museum-grade 175gsm matte archival paper,\" size range \"8x12 to 36x54,\" \"30% off 3+\" discount) repeated verbatim across nominally different listings \u2014 stronger mechanical evidence of one template system than cycle 20's title-numbering pattern alone. a possible common shop name (\"englishartifex\") surfaced via search, but this came from the search tool's own synthesized answer text, not a directly-quoted source snippet or a page load (blocked by an outbound proxy 403 this cycle) \u2014 shop identity itself remains unverified, and gap finder explicitly did not factor it into this cycle's rescore. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 21\u219223/40 on the production-mechanics evidence alone \u2014 the intersection itself was not re-checked this cycle (still 0 combined listings from cycle 20); still low-tier, not briefed; see gaps section.",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -2898,7 +3059,7 @@ const DATA = {
         "example": "\"Gothic Dog Mom Sticker, Skull & Ornament Christmas Decal, Kiss-Cut Vinyl Holiday Gift For Goth Pet Owners\"",
         "price": "$3.50\u2013$5 (standard Etsy sticker convention \u2014 not comp-verified, flagged as estimate).",
         "url": null,
-        "r": 28,
+        "r": 32,
         "score": 29
       },
       {
@@ -2913,8 +3074,8 @@ const DATA = {
         "example": "\"Sober Dog Mom Sticker, Subtle Recovery Decal For Sponsor Sponsee Gifts, Waterproof ODAAT Pet Owner Design\"",
         "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).",
         "url": null,
-        "r": 28,
-        "score": 32
+        "r": 32,
+        "score": 33
       },
       {
         "id": "gap:5:ADHD \u00d7 sobriety/recovery",
