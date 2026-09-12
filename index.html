@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-11T13:30:30",
+  "generatedAt": "2026-09-12T13:19:35",
   "cycle": {
-    "number": 22,
-    "date": "2026-09-11",
-    "title": "Cycle 22 \u2014 2026-09-11",
+    "number": 23,
+    "date": "2026-09-12",
+    "title": "Cycle 23 \u2014 2026-09-12",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-11",
-    "nextScheduled": "2026-09-12",
+    "lastRun": "2026-09-12",
+    "nextScheduled": "2026-09-13",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "two-term targeted re-check of Gaps 3 and 4, search fallback \u2014 no `ETSY_API_KEY`, 22nd consecutive cycle unset; direct `curl` to etsy.com also blocked by the outbound proxy, 403"
+        "detail": "4 of 5 planned targeted checks completed; 2 identity-combo sticker checks found no genuine signal, 2 new candidate niches logged; 5th check correctly skipped per its own conditional gate, since it depended on the first two turning up a real pair; search fallback throughout \u2014 no `ETSY_API_KEY`, 23rd consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
         "status": "skipped",
-        "detail": "neither re-check surfaced a listing in either gap's actual target product category \u2014 sticker/shirt \u2014 to extract a title/copy formula from; the bandana and the coin are both off-category finds"
+        "detail": "neither new candidate niche has enough real examples \u2014 one listing each at most \u2014 to extract a title/copy formula from"
       },
       {
         "name": "Gap Finder",
-        "status": "success",
-        "detail": "Gap 4 rescored on new demand-adjacency evidence; Gap 3 reviewed against new evidence, no change"
+        "status": "skipped",
+        "detail": "no genuine niche intersection cleared this cycle for scoring; the two checked intersections were ruled out, not confirmed"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "no `ETSY_API_KEY`; no gap newly cleared the briefing bar"
+        "detail": "no `ETSY_API_KEY`"
       },
       {
         "name": "Design Briefer",
         "status": "skipped",
-        "detail": "Gap 4 already has Brief 4 and the rescore didn't change any design direction \u2014 only a score-citation number, which I updated directly rather than re-running Design Briefer for"
+        "detail": "nothing new to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, two sub-agents.** No CEO Summary existed yet for today when this cycle started. Following this routine's standing guidance, a new calendar day is reason enough to consider a narrow re-check without requiring a full pipeline sweep. Cycle 21's own \"Open follow-ups\" list carried an explicit, unblocked item: \"Re-query the two 1-listing near-miss gaps (Gothmas \u00d7 Pet-Mom Christmas, Sobriety \u00d7 Pet-Mom) periodically \u2014 still deferred pending API key restoration.\" Both gaps (rank 3 and rank 4, the latter already the tracker's highest-scoring and already briefed as Brief 4) hadn't been directly re-queried since Cycle 1, so I sent Trend Scout a scoped two-term re-check rather than letting this sit deferred indefinitely \u2014 the \"deferred pending API key\" framing was true for getting real counts, but a search-fallback re-check was always available and hadn't been done. Because one of the two findings had real scoring implications, I continued to Gap Finder for a targeted re-score of just those two gaps. Phrase Miner, Review Miner, and Design Briefer weren't needed: neither re-check surfaced a listing in the actual target product category, no `ETSY_API_KEY` is available for Review Miner, and Gap 4's score bump didn't change any design-direction element of the already-written Brief 4 \u2014 only a number the brief cites, which I updated myself as a factual-consistency correction rather than commissioning a fresh Design Briefer pass over an unchanged design.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 22nd consecutive cycle). Direct `curl` to etsy.com was attempted again and blocked by the outbound proxy (`connect_rejected \u2014 organization policy`, HTTP 403) \u2014 same failure mode as Cycle 21, noted honestly rather than silently worked around. All findings are WebSearch-index-based. **Gap 3 (Gothmas \u00d7 pet-mom Christmas stickers):** still no genuine match across 8 independently-phrased queries. The closest new find \u2014 a \"GOTHMAS BANDANA... Pentagram Candy Cane Bandana\" \u2014 is a real gothic-Christmas pet product, but it's worn by the dog, not a sticker framed around human dog-mom identity, so it's wrong on both product type and framing. No dedicated combined market page exists. Essentially unchanged from Cycle 1's read. **Gap 4 (Sobriety \u00d7 pet-mom stickers/shirts):** a real, resolvable listing \u2014 \"Sober Dog Mom or Dog Dad Coin, Sobriety Gift, Customizable, Personalized, Bronze, Dog Dad, Dog Mom\" \u2014 recurred across 5 of 7 query variants and genuinely fuses sobriety/recovery framing with dog-mom/dog-dad identity, a materially stronger signal than Cycle 1's near-miss (which had zero sobriety framing at all). It's a coin/keychain, though, not a sticker or shirt \u2014 the gap's target product category remains unserved (0 of 7 queries found a sticker/shirt match). No dedicated combined market page exists for either gap.\n\n**Gap Finder's re-score, reviewed.** Gap Finder independently spot-checked both listing URLs before scoring (both resolved). **Gap 3: no change (stays 29/40).** The bandana is weak, off-target signal \u2014 it shows a seller is willing to combine \"Gothmas\" with \"dog,\" but says nothing about the human-identity sticker angle the gap is actually about, and it's not competitive supply in the target category. Nothing here moves Market Opportunity, Ease of Entry, User Fit, or Profit Potential. **Gap 4: Market Opportunity 7\u21928, total 32\u219233/40.** Gap Finder's reasoning, which I'm not overriding: the coin listing is direct evidence that Etsy's own search relevance treats this exact concept intersection as retrievable and (presumably) sellable for at least one seller \u2014 sharper demand-side validation than the aggregate 598+152 parent-niche listing counts alone, while competitive supply in the actual sticker/shirt category stayed at zero (now tested more thoroughly, 7 queries vs. Cycle 1's fewer). Gap Finder deliberately capped the bump at +1 rather than more, since no real price/review-count data exists for the coin listing (Trend Scout flagged `NO DATA AVAILABLE`, and Gap Finder's own spot-check picked up an unverified Star-Seller/review snippet it explicitly declined to treat as confirmed \u2014 correctly, per the pipeline's no-fabrication rule). Ease of Entry, User Fit, and Profit Potential held flat: the coin is a *more* operationally-loaded, personalization-heavy product than a sticker, so it isn't evidence that sticker/shirt entry mechanics, this operator's automation fit, or price/volume data changed at all \u2014 if anything it's a soft argument that the sticker-first path stays the easier one, not something that moves an already-high 9.\n\n**One factual-consistency correction I applied directly (not a Design Briefer task).** Brief 4's \"Fully scalable\" paragraph cited \"(32/40)\" as this gap's score when the brief was last written; I updated that single number to \"(33/40)\" to match today's rescore. Nothing else in Brief 4 \u2014 title, copy, style direction, pricing, action tiers, confidence note \u2014 changed, so this was a citation fix, not new design work requiring Design Briefer.\n\n**Nothing retired, nothing new niche-level.** All 31 niches, Gaps 1-2/5/6-11 (i.e. every gap besides today's two), and Briefs 1-3/5/7/8/9/10 carry forward completely unchanged. Only the Gaps table's rows 3 and 4, Gap Scores rows 3 (rationale addendum only, no score change) and 4, and Brief 4's one score citation were touched this cycle.\n\n**Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for twenty cycles running): keep as a tracked stretch bet, or mark for retirement. Unchanged this cycle \u2014 Gap 6 wasn't touched today, still the tracker's lowest-scoring gap at 21/40.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 22nd consecutive cycle now (Cycles 2-22). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. Today's repeat proxy 403 on a direct `curl` to etsy.com is the second cycle running this exact failure mode has been hit and reported \u2014 still blocking real listing-count/price/image/review data pipeline-wide, including real numbers for both of today's re-verified gaps.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-21) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Housekeeping note, not a pipeline finding:** at the start of this session, local `main` was 4 commits behind a detached-HEAD state left over from Cycles 19-22 (those commits existed locally but `main`'s branch pointer hadn't been moved forward). I fast-forwarded local `main` to include them and pushed \u2014 verified via a fresh `git fetch` that `origin/main` (the actual GitHub state driving the live dashboard) already had all four cycles, so the live site was never actually stale; this was a local-checkout-only discrepancy, now resolved. Flagging for transparency, not as a `\u26a0\ufe0f NEEDS YOUR CALL` item \u2014 no data was at risk and no action is needed from you.\n\n**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. Both standing blockers (Gap 6's retirement call, `ETSY_API_KEY`) are unchanged and still pending your action \u2014 nothing new to do there. Nearly every other open follow-up from Cycle 22 is explicitly blocked on the missing API key or a page-fetch tool (Trad wife shop-name confirmation, RSD term-size check, Review Miner passes, pricing comps, Brief 7's visual comp scan). The one unblocked, overdue item was a fresh Trend Scout pass for brand-new candidates \u2014 Cycle 22 itself noted the last fresh-candidate sweep was Cycle 18, five cycles ago \u2014 so I sent Trend Scout a narrow, 5-term targeted pass (not a broad 5-category sweep) rather than let that sit any longer, per this routine's standing guidance that a new calendar day warrants at least considering a scoped re-check.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 23rd consecutive cycle) \u2014 all findings are WebSearch-index-based, reported plainly as such.\n\n- **ADHD/neurodivergent \u00d7 pet-mom identity sticker: no genuine signal.** The one listing that surfaced (\"Mother I Am but Skin and Bones... Funny Cat Mom Gift\") only mentions \"neurodivergent ADHDer\" in the *seller's shop bio*, not on the product itself \u2014 the sticker's actual content is generic cat-mom humor with zero ADHD/neurodivergent messaging. Trend Scout correctly flagged this as a coincidental match, not a real intersection, rather than padding the report with a false positive. **Not added as a tracked niche or gap** \u2014 this is a product-level absence, not a market judgment call, so no `\u26a0\ufe0f NEEDS YOUR CALL` flag is warranted (same treatment as Cycle 18's Blokecore rejection).\n- **Chronic illness/spoonie \u00d7 pet-mom identity sticker: no genuine signal**, same failure mode \u2014 the one hit (\"Spoonie Yoga T-shirt\") is a t-shirt, not a sticker, and its \"dog mom\" language also traced to a shop bio rather than on-product copy across multiple query phrasings. **Not added as a tracked niche or gap**, same reasoning as above.\n- **Recovery/sobriety \u00d7 ADHD/neurodivergent pet-mom triple identity: correctly skipped**, per its own conditional gate \u2014 neither of the two pairs above cleared, so pursuing the triple-stack would have compounded two already-unconfirmed signals. Good judgment call by Trend Scout, not a silent gap in the report.\n- **New candidate \u2014 \"Play Haus\":** one real, resolvable digital clip-art sticker-pack listing confirmed (`/listing/4541501693`, StickerOrbitShop, listed 2026-07-21 per search snippet). A 2026 Printify trend report separately calls this a \"fastest-growing\" Gen-Z maximalist aesthetic \u2014 real as an industry signal, but that source is informational/secondary, not Etsy-native volume data, and Trend Scout correctly labeled its own confidence \"inferred\" rather than \"real-verified.\" Logging it as a new, very thin candidate niche, not a validated one.\n- **New candidate \u2014 \"Ch\u00e2teaucore\":** two real Etsy market-category pages confirmed (`/market/chateaucore`, `/market/ch\u00e2teaucore`), but no individual listing URL surfaced this pass \u2014 term-level signal only. Logging it the same way Cycle 8 logged \"Foster mom\" (market pages only, `NO DATA AVAILABLE` for an individual listing) rather than either dropping it or overstating it with an invented example.\n\n**Why nothing was scored or briefed this cycle.** Both new candidates are single-aesthetic finds, not niche *intersections* \u2014 there's no second axis yet for Gap Finder to evaluate a gap against, and neither has more than one real example for Phrase Miner to extract a formula from. Scoring or briefing either today would mean inventing structure the data doesn't support yet. The two ruled-out identity-combo checks aren't gaps either (no real product-level signal existed to score). This is intentionally a quiet, honest cycle rather than a padded one.\n\n**Nothing retired, nothing rescored.** All 31 previously tracked niches, all 11 gaps, all 11 gap-score rows, and all 10 design briefs carry forward completely unchanged from Cycle 22 (not restated below \u2014 only the Niches table changed this cycle, with two new rows appended).\n\n**Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL`** beyond the two standing items below.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for twenty-one cycles running): keep as a tracked stretch bet, or mark for retirement. Not touched this cycle; still the tracker's lowest-scoring gap at 21/40.\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 23rd consecutive cycle now (Cycles 2-23). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. This continues to block real listing-count/price/image/review data pipeline-wide, including for both of today's new candidate niches.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-22) \u2014 it's a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -972,6 +972,47 @@ const DATA = {
       "countDisplay": "search-verified only (9 listings found this cycle, up from 6-7 in Cycle 20)",
       "title": "\"Tradwife Midcentury Modern Poster 1, Conservative Trad Wife Wall Art Mid Century Kitchen Housewife Home Decor\"",
       "url": "https://www.etsy.com/listing/1891507087/tradwife-midcentury-modern-poster-1",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Play Haus *(new 2026-09-12)*",
+      "category": [
+        "stickers (confirmed via one digital clip-art listing); wall art/apparel per industry trend reports",
+        "unconfirmed on Etsy"
+      ],
+      "status": "unresolved \u2014 new candidate, thin: one real digital png clip-art sticker pack confirmed on etsy; no finished physical pod sticker product found. a 2026 printify trend report separately calls this a \"fastest-growing\" gen-z maximalist aesthetic \u2014 real as an industry signal, but that's a secondary source, not etsy-native listing-volume data, and is not independently verified here.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 1,
+      "countDisplay": "search-verified only (1 listing)",
+      "title": "\"100 Play Haus Candy Color Circus Whimsy PNG Digital Stickers\"",
+      "url": "https://www.etsy.com/listing/4541501693/100-play-haus-candy-color-circus-whimsy",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": "2026-07-21",
+      "note": "(per search snippet) \u2014 price/image/reviews: NO DATA AVAILABLE"
+    },
+    {
+      "name": "Ch\u00e2teaucore *(new 2026-09-12)*",
+      "category": [
+        "wall art",
+        "apparel",
+        "home decor (per Etsy market-category pages only; no individual listing confirmed yet)"
+      ],
+      "status": "unresolved \u2014 new candidate, very thin: two etsy market-category pages found (`/market/chateaucore`, `/market/ch\u00e2teaucore`) confirm the term is live on etsy as a french-rococo/\"old-money\" counter-trend to maximalism, but no resolvable individual listing url surfaced this pass \u2014 term-level signal only, needs a narrower follow-up query",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": null,
+      "countDisplay": "search-verified only (market pages, no listing)",
+      "title": "",
+      "url": null,
       "img": null,
       "price": null,
       "reviews": null,
@@ -2538,6 +2579,177 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 23,
+      "date": "2026-09-12",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out as a niche",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: gap finder's more thorough search found this niche's wall-art product-type fit is real, not absent as cycle 18 read it \u2014 2 real listings ([\"mob wife poster vintage italian restaurant wall art\"](https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian)) plus a dedicated `mob_wife_aesthetic_decor` market page were found, already blending mob-wife glam with italian-american domestic/kitchen imagery \u2014 this also means mob wife \u00d7 nonnacore is already served, not a gap (see gaps section). tumbler product-type fit remains unchecked.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 21 update: the single-template-system pattern flagged in cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-url listings (up from 6-7), spanning at least 5 distinct sub-themes (irish american housewife, japanese tradwife, conservative/anime \"waifu\" wife, retro kitchen, generic midcentury housewife), all sharing identical production-spec boilerplate (\"midjourney ai\" design credit, \"museum-grade 175gsm matte archival paper,\" size range \"8x12 to 36x54,\" \"30% off 3+\" discount) repeated verbatim across nominally different listings \u2014 stronger mechanical evidence of one template system than cycle 20's title-numbering pattern alone. a possible common shop name (\"englishartifex\") surfaced via search, but this came from the search tool's own synthesized answer text, not a directly-quoted source snippet or a page load (blocked by an outbound proxy 403 this cycle) \u2014 shop identity itself remains unverified, and gap finder explicitly did not factor it into this cycle's rescore. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 21\u219223/40 on the production-mechanics evidence alone \u2014 the intersection itself was not re-checked this cycle (still 0 combined listings from cycle 20); still low-tier, not briefed; see gaps section.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Play Haus *(new 2026-09-12)*",
+          "status": "unresolved \u2014 new candidate, thin: one real digital png clip-art sticker pack confirmed on etsy; no finished physical pod sticker product found. a 2026 printify trend report separately calls this a \"fastest-growing\" gen-z maximalist aesthetic \u2014 real as an industry signal, but that's a secondary source, not etsy-native listing-volume data, and is not independently verified here.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Ch\u00e2teaucore *(new 2026-09-12)*",
+          "status": "unresolved \u2014 new candidate, very thin: two etsy market-category pages found (`/market/chateaucore`, `/market/ch\u00e2teaucore`) confirm the term is live on etsy as a french-rococo/\"old-money\" counter-trend to maximalism, but no resolvable individual listing url surfaced this pass \u2014 term-level signal only, needs a narrower follow-up query",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -2571,14 +2783,20 @@ const DATA = {
     "Misophonia",
     "IBS / gut health humor",
     "Rejection Sensitive Dysphoria (RSD)",
-    "Trad wife aesthetic"
+    "Trad wife aesthetic",
+    "Play Haus *(new 2026-09-12)*",
+    "Ch\u00e2teaucore *(new 2026-09-12)*"
   ],
   "productTypes": [
+    "apparel",
+    "home decor (per Etsy market-category pages only; no individual listing confirmed yet)",
     "mugs",
     "mugs (crosses into t-shirts)",
     "stickers",
+    "stickers (confirmed via one digital clip-art listing); wall art/apparel per industry trend reports",
     "t-shirts",
     "tumblers",
+    "unconfirmed on Etsy",
     "wall art"
   ],
   "graph": {
@@ -2595,7 +2813,7 @@ const DATA = {
         "example": "\"Gothic Moon Face Sticker: Sleepy Celestial Moon Art\"",
         "price": "$4.49",
         "url": "https://www.etsy.com/listing/4527674043/gothic-moon-face-sticker-sleepy",
-        "r": 11.8
+        "r": 11.7
       },
       {
         "id": "niche:Nonnacore",
@@ -2609,7 +2827,7 @@ const DATA = {
         "example": "\"Pregnancy Announcement to Grandparents Mug Set\"",
         "price": "$19.99",
         "url": "https://www.etsy.com/listing/1775546945/pregnancy-announcement-to-grandparents",
-        "r": 14.0
+        "r": 13.7
       },
       {
         "id": "niche:Castlecore / Knightcore",
@@ -2623,7 +2841,7 @@ const DATA = {
         "example": "\"Tartaria Griffin Crest Shirt, Medieval Fantasy Graphic Tee\"",
         "price": "$36.23",
         "url": "https://www.etsy.com/listing/4489223103/tartaria-griffin-crest-shirt-medieval",
-        "r": 14.6
+        "r": 14.3
       },
       {
         "id": "niche:ADHD / neurodivergent stickers",
@@ -2665,7 +2883,7 @@ const DATA = {
         "example": "\"Vintage Floral Pretty Sobriety Birthday Celebration Sticker\"",
         "price": "$5.00",
         "url": "https://www.etsy.com/listing/1768692507/vintage-floral-pretty-sobriety-birthday",
-        "r": 14.3
+        "r": 13.9
       },
       {
         "id": "niche:Pet breed + hobby combo mugs",
@@ -2679,7 +2897,7 @@ const DATA = {
         "example": "\"Vizsla Mountain Mug, Out Offline Caffeinated, Dog Mom Gift\"",
         "price": "$16.65",
         "url": "https://www.etsy.com/listing/4559650270/vizsla-mountain-mug-out-offline",
-        "r": 17.1
+        "r": 16.5
       },
       {
         "id": "niche:Occupation x sarcasm t-shirts",
@@ -2707,7 +2925,7 @@ const DATA = {
         "example": "\"Modern Black Women Horizontal Wall Art - Afrocentric Boho Folk Print\"",
         "price": "$6.80",
         "url": "https://www.etsy.com/listing/4474469102/modern-black-women-horizontal-wall-art",
-        "r": 16.9
+        "r": 16.3
       },
       {
         "id": "niche:Extra Celestial / alien-core",
@@ -2721,7 +2939,7 @@ const DATA = {
         "example": "\"Cute Alien Cat Emotes for Twitch, Discord, YouTube\"",
         "price": "$6.00",
         "url": "https://www.etsy.com/listing/4337379977/cute-alien-cat-emotes-for-twitch-discord",
-        "r": 18.2
+        "r": 17.5
       },
       {
         "id": "niche:Circus-core / Funhaus",
@@ -2735,7 +2953,7 @@ const DATA = {
         "example": "\"Bite Me Art Print\"",
         "price": "$4.00",
         "url": "https://www.etsy.com/listing/1501174256/bite-me-art-print",
-        "r": 17.2
+        "r": 16.6
       },
       {
         "id": "niche:Neo Deco",
@@ -2749,7 +2967,7 @@ const DATA = {
         "example": "\"Quiet Elegance \u2014 Expressionist Woman in a Modern Interior\"",
         "price": "$550.00",
         "url": "https://www.etsy.com/listing/4559701357/quiet-elegance-expressionist-woman-in-a",
-        "r": 12.5
+        "r": 12.3
       },
       {
         "id": "niche:Tumbler general (teachers/nurses/moms)",
@@ -2763,7 +2981,7 @@ const DATA = {
         "example": "\"Cinnamoroll Owala Tumbler 32oz\"",
         "price": "$49.99",
         "url": "https://www.etsy.com/listing/4525007672/cinnamoroll-owala-tumbler-32oz-pastel",
-        "r": 14.0
+        "r": 13.7
       },
       {
         "id": "niche:Cozy fantasy / \"romantasy\" reader mug",
@@ -2847,7 +3065,7 @@ const DATA = {
         "example": "\"Funny Menopocalypse Menopause Humor Mug Gift, Hot Flash Survivor, in My Menopause Era Midlife Gift\"",
         "price": null,
         "url": "https://www.etsy.com/listing/4319630093/funny-menopocalypse-menopause-humor-mug",
-        "r": 26.0
+        "r": 24.7
       },
       {
         "id": "niche:AuDHD (combined autism+ADHD identity)",
@@ -2861,7 +3079,7 @@ const DATA = {
         "example": "\"Empowering Audhd Sticker for Women, ADHD Sticker, Neurodivergent, Autism, Laptop Decal\"",
         "price": null,
         "url": "https://www.etsy.com/listing/1536524388/empowering-audhd-sticker-for-women-adhd",
-        "r": 26.0
+        "r": 24.7
       },
       {
         "id": "niche:Mob wife aesthetic",
@@ -2875,7 +3093,7 @@ const DATA = {
         "example": "\"Mob Wife Poster Vintage Italian Restaurant Wall Art\"",
         "price": null,
         "url": "https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian",
-        "r": 26.0
+        "r": 24.7
       },
       {
         "id": "niche:Coquette aesthetic",
@@ -2959,7 +3177,7 @@ const DATA = {
         "example": "\"Personalized Night Shift Nurse Tumbler 40oz Custom RN Gift for Nurse\"",
         "price": null,
         "url": "https://www.etsy.com/listing/4465908922/personalized-night-shift-nurse-tumbler",
-        "r": 26.0
+        "r": 24.7
       },
       {
         "id": "niche:Misophonia",
@@ -3001,7 +3219,7 @@ const DATA = {
         "example": "\"Rejection Senstive Dik-sphoria Dik-dik Sticker - Rejection Sensitive Dysphoria RSD - Vinyl Sticker - Spoonie - Invisible Illness - ADHD\"",
         "price": null,
         "url": "https://www.etsy.it/listing/1694948493/rejection-senstive-dik-sphoria-dik-dik",
-        "r": 25.2
+        "r": 23.9
       },
       {
         "id": "niche:Trad wife aesthetic",
@@ -3015,7 +3233,35 @@ const DATA = {
         "example": "\"Tradwife Midcentury Modern Poster 1, Conservative Trad Wife Wall Art Mid Century Kitchen Housewife Home Decor\"",
         "price": null,
         "url": "https://www.etsy.com/listing/1891507087/tradwife-midcentury-modern-poster-1",
-        "r": 22.9
+        "r": 21.9
+      },
+      {
+        "id": "niche:Play Haus *(new 2026-09-12)*",
+        "kind": "niche",
+        "label": "Play Haus *(new 2026-09-12)*",
+        "name": "Play Haus *(new 2026-09-12)*",
+        "category": "stickers (confirmed via one digital clip-art listing); wall art/apparel per industry trend reports",
+        "color": "#94a3b8",
+        "satLevel": "unknown",
+        "count": 1,
+        "example": "\"100 Play Haus Candy Color Circus Whimsy PNG Digital Stickers\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/4541501693/100-play-haus-candy-color-circus-whimsy",
+        "r": 26.0
+      },
+      {
+        "id": "niche:Ch\u00e2teaucore *(new 2026-09-12)*",
+        "kind": "niche",
+        "label": "Ch\u00e2teaucore *(new 2026-09-12)*",
+        "name": "Ch\u00e2teaucore *(new 2026-09-12)*",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 18
       },
       {
         "id": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
@@ -3522,6 +3768,11 @@ const DATA = {
       {
         "source": "niche:Trad wife aesthetic",
         "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12)*",
+        "target": "niche:Ch\u00e2teaucore *(new 2026-09-12)*",
         "weight": 2
       }
     ]
