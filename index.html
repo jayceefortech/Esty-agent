@@ -333,31 +333,31 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-22T13:12:36",
+  "generatedAt": "2026-09-23T13:29:13",
   "cycle": {
-    "number": 33,
-    "date": "2026-09-22",
-    "title": "Cycle 33 \u2014 2026-09-22",
+    "number": 34,
+    "date": "2026-09-23",
+    "title": "Cycle 34 \u2014 2026-09-23",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-22",
-    "nextScheduled": "2026-09-23",
+    "lastRun": "2026-09-23",
+    "nextScheduled": "2026-09-24",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "dedicated standalone Rockhounding pass, 22 distinct resolvable listings found across 5 product-type queries; search fallback only \u2014 no `ETSY_API_KEY`, 33rd consecutive cycle unset"
+        "detail": "fresh discovery pass, 7 angles + 1 bonus check tested; all 7 came back already-established/saturated via multiple dedicated market pages each; 1 clean no-signal result for \"loud budgeting\"; search fallback only \u2014 no `ETSY_API_KEY`, 34th consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
         "status": "skipped",
-        "detail": "this was a saturation/status-classification check, not new-opportunity scouting \u2014 no title/style formula extraction needed for a niche being downgraded to saturated"
+        "detail": "no new-opportunity/emerging niche found this cycle \u2014 nothing to extract a title/style formula from"
       },
       {
         "name": "Gap Finder",
         "status": "skipped",
-        "detail": "no new intersection surfaced; Gap 14's Mycology \u00d7 Rockhounding score isn't being touched this cycle \u2014 re-scoring it is Gap Finder's call, not mine, and nothing here changes its already-scored 0-combined-listing finding"
+        "detail": "no new niche or intersection surfaced to score"
       },
       {
         "name": "Review Miner",
@@ -370,7 +370,7 @@ const DATA = {
         "detail": "nothing scored to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. Both standing blockers (`ETSY_API_KEY` unset, Gap 6's retire/keep call) are unchanged since Cycle 2/3, so re-touching either would only restate facts already on record. Cycle 32's own \"Open follow-ups\" named one concrete, unblocked item: a dedicated standalone Trend Scout pass on Rockhounding, flagged because Gap Finder's Cycle 32 intersection-testing search had surfaced far more real listings (5+) than Trend Scout's original 1-listing read, without ever characterizing the niche on its own terms. I sent Trend Scout exactly that narrow, standalone-only pass (explicitly told not to test intersections again, since that was already done in Cycle 32), consistent with this routine's standing guidance that a new calendar day warrants considering a scoped check rather than a mandatory full run.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 33rd consecutive cycle) \u2014 search-fallback only, reported plainly, no API errors since no API call was attempted. Five product-type queries (stickers, t-shirts, mugs, tumblers, hats/wall art/digital) surfaced 22 distinct, resolvable `etsy.com/listing/...` URLs, a meaningfully denser picture than either Cycle 32 read (1 listing initially, 5+ via Gap Finder's side-search). The dominant pattern is the \"Easily Distracted by Rocks\" joke-phrase cluster, which has its own Etsy-auto-generated market/category page (`/market/easily_distracted_by_rocks`) \u2014 Trend Scout correctly flagged that Etsy only generates these pages once a phrase has enough independent listing volume, which is itself a maturity signal, not an emerging-niche signal. Title-formula divergence across at least 4 distinct listings (differing keyword-stacking patterns, one shop \u2014 ThunderAndGrace \u2014 explicitly named via a \"Star Seller\" search snippet) supports a read of 3-4+ independent sellers competing in this cluster, not one shop's catalog. Trend Scout was appropriately honest about confidence tiers: listing existence and URLs are real-verified, the seller-count inference is stated as inferred (no page-fetch tool to confirm shop names directly), and true saturation ratio/total count is flagged `NO DATA AVAILABLE` pending `ETSY_API_KEY`. One genuinely open thread was surfaced, not resolved: rockhounding-hobby-identity wall art (as distinct from generic \"rocks\" home decor) turned up no signal this pass, but that's one unexplored sub-query, not evidence of white space \u2014 I'm not treating it as a validated gap, just noting it below as a low-priority future check.\n\n**My read, and why this is a status revision, not a retirement.** This niche stays tracked \u2014 nothing is being removed from the tracker. I'm revising its Status field from \"unresolved \u2014 new... worth a closer look\" to \"saturated \u2014 market intelligence only, not treated as an opportunity,\" the same phrasing and treatment this tracker already applies to Cryptidcore, Cluttercore, Goblincore, Coquette, Night shift nurse, IBS, and Perimenopause \u2014 established convention for a niche that's real but already mature, not a downgrade invented for this cycle. This is ordinary status re-scoring on genuine new evidence (CLAUDE.md rule 6 / ceo.md step 5), not a discard decision requiring your sign-off \u2014 the row, its full history, and every prior listing found for it remain in the tracker exactly as before, just with a corrected read layered on top.\n\n**Nothing previously tracked was retired or silently dropped.** All 37 other niches, all 14 gaps, all 14 gap-score rows, and all 11 design briefs carry forward completely unchanged from Cycle 32 \u2014 only Rockhounding's niche row changed this cycle (status revised, category list expanded to reflect the 5 product types actually found, listing count corrected from \"5+\" to 22). Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL` this cycle \u2014 this is a routine status correction, not a retirement recommendation.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for thirty-one cycles running): keep as a tracked stretch bet, or mark for retirement. Not touched this cycle; still the tracker's lowest-scoring long-tracked gap (21/40).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 33rd consecutive cycle now (Cycles 2-33). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. This continues to block real listing-count/price/image/review data pipeline-wide, and specifically blocks confirming true saturation ratios for Rockhounding, Mycology, Birdcore, HSP, Cryptidcore/Mothman, and Cluttercore, all six of which currently rest on search-fallback-only evidence.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-32) \u2014 it remains a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. Cycle 33 was a narrow follow-up (Rockhounding standalone characterization), not a fresh-discovery pass, and it had been 2 days since Cycle 32's last one \u2014 per this routine's scheduling guidance, a new calendar day is enough reason to at least consider re-running Trend Scout, without requiring a full 13-agent-call pipeline by default. Both standing blockers (`ETSY_API_KEY`, Gap 6) are unchanged since Cycle 2/3 and every open follow-up besides fresh discovery is either explicitly blocked on one of those two, or explicitly flagged \"don't re-run yet\" (Ch\u00e2teaucore, Play Haus). So I sent Trend Scout on a fresh new-niche discovery pass, told explicitly not to re-search anything already on the 38-row tracker, and let its findings decide whether the rest of the pipeline was warranted.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 34th consecutive cycle) \u2014 search-fallback only throughout, reported plainly, no API errors since no API call was attempted. Trend Scout read the current 38-row niche table first to avoid duplicate ground, then tested 7 distinct fresh angles (asked for 2-4; went wider once the first several converged on the same \"real but mature\" pattern, to check whether that was angle-specific or systemic) plus one bonus check:\n- **POTS/Dysautonomia awareness merch** (stickers, apparel, mugs) \u2014 8+ real listings, 5+ dedicated market pages. Established.\n- **Beekeeping/apiary hobbyist merch** (mugs, t-shirts) \u2014 real listings, 7+ dedicated market pages (an unusually dense count). Established.\n- **Kitchen witch/cottage witchery decor** (wall art) \u2014 4+ real listings, 3 dedicated market pages. Established.\n- **Vet tech/veterinary technician humor** (stickers, mugs) \u2014 real listings, 4-5 dedicated market pages. Established.\n- **\"Loud budgeting\"** (mugs, stickers) \u2014 **no signal** for the specific viral phrase; the broader generic \"funny budget humor\" umbrella is real but itself already reads mature (5 market pages) and is a different claim from the specific term tested. Not added to the tracker \u2014 a clean dead end, not a gap in the search.\n- **Bugcore/insect-lover aesthetic** (stickers, wall art) \u2014 8 dedicated market pages including `/market/bugcore` itself, but the one candidate individual listing found is Cottagecore/Fairycore-tagged, not bugcore-labeled \u2014 market-level signal is real, listing-level signal for this specific niche is not. Weaker-verified than the other additions this cycle.\n- **Amateur astronomy/stargazing hobbyist merch** (t-shirts, mugs) \u2014 real listings, 8 dedicated market pages. Established.\n- *(Bonus, not a full angle)* **\"Girl math\" meme merch** (mugs, stickers) \u2014 5+ real listings, 3 dedicated market pages. Established.\n\nTrend Scout's own honest framing, which I agree with on review: this was a discovery pass that came back empty of new white space, not an unsearched gap \u2014 every angle tested real and corroborated, but every one was already mature by this pipeline's own market-page-count signal. Nothing here reads like Mycology, Ch\u00e2teaucore, or Play Haus did when they were first found (1-3 thin listings, no market pages).\n\n**Why I'm adding these as tracked rows rather than leaving them out of the tracker entirely.** This pipeline has a standing convention (first applied to Cryptidcore/Cluttercore in Cycle 17, and again to Coquette/Goblincore/Night shift nurse/IBS/Perimenopause) that a niche found to be real-but-already-saturated still gets formally tracked as a \"saturated \u2014 market intelligence only\" row, rather than discarded from the record \u2014 it's useful negative-space information (what NOT to attempt) and keeps the tracker as the single source of research history. Six of this cycle's seven findings meet that bar on real, resolvable listing URLs plus multiple corroborating market pages. Bugcore is the seventh and weakest: I'm still adding it, but with its verification gap stated plainly in its row, consistent with this pipeline's rule against letting weak evidence pass as solid. None of this required Phrase Miner, Gap Finder, Review Miner, or Design Briefer \u2014 there's no title/style formula to extract, no intersection to score, and no brief to write for a niche whose whole finding is \"already served,\" the same reasoning Cycle 33 applied to Rockhounding's status revision and Cycle 17 applied to Cryptidcore/Cluttercore's original addition.\n\n**Nothing previously tracked was retired, discarded, or silently dropped.** All 38 existing niches, all 14 gaps, all 14 gap-score rows, and all 11 design briefs carry forward completely unchanged from Cycle 33 \u2014 this cycle only adds 7 new rows. Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL` \u2014 this is routine logging of confirmed-real market intelligence (CLAUDE.md rule 6 / ceo.md step 5), not a retirement recommendation.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for thirty-two cycles running): keep as a tracked stretch bet, or mark for retirement. Not touched this cycle; still the tracker's lowest-scoring long-tracked gap (21/40).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 34th consecutive cycle now (Cycles 2-34). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. This continues to block real listing-count/price/image/review data pipeline-wide, and now specifically blocks confirming true saturation ratios for 11 niches (Rockhounding, Mycology, Birdcore, HSP, Cryptidcore/Mothman, Cluttercore, and this cycle's 5 non-Bugcore additions) resting on search-fallback-only evidence.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-33) \u2014 it remains a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -1121,6 +1121,146 @@ const DATA = {
       "countDisplay": "search-verified only (22 listings found this cycle across 5 product-type queries \u2014 a lower-bound sample, not a true API count)",
       "title": "\"Easily Distracted by Rocks Hat, Geology, Geology Hat\"",
       "url": "https://www.etsy.com/listing/1336460290/easily-distracted-by-rocks-hat-geology",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+      "category": [
+        "stickers",
+        "apparel",
+        "mugs"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 8+ real, resolvable-url listings and 5+ dedicated etsy market-category pages (`dysautonomia_stickers`, `dysautonomia_emergency_kit`, `pots_syndrome_essentials_bag`, `pots_syndrome_kit`, `dysautonomia_cups`, `pots_syndrome_sticker` page 2, `pots_spoonie`) \u2014 same multi-market-page maturity signal already applied to rockhounding/cryptidcore/cluttercore. structurally similar to the tracker's existing ibs/spoonie/chronic-illness rows but a distinct condition-specific term.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 8,
+      "countDisplay": "search-verified only (8+ listings, 5+ market pages)",
+      "title": "\"Funny POTS Sticker, POTS Syndrome Gift, Retro Dysautonomia Sticker, Sarcastic Sticker\"",
+      "url": "https://www.etsy.com/listing/1767288063/funny-pots-sticker-pots-syndrome-gift",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+      "category": [
+        "mugs",
+        "t-shirts"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus an unusually dense 7+ dedicated etsy market-category pages spanning mugs and apparel \u2014 one of the strongest maturity signals of any niche this pipeline has tested.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 7,
+      "countDisplay": "search-verified only (real listings, 7+ market pages)",
+      "title": "\"Beekeeping Present Idea - Gift for Beekeeper, Apiarist - Honey Bee Travel Mug - Beekeepin' It Real\"",
+      "url": "https://www.etsy.com/listing/563077800/beekeeping-present-idea-gift-for",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+      "category": [
+        "wall art"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 4+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`witchy_kitchen`, `witches_kitchen_art`, `witches_cottage_art`, `kitchen_witch_poster`). distinct territory from the tracker's ch\u00e2teaucore/nonnacore/trad-wife kitchen-decor rows \u2014 witchy-domestic rather than heritage/traditional aesthetic.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 4,
+      "countDisplay": "search-verified only (4+ listings, 3 market pages)",
+      "title": "\"Kitchen Witch Print - Witches Cottage Kitchen Pink Botanical A5-A4-A3 Watercolour Art\"",
+      "url": "https://www.etsy.com/listing/963573842/kitchen-witch-print-witches-cottage",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Vet tech / veterinary technician humor *(new 2026-09-23)*",
+      "category": [
+        "stickers",
+        "mugs"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 4-5 dedicated etsy market-category pages. a distinct occupation from the tracker's existing \"occupation x sarcasm t-shirts\" row's night-shift-nurse example.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 4,
+      "countDisplay": "search-verified only (real listings, 4-5 market pages)",
+      "title": "\"Funny Veterinary Stickers, Vet Tech Stickers, Vet Med Stickers, Vet Stickers, Vet Tech Humor\"",
+      "url": "https://www.etsy.com/listing/1415220354/funny-veterinary-stickers-vet-tech",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+      "category": [
+        "t-shirts",
+        "mugs"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages. structurally parallel to the tracker's mycology/rockhounding/beekeeping hobbyist-identity rows but a distinct hobby community.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 8,
+      "countDisplay": "search-verified only (real listings, 8 market pages)",
+      "title": "\"Astronomer Shirt Stargazing Tee World's Greatest\"",
+      "url": "https://www.etsy.com/listing/1242366049/astronomer-shirt-stargazing-tee-worlds",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "\"Girl math\" meme merch *(new 2026-09-23)*",
+      "category": [
+        "mugs",
+        "stickers"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. found as a bonus check (not one of this cycle's 7 primary discovery angles) during trend scout's fresh discovery pass \u2014 5+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`girl_math_merch`, `girl_math_mug`, `girl_math_sticker`).",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 5,
+      "countDisplay": "search-verified only (5+ listings, 3 market pages); exact listing title not separately quoted by Trend Scout for this bonus-check item \u2014 URL-slug-implied wording only (\"girl math mug, funny pink coffee cup\"), not verified exact title text",
+      "title": "https://www.etsy.com/listing/4299266121/girl-math-mug-funny-pink-coffee-cup",
+      "url": "https://www.etsy.com/listing/4299266121/girl-math-mug-funny-pink-coffee-cup",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+      "category": [
+        "stickers",
+        "wall art"
+      ],
+      "status": "saturated \u2014 market-page-level intelligence only, not treated as an opportunity; **weaker-verified than this cycle's other 6 additions.** fresh trend scout discovery pass found 8 dedicated etsy market-category pages (including `/market/bugcore` itself) \u2014 real, corroborated at the market level. but no individual bugcore-specific listing url was captured this pass: the one candidate listing found is tagged cottagecore/fairycore primarily, insect-themed but not bugcore-labeled. per this pipeline's sourcing-discipline rule, treating the individual-listing claim as unverified rather than letting the market-page signal alone imply a confirmed product-level example.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 8,
+      "countDisplay": "search-verified only at the market-page level (8 market pages); no bugcore-specific individual listing confirmed",
+      "title": "",
+      "url": null,
       "img": null,
       "price": null,
       "reviews": null,
@@ -4747,6 +4887,237 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 34,
+      "date": "2026-09-23",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out as a niche",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: gap finder's more thorough search found this niche's wall-art product-type fit is real, not absent as cycle 18 read it \u2014 2 real listings ([\"mob wife poster vintage italian restaurant wall art\"](https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian)) plus a dedicated `mob_wife_aesthetic_decor` market page were found, already blending mob-wife glam with italian-american domestic/kitchen imagery \u2014 this also means mob wife \u00d7 nonnacore is already served, not a gap (see gaps section). tumbler product-type fit remains unchecked.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 21 update: the single-template-system pattern flagged in cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-url listings (up from 6-7), spanning at least 5 distinct sub-themes (irish american housewife, japanese tradwife, conservative/anime \"waifu\" wife, retro kitchen, generic midcentury housewife), all sharing identical production-spec boilerplate (\"midjourney ai\" design credit, \"museum-grade 175gsm matte archival paper,\" size range \"8x12 to 36x54,\" \"30% off 3+\" discount) repeated verbatim across nominally different listings \u2014 stronger mechanical evidence of one template system than cycle 20's title-numbering pattern alone. a possible common shop name (\"englishartifex\") surfaced via search, but this came from the search tool's own synthesized answer text, not a directly-quoted source snippet or a page load (blocked by an outbound proxy 403 this cycle) \u2014 shop identity itself remains unverified, and gap finder explicitly did not factor it into this cycle's rescore. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 21\u219223/40 on the production-mechanics evidence alone \u2014 the intersection itself was not re-checked this cycle (still 0 combined listings from cycle 20); still low-tier, not briefed; see gaps section.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+          "status": "unresolved \u2014 thin: one real digital png clip-art sticker pack confirmed on etsy (cycle 23); no finished physical pod sticker/wall-art/apparel product found as of cycle 24, re-confirmed unchanged by a second targeted check in cycle 27 (2026-09-16, 4 queries, zero physical listings), and **re-confirmed unchanged a third time in cycle 31 (2026-09-20)** \u2014 still no physical product found. a 2026 printify trend report separately calls this a \"fastest-growing\" gen-z maximalist aesthetic \u2014 real as an industry signal, but that's a secondary source, not etsy-native listing-volume data, and is not independently verified here. next re-check should again wait a few cycles, not repeat this same search every cycle.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+          "status": "unresolved \u2014 now 6 real, resolvable listing urls across 2 product types (title/url only \u2014 price/image/reviews/date `no data available` throughout). cycle 26 ran the targeted genuineness follow-up cycle 25 flagged: checked whether the cycle 25 listing's 5-term \"-core\" cross-tagging (cozycore, grandmillennial, cutecore, fairycore, ch\u00e2teaucore) was an outlier or a repeating pattern. mixed result: across all 6 known listings, 3 use \"ch\u00e2teaucore\" as the sole aesthetic (no cross-tagging), 2 pair it only with \"cottagecore\" (closely related aesthetic, lighter-degree), and 1 (the cycle 25 find) stacks 5 terms \u2014 that remains the most extreme case, but title-level cross-tagging itself isn't unique to it. new supporting evidence: a dedicated shop, **chateaucorehome**, was identified via search snippets, branding multiple product categories (mugs, wall art, kitchen items, home decor) specifically around \"ch\u00e2teaucore\" alongside only two co-aesthetics (cottagecore, french country) \u2014 a data point for genuineness, though full catalog verification remains blocked (no page-fetch tool). \u26a0\ufe0f treating the cycle 25 genuineness caution as **addressed, not fully resolved**: evidence now leans toward \"real enough to keep tracking as-is,\" not toward a nonnacore-style downgrade, but this isn't a two-independent-method confirmation either \u2014 a further check would need actual shop-catalog access, not just search snippets. not urgent; revisit only if new evidence surfaces.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. cycle 10 already evaluated this niche and found it real but already mature/saturated via multiple etsy market-taxonomy sub-pages, two with deep pagination \u2014 logged then as \"not tracked, no need to re-check.\" trend scout re-surfaced it today without that history (it was only given a name-collision avoid-list, not the full ruled-out log); today's own evidence (1 listing, 1 dedicated `/market/cryptidcore` page) is thinner than cycle 10's, so it doesn't override that finding \u2014 reaffirmed saturated. formally added as a tracked row now (current convention tracks saturated niches for market intelligence \u2014 see coquette/goblincore/night shift nurse/ibs/perimenopause rows above \u2014 a convention that postdates cycle 10's \"not tracked\" note).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. cycle 10 found this real but already mature/saturated (multiple market-taxonomy sub-pages, deep pagination). today's independent re-check agrees: large \"mega bundle\" digital-download listings (2,900-6,000 prints each) found alongside single prints, consistent with a crowded, bundle-seller-dominated term \u2014 a reaffirmation 18 cycles apart, not a contradiction. formally added as a tracked row now, same reasoning as cryptidcore above.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+          "status": "unresolved \u2014 search-verified, no saturation caution raised. cycle 31 correction: of cycle 30's \"5 more sellers\" spot-check claim (oxhip studio, cosmoandpepe, dailymugstudio), only **cosmoandpepe** yielded a genuinely new, real listing; dailymugstudio's was a duplicate of an already-tracked listing, and oxhip studio's claimed listing could not be located \u2014 the corrected, current confirmed count for this specific title/style cluster is **3 real listings**, not 5. the new listing's illustration style (a multi-species collage) is genuinely different from the prior two examples' single-mascot style, so phrase miner's visual-style read moved from \"weak (2-example)\" to \"confirmed split/heterogeneous\" rather than graduating to strong \u2014 only the title/copy formula graduated. one isolated hsp-thematic touchpoint remains from cycle 29 (\"feathers and feelings\" bird sublimation-wrap design file) \u2014 a digital design asset, not a finished gift, still flagged as a genuinely isolated single example, not a pattern; gap finder re-searched the birdcore\u00d7hsp combined intersection this cycle and again found 0 listings. distinct from the pet-ownership niches already tracked (species/nature-observation hobby-identity, not pet-breed identity).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+          "status": "unresolved \u2014 new, real foraging/mycology hobbyist-identity niche, distinct from goblincore/fantasy forest aesthetics (a genuine outdoor-hobby practice, not a costume aesthetic). 3 real, resolvable-url listings found across 2 product types (1 shirt, 2 mugs); phrase miner extracted a moderately-supported (3/3) keyword-first + identity/gift-tag title formula, plus a weaker mug-specific \"[identity] + gift\" sub-pattern (2/3, mug-only, don't generalize to shirts). visual-style read is thin \u2014 a single-listing inference only (\"illustrated/botanical fungi\" line art) \u2014 not corroborated, treat as hypothesis not pattern.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+          "status": "saturated \u2014 small mature corner, market intelligence only, not treated as an opportunity. cycle 32's initial 1-listing read undersold this niche. a cycle 33 dedicated standalone trend scout pass (search fallback only, no api \u2014 five product-type queries run) found **22** distinct, resolvable listings, dominated by an \"easily distracted by rocks\" joke-phrase cluster with its own auto-generated etsy market page (`/market/easily_distracted_by_rocks`) \u2014 etsy only generates these once a phrase has real independent listing volume, a maturity signal. title-formula divergence across the cluster (at least 4 distinct patterns, one shop \u2014 thunderandgrace \u2014 explicitly named) indicates 3-4+ independent sellers, not one shop relisting \u2014 corroborating and extending gap finder's cycle 32 side-find. one plausible untested angle (rockhounding-hobby-identity wall art, distinct from generic \"rocks\" home decor) surfaced with no signal this pass \u2014 a single unexplored sub-query, not validated white space.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 8+ real, resolvable-url listings and 5+ dedicated etsy market-category pages (`dysautonomia_stickers`, `dysautonomia_emergency_kit`, `pots_syndrome_essentials_bag`, `pots_syndrome_kit`, `dysautonomia_cups`, `pots_syndrome_sticker` page 2, `pots_spoonie`) \u2014 same multi-market-page maturity signal already applied to rockhounding/cryptidcore/cluttercore. structurally similar to the tracker's existing ibs/spoonie/chronic-illness rows but a distinct condition-specific term.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus an unusually dense 7+ dedicated etsy market-category pages spanning mugs and apparel \u2014 one of the strongest maturity signals of any niche this pipeline has tested.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 4+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`witchy_kitchen`, `witches_kitchen_art`, `witches_cottage_art`, `kitchen_witch_poster`). distinct territory from the tracker's ch\u00e2teaucore/nonnacore/trad-wife kitchen-decor rows \u2014 witchy-domestic rather than heritage/traditional aesthetic.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Vet tech / veterinary technician humor *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 4-5 dedicated etsy market-category pages. a distinct occupation from the tracker's existing \"occupation x sarcasm t-shirts\" row's night-shift-nurse example.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages. structurally parallel to the tracker's mycology/rockhounding/beekeeping hobbyist-identity rows but a distinct hobby community.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"Girl math\" meme merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. found as a bonus check (not one of this cycle's 7 primary discovery angles) during trend scout's fresh discovery pass \u2014 5+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`girl_math_merch`, `girl_math_mug`, `girl_math_sticker`).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+          "status": "saturated \u2014 market-page-level intelligence only, not treated as an opportunity; **weaker-verified than this cycle's other 6 additions.** fresh trend scout discovery pass found 8 dedicated etsy market-category pages (including `/market/bugcore` itself) \u2014 real, corroborated at the market level. but no individual bugcore-specific listing url was captured this pass: the one candidate listing found is tagged cottagecore/fairycore primarily, insect-themed but not bugcore-labeled. per this pipeline's sourcing-discipline rule, treating the individual-listing claim as unverified rather than letting the market-page signal alone imply a confirmed product-level example.",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -4796,10 +5167,18 @@ const DATA = {
     "Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
     "Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
     "Rockhounding / geology-hobby merch *(new 2026-09-21)*",
-    "Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*"
+    "Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+    "POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+    "Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+    "Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+    "Vet tech / veterinary technician humor *(new 2026-09-23)*",
+    "Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+    "\"Girl math\" meme merch *(new 2026-09-23)*",
+    "Bugcore / insect-lover aesthetic *(new 2026-09-23)*"
   ],
   "productTypes": [
     "3/3",
+    "apparel",
     "but its visual style is confirmed **split/heterogeneous** between two real illustration approaches",
     "digital/PNG",
     "first non-wall-art example \u2014 single example",
@@ -5357,6 +5736,104 @@ const DATA = {
         "r": 20.2
       },
       {
+        "id": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "kind": "niche",
+        "label": "POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "name": "POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": "unknown",
+        "count": 8,
+        "example": "\"Funny POTS Sticker, POTS Syndrome Gift, Retro Dysautonomia Sticker, Sarcastic Sticker\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1767288063/funny-pots-sticker-pots-syndrome-gift",
+        "r": 22.1
+      },
+      {
+        "id": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "kind": "niche",
+        "label": "Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "name": "Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "category": "mugs",
+        "color": "#fbbf6f",
+        "satLevel": "unknown",
+        "count": 7,
+        "example": "\"Beekeeping Present Idea - Gift for Beekeeper, Apiarist - Honey Bee Travel Mug - Beekeepin' It Real\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/563077800/beekeeping-present-idea-gift-for",
+        "r": 22.3
+      },
+      {
+        "id": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "kind": "niche",
+        "label": "Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "name": "Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "category": "wall art",
+        "color": "#7dd3fc",
+        "satLevel": "unknown",
+        "count": 4,
+        "example": "\"Kitchen Witch Print - Witches Cottage Kitchen Pink Botanical A5-A4-A3 Watercolour Art\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/963573842/kitchen-witch-print-witches-cottage",
+        "r": 23.4
+      },
+      {
+        "id": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "kind": "niche",
+        "label": "Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "name": "Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": "unknown",
+        "count": 4,
+        "example": "\"Funny Veterinary Stickers, Vet Tech Stickers, Vet Med Stickers, Vet Stickers, Vet Tech Humor\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1415220354/funny-veterinary-stickers-vet-tech",
+        "r": 23.4
+      },
+      {
+        "id": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "kind": "niche",
+        "label": "Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "name": "Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "category": "t-shirts",
+        "color": "#f87171",
+        "satLevel": "unknown",
+        "count": 8,
+        "example": "\"Astronomer Shirt Stargazing Tee World's Greatest\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1242366049/astronomer-shirt-stargazing-tee-worlds",
+        "r": 22.1
+      },
+      {
+        "id": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "kind": "niche",
+        "label": "\"Girl math\" meme merch *(new 2026-09-23)*",
+        "name": "\"Girl math\" meme merch *(new 2026-09-23)*",
+        "category": "mugs",
+        "color": "#fbbf6f",
+        "satLevel": "unknown",
+        "count": 5,
+        "example": "https://www.etsy.com/listing/4299266121/girl-math-mug-funny-pink-coffee-cup",
+        "price": null,
+        "url": "https://www.etsy.com/listing/4299266121/girl-math-mug-funny-pink-coffee-cup",
+        "r": 23.0
+      },
+      {
+        "id": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "kind": "niche",
+        "label": "Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "name": "Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": "unknown",
+        "count": 8,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 22.1
+      },
+      {
         "id": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
         "kind": "gap",
         "label": "Knightcore/Castlecore \u00d7 teacher/nurse shirts",
@@ -5815,6 +6292,11 @@ const DATA = {
       },
       {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
       },
@@ -5831,6 +6313,11 @@ const DATA = {
       {
         "source": "niche:Perimenopause humor",
         "target": "niche:IBS / gut health humor",
+        "weight": 1
+      },
+      {
+        "source": "niche:Perimenopause humor",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
         "weight": 1
       },
       {
@@ -5890,6 +6377,11 @@ const DATA = {
       },
       {
         "source": "niche:Mob wife aesthetic",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Mob wife aesthetic",
         "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
         "weight": 1
       },
@@ -5901,6 +6393,11 @@ const DATA = {
       {
         "source": "niche:Coquette aesthetic",
         "target": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Coquette aesthetic",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
         "weight": 1
       },
       {
@@ -5955,6 +6452,11 @@ const DATA = {
       },
       {
         "source": "niche:IBS / gut health humor",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:IBS / gut health humor",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 1
       },
@@ -5971,6 +6473,11 @@ const DATA = {
       {
         "source": "niche:Trad wife aesthetic",
         "target": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Trad wife aesthetic",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
         "weight": 1
       },
       {
@@ -6009,6 +6516,41 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+        "target": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
         "target": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
         "weight": 1
@@ -6034,6 +6576,41 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
         "target": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
         "weight": 5
@@ -6055,6 +6632,41 @@ const DATA = {
       },
       {
         "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 1
       },
@@ -6071,6 +6683,41 @@ const DATA = {
       {
         "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
         "target": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
         "weight": 1
       },
       {
@@ -6100,6 +6747,41 @@ const DATA = {
       },
       {
         "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
         "target": "gap:12:Birdcore \u00d7 Highly Sensitive Person (HSP) mugs",
         "weight": 1
       },
@@ -6107,6 +6789,41 @@ const DATA = {
         "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
         "target": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
         "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
       },
       {
         "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
@@ -6120,8 +6837,158 @@ const DATA = {
       },
       {
         "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
         "target": "gap:14:Mycology \u00d7 Rockhounding \u2014 dual \"outdoor nature-collector\" identity",
         "weight": 1
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
+        "weight": 1
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
+        "weight": 1
+      },
+      {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "weight": 2
       }
     ]
   },
