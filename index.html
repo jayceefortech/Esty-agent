@@ -333,21 +333,21 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-25T13:27:12",
+  "generatedAt": "2026-09-26T13:15:08",
   "cycle": {
-    "number": 36,
-    "date": "2026-09-25",
-    "title": "Cycle 36 \u2014 2026-09-25",
+    "number": 37,
+    "date": "2026-09-26",
+    "title": "Cycle 37 \u2014 2026-09-26",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-09-25",
-    "nextScheduled": "2026-09-26",
+    "lastRun": "2026-09-26",
+    "nextScheduled": "2026-09-27",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "fresh discovery pass, 6 angles tested outside cycles 32-35's categories; all 6 came back already-established/saturated via multiple dedicated market pages each; zero no-signal results; plus a Play Haus periodic recheck, unchanged; search fallback only \u2014 no `ETSY_API_KEY`, 36th consecutive cycle unset"
+        "detail": "fresh discovery pass, 6 angles tested outside cycles 34-36's categories; all 6 came back already-established/saturated via multiple dedicated market pages each; zero no-signal results; search fallback only \u2014 no `ETSY_API_KEY`, 37th consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
@@ -370,7 +370,7 @@ const DATA = {
         "detail": "nothing scored to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today (confirmed by reading Cycle 35's section \u2014 dated 2026-09-24, \"next cycle scheduled 2026-09-25\"). Per this routine's daily-firing scheduling guidance, a new calendar day is enough reason to consider re-running Trend Scout without requiring the full pipeline by default. Both standing blockers (`ETSY_API_KEY`, Gap 6) are unchanged since their original flags and require user action, not agent work; every other open follow-up is either explicitly blocked on one of those two or explicitly flagged \"don't re-run yet\" (Ch\u00e2teaucore, \"loud budgeting\") \u2014 except Play Haus, whose own \"revisit in a few more cycles\" note (Cycle 31, 2026-09-20) was now 5 cycles old, due for a check. So I sent Trend Scout on another fresh discovery pass \u2014 explicitly told to read all 52 existing rows first, reach for genuinely different category territory than cycles 32-35 had drawn from, and fold in the Play Haus recheck as a cheap second query \u2014 and let its findings decide whether the rest of the pipeline was warranted.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 36th consecutive cycle, confirmed empty via direct check) \u2014 search-fallback only throughout, reported plainly, no API errors since no API call was attempted. Trend Scout read the current 52-row niche table first, then tested 6 distinct fresh angles chosen specifically to avoid the hobbyist-identity/occupation-humor/aesthetic-core/meme-identity/wellness-trend buckets recent cycles had converged on:\n- **Sourdough / home bread-baking hobbyist merch** (mugs, stickers, t-shirts) \u2014 real listings, a dedicated shop (SourdoughGifts), 5 market pages. Established.\n- **Vinyl record collector merch** (mugs, stickers, t-shirts) \u2014 real listings, 8 market pages, one of the deepest maturity signals seen this pipeline. Established.\n- **Board game night host merch** (mugs, t-shirts) \u2014 9 market pages (deepest of the six), but no individual listing URL captured this pass \u2014 market-page-level signal only, listing-level unverified. Established at the category level; product-level claim flagged unverified per this pipeline's sourcing rule, same treatment as Bugcore/Depression glass.\n- **\"Yinzer\" / Pittsburgh regional-identity humor** (t-shirts, stickers) \u2014 real listings, a dedicated shop (YinzerGearStore), 3 market pages \u2014 the thinnest of the six tested, but still clearly claimed by an existing dedicated shop, not unclaimed. Established, smaller scale.\n- **Xennial / \"elder millennial\" generational nostalgia** (mugs, stickers, t-shirts) \u2014 real listings, 8 market pages. Established. Trend Scout itself flagged this angle as blurring close to the already-exhausted meme-identity bucket despite the non-meme framing \u2014 I agree with that self-caveat and am not counting it as fully independent new territory, just noting it tested real regardless.\n- **Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity** (stickers) \u2014 real listings, 6 market pages including a `propagation_labels` page specific to the narrower functional angle. Established \u2014 even the narrower framing is already claimed.\n\nTrend Scout's own honest framing, which I agree with on review: all six tested real and already-served, none read as thin/unclaimed. Trend Scout explicitly declined to force an opportunity verdict and correctly left the judgment call to me. It also offered an unsolicited observation \u2014 that a genuine gap in this space is more likely in *narrower* geographic or intersectional slices than in broad category sweeps \u2014 which is a reasonable read but is Gap Finder's kind of analysis, not something I'm acting on without that agent's involvement.\n\n**Why I'm adding these as tracked rows rather than leaving them out.** Same standing convention applied every cycle since Cycle 17: a niche found real-but-already-saturated still gets formally tracked as a \"saturated \u2014 market intelligence only\" row rather than discarded, since it's useful negative-space information and keeps the tracker as the single source of research history. All 6 of this cycle's findings meet that bar on real, resolvable evidence (5 fully at the listing level; 1 \u2014 Board game night host \u2014 at the market-page level only, stated plainly in-row, consistent with this pipeline's rule against letting weak evidence pass as solid).\n\n**Play Haus periodic recheck: no change.** Two targeted searches for a finished physical product (sticker/wall-art/apparel, explicitly excluding digital/PNG/clip-art terms) returned zero Play-Haus-specific results either way \u2014 the standing \"digital-clip-art-only, no physical product found\" status stands unchanged. Continuing the periodic-not-every-cycle cadence; don't re-run this again next cycle.\n\n**Nothing previously tracked was retired, discarded, or silently dropped.** All 52 existing niches, all 14 gaps, all 14 gap-score rows, and all 11 design briefs carry forward completely unchanged from Cycle 35 \u2014 this cycle only adds 6 new rows. Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL` in the retirement sense \u2014 this is routine logging of confirmed-real market intelligence (CLAUDE.md rule 6 / ceo.md step 5), not a retirement recommendation.\n\n**\u26a0\ufe0f Worth your attention (observation, not a retirement call): three straight pure-discovery cycles (34, 35, 36 \u2014 19 fresh angles total, spanning nearly every major hobbyist/occupation/aesthetic/generational/functional bucket I can think to test) have found zero genuinely unclaimed niches.** I'm not lowering this pipeline's evidence bar to manufacture a result, and I'm not unilaterally changing Trend Scout's search strategy \u2014 but if this pattern continues, it may be worth your input on whether broad-category discovery has reached diminishing returns and the pipeline's next cycles should pivot toward narrower intersections of already-tracked niches (Gap Finder's specialty) rather than more fresh-category sweeps. Flagging for your judgment, not deciding it myself.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for thirty-four cycles running): keep as a tracked stretch bet, or mark for retirement. Not touched this cycle; still the tracker's lowest-scoring long-tracked gap (21/40).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 36th consecutive cycle now (Cycles 2-36). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. This continues to block real listing-count/price/image/review data pipeline-wide, and now specifically blocks confirming true saturation ratios for the 24 niches (18 from before Cycle 35, plus this cycle's 6 additions) resting on search-fallback-only evidence.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-35) \u2014 it remains a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
+    "summary": "**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. Per this routine's daily-firing scheduling guidance, a new calendar day is enough reason to consider re-running Trend Scout without requiring the full pipeline by default. Both standing blockers (`ETSY_API_KEY`, Gap 6) are unchanged since their original flags and require user action, not agent work. The other explicitly-deferred items were all correctly left alone this cycle per their own standing notes: Play Haus (Cycle 36 said don't re-run next cycle), Ch\u00e2teaucore (addressed, low priority, no new evidence to act on), and \"loud budgeting\" (tested negative, dead end). Cycle 36 also flagged \u2014 but explicitly declined to decide \u2014 whether the pipeline should pivot from broad-category Trend Scout sweeps toward Gap Finder's narrower-intersection analysis, given three straight sweeps had found nothing. I read that flag as the prior CEO deliberately leaving a strategy decision for the user, not as an instruction I'm free to act on unilaterally this cycle \u2014 overriding it myself would be making exactly the call that was flagged as needing the user's input. So I kept the established discovery-sweep convention for one more cycle, chose angles genuinely distinct from everything tested in Cycles 32-36, and let Trend Scout's findings decide whether the rest of the pipeline was warranted.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 37th consecutive cycle) \u2014 search-fallback only throughout, reported plainly, no API errors since no API call was attempted. Trend Scout tested 6 distinct fresh angles, explicitly avoiding the 58 already-tracked niches and their categories:\n- **Tabletop RPG / D&D hobbyist merch** (tumblers, mugs, shirts, stickers) \u2014 real listings, multiple dedicated market pages (\"Dungeon Master Merch,\" \"Dnd Tumblers,\" \"Sublimated Dungeons and Dragons Tumbler\") plus an already-carved-out cat-pun spinoff (\"Dungeon Meowster\"). Established, distinct from the tracker's existing social board-game-night row (this is the narrower TTRPG-player identity, not general board-gaming).\n- **Competitive pickleball player merch** (tumblers, mugs) \u2014 real listings, an unusually deep market-page count with product-type-specific pages (mugs, tumblers, cups, glass tumblers, stainless tumblers each separately claimed) and classic pun-driven copy. Established, one of the deepest maturity signals of the six.\n- **Van life / car camping enthusiast merch** (stickers, decals, shirts) \u2014 real listings, dedicated market pages including a distinct sub-identity term (\"Vandweller\") already claimed as its own page. Established.\n- **Disc golf hobbyist merch** (shirts, jerseys) \u2014 real listings, notably deep and specific (Hawaiian/button-down shirts, personalized 3D jerseys, regional/state-map variants, multiple running pun formulas). Established, one of the more thoroughly worked-over angles tested.\n- **Librarian humor** (shirts, mugs) \u2014 real listings, though a visibly thinner dedicated-market-page count than the other five \u2014 Trend Scout flagged this as worth noting, not as a different verdict. Still established, still claimed by multiple sellers. One listing's \"201 favorites\" figure was flagged by Trend Scout as a favorites count, not a review count, and reported as directional/unverified rather than solid data \u2014 correctly hedged, not treated as commercial metric.\n- **Knitting / crochet fiber-arts hobbyist merch** (shirts, mugs) \u2014 real listings, same pun-heavy multi-shop pattern as pickleball/disc golf, with product-specific market pages already claimed. Established.\n\nTrend Scout's own honest framing, which I agree with on review: all six tested real and already-served, none read as thin or unclaimed, and it correctly declined to force an opportunity verdict. It also flagged one held-in-reserve candidate it didn't test this pass to keep the sweep at 6 angles \u2014 thrifting/vintage-shopping identity merch \u2014 available for a future cycle if useful.\n\n**Why I'm adding these as tracked rows rather than leaving them out.** Same standing convention applied every cycle since Cycle 17: a niche found real-but-already-saturated still gets formally tracked as a \"saturated \u2014 market intelligence only\" row rather than discarded, since it's useful negative-space information and keeps the tracker as the single source of research history. All 6 of this cycle's findings meet that bar on real, resolvable listing-level evidence \u2014 no market-page-only/asymmetric-evidence caveat needed this cycle, unlike Cycle 36's Board game night host or Cycle 34's Bugcore.\n\n**Nothing previously tracked was retired, discarded, or silently dropped.** All 58 existing niches, all 14 gaps, all 14 gap-score rows, and all 11 design briefs carry forward completely unchanged from Cycle 36 \u2014 this cycle only adds 6 new rows. Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL` in the retirement sense \u2014 this is routine logging of confirmed-real market intelligence (CLAUDE.md rule 6 / ceo.md step 5), not a retirement recommendation.\n\n**\u26a0\ufe0f Worth your attention (observation, not a retirement call, restated and strengthened from Cycle 36): four straight pure-discovery cycles (34, 35, 36, 37 \u2014 25 fresh angles total) have now found zero genuinely unclaimed niches.** I am again declining to lower this pipeline's evidence bar to manufacture a result, and I am again declining to unilaterally pivot Trend Scout's strategy toward Gap Finder's narrower-intersection analysis \u2014 that pivot is the prior cycle's explicit ask for your input, and one more data point in the same direction doesn't turn it into my call to make. But the pattern is now one cycle stronger than when it was first flagged, so I'm restating it plainly rather than letting repetition make it feel like routine logging: if you'd like the pipeline to pivot toward narrower intersections of already-tracked niches instead of continued fresh-category sweeps, say so and the next cycle will do that instead.\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for thirty-five cycles running): keep as a tracked stretch bet, or mark for retirement. Not touched this cycle; still the tracker's lowest-scoring long-tracked gap (21/40).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset in this cloud session for the 37th consecutive cycle now (Cycles 2-37). Must be set as an environment variable on this Claude Code Remote environment (not just a local `.env` file) to survive fresh container checkouts. This continues to block real listing-count/price/image/review data pipeline-wide, and now specifically blocks confirming true saturation ratios for the 30 niches (24 from before Cycle 37, plus this cycle's 6 additions) resting on search-fallback-only evidence.\n\n**`report.html` was not updated this cycle** (consistent with Cycles 2-36) \u2014 it remains a static point-in-time snapshot from Cycle 1's real-API refresh and isn't parsed by `generate_dashboard.py`; `niche-tracker.md` remains the single real source of truth the live `index.html` dashboard is generated from every cycle."
   },
   "niches": [
     {
@@ -1527,6 +1527,128 @@ const DATA = {
       "countDisplay": "search-verified only (real listings, 6 market pages)",
       "title": "\"Proud Plant Parent Sticker\"",
       "url": "https://www.etsy.com/listing/1095217897/proud-plant-parent-sticker-plant-art",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+      "category": [
+        "tumblers",
+        "mugs",
+        "t-shirts",
+        "stickers"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus multiple dedicated etsy market-category pages (\"dungeon master merch,\" \"dungeon master clothing,\" \"dnd tumblers,\" \"sublimated dungeons and dragons tumbler\") and an already-claimed cat-pun spinoff (\"dungeon meowster\"). distinct from the tracker's board game night host row \u2014 this is the narrower ttrpg-player identity, not general social board-gaming.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 3,
+      "countDisplay": "search-verified only (3+ listings, multiple market pages)",
+      "title": "\"DND Tumbler, Dungeons and Dragons Tumbler, D&D Tumbler, D20 Tumbler, Critical Role Tumbler\"",
+      "url": "https://www.etsy.com/listing/1328376867/dnd-tumblerdungeons-and-dragons-tumbler",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Competitive pickleball player merch *(new 2026-09-26)*",
+      "category": [
+        "tumblers",
+        "mugs"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus an unusually deep market-page count with product-type-specific pages (mugs, tumblers, cups, glass tumblers, stainless tumblers each separately claimed) and classic pun-driven copy (\"tears of my pickleball opponents\"). one of the deepest maturity signals of this cycle's six additions.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 3,
+      "countDisplay": "search-verified only (3+ listings, multiple product-type-specific market pages)",
+      "title": "\"Pickleball Tumbler No Strings Attached Pickleball Tumbler\"",
+      "url": "https://www.etsy.com/listing/1286351125/pickleball-tumbler-no-strings-attached",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Van life / car camping enthusiast merch *(new 2026-09-26)*",
+      "category": [
+        "stickers",
+        "decals",
+        "t-shirts"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus dedicated etsy market-category pages including a distinct sub-identity term (\"vandweller\") already claimed as its own page.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 1,
+      "countDisplay": "search-verified only (1+ listing, multiple market pages)",
+      "title": "\"Van Life Sticker, Sticker Van, Camper Sticker, Campervan, Vanlife, off Grid, Motorhome...Mountain Sticker\"",
+      "url": "https://www.etsy.com/listing/1059828298/van-life-sticker-sticker-van-camper",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Disc golf hobbyist merch *(new 2026-09-26)*",
+      "category": [
+        "t-shirts"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings, notably deep and specific (hawaiian/button-down shirts, personalized 3d jerseys, regional/state-map variants, multiple running pun formulas (\"stupid tree,\" \"disc golf makes me say bad words\")) \u2014 one of the more thoroughly worked-over angles tested this pipeline.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 3,
+      "countDisplay": "search-verified only (3+ listings)",
+      "title": "\"Funny Disc Golf T-shirt - Stupid Tree - Discgolf - Frisbee Golfer\"",
+      "url": "https://www.etsy.com/listing/737527076/funny-disc-golf-t-shirt-stupid-tree",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Librarian humor *(new 2026-09-26)*",
+      "category": [
+        "t-shirts",
+        "mugs"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity; a visibly thinner dedicated-market-page count than this cycle's other five additions, worth noting but not a different verdict. fresh trend scout discovery pass found real, resolvable-url listings across shirts and mugs, still claimed by multiple sellers. one listing's \"201 favorites\" figure flagged as a favorites count, not a review count \u2014 reported as directional/unverified, not treated as a commercial metric.",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 3,
+      "countDisplay": "search-verified only (3+ listings)",
+      "title": "\"Funny Library Coffee Mug, Ceramic Mug, Book Lover Gift, Funny Librarian Cup, School Librarian Gift\"",
+      "url": "https://www.etsy.com/listing/4307309853/library-coffee-mug-ceramic-mug-book",
+      "img": null,
+      "price": null,
+      "reviews": null,
+      "listed": null,
+      "note": null
+    },
+    {
+      "name": "Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+      "category": [
+        "t-shirts",
+        "mugs"
+      ],
+      "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings, same pun-heavy multi-shop pattern as this cycle's pickleball/disc golf additions, with product-specific market pages already claimed (\"funny knitting mugs,\" \"yarn addict shirt,\" \"funny crochet shirt\").",
+      "statusNote": null,
+      "satLevel": "unknown",
+      "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
+      "count": 3,
+      "countDisplay": "search-verified only (3+ listings, multiple market pages)",
+      "title": "\"Funny Crochet Jokes & Puns Mug, Crochet Gift for Crocheters and Lovers of Crocheting, Knitting, Quilting, Crafting\"",
+      "url": "https://www.etsy.com/listing/1741776928/funny-crochet-jokes-puns-mug-crochet",
       "img": null,
       "price": null,
       "reviews": null,
@@ -5946,6 +6068,332 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 37,
+      "date": "2026-09-26",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out as a niche",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: gap finder's more thorough search found this niche's wall-art product-type fit is real, not absent as cycle 18 read it \u2014 2 real listings ([\"mob wife poster vintage italian restaurant wall art\"](https://www.etsy.com/listing/1653019412/mob-wife-poster-vintage-italian)) plus a dedicated `mob_wife_aesthetic_decor` market page were found, already blending mob-wife glam with italian-american domestic/kitchen imagery \u2014 this also means mob wife \u00d7 nonnacore is already served, not a gap (see gaps section). tumbler product-type fit remains unchecked.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 21 update: the single-template-system pattern flagged in cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-url listings (up from 6-7), spanning at least 5 distinct sub-themes (irish american housewife, japanese tradwife, conservative/anime \"waifu\" wife, retro kitchen, generic midcentury housewife), all sharing identical production-spec boilerplate (\"midjourney ai\" design credit, \"museum-grade 175gsm matte archival paper,\" size range \"8x12 to 36x54,\" \"30% off 3+\" discount) repeated verbatim across nominally different listings \u2014 stronger mechanical evidence of one template system than cycle 20's title-numbering pattern alone. a possible common shop name (\"englishartifex\") surfaced via search, but this came from the search tool's own synthesized answer text, not a directly-quoted source snippet or a page load (blocked by an outbound proxy 403 this cycle) \u2014 shop identity itself remains unverified, and gap finder explicitly did not factor it into this cycle's rescore. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 21\u219223/40 on the production-mechanics evidence alone \u2014 the intersection itself was not re-checked this cycle (still 0 combined listings from cycle 20); still low-tier, not briefed; see gaps section.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25)*",
+          "status": "unresolved \u2014 thin: one real digital png clip-art sticker pack confirmed on etsy (cycle 23); no finished physical pod sticker/wall-art/apparel product found as of cycle 24, re-confirmed unchanged by a second targeted check in cycle 27 (2026-09-16, 4 queries, zero physical listings), **re-confirmed unchanged a third time in cycle 31 (2026-09-20)**, and **re-confirmed unchanged a fourth time in cycle 36 (2026-09-25, two targeted physical-product searches)** \u2014 still no physical product found. a 2026 printify trend report separately calls this a \"fastest-growing\" gen-z maximalist aesthetic \u2014 real as an industry signal, but that's a secondary source, not etsy-native listing-volume data, and is not independently verified here. next re-check should again wait a few cycles, not repeat this same search every cycle.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+          "status": "unresolved \u2014 now 6 real, resolvable listing urls across 2 product types (title/url only \u2014 price/image/reviews/date `no data available` throughout). cycle 26 ran the targeted genuineness follow-up cycle 25 flagged: checked whether the cycle 25 listing's 5-term \"-core\" cross-tagging (cozycore, grandmillennial, cutecore, fairycore, ch\u00e2teaucore) was an outlier or a repeating pattern. mixed result: across all 6 known listings, 3 use \"ch\u00e2teaucore\" as the sole aesthetic (no cross-tagging), 2 pair it only with \"cottagecore\" (closely related aesthetic, lighter-degree), and 1 (the cycle 25 find) stacks 5 terms \u2014 that remains the most extreme case, but title-level cross-tagging itself isn't unique to it. new supporting evidence: a dedicated shop, **chateaucorehome**, was identified via search snippets, branding multiple product categories (mugs, wall art, kitchen items, home decor) specifically around \"ch\u00e2teaucore\" alongside only two co-aesthetics (cottagecore, french country) \u2014 a data point for genuineness, though full catalog verification remains blocked (no page-fetch tool). \u26a0\ufe0f treating the cycle 25 genuineness caution as **addressed, not fully resolved**: evidence now leans toward \"real enough to keep tracking as-is,\" not toward a nonnacore-style downgrade, but this isn't a two-independent-method confirmation either \u2014 a further check would need actual shop-catalog access, not just search snippets. not urgent; revisit only if new evidence surfaces.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. cycle 10 already evaluated this niche and found it real but already mature/saturated via multiple etsy market-taxonomy sub-pages, two with deep pagination \u2014 logged then as \"not tracked, no need to re-check.\" trend scout re-surfaced it today without that history (it was only given a name-collision avoid-list, not the full ruled-out log); today's own evidence (1 listing, 1 dedicated `/market/cryptidcore` page) is thinner than cycle 10's, so it doesn't override that finding \u2014 reaffirmed saturated. formally added as a tracked row now (current convention tracks saturated niches for market intelligence \u2014 see coquette/goblincore/night shift nurse/ibs/perimenopause rows above \u2014 a convention that postdates cycle 10's \"not tracked\" note).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. cycle 10 found this real but already mature/saturated (multiple market-taxonomy sub-pages, deep pagination). today's independent re-check agrees: large \"mega bundle\" digital-download listings (2,900-6,000 prints each) found alongside single prints, consistent with a crowded, bundle-seller-dominated term \u2014 a reaffirmation 18 cycles apart, not a contradiction. formally added as a tracked row now, same reasoning as cryptidcore above.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+          "status": "unresolved \u2014 search-verified, no saturation caution raised. cycle 31 correction: of cycle 30's \"5 more sellers\" spot-check claim (oxhip studio, cosmoandpepe, dailymugstudio), only **cosmoandpepe** yielded a genuinely new, real listing; dailymugstudio's was a duplicate of an already-tracked listing, and oxhip studio's claimed listing could not be located \u2014 the corrected, current confirmed count for this specific title/style cluster is **3 real listings**, not 5. the new listing's illustration style (a multi-species collage) is genuinely different from the prior two examples' single-mascot style, so phrase miner's visual-style read moved from \"weak (2-example)\" to \"confirmed split/heterogeneous\" rather than graduating to strong \u2014 only the title/copy formula graduated. one isolated hsp-thematic touchpoint remains from cycle 29 (\"feathers and feelings\" bird sublimation-wrap design file) \u2014 a digital design asset, not a finished gift, still flagged as a genuinely isolated single example, not a pattern; gap finder re-searched the birdcore\u00d7hsp combined intersection this cycle and again found 0 listings. distinct from the pet-ownership niches already tracked (species/nature-observation hobby-identity, not pet-breed identity).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+          "status": "unresolved \u2014 new, real foraging/mycology hobbyist-identity niche, distinct from goblincore/fantasy forest aesthetics (a genuine outdoor-hobby practice, not a costume aesthetic). 3 real, resolvable-url listings found across 2 product types (1 shirt, 2 mugs); phrase miner extracted a moderately-supported (3/3) keyword-first + identity/gift-tag title formula, plus a weaker mug-specific \"[identity] + gift\" sub-pattern (2/3, mug-only, don't generalize to shirts). visual-style read is thin \u2014 a single-listing inference only (\"illustrated/botanical fungi\" line art) \u2014 not corroborated, treat as hypothesis not pattern.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+          "status": "saturated \u2014 small mature corner, market intelligence only, not treated as an opportunity. cycle 32's initial 1-listing read undersold this niche. a cycle 33 dedicated standalone trend scout pass (search fallback only, no api \u2014 five product-type queries run) found **22** distinct, resolvable listings, dominated by an \"easily distracted by rocks\" joke-phrase cluster with its own auto-generated etsy market page (`/market/easily_distracted_by_rocks`) \u2014 etsy only generates these once a phrase has real independent listing volume, a maturity signal. title-formula divergence across the cluster (at least 4 distinct patterns, one shop \u2014 thunderandgrace \u2014 explicitly named) indicates 3-4+ independent sellers, not one shop relisting \u2014 corroborating and extending gap finder's cycle 32 side-find. one plausible untested angle (rockhounding-hobby-identity wall art, distinct from generic \"rocks\" home decor) surfaced with no signal this pass \u2014 a single unexplored sub-query, not validated white space.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 8+ real, resolvable-url listings and 5+ dedicated etsy market-category pages (`dysautonomia_stickers`, `dysautonomia_emergency_kit`, `pots_syndrome_essentials_bag`, `pots_syndrome_kit`, `dysautonomia_cups`, `pots_syndrome_sticker` page 2, `pots_spoonie`) \u2014 same multi-market-page maturity signal already applied to rockhounding/cryptidcore/cluttercore. structurally similar to the tracker's existing ibs/spoonie/chronic-illness rows but a distinct condition-specific term.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus an unusually dense 7+ dedicated etsy market-category pages spanning mugs and apparel \u2014 one of the strongest maturity signals of any niche this pipeline has tested.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 4+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`witchy_kitchen`, `witches_kitchen_art`, `witches_cottage_art`, `kitchen_witch_poster`). distinct territory from the tracker's ch\u00e2teaucore/nonnacore/trad-wife kitchen-decor rows \u2014 witchy-domestic rather than heritage/traditional aesthetic.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Vet tech / veterinary technician humor *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 4-5 dedicated etsy market-category pages. a distinct occupation from the tracker's existing \"occupation x sarcasm t-shirts\" row's night-shift-nurse example.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages. structurally parallel to the tracker's mycology/rockhounding/beekeeping hobbyist-identity rows but a distinct hobby community.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"Girl math\" meme merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. found as a bonus check (not one of this cycle's 7 primary discovery angles) during trend scout's fresh discovery pass \u2014 5+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`girl_math_merch`, `girl_math_mug`, `girl_math_sticker`).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+          "status": "saturated \u2014 market-page-level intelligence only, not treated as an opportunity; **weaker-verified than cycle 34's other 6 additions.** fresh trend scout discovery pass found 8 dedicated etsy market-category pages (including `/market/bugcore` itself) \u2014 real, corroborated at the market level. but no individual bugcore-specific listing url was captured this pass: the one candidate listing found is tagged cottagecore/fairycore primarily, insect-themed but not bugcore-labeled. per this pipeline's sourcing-discipline rule, treating the individual-listing claim as unverified rather than letting the market-page signal alone imply a confirmed product-level example.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Reptile/gecko keeper merch *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings and 9+ dedicated etsy market-category pages spanning a multi-species (snake, gecko, bearded dragon) sub-taxonomy \u2014 deeper category-splitting than most tracked saturated niches, a strong maturity signal.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found the pyrex side real and listing-level confirmed, including a dedicated \"pyrex collectors checklist\" product line and 8 market pages; the depression-glass side has 9 market pages but **no individual listing url was captured this pass** \u2014 market-level signal only for that half, same asymmetric-evidence pattern already applied to bugcore. treating the depression-glass listing-level claim as unverified per this pipeline's sourcing rule.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Dental hygienist humor *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 7 dedicated etsy market-category pages. same occupation-sarcasm format already crowded by the tracker's existing nurse/vet-tech rows \u2014 dental hygienist is just another already-claimed occupation slot.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"Situationship\" merch *(new 2026-09-24)*",
+          "status": "saturated on t-shirts \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found an exact-phrase \"situationship survivor\" pattern repeated across 5+ distinct real listings/sellers and 3 dedicated etsy market-category pages, all t-shirt-dominant. mug/sticker product-type fit was referenced only in the search tool's own synthesized summary text, not backed by any listing url \u2014 flagged as genuinely unverified rather than treated as confirmed cross-product fit.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Frogcore / froggy aesthetic *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings and 9+ dedicated etsy market-category pages, including a literal `/market/frogcore` page \u2014 etsy only auto-generates these once a term has real independent listing volume, the same signal already relied on for bugcore/cryptidcore.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Ham radio operator merch *(new 2026-09-24)*",
+          "status": "established, moderate maturity \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 3 dedicated etsy market-category pages and an existing \"funny x operator\" title formula. fewer market pages than this cycle's other additions, but still a real, populated, multi-seller niche, not thin.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings across all three product types, including a \"[term] definition poster\" wall-art sub-format mirroring a pattern already seen elsewhere in this tracker's history, plus 7 dedicated etsy market-category pages.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus a dedicated shop (sourdoughgifts) and 5 dedicated etsy market-category pages (`sourdough_sticker`, `sourdough`, `sourdough_stickers`, `sourdough_shirt`, `sourdough_themed_gift`).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Vinyl record collector merch *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages \u2014 one of the deepest maturity signals seen this pipeline (comparable to beekeeping's 7+).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Board game night host merch *(new 2026-09-25)*",
+          "status": "saturated \u2014 market-page-level intelligence only, not treated as an opportunity; **weaker-verified, same asymmetric-evidence pattern as bugcore/depression glass.** fresh trend scout discovery pass found 9 dedicated etsy market-category pages (`board_game_mug`, `gifts_for_board_gamers`, `gifts_for_boardgame_lovers`, `board_game_t_shirt`, `board_game_shirt`, `board_game_gifts`, `gifts_for_board_game_lovers`, `mug_board_games`, `board_game_fan_gift`) \u2014 the deepest market-page count of this cycle's six additions \u2014 but no individual listing url was captured this pass. real and corroborated at the market level; product-level claim unverified per this pipeline's sourcing rule.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+          "status": "saturated (smaller scale) \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus a dedicated shop (yinzergearstore) and 3 dedicated etsy market-category pages (`yinzer_gift_ideas`, `yinz`, `yinzers`) \u2014 the thinnest maturity signal of this cycle's six additions, but still clearly claimed by an existing dedicated shop, not unclaimed white space. a different regional identity might still be open; this specific one is not.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages. \u26a0\ufe0f ceo note: trend scout itself flagged this angle as blurring close to the tracker's already-exhausted meme-identity bucket despite the non-meme \"nostalgia\" framing \u2014 treating it as real but not fully independent new-category evidence.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 6 dedicated etsy market-category pages, including a `propagation_labels` page specific to the narrower functional sub-angle \u2014 even the narrower framing is already claimed, not just the broad \"plant mom/dad\" identity.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus multiple dedicated etsy market-category pages (\"dungeon master merch,\" \"dungeon master clothing,\" \"dnd tumblers,\" \"sublimated dungeons and dragons tumbler\") and an already-claimed cat-pun spinoff (\"dungeon meowster\"). distinct from the tracker's board game night host row \u2014 this is the narrower ttrpg-player identity, not general social board-gaming.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Competitive pickleball player merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus an unusually deep market-page count with product-type-specific pages (mugs, tumblers, cups, glass tumblers, stainless tumblers each separately claimed) and classic pun-driven copy (\"tears of my pickleball opponents\"). one of the deepest maturity signals of this cycle's six additions.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Van life / car camping enthusiast merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus dedicated etsy market-category pages including a distinct sub-identity term (\"vandweller\") already claimed as its own page.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Disc golf hobbyist merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings, notably deep and specific (hawaiian/button-down shirts, personalized 3d jerseys, regional/state-map variants, multiple running pun formulas (\"stupid tree,\" \"disc golf makes me say bad words\")) \u2014 one of the more thoroughly worked-over angles tested this pipeline.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Librarian humor *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity; a visibly thinner dedicated-market-page count than this cycle's other five additions, worth noting but not a different verdict. fresh trend scout discovery pass found real, resolvable-url listings across shirts and mugs, still claimed by multiple sellers. one listing's \"201 favorites\" figure flagged as a favorites count, not a review count \u2014 reported as directional/unverified, not treated as a commercial metric.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings, same pun-heavy multi-shop pattern as this cycle's pickleball/disc golf additions, with product-specific market pages already claimed (\"funny knitting mugs,\" \"yarn addict shirt,\" \"funny crochet shirt\").",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -6016,13 +6464,20 @@ const DATA = {
     "Board game night host merch *(new 2026-09-25)*",
     "\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
     "Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
-    "Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*"
+    "Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+    "Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+    "Competitive pickleball player merch *(new 2026-09-26)*",
+    "Van life / car camping enthusiast merch *(new 2026-09-26)*",
+    "Disc golf hobbyist merch *(new 2026-09-26)*",
+    "Librarian humor *(new 2026-09-26)*",
+    "Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*"
   ],
   "productTypes": [
     "3/3",
     "5+ sellers); mugs/stickers **unconfirmed \u2014 do not treat as validated**",
     "apparel",
     "but its visual style is confirmed **split/heterogeneous** between two real illustration approaches",
+    "decals",
     "digital/PNG",
     "first non-wall-art example \u2014 single example",
     "hats",
@@ -6860,6 +7315,90 @@ const DATA = {
         "r": 22.6
       },
       {
+        "id": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "kind": "niche",
+        "label": "Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "name": "Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "category": "tumblers",
+        "color": "#34d399",
+        "satLevel": "unknown",
+        "count": 3,
+        "example": "\"DND Tumbler, Dungeons and Dragons Tumbler, D&D Tumbler, D20 Tumbler, Critical Role Tumbler\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1328376867/dnd-tumblerdungeons-and-dragons-tumbler",
+        "r": 23.9
+      },
+      {
+        "id": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "kind": "niche",
+        "label": "Competitive pickleball player merch *(new 2026-09-26)*",
+        "name": "Competitive pickleball player merch *(new 2026-09-26)*",
+        "category": "tumblers",
+        "color": "#34d399",
+        "satLevel": "unknown",
+        "count": 3,
+        "example": "\"Pickleball Tumbler No Strings Attached Pickleball Tumbler\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1286351125/pickleball-tumbler-no-strings-attached",
+        "r": 23.9
+      },
+      {
+        "id": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "kind": "niche",
+        "label": "Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "name": "Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "category": "stickers",
+        "color": "#f472b6",
+        "satLevel": "unknown",
+        "count": 1,
+        "example": "\"Van Life Sticker, Sticker Van, Camper Sticker, Campervan, Vanlife, off Grid, Motorhome...Mountain Sticker\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1059828298/van-life-sticker-sticker-van-camper",
+        "r": 26.0
+      },
+      {
+        "id": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "kind": "niche",
+        "label": "Disc golf hobbyist merch *(new 2026-09-26)*",
+        "name": "Disc golf hobbyist merch *(new 2026-09-26)*",
+        "category": "t-shirts",
+        "color": "#f87171",
+        "satLevel": "unknown",
+        "count": 3,
+        "example": "\"Funny Disc Golf T-shirt - Stupid Tree - Discgolf - Frisbee Golfer\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/737527076/funny-disc-golf-t-shirt-stupid-tree",
+        "r": 23.9
+      },
+      {
+        "id": "niche:Librarian humor *(new 2026-09-26)*",
+        "kind": "niche",
+        "label": "Librarian humor *(new 2026-09-26)*",
+        "name": "Librarian humor *(new 2026-09-26)*",
+        "category": "t-shirts",
+        "color": "#f87171",
+        "satLevel": "unknown",
+        "count": 3,
+        "example": "\"Funny Library Coffee Mug, Ceramic Mug, Book Lover Gift, Funny Librarian Cup, School Librarian Gift\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/4307309853/library-coffee-mug-ceramic-mug-book",
+        "r": 23.9
+      },
+      {
+        "id": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "kind": "niche",
+        "label": "Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "name": "Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "category": "t-shirts",
+        "color": "#f87171",
+        "satLevel": "unknown",
+        "count": 3,
+        "example": "\"Funny Crochet Jokes & Puns Mug, Crochet Gift for Crocheters and Lovers of Crocheting, Knitting, Quilting, Crafting\"",
+        "price": null,
+        "url": "https://www.etsy.com/listing/1741776928/funny-crochet-jokes-puns-mug-crochet",
+        "r": 23.9
+      },
+      {
         "id": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
         "kind": "gap",
         "label": "Knightcore/Castlecore \u00d7 teacher/nurse shirts",
@@ -7243,6 +7782,11 @@ const DATA = {
       },
       {
         "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
       },
@@ -7298,6 +7842,11 @@ const DATA = {
       },
       {
         "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
       },
@@ -7324,6 +7873,11 @@ const DATA = {
       {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
         "weight": 1
       },
       {
@@ -7359,6 +7913,11 @@ const DATA = {
       {
         "source": "niche:Perimenopause humor",
         "target": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Perimenopause humor",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
         "weight": 1
       },
       {
@@ -7543,6 +8102,11 @@ const DATA = {
       },
       {
         "source": "niche:IBS / gut health humor",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:IBS / gut health humor",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 1
       },
@@ -7707,6 +8271,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
         "target": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
         "weight": 1
@@ -7832,6 +8426,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
         "target": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
         "weight": 5
@@ -7953,6 +8577,36 @@ const DATA = {
       },
       {
         "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 1
       },
@@ -8069,6 +8723,36 @@ const DATA = {
       {
         "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
         "target": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
         "weight": 1
       },
       {
@@ -8198,6 +8882,36 @@ const DATA = {
       },
       {
         "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
         "target": "gap:12:Birdcore \u00d7 Highly Sensitive Person (HSP) mugs",
         "weight": 1
       },
@@ -8308,6 +9022,36 @@ const DATA = {
       },
       {
         "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 2
       },
@@ -8418,6 +9162,36 @@ const DATA = {
       },
       {
         "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
         "target": "gap:14:Mycology \u00d7 Rockhounding \u2014 dual \"outdoor nature-collector\" identity",
         "weight": 1
       },
@@ -8518,6 +9292,36 @@ const DATA = {
       },
       {
         "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 1
       },
@@ -8612,6 +9416,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
         "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
         "target": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
         "weight": 2
@@ -8697,6 +9531,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
         "target": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
         "weight": 2
@@ -8778,6 +9642,36 @@ const DATA = {
       },
       {
         "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 1
       },
@@ -8857,6 +9751,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
         "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
         "target": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
         "weight": 2
@@ -8927,6 +9851,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
         "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
         "target": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
         "weight": 2
@@ -8992,6 +9946,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
         "target": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
         "weight": 3
@@ -9052,6 +10036,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
         "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
         "target": "niche:Dental hygienist humor *(new 2026-09-24)*",
         "weight": 2
@@ -9108,6 +10122,36 @@ const DATA = {
       },
       {
         "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
         "target": "gap:14:Mycology \u00d7 Rockhounding \u2014 dual \"outdoor nature-collector\" identity",
         "weight": 1
       },
@@ -9163,6 +10207,36 @@ const DATA = {
       },
       {
         "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "weight": 1
       },
@@ -9212,6 +10286,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:\"Situationship\" merch *(new 2026-09-24)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Situationship\" merch *(new 2026-09-24)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Situationship\" merch *(new 2026-09-24)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Situationship\" merch *(new 2026-09-24)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Situationship\" merch *(new 2026-09-24)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:\"Situationship\" merch *(new 2026-09-24)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
         "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
         "target": "niche:Ham radio operator merch *(new 2026-09-24)*",
         "weight": 2
@@ -9252,6 +10356,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
         "target": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
         "weight": 3
@@ -9287,6 +10421,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
         "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
         "target": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
         "weight": 3
@@ -9317,6 +10481,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
         "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
         "target": "niche:Vinyl record collector merch *(new 2026-09-25)*",
         "weight": 3
@@ -9342,6 +10536,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
         "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
         "target": "niche:Board game night host merch *(new 2026-09-25)*",
         "weight": 3
@@ -9360,6 +10584,36 @@ const DATA = {
         "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
         "target": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
         "weight": 2
+      },
+      {
+        "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
       },
       {
         "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
@@ -9382,6 +10636,36 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Board game night host merch *(new 2026-09-25)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Board game night host merch *(new 2026-09-25)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Board game night host merch *(new 2026-09-25)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Board game night host merch *(new 2026-09-25)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Board game night host merch *(new 2026-09-25)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Board game night host merch *(new 2026-09-25)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
         "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
         "target": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
         "weight": 2
@@ -9390,6 +10674,36 @@ const DATA = {
         "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
         "target": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
         "weight": 3
+      },
+      {
+        "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
       },
       {
         "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
@@ -9417,6 +10731,66 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+        "target": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
         "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
         "target": "gap:3:Gothmas \u00d7 pet-mom Christmas stickers",
         "weight": 1
@@ -9439,6 +10813,96 @@ const DATA = {
       {
         "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
         "target": "gap:14:Mycology \u00d7 Rockhounding \u2014 dual \"outdoor nature-collector\" identity",
+        "weight": 1
+      },
+      {
+        "source": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "target": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "target": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "target": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 3
+      },
+      {
+        "source": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "target": "niche:Librarian humor *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 4
+      },
+      {
+        "source": "niche:Librarian humor *(new 2026-09-26)*",
+        "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Librarian humor *(new 2026-09-26)*",
+        "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
+        "weight": 1
+      },
+      {
+        "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "target": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "weight": 1
+      },
+      {
+        "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
         "weight": 1
       }
     ]
