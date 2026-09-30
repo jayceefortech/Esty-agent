@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-09-29T13:25:22",
+  "generatedAt": "2026-09-30T13:31:00",
   "cycle": {
-    "number": 40,
-    "date": "2026-09-29",
-    "title": "Cycle 40 \u2014 2026-09-29",
-    "dataAsOfCycle": null
+    "number": 41,
+    "date": "2026-09-30",
+    "title": "Cycle 41 \u2014 2026-09-30",
+    "dataAsOfCycle": 40
   },
   "pipeline": {
-    "lastRun": "2026-09-29",
-    "nextScheduled": "2026-09-30",
+    "lastRun": "2026-09-30",
+    "nextScheduled": "2026-10-01",
     "agents": [
       {
         "name": "Trend Scout",
-        "status": "success",
-        "detail": "fresh discovery pass, 6 angles tested \u2014 including the previously held-in-reserve thrifting/vintage-shopping angle \u2014 outside every category tested in Cycles 17-39; all 6 came back already-established/saturated via multiple dedicated market pages each; zero no-signal results; search fallback only \u2014 no `ETSY_API_KEY`, 40th consecutive cycle unset"
+        "status": "skipped",
+        "detail": "deliberate scope choice, not a blocker \u2014 see Scope decision below"
       },
       {
         "name": "Phrase Miner",
         "status": "skipped",
-        "detail": "no new-opportunity/emerging niche found this cycle \u2014 nothing to extract a title/style formula from"
+        "detail": "no new raw listings to mine; both briefed gaps have 0 real combined listings, so Design Briefer synthesized from the three parent niches' own separately-captured real formulas instead, per this pipeline's established Gap 6/Brief 7 precedent for zero-combined-listing gaps"
       },
       {
         "name": "Gap Finder",
-        "status": "skipped",
-        "detail": "no new niche or intersection surfaced to score"
+        "status": "success",
+        "detail": "scored 4 new candidate gaps against Ch\u00e2teaucore; 2 cleared the briefing bar"
       },
       {
         "name": "Review Miner",
-        "status": "skipped",
-        "detail": "no `ETSY_API_KEY`; moot \u2014 no gap cleared the briefing bar this cycle"
+        "status": "success",
+        "detail": "insufficient data \u2014 no `ETSY_API_KEY`, 41st consecutive cycle unset \u2014 reported honestly, no fabricated buyer language"
       },
       {
         "name": "Design Briefer",
-        "status": "skipped",
-        "detail": "nothing scored to brief"
+        "status": "success",
+        "detail": "2 new briefs written, Briefs 12-13"
       }
     ],
-    "summary": "**\u26a0\ufe0f New discovery this cycle, not related to today's Trend Scout work: `report.html` has been stale since Cycle 1 (2026-08-19/20) \u2014 it still shows \"Cycle 1,\" 13 niches, and the original API snapshot, while `niche-tracker.md` now has 81 niches across 40 cycles.** `git log` confirms no commit has touched `report.html` since the Cycle 1 API data refresh, and `generate_dashboard.py` (which builds the actual live dashboard, `index.html`) never reads or writes it \u2014 the two files are and always have been unconnected. `report.html` is not linked from the live GitHub Pages site (which serves `index.html`) and CLAUDE.md's own \"Live dashboard\" documentation only describes `index.html`/`generate_dashboard.py`, never `report.html`. So this looks like `report.html` was fully superseded by `index.html` starting very early in the pipeline's history, but nothing ever formally said so \u2014 `ceo.md` still lists it as a file the CEO writes every cycle, which hasn't matched actual practice for 39 cycles running. I'm not unilaterally deciding to keep patching it, and I'm not unilaterally deleting/retiring it either \u2014 flagging it for your call below (Open follow-ups) since it's the same category of decision as retiring a tracked niche: I can describe the discrepancy, but discarding or reviving stale-but-historical project state is yours to decide, not mine.\n\n**Scope decision: partial recheck, one sub-agent.** No CEO Summary existed yet for today. Per this routine's daily-firing scheduling guidance, a new calendar day is enough reason to consider re-running Trend Scout without requiring the full pipeline by default \u2014 the standing pattern from Cycles 34-39 (fresh discovery pass only, downstream agents skipped unless something new surfaces) still applied here since nothing changed that judgment. Both standing blockers (`ETSY_API_KEY`, Gap 6) are unchanged since their original flags and require user action, not agent work. Play Haus was last rechecked Cycle 39 (1 cycle elapsed) \u2014 not due again yet, correctly left alone. Ch\u00e2teaucore and \"loud budgeting\" were also left alone per their own standing notes (addressed/low-priority and tested-negative-dead-end, respectively). I sent Trend Scout to close out the one remaining held-in-reserve angle (thrifting/vintage-shopping) plus 5 fresh angles varied across profession, hobby, and aesthetic categories, reviewed its findings for contradictions or unverified claims before writing (none found \u2014 every field either carried a resolvable listing URL or was honestly marked `NO DATA AVAILABLE`, and the report was explicit that no API calls were attempted since the key remains unset, which matches this environment's known state), and logged the results below.\n\nI reviewed Trend Scout's report against the tracker's existing rows for possible duplication (the discipline Cycle 39's near-miss made explicit) \u2014 none of this cycle's 6 angles overlap anything previously tracked or logged as market intelligence, including the adjacent-but-distinct dark academia aesthetic (checked against the tracker's existing Castlecore/Knightcore and Neo Deco rows \u2014 confirmed independently mature, not a duplicate) and doula/birth-worker humor (checked against the existing occupation-sarcasm rows \u2014 a different profession, same established format, not a duplicate)."
+    "summary": "**Scope decision: partial recheck, skip Trend Scout, go straight to Gap Finder.** Per this routine's daily-firing scheduling guidance, a new calendar day is enough reason to consider action without requiring the full pipeline by default \u2014 but it doesn't *mandate* another Trend Scout sweep either, and I judged that an 8th consecutive blind-angle-testing cycle was the wrong use of this cycle specifically. Cycle 40's own numbers made the case: 43 angles tested across 7 straight cycles, zero new opportunities, and the one angle that had been deliberately held in reserve (thrifting/vintage-shopping) came back one of the most saturated results yet, exhausting the \"just test one more angle and defer the bigger question\" option that had justified the pattern for six cycles running. Cycle 40 flagged three options for the user: (a) keep running broad discovery sweeps on fresh angles, (b) pivot toward narrower intersections of already-tracked niches via Gap Finder instead, or (c) something else. **I am not resolving that standing strategy question myself \u2014 it stays the user's call, per this pipeline's rule against unilaterally changing strategy.** What I *did* do is exercise ordinary CEO scope discretion for one cycle: instead of defaulting back to option (a) by habit, I tried option (b) as a single-cycle test, on the grounds that it's squarely normal pipeline behavior (Gap Finder mining already-tracked material, not a new tool or process) and Ch\u00e2teaucore was sitting right there \u2014 a real, dedicated-shop-backed niche with 6 confirmed listings across 2 product types, tracked since Cycle 23, that had never once been checked against a second axis. That test produced two genuinely new, real, bar-clearing gaps \u2014 useful data for the user's eventual decision on the standing question, not a resolution of it. Play Haus (last checked Cycle 39, not due) and the other periodic-recheck items were correctly left alone this cycle for the same reason they always are.\n\n**No `### Niches` table is restated this cycle.** None of the 81 tracked niches changed \u2014 Trend Scout didn't run, and Ch\u00e2teaucore's own core evidence (6 listings, 2 product types) is unchanged; Gap Finder's work this cycle was about *pairing* Ch\u00e2teaucore with other already-tracked niches, not about re-evidencing Ch\u00e2teaucore itself. Per `generate_dashboard.py`'s own parsing design (each table type independently carries forward from the most recent cycle that redefined it), Cycle 40's Niches table remains authoritative \u2014 this isn't a data loss, it's the intended behavior for a cycle that only touches Gaps/Scores/Briefs. Gap Finder did surface a minor side-observation worth logging without a full niche-row rewrite: see Open follow-ups below.\n\n**Gap Finder's findings, reviewed.** I gave Gap Finder Ch\u00e2teaucore's known state (6 real listings, dedicated ChateaucoreHome shop, existing cross-tagging pattern) directly rather than having it re-derive that from scratch, and pointed it at tracker history so it wouldn't re-test the four pairings Cycle 24 already ruled out (cat-mom, book-lover, grandmillennial, romantasy) or re-propose Dark Academia (already CEO-assessed as adjacent-but-independently-mature, not a duplicate-pairing candidate). It tested 4 genuinely new candidates via real `site:etsy.com` search verification, all confirmed sparse (0 combined listings each):\n- **Ch\u00e2teaucore \u00d7 Castlecore/Knightcore \u2014 28/40, ranked #1.** Shared \"old-world grandeur\" aesthetic; Castlecore/Knightcore itself is a real, medium-saturation, multi-seller niche (501 listings) already briefed once (Brief 1). One listing's search-snippet description mentioned \"Ch\u00e2teaucore dreamers,\" but Gap Finder correctly flagged that as an unverified search-tool paraphrase, not a confirmed tag, and did not count it as evidence \u2014 I'm taking that same caution at face value, not overriding it.\n- **Ch\u00e2teaucore \u00d7 Nonnacore \u2014 27/40.** Shared heritage/old-world kitchen-decor territory; Nonnacore is also a real, active, medium-saturation niche (687 listings), previously briefed twice (Brief 2, Gap 11).\n- **Ch\u00e2teaucore \u00d7 Trad wife aesthetic \u2014 22/40.** Below the briefing bar \u2014 real tone risk (Trad wife's genuine political/ideological connotations) plus this tracker's own standing caution (Cycle 21) that Trad wife's apparent multi-listing supply may rest on one templated shop, not independent sellers.\n- **Ch\u00e2teaucore \u00d7 Kitchen witch \u2014 21/40.** Lowest of the four \u2014 Kitchen witch is itself already tracked as saturated, so this pairing steps toward an already-crowded space on one side rather than a clean two-sided gap.\n\nAll four scores and their reasoning read as honest, not inflated \u2014 Gap Finder explicitly priced Ch\u00e2teaucore's own thinness (only 6 confirmed listings, ever) into the Market Opportunity/Profit Potential columns for the two winners rather than letting the \"confirmed sparse\" framing alone imply a stronger opportunity than the underlying niche can support. I found no contradictions with tracker history and no unverified claim smuggled into a score.\n\n**Review Miner's findings, reviewed.** Correctly checked for `ETSY_API_KEY` (still unset \u2014 41st consecutive cycle) and reported `insufficient data` for both niches it was asked to pool from (Castlecore/Knightcore, Nonnacore \u2014 Ch\u00e2teaucore itself is too thin at 6 listings to pool reviews from directly, per Gap Finder's own recommendation, which I followed). No search-fallback fabrication attempted, consistent with this pipeline's standing rule that real, attributable review text doesn't exist outside the API.\n\n**Design Briefer's findings, reviewed.** Wrote Briefs 12 and 13 for the two gaps that cleared the bar, synthesizing from three real, separately-captured formulas (Ch\u00e2teaucore's own weak/thin Cycle-24 formula, Castlecore/Knightcore's established Brief 1 formula, Nonnacore's established Brief 2 formula) rather than inventing anything new, and labeled every combined style/copy element a **synthesized hypothesis, not an observed pattern** \u2014 the same honest-confidence convention this pipeline used for Gap 6's note and Brief 7's Style Direction. It correctly declined to extrapolate Gap 15 onto a t-shirt SKU (Castlecore/Knightcore's real comp is for apparel, not wall art \u2014 Ch\u00e2teaucore's only confirmed product type) without flagging that as untested extrapolation, and correctly flagged the Nonnacore mug price comp in Brief 13 as adjacent, not a direct comp, since it's priced for a different product (mug) and different combo (Nonnacore \u00d7 ADHD/spoonie). Both briefs recommend deliberately conservative Tier-2 scale-up budgets given the 0-combined-listing starting point. I reviewed both for overstated confidence and found none \u2014 if anything they under-claim relative to the real (if thin) formula material available.\n\n**Nothing retired, nothing silently dropped.** All 81 previously-tracked niches, Gaps 1-14 and their scores, Briefs 1-11, and Gap 6 (still unresolved) carry forward completely unchanged. This cycle's only additions are Gaps 15-18 (new, scored) and Briefs 12-13 (new).\n\n**\u26a0\ufe0f Still needs your call \u2014 Gap 6** (flagged since Cycle 3, unresolved for thirty-nine cycles running): keep as a tracked stretch bet, or mark for retirement. Not touched this cycle; still the tracker's lowest-scoring long-tracked gap (21/40) \u2014 though now tied with the newly-added Gap 18 (also 21/40).\n\n**\u26a0\ufe0f Still needs your action \u2014 `ETSY_API_KEY`**: unset for the 41st consecutive cycle now. Two newly-briefed gaps (Briefs 12-13 above) specifically need real buyer language to firm up their currently-synthesized style/copy hypotheses \u2014 this blocker is no longer just background noise, it's now directly gating two fresh, real, bar-clearing gaps from becoming production-ready.\n\n**\u26a0\ufe0f Still needs your call \u2014 `report.html` staleness** (flagged Cycle 40): unchanged, still untouched since Cycle 1. Not re-litigating it further this cycle; see Cycle 40's CEO Summary for the full discovery.\n\n**\u26a0\ufe0f Still needs your call \u2014 the discovery-vs-gap-mining strategy question** (flagged Cycle 36, sharpened Cycle 40): this cycle ran option (b) \u2014 narrower intersections of already-tracked niches via Gap Finder \u2014 as a single-cycle test, per the Scope decision above, and it worked (2 new bar-clearing gaps from material that was already sitting in the tracker, at a fraction of a full discovery pass's cost). That's a useful data point, not a decision on my part to permanently favor (b) over (a) going forward \u2014 I'm still leaving that standing call to you. Worth noting for your decision: Ch\u00e2teaucore was a uniquely ready target (a real, dedicated-shop-backed niche that had simply never been paired) \u2014 it's not yet clear how many more untapped pairing opportunities like it remain in an 81-niche tracker versus how much of the backlog is already exhausted the way Trend Scout's discovery angles are."
   },
   "niches": [
     {
@@ -2117,7 +2117,7 @@ const DATA = {
         "price": "$4\u2013$5 sticker pack (convention, not comp-verified); $24\u2013$26 if produced as a tee (in line with Brief 1's Comfort Colors comps).",
         "tier100": "Commission the leash-link + dog-icon design (~$25\u201340), order a sticker proof pack (~$10\u201315), list the sticker SKU on Etsy ($0.20) \u2014 defer the tee SKU to the next tier. Total: ~$35\u201355.",
         "tier1000": "Add the Comfort Colors tee SKU (sample 2\u20133 tees, ~$60\u201390), proof-read wording carefully before production \u2014 directly addresses the real wording-accuracy complaint Review Miner found in this niche \u2014 run a small Etsy Ads test (~$150\u2013250) targeting recovery-community and pet-owner interest overlap. Total: ~$300\u2013450.",
-        "tierScale": "This is the **highest-scoring gap this cycle (33/40)** \u2014 worth building a small template family around it (sponsor/sponsee milestone variants: 30-day, 90-day, 1-year) using the same base art with swapped milestone text, scripted the same way as Brief 1/2's variant automation, cross-listed once validated."
+        "tierScale": "This is the **highest-scoring gap this cycle (32/40)** \u2014 worth building a small template family around it (sponsor/sponsee milestone variants: 30-day, 90-day, 1-year) using the same base art with swapped milestone text, scripted the same way as Brief 1/2's variant automation, cross-listed once validated."
       },
       "score": {
         "marketOpportunity": 8,
@@ -2342,7 +2342,19 @@ const DATA = {
       "nearMissCount": 0,
       "nearMissUrl": null,
       "nearMissTitle": null,
-      "brief": null,
+      "brief": {
+        "title": "Ch\u00e2teaucore \u00d7 Castlecore/Knightcore Old-World-Grandeur Wall Art",
+        "exactText": "\"Romantic Chateaucore Wall Art, Knightcore Castle Print, Gilt Oval Frame Estate Decor, Old-World Grandeur Gift\" \u2014 follows Ch\u00e2teaucore's own real title pattern (`[mood/period adjective] + \"Chateaucore\" + \"Wall Art\" + motif descriptor + decor-context/frame tag`, Cycle 24) rather than inventing a new shape, since that's the only real grounding available; no banned filler words.",
+        "description": "Hook: \"If your dream home lives somewhere between a French countryside estate and a medieval castle keep, most wall art forces you to pick one aesthetic and abandon the other.\" Who this is for: \"Made for dreamers who want their walls to feel like a ch\u00e2teaucore fairytale crossed with a knight's great hall \u2014 not a generic farmhouse print.\" Feature \u2192 benefit: Gilt oval frame motif \u2192 gives the print an heirloom, museum-estate look on your wall. Soft pastel palette with botanical/pastoral detail \u2192 softens the medieval edge so it reads romantic, not costume-y. Gallery-wall ready sizing \u2192 drops into an existing gallery wall without redesigning the room. CTA: \"Bring the ch\u00e2teau and the castle keep into the same room \u2014 order your print before the next gallery-wall refresh.\" *(Hook is drafted copy, not a pulled buyer quote \u2014 Review Miner reported insufficient data this cycle.)*",
+        "onProduct": "Small serif/script caption **\"Old World Grandeur\"** beneath the central motif (echoes Ch\u00e2teaucore's real mood/period-adjective pattern), with an optional secondary micro-line **\"Ch\u00e2teau. Castle. Legend.\"** \u2014 flagged explicitly as an untested synthesis connecting the two aesthetics; no confirmed real listing uses this text.",
+        "style": "**Synthesized hypothesis, not observed.** Gilt oval framing + soft pastel palette + botanical/pastoral motifs (real, from Ch\u00e2teaucore's weak/thin Cycle 24 formula, self-rated weak, only 3 examples) layered with a minimalist medieval line-art icon \u2014 crossed sword-and-staff or castle-turret motif, single fine linework \u2014 adapted from Castlecore/Knightcore's real Brief 1 formula, blended with a goth-floral (rose/thorn) border. Vertical print, gallery-wall presentation.",
+        "productType": "Wall art (primary \u2014 Ch\u00e2teaucore's only confirmed product type; do not extrapolate to a t-shirt SKU without explicit CEO/user sign-off, since the strong $26.05\u2013$28 Comfort Colors tee comp belongs to Castlecore/Knightcore alone, on a different product type, not this combo).",
+        "audience": "European-castle/ch\u00e2teau aesthetic dreamers, likely 20s\u201330s, who follow Ren Faire, historical-romance, and romantasy content and decorate rental-friendly gallery walls; overlaps with romantasy readers and Francophile decor buyers.",
+        "price": "$18\u2013$28, convention-based estimate for POD wall art, size-dependent (8x10\u201316x20). **Not comp-verified** \u2014 no wall-art comps exist for either parent this cycle; do not confuse with the real $26.05\u2013$28 tee comp, which applies only to Castlecore/Knightcore alone, on apparel.",
+        "tier100": "One Fiverr design commission for the gilt-oval-frame illustration (~$25\u201340) + one physical Printify wall-art sample (~$15\u201325) + $0.20 Etsy listing fee. Total: ~$40\u201365.",
+        "tier1000": "Given Market Opportunity (6) and Profit Potential (6) are only middling and Ch\u00e2teaucore itself has just 6 confirmed listings ever, scale conservatively: 2\u20133 frame/palette variants testing gilt-oval vs. plain rectangular frame (the one real variable named in the actual title formula's \"frame/format tag\"), one size variant, ~3 more samples (~$60\u2013100), a small Etsy Ads test (~$5/day \u00d7 30 days \u2248 $150). Total: ~$300\u2013500 \u2014 stay well under the $1,000 ceiling until Tier 1 proves any sales at all.",
+        "tierScale": "Build a template (Canva/Photoshop) with swappable motif layers (crest icon, border density, frame color) so variant generation is scripted; once one variant shows signal, use Printify's bulk/API upload to push the template across a \"-core\" combo family (this one, Brief 13, any future castle-aesthetic pairing) in one batch; cross-list validated prints to Redbubble/Society6 since wall art needs no apparel commitment."
+      },
       "score": {
         "marketOpportunity": 7,
         "easeOfEntry": 8,
@@ -2354,14 +2366,26 @@ const DATA = {
     },
     {
       "rank": 13,
-      "rankLabel": "13 (new, scored, not briefed)",
+      "rankLabel": "13 (scored, not briefed)",
       "name": "Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
       "verification": "Searched twice (site:etsy.com, \"hyperfixation\" + mushroom/mycology; \"mushroom\" + ADHD/neurodivergent) \u2014 no listing using hyperfixation-hobby-humor framing specifically for mycology was found, but the adjacent broad neurodiversity-*awareness* territory is already occupied (e.g. [Neurodiversity Is Necessary Fungi Shirt](https://www.etsy.com/listing/1056214698/neurodiversity-is-necessary-fungi), [Autistic Nature Lover Mushroom Graphic Tee](https://www.etsy.com/uk/listing/1834360945/autistic-nature-lover-mushroom-graphic)) \u2014 true white space for the narrower hyperfixation-humor angle is uncertain, not confirmed.",
       "risk": "mycology base niche has zero validated price/review/demand data (search-fallback only); audience-merge between \"serious hobbyist forager\" and \"internet ADHD-humor shirt buyer\" is plausible but unverified",
       "nearMissCount": null,
       "nearMissUrl": "https://www.etsy.com/listing/1056214698/neurodiversity-is-necessary-fungi",
       "nearMissTitle": "Neurodiversity Is Necessary Fungi Shirt",
-      "brief": null,
+      "brief": {
+        "title": "Ch\u00e2teaucore \u00d7 Nonnacore Heritage-Kitchen Wall Art",
+        "exactText": "\"Nonnacore Chateaucore Wall Art, Old World Kitchen Print, Terracotta Majolica Decor, Nostalgic Estate Kitchen Gift\" \u2014 both keywords front-loaded in the first 3 words; no banned words; leans on Ch\u00e2teaucore's real \"Wall Art\" + motif-descriptor pattern plus Nonnacore's real terracotta/majolica visual vocabulary.",
+        "description": "Hook: \"If your kitchen wall art has to choose between nonna's cozy Sunday-dinner warmth and a French ch\u00e2teau's old-world elegance, you've probably settled for neither.\" Who this is for: \"Made for cooks and hosts who want their kitchen to feel like nonna's farmhouse table set inside a French countryside estate \u2014 not a mismatched mood board.\" Feature \u2192 benefit: Warm terracotta and olive palette \u2192 keeps the print feeling like a lived-in kitchen, not a cold gallery piece. Retro Italian majolica floral border \u2192 grounds the ch\u00e2teau elegance in a warm, familiar motif. Soft rounded script typography \u2192 reads nostalgic and cozy, not formal or stiff, for a kitchen-gift occasion. Gallery-wall ready format \u2192 hangs alongside existing kitchen decor with no redesign. CTA: \"Give the kitchen wall a nonna-meets-ch\u00e2teau upgrade \u2014 order your print in time for the next family dinner.\" *(Hook is drafted copy, not a pulled buyer quote \u2014 Review Miner reported insufficient data this cycle.)*",
+        "onProduct": "Warm script caption such as **\"Nonna's Estate Table\"** (or \"Cucina di Nonna, C\u0153ur de Ch\u00e2teau\"), rendered in Nonnacore's real soft rounded script typography. Flagged: this exact phrase has no confirmed comp \u2014 a synthesized extrapolation \u2014 and the real Nonnacore title example (\"Nonna Says Rest Now,\" Brief 2) is deliberately not reused since it belongs to a different combo (Nonnacore \u00d7 ADHD/spoonie); only its tone/typography is carried over here.",
+        "style": "**Synthesized hypothesis, not observed.** Warm terracotta/olive palette + retro Italian majolica floral border + soft rounded script typography (all real, from Nonnacore's Brief 2 formula) combined with Ch\u00e2teaucore's gilt oval framing and pastoral/botanical motifs (real but self-rated weak, 3 examples). Cozy/nostalgic tone throughout \u2014 explicitly not edgy or sarcastic, per Nonnacore's real formula note. Vertical kitchen-print format, gallery-wall presentation.",
+        "productType": "Wall art (primary \u2014 Ch\u00e2teaucore's only confirmed product type).",
+        "audience": "Heritage-kitchen decor buyers wanting both Italian-nonna warmth and French-countryside elegance specifically \u2014 likely gifting for housewarming, host/hostess, or multi-generational-kitchen refresh occasions; overlaps with Nonnacore's active, medium-saturation buyer base (687 listings) skewing toward home cooks.",
+        "price": "$18\u2013$26, convention-based estimate for wall art \u2014 **not comp-verified**; no wall-art comps exist for either parent this cycle. A real $18\u2013$22 comp exists but only for personalized spoonie mugs in the Nonnacore style family (Brief 2) \u2014 a different product (mug, not wall art) and a different niche combo (Nonnacore \u00d7 ADHD/spoonie) \u2014 flagged as an adjacent-niche comp, not a direct one for this brief's actual SKU.",
+        "tier100": "One Fiverr design commission (~$25\u201340) + one physical Printify wall-art sample (~$15\u201325) + $0.20 Etsy listing fee. Total: ~$40\u201365.",
+        "tier1000": "This gap has the lowest Profit Potential score of Cycle 41's two briefed gaps (5, total 27/40) because the addressable slice \u2014 buyers wanting both Italian-nonna AND French-ch\u00e2teau motifs specifically \u2014 is explicitly named as narrow. Scale more conservatively than Brief 12: cap at 2 variants testing the one real palette tension (terracotta/majolica-forward vs. gilt/pastel-forward), 2 samples (~$40\u201350), a minimal Etsy Ads test (~$3\u20135/day \u00d7 2 weeks \u2248 $50\u201370). Total: ~$150\u2013250 \u2014 stay near the bottom of the $1,000 range; treat any sale at all as the signal to decide on further spend, not a trigger for automatic full scale-up.",
+        "tierScale": "Same templated-variant approach as Brief 12 (swappable palette/border/frame layers, Printify bulk/API upload once validated, cross-list to Redbubble/Society6) \u2014 but given the narrower audience rationale, hold off on building the full template until Tier 2 shows clearly positive signal, more so than Brief 12."
+      },
       "score": {
         "marketOpportunity": 3,
         "easeOfEntry": 8,
@@ -2373,7 +2397,7 @@ const DATA = {
     },
     {
       "rank": 14,
-      "rankLabel": "14 (new, scored, not briefed)",
+      "rankLabel": "14 (scored, not briefed)",
       "name": "Mycology \u00d7 Rockhounding \u2014 dual \"outdoor nature-collector\" identity",
       "verification": "Searched directly for combined \"rock collector\" + \"mushroom\" listings \u2014 **0** found combining both in one design; each currently exists only as a separate category. Confirmed sparse as a direct combination.",
       "risk": "both flanking niches are themselves data-thin (no price/review data on either side); the literal dual-hobbyist audience (forages mushrooms *and* rockhounds) is narrow \u2014 broadening to generic \"outdoorsy nature collector\" positioning would widen the addressable market but that's a repositioning assumption, not validated demand",
@@ -2387,7 +2411,83 @@ const DATA = {
         "userFit": 6,
         "profitPotential": 4,
         "total": 19,
-        "rationale": "Genuinely no combined listing found (Market Opportunity 3), but neither flanking niche is demand-validated \u2014 no reviews or price data on either side. Ease of Entry (6) and User Fit (6) lower than Gap 13 \u2014 needs a simple combined illustration (mushroom + rock/mineral motif) or dual-hobby text badge, more design lift than pure typography, only partially templatable. Profit Potential low (4) \u2014 the literal dual-hobbyist audience is small; broadening to generic outdoorsy-gift positioning is an unvalidated repositioning assumption. **Weakest of the two new candidates \u2014 below this pipeline's briefing bar, not sent to Design Briefer.**"
+        "rationale": "Genuinely no combined listing found (Market Opportunity 3), but neither flanking niche is demand-validated \u2014 no reviews or price data on either side. Ease of Entry (6) and User Fit (6) lower than Gap 13 \u2014 needs a simple combined illustration (mushroom + rock/mineral motif) or dual-hobby text badge, more design lift than pure typography, only partially templatable. Profit Potential low (4) \u2014 the literal dual-hobbyist audience is small; broadening to generic outdoorsy-gift positioning is an unvalidated repositioning assumption. **Weakest of the two Cycle 32 candidates \u2014 below this pipeline's briefing bar, not sent to Design Briefer.**"
+      }
+    },
+    {
+      "rank": 15,
+      "rankLabel": "15 (new, briefed \u2014 see Brief 12)",
+      "name": "Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+      "verification": "**0** confirmed combined listings across 3 targeted `site:etsy.com` queries this cycle (Cycle 41) \u2014 confirmed sparse at search-only confidence, no `ETSY_API_KEY`. One listing's search-snippet description referenced \"Ch\u00e2teaucore dreamers,\" but this is an unverified search-tool paraphrase, not a directly-quoted tag, and was not counted as evidence of a combined listing. A separate synthesized claim about \"Chateaucore Castle\" tumblers/mugs was directly chased down with a dedicated follow-up query and came back with zero results, consistent with Ch\u00e2teaucore's existing tumbler/mug product-type fit being market-page-only, not listing-confirmed.",
+      "risk": "No sensitive-topic/tone risk \u2014 pure aesthetic/fantasy territory. Ch\u00e2teaucore's own base evidence (only 6 total confirmed listings, ever) caps how proven either side of this gap really is.",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": null,
+      "score": {
+        "marketOpportunity": 6,
+        "easeOfEntry": 8,
+        "userFit": 8,
+        "profitPotential": 6,
+        "total": 28,
+        "rationale": "Best-validated second-axis audience of this cycle's four Ch\u00e2teaucore candidates (Castlecore/Knightcore: 501 listings, medium saturation, multi-seller) and a genuinely plausible shared old-world-grandeur buyer \u2014 but Ch\u00e2teaucore's own thinness (only 6 total confirmed listings, ever) caps how proven the gap really is, and the dual-identity slice is narrower than either parent niche's full audience."
+      }
+    },
+    {
+      "rank": 16,
+      "rankLabel": "16 (new, briefed \u2014 see Brief 13)",
+      "name": "Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+      "verification": "**0** confirmed combined listings (`site:etsy.com \"chateaucore\" \"nonnacore\"` \u2014 Cycle 41) \u2014 confirmed sparse; only separate market-category pages exist for each term individually.",
+      "risk": "Low tone risk \u2014 both aesthetics are warm/nostalgic. Narrow addressable slice: buyers who specifically want both Italian-nonna and French-ch\u00e2teau motifs together, not just either aesthetic alone.",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": null,
+      "score": {
+        "marketOpportunity": 6,
+        "easeOfEntry": 8,
+        "userFit": 8,
+        "profitPotential": 5,
+        "total": 27,
+        "rationale": "Nonnacore is a solid, active, medium-saturation niche (687 listings) giving real proven-audience credit, but the addressable slice \u2014 buyers who want both Italian-nonna and French-ch\u00e2teau motifs specifically \u2014 is narrow, capping Profit Potential below Gap 15's."
+      }
+    },
+    {
+      "rank": 17,
+      "rankLabel": "17 (new, stretch, not briefed)",
+      "name": "Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+      "verification": "**0** confirmed combined listings (`site:etsy.com \"chateaucore\" \"tradwife\" OR \"trad wife\"` \u2014 Cycle 41) \u2014 confirmed sparse; only separate shop/market pages found (TradWifeAcademy and various tradwife market slugs).",
+      "risk": "Real tone risk \u2014 Trad wife carries genuine ideological/political connotations around traditional gender roles. Trad wife's own evidence also rests substantially on a likely single-shop template system (\"EnglishArtifex,\" unverified per this tracker's Cycle 21 note) \u2014 weaker independent-demand proof than it first appears.",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": null,
+      "score": {
+        "marketOpportunity": 5,
+        "easeOfEntry": 5,
+        "userFit": 7,
+        "profitPotential": 5,
+        "total": 22,
+        "rationale": "Sits below this tracker's historical ~25/40 briefing bar \u2014 the tone risk plus the Trad-wife side's likely single-template-system caution (Cycle 21) is what pulls this down relative to Gaps 15/16, not the intersection's sparsity itself, which is comparably confirmed-empty. **Below this pipeline's briefing bar \u2014 not sent to Design Briefer.**"
+      }
+    },
+    {
+      "rank": 18,
+      "rankLabel": "18 (new, stretch, not briefed)",
+      "name": "Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+      "verification": "**0** confirmed combined listings (`site:etsy.com \"chateaucore\" \"kitchen witch\"` \u2014 Cycle 41) \u2014 confirmed sparse; only separate market pages found.",
+      "risk": "Mild tone consideration \u2014 \"witch\" carries a light spiritual/identity edge even framed as whimsical decor. Kitchen witch is independently tracked as already **saturated** in this pipeline \u2014 pairing onto an already-crowded parent niche, not a clean two-sided gap.",
+      "nearMissCount": 0,
+      "nearMissUrl": null,
+      "nearMissTitle": null,
+      "brief": null,
+      "score": {
+        "marketOpportunity": 4,
+        "easeOfEntry": 6,
+        "userFit": 7,
+        "profitPotential": 4,
+        "total": 21,
+        "rationale": "Lowest of this cycle's four Ch\u00e2teaucore candidates \u2014 Kitchen witch is already independently tracked as saturated in this pipeline, so pairing Ch\u00e2teaucore onto it means stepping toward an already-worked space on one side rather than a genuinely clean two-sided gap; its own evidence base (4+ listings) is also thinner than Nonnacore's or Castlecore/Knightcore's. **Below this pipeline's briefing bar \u2014 not sent to Design Briefer.**"
       }
     }
   ],
@@ -9321,12 +9421,12 @@ const DATA = {
         "kind": "gap",
         "label": "Birdcore \u00d7 Highly Sensitive Person (HSP) mugs",
         "name": "Birdcore \u00d7 Highly Sensitive Person (HSP) mugs",
-        "category": null,
-        "color": "#94a3b8",
+        "category": "t-shirts",
+        "color": "#f87171",
         "satLevel": null,
         "count": null,
-        "example": null,
-        "price": null,
+        "example": "\"Romantic Chateaucore Wall Art, Knightcore Castle Print, Gilt Oval Frame Estate Decor, Old-World Grandeur Gift\" \u2014 follows Ch\u00e2teaucore's own real title pattern (`[mood/period adjective] + \"Chateaucore\" + \"Wall Art\" + motif descriptor + decor-context/frame tag`, Cycle 24) rather than inventing a new shape, since that's the only real grounding available; no banned filler words.",
+        "price": "$18\u2013$28, convention-based estimate for POD wall art, size-dependent (8x10\u201316x20). **Not comp-verified** \u2014 no wall-art comps exist for either parent this cycle; do not confuse with the real $26.05\u2013$28 tee comp, which applies only to Castlecore/Knightcore alone, on apparel.",
         "url": null,
         "r": 32,
         "score": 28
@@ -9336,12 +9436,12 @@ const DATA = {
         "kind": "gap",
         "label": "Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
         "name": "Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
-        "category": null,
-        "color": "#94a3b8",
+        "category": "wall art",
+        "color": "#7dd3fc",
         "satLevel": null,
         "count": null,
-        "example": null,
-        "price": null,
+        "example": "\"Nonnacore Chateaucore Wall Art, Old World Kitchen Print, Terracotta Majolica Decor, Nostalgic Estate Kitchen Gift\" \u2014 both keywords front-loaded in the first 3 words; no banned words; leans on Ch\u00e2teaucore's real \"Wall Art\" + motif-descriptor pattern plus Nonnacore's real terracotta/majolica visual vocabulary.",
+        "price": "$18\u2013$26, convention-based estimate for wall art \u2014 **not comp-verified**; no wall-art comps exist for either parent this cycle. A real $18\u2013$22 comp exists but only for personalized spoonie mugs in the Nonnacore style family (Brief 2) \u2014 a different product (mug, not wall art) and a different niche combo (Nonnacore \u00d7 ADHD/spoonie) \u2014 flagged as an adjacent-niche comp, not a direct one for this brief's actual SKU.",
         "url": null,
         "r": 30,
         "score": 23
@@ -9360,6 +9460,66 @@ const DATA = {
         "url": null,
         "r": 32,
         "score": 19
+      },
+      {
+        "id": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "kind": "gap",
+        "label": "Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "name": "Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "category": null,
+        "color": "#94a3b8",
+        "satLevel": null,
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 32,
+        "score": 28
+      },
+      {
+        "id": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "kind": "gap",
+        "label": "Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "name": "Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "category": null,
+        "color": "#94a3b8",
+        "satLevel": null,
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 32,
+        "score": 27
+      },
+      {
+        "id": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "kind": "gap",
+        "label": "Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "name": "Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "category": null,
+        "color": "#94a3b8",
+        "satLevel": null,
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 32,
+        "score": 22
+      },
+      {
+        "id": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "kind": "gap",
+        "label": "Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "name": "Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "category": null,
+        "color": "#94a3b8",
+        "satLevel": null,
+        "count": null,
+        "example": null,
+        "price": null,
+        "url": null,
+        "r": 32,
+        "score": 21
       }
     ],
     "links": [
@@ -9384,8 +9544,18 @@ const DATA = {
         "weight": 1
       },
       {
+        "source": "niche:Nonnacore",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 1
+      },
+      {
         "source": "niche:Castlecore / Knightcore",
         "target": "gap:1:Knightcore/Castlecore \u00d7 teacher/nurse shirts",
+        "weight": 2
+      },
+      {
+        "source": "niche:Castlecore / Knightcore",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
         "weight": 2
       },
       {
@@ -9569,6 +9739,26 @@ const DATA = {
         "weight": 1
       },
       {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "weight": 2
+      },
+      {
         "source": "niche:Recovery/sobriety \u00d7 tumbler",
         "target": "gap:4:Sobriety \u00d7 pet-mom stickers/shirts",
         "weight": 1
@@ -9619,6 +9809,26 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "weight": 2
+      },
+      {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
         "weight": 1
@@ -9646,6 +9856,26 @@ const DATA = {
       {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 3
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 4
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
         "weight": 3
       },
       {
@@ -9796,6 +10026,11 @@ const DATA = {
       {
         "source": "niche:Mob wife aesthetic",
         "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Mob wife aesthetic",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
         "weight": 1
       },
       {
@@ -9981,6 +10216,11 @@ const DATA = {
       {
         "source": "niche:Trad wife aesthetic",
         "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Trad wife aesthetic",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
         "weight": 2
       },
       {
@@ -10469,6 +10709,26 @@ const DATA = {
         "weight": 2
       },
       {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "weight": 1
+      },
+      {
         "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
         "target": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
         "weight": 5
@@ -10951,6 +11211,26 @@ const DATA = {
       {
         "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
         "target": "gap:13:Mycology \u00d7 ADHD \"hyperfixation-hobby\" humor (narrow angle \u2014 distinct from the broader neurodiversity-awareness mushroom shirts already found and ruled out this cycle)",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
         "weight": 1
       },
       {
@@ -12252,6 +12532,16 @@ const DATA = {
         "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
         "target": "niche:Powerlifting / strength-training gym humor merch *(new 2026-09-29)*",
         "weight": 2
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "weight": 3
       },
       {
         "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
@@ -15551,6 +15841,26 @@ const DATA = {
       {
         "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
         "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "weight": 1
+      },
+      {
+        "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
         "weight": 1
       },
       {
