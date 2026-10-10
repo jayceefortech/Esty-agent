@@ -333,44 +333,44 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-10-09T13:41:46",
+  "generatedAt": "2026-10-10T13:13:10",
   "cycle": {
-    "number": 50,
-    "date": "2026-10-09",
-    "title": "Cycle 50 \u2014 2026-10-09",
+    "number": 51,
+    "date": "2026-10-10",
+    "title": "Cycle 51 \u2014 2026-10-10",
     "dataAsOfCycle": null
   },
   "pipeline": {
-    "lastRun": "2026-10-09",
-    "nextScheduled": "2026-10-10",
+    "lastRun": "2026-10-10",
+    "nextScheduled": "2026-10-11",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "targeted follow-up on 2 flagged leads \u2014 Rock Climbing/bouldering deep-dive found 8 new resolvable listings, up from 1; Cottagecore POD-format pass found 5 real printed/sublimation listings, resolving last cycle's handmade-pottery-only question; search fallback, no `ETSY_API_KEY`, 50th consecutive cycle unset"
+        "detail": "targeted single-item recheck \u2014 Cottagecore physical/printed wall-art POD confirmation pass; result inconclusive, not negative; search fallback, no `ETSY_API_KEY`, 51st consecutive cycle unset"
       },
       {
         "name": "Phrase Miner",
-        "status": "success",
-        "detail": "2 confirmed formulas per niche \u2014 climbing-slang wordplay + keyword-stacking SEO for Rock Climbing; sticker-pack structure + keyword-stacking SEO for Cottagecore; both niches' visual-style/wall-art data flagged insufficient"
+        "status": "skipped",
+        "detail": "no new confirmed listing to extract a formula from"
       },
       {
         "name": "Gap Finder",
-        "status": "success",
-        "detail": "rescored Gap 26 to 29/40 via 3 independent verification queries, up from 25/40; tested 3 new Cottagecore pairings \u2014 2 scored below floor, 1 marked inconclusive"
+        "status": "skipped",
+        "detail": "no new confirmed evidence to rescore any gap"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "confirmed no `ETSY_API_KEY`, 50th consecutive cycle \u2014 foregone insufficient-data result per established precedent"
+        "detail": "confirmed no `ETSY_API_KEY`, 51st consecutive cycle \u2014 foregone insufficient-data result per established precedent"
       },
       {
         "name": "Design Briefer",
-        "status": "success",
-        "detail": "Brief 18 written from Phrase Miner + Gap Finder material only, no buyer-language improvised, confidence framed as genuine-but-unvalidated"
+        "status": "skipped",
+        "detail": "nothing new to brief"
       }
     ],
-    "summary": "**Scope decision: partial recheck, four sub-agents (Review Miner skipped).** No CEO Summary existed yet for today (2026-10-09) \u2014 confirmed by reading niche-tracker.md's most recent section, Cycle 49, dated 2026-10-08. Rather than running a full fresh-discovery pipeline the day immediately after Cycle 49's own discovery pass, or skipping outright, I picked up the two concrete, non-duplicative leads Cycle 49 itself flagged in its \"Open follow-ups\": a Rock Climbing/bouldering deep-dive (explicitly compared there to the Linux sysadmin 2\u21928-listing pattern that unblocked a brief between Cycles 44-45) and a Cottagecore POD-format confirmation pass (the one open product-type question left from Cycle 49's aesthetic finding). This is the kind of \"a few priority terms\" partial recheck this routine's daily-firing guidance calls for \u2014 not a duplicate of yesterday's work, and not a reason to run the full 13-agent pipeline either. Play Haus, the AI \"prompt engineer\" niche, and all other standing flags were deliberately left untouched, consistent with Cycles 48-49's own notes that they're not due for another look yet.\n\n**Minor housekeeping, unrelated to today's research:** before starting, I found this session's `main` branch pointer was 3 commits behind the actual latest work \u2014 Cycles 47-49 had been committed from a detached HEAD state in a prior session and never fast-forwarded onto `main` locally. I fast-forwarded `main` to that existing history (no new commits, no data change) and confirmed `origin/main` on GitHub was already current at Cycle 49 \u2014 the live dashboard was never actually stale; this was purely a local bookkeeping gap, now fixed.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset, 50th consecutive cycle) \u2014 search-fallback only. Rock Climbing/bouldering: found 8 new real, resolvable listings beyond the 1 already on record (3 stickers, 3 t-shirts, 2 wall art \u2014 one of the two wall-art hits a digital download, not physical POD), a 1\u21929 jump comparable in magnitude to the Linux sysadmin precedent. It also correctly flagged that climbing mugs found this pass have a physical climbing hold attached as the handle \u2014 a handmade/assembled novelty, not a printed-on-blank POD product \u2014 and excluded them from the real evidence base rather than letting a mug hit pad the niche's product-type count. The \"Climbing Holds Sticker\" (shop lowgravityprints) remains unconfirmed after a dedicated shop-scoped search \u2014 still no resolvable Etsy URL, only the same third-party sales-tracker figure as Cycle 49; correctly excluded again. Cottagecore: found 5 real, resolvable POD-format listings (2 sticker packs, 1 t-shirt, 1 sublimation mug), resolving last cycle's open \"handmade-pottery-only\" question \u2014 notably including one sticker Etsy itself tags \"Handmade\" despite being printed vinyl, a useful caution against trusting that tag as a POD signal. Wall art stayed unconfirmed for this niche (mostly digital-download printables). I'm carrying all of Trend Scout's own confidence caveats forward (snippet-sourced \"search-verified-URL,\" not independently page-loaded or API-confirmed) rather than letting this firmer evidence read as more solid than it is.\n\n**Phrase Miner's findings, reviewed.** Extracted two real, multi-example formulas for each niche (Rock Climbing: climbing-slang-as-wordplay mechanic and keyword-stacking SEO titling, both 3-4+ examples; Cottagecore: sticker-pack title structure and the same keyword-stacking mechanic, which Phrase Miner correctly flagged as the single strongest, most portable pattern in the whole report since it now has 6+ supporting examples across both niches). It properly declined to force a visual-style formula for either niche's t-shirts/stickers (insufficient data) and flagged the two climbing wall-art comps as actively contradictory (\"watercolor\" vs. \"retro/minimalist\") rather than averaging them into a fake consensus. No fabrication, no overclaiming from thin examples.\n\n**Gap Finder's findings, reviewed \u2014 and it pushed back rather than rubber-stamping my framing.** For Gap 26 (Rock Climbing \u00d7 Programmer Humor), it ran its own 3-query verification before rescoring (confirmed still-sparse, not assumed), and raised the score to 29/40 (Market Opportunity 4\u21926, Ease of Entry 8\u21929, Profit Potential 5\u21926, User Fit held flat at 8) \u2014 explicitly declining to match Linux sysadmin's full 31/40 because the seller-diversity evidence that made Linux's upgrade rock-solid (5+ independent storefronts) hasn't been confirmed here, and explicitly holding User Fit below Linux's because rock climbing isn't this operator's own identity the way Linux/CLI is. That's a real, reasoned upgrade, not an automatic pass-through of my framing, and it clears the briefing floor with genuine confidence rather than as a stretch bet \u2014 I'm sending it to Design Briefer (Brief 18). For Cottagecore, Gap Finder ran 5 real verification searches across 3 candidate pairings before scoring anything: Cottagecore \u00d7 Mycology (22/40) and Cottagecore \u00d7 Cozy fantasy/romantasy reader mug (21/40) both came back below this pipeline's briefing floor \u2014 correctly scored low because both sides of each pairing are themselves unproven, not because the search came back empty (the same standard already applied to Gaps 13/14). Cottagecore \u00d7 HSP was marked inconclusive rather than scored, since the search couldn't distinguish genuine absence from a tool-indexing blank \u2014 exactly the discipline this pipeline expects. Cottagecore \u00d7 Kitchen witch wasn't tested at all, correctly, since Kitchen witch is wall-art-only (excluded by this cycle's scope) and already independently saturated.\n\n**Design Briefer's findings, reviewed.** Brief 18 (Rock Climbing \u00d7 Programmer Humor) was built strictly from Phrase Miner's formulas and Gap Finder's rubric scores, carried forward both of Gap Finder's open flags without resolving them (visual style insufficient data; seller-diversity unconfirmed), used no banned filler words in the title, followed the hook/identity-line/feature\u2192benefit/CTA description structure, and gated all three action-path tiers behind real sales signal appropriately given the mid (not strong) Market Opportunity/Profit Potential scores. No buyer-review language was available (Review Miner skipped) and none was invented. I'm treating this as this cycle's one new brief \u2014 the two Cottagecore pairings stayed below the briefing bar, so no further briefs were warranted.\n\n**Nothing previously tracked was retired or silently dropped.** All 93 niches, 29 prior gaps (now 31 with the 2 new Cottagecore stretch entries), and 17 prior briefs (now 18) carry forward or extend without erasing anything. Rock Climbing and Cottagecore's niche rows were updated in place with new evidence, not replaced \u2014 their Cycle 49 findings remain visible in the updated text, just superseded where the new evidence genuinely changes the read (e.g. Cottagecore's handmade-pottery listings are still acknowledged, just clarified as non-POD). Nothing newly flagged `\u26a0\ufe0f NEEDS YOUR CALL` this cycle.\n\n**`report.html` again left untouched, same standing reasoning as Cycles 40-49** \u2014 still a frozen Cycle-1 snapshot, still an open `\u26a0\ufe0f NEEDS YOUR CALL` since Cycle 40 on whether to maintain or retire it, not resolved by me unilaterally either direction."
+    "summary": "**Scope decision: partial recheck, Trend Scout only (Phrase Miner/Gap Finder/Review Miner/Design Briefer all skipped).** No CEO Summary existed yet for today (2026-10-10) \u2014 confirmed by reading niche-tracker.md's most recent section, Cycle 50, dated 2026-10-09, so this wasn't a skip. Per this routine's own daily-firing guidance, a new calendar day alone doesn't mandate a full 5-agent pipeline \u2014 so rather than a blind fresh-discovery sweep (the pipeline's last genuine discovery pass was Cycle 49, only 2 days ago, not yet the ~3-day gap this pipeline has previously treated as a reasonable trigger for another one) or an outright skip, I picked up the one concrete, non-duplicative, already-flagged lead from Cycle 50's \"Open follow-ups\": the Cottagecore physical/printed wall-art POD-format question, left open after two prior passes (Cycles 49-50) found only handmade pottery or digital-download printables. I scoped Trend Scout narrowly to that single question, consistent with the precedent set by Cycle 47/48's own single-item Trend-Scout-only cycles.\n\n**Trend Scout's findings, reviewed.** No `ETSY_API_KEY` this session (still unset \u2014 51st consecutive cycle). Trend Scout ran six site:etsy.com query variants plus three follow-up single-listing-ID lookups attempting to independently re-resolve the most promising candidates. Its own reported result is a genuine inconclusive, not a negative: it found several real-format `etsy.com/listing/...` URLs inside aggregated search-result summaries carrying POD-consistent language (frame/format choice, \"made-to-order\"), but when it tried to re-query each specific listing ID on its own to confirm title/price/image, none of the three it checked resurfaced the actual listing page \u2014 it correctly characterized this as \"a tool-indexing blank, not a confirmation either way\" rather than stretching an unconfirmable hit into a finding, or forcing a negative conclusion the data doesn't support either. One candidate (`/listing/4301570570`) is genuinely strong physical-POD evidence but tagged **Grandmacore**, not Cottagecore \u2014 an adjacent aesthetic, correctly not counted toward this niche.\n\n**The `patternbyetsy.com` finding \u2014 reviewed and flagged, not resolved by me.** Trend Scout surfaced a cluster of Cottagecore-labeled, POD-consistent, physical wall-art listings on `patternbyetsy.com` subdomains (Etsy's \"Pattern by Etsy\" custom-storefront product) \u2014 by its own account, the strongest single piece of evidence found across all three cycles' worth of searching. It correctly declined to count these against this pipeline's data-sourcing rule (rule 3: an actual resolvable `etsy.com/listing/...` URL, search fallback only counts with that exact form), and separately flagged that it understood Pattern by Etsy to have been discontinued/sunset around 2023 \u2014 making live-looking, current-dated hits on that domain in 2026 something to question rather than accept at face value. I'm treating this exactly the way the pipeline's own sourcing discipline requires: Trend Scout made the right call not to launder a non-`etsy.com` domain into a confirmed Etsy listing, and I'm not expanding or narrowing that sourcing rule on my own judgment either. **\u26a0\ufe0f NEEDS YOUR CALL (new this cycle):** should `patternbyetsy.com` (if genuinely still live and Etsy-affiliated) ever count as valid Etsy-sourced evidence for this pipeline, or should it be treated the same as any other off-Etsy domain (noted for context, never counted)? This is a sourcing-policy question, not a routine logging decision, so it stays open until you decide.\n\n**Niche row updated in place, no new row added.** Cottagecore aesthetic merch (general)'s existing row gets a short addendum noting this cycle's inconclusive wall-art pass and the new sourcing-policy flag \u2014 its product-type fit, status (active), and all prior evidence from Cycle 50 carry forward unchanged. No other niche row was touched this cycle.\n\n**Nothing previously tracked was retired or silently dropped.** All 93 niches, 31 gaps, and 18 briefs carry forward unchanged \u2014 this cycle neither added nor removed any of them, only appended a status note to one existing niche row. The one new item is the `patternbyetsy.com` sourcing flag above, explicitly marked `\u26a0\ufe0f NEEDS YOUR CALL` rather than decided either way.\n\n**`report.html` again left untouched, same standing reasoning as Cycles 40-50** \u2014 still a frozen Cycle-1 snapshot, still an open `\u26a0\ufe0f NEEDS YOUR CALL` since Cycle 40 on whether to maintain or retire it, not resolved by me unilaterally either direction."
   },
   "niches": [
     {
@@ -2224,19 +2224,18 @@ const DATA = {
       "note": null
     },
     {
-      "name": "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+      "name": "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
       "category": [
         "stickers",
         "t-shirts",
-        "mugs (wall art unconfirmed \u2014 mostly digital-download printables",
-        "excluded)"
+        "mugs (wall art still unconfirmed for POD)"
       ],
-      "status": "active *(promoted from unresolved 2026-10-09 \u2014 cycle 50 trend scout follow-up confirmed real pod-format listings, resolving last cycle's open handmade-pottery-only question)*. 5 real, resolvable pod-format listings found this pass: 2 sticker packs (printed vinyl), 1 t-shirt (printed bella+canvas blank), 1 mug (genuine sublimation pod \u2014 listing text explicitly confirms heat-press printing, distinct from cycle 49's thrown-ceramic finding). one sticker is etsy-\"handmade\"-tagged despite being printed vinyl \u2014 a reminder that etsy's own tag isn't a reliable pod/non-pod signal. phrase miner found a real visual-style throughline across 4 of 5 listings (botanical/mushroom nature motifs + cozy indoor-lifestyle imagery \u2014 coffee, books) and the same cross-niche keyword-stacking title mechanic found in rock climbing above. wall art remains unconfirmed for pod (most hits were digital-download printables) \u2014 excluded from this niche's product-type fit and from all gap-pairing this cycle. gap finder tested 3 pairings against the tracked niche base (mycology 22/40, cozy fantasy/romantasy reader mug 21/40, both below the briefing bar; hsp marked inconclusive, not scored) \u2014 see gaps section. distinct from the already-tracked kitchen witch niche, confirmed again this cycle (no witchcraft/occult overlay).",
+      "status": "active \u2014 status unchanged from cycle 50. a third dedicated trend scout pass this cycle specifically hunting a physical/printed wall-art listing (canvas/poster/framed, explicitly excluding digital-download/printable and handmade pottery) again came back inconclusive, not resolved either way: several real-format `etsy.com/listing/...` urls surfaced inside aggregated search snippets with pod-consistent details (multi-format/frame-choice language, \"made-to-order\"), but none could be independently re-resolved on a second query to confirm title/price/image \u2014 a tool-indexing blank, the same limitation flagged in cycles 49-50, not a finding that physical wall art doesn't exist. one candidate (`/listing/4301570570`) read as genuine physical pod but is tagged **grandmacore**, an adjacent-but-distinct aesthetic, not confirmed as cottagecore. **new flag this cycle (\u26a0\ufe0f needs your call):** a cluster of detailed, pod-consistent, cottagecore-labeled wall-art listings surfaced on `patternbyetsy.com` subdomains (etsy's \"pattern by etsy\" custom-storefront product) rather than `etsy.com` itself \u2014 these read as the strongest signal found across all three passes, but trend scout correctly declined to count them against this pipeline's `etsy.com/listing/...` sourcing rule, and flagged that pattern by etsy was understood to have been sunset around 2023, making current-dated hits on that domain in 2026 itself worth a second look rather than quietly accepting or discarding. i'm not resolving this myself either direction \u2014 whether `patternbyetsy.com` listings should count as valid etsy-sourced evidence for this pipeline is a sourcing-policy call, not a routine logging decision. recommend treating wall-art pod-fit as unconfirmed and not spending a fourth manual search pass on it \u2014 trend scout's own recommendation is to prioritize this specific lookup once `etsy_api_key` goes live rather than repeating search-only attempts.",
       "statusNote": null,
       "satLevel": "unknown",
       "satDetail": "not computed \u2014 no `ETSY_API_KEY`",
       "count": 5,
-      "countDisplay": "search-verified only (5 POD-format listings confirmed this cycle; the 4 handmade-pottery listings logged in Cycle 49 remain real evidence of the aesthetic generally, just not counted toward POD-format fit)",
+      "countDisplay": "search-verified only (5 POD-format listings confirmed Cycle 50; this cycle's wall-art-specific pass found no independently-confirmable new listing, see CEO Summary)",
       "title": "\"Cottagecore Coffee Mug, Cottage Core Mug, Mushroom Mug Gifts for Her\"",
       "url": "https://www.etsy.com/listing/1637446746/cottagecore-coffee-mug-cottage-core-mug",
       "img": null,
@@ -12122,6 +12121,477 @@ const DATA = {
           "satLevel": "unknown"
         }
       ]
+    },
+    {
+      "cycle": 51,
+      "date": "2026-10-10",
+      "niches": [
+        {
+          "name": "Gothmas / gothic Christmas decor",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Nonnacore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Castlecore / Knightcore",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "ADHD / neurodivergent stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Chronic illness / spoonie stickers",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Recovery / sobriety stickers",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Pet breed + hobby combo mugs",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Occupation x sarcasm t-shirts",
+          "status": "active",
+          "satLevel": "high"
+        },
+        {
+          "name": "Afrohemian decor",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Extra Celestial / alien-core",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Circus-core / Funhaus",
+          "status": "active",
+          "satLevel": "low"
+        },
+        {
+          "name": "Neo Deco",
+          "status": "active",
+          "satLevel": "medium"
+        },
+        {
+          "name": "Tumbler general (teachers/nurses/moms)",
+          "status": "caution",
+          "satLevel": "high"
+        },
+        {
+          "name": "Cozy fantasy / \"romantasy\" reader mug",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "ADHD/neurodivergent \u00d7 wall art",
+          "status": "unresolved",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Recovery/sobriety \u00d7 tumbler",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-served market \u2014 multiple direct competitor listings found \u2014 soberaf tumbler, aa-anniversary tumblers, personalized recovery-affirmation tumblers \u2014 on top of sitting inside the tracker's already-saturated broad tumbler category)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Chronic illness/spoonie \u00d7 wall art",
+          "status": "unresolved (\u26a0\ufe0f cycle 16: independently confirmed as an already-established market \u2014 a \"spoon theory\" posters market category plus multiple named shops selling into this exact intersection already)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Nonnacore \u00d7 kitchen wall art",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 17: literal-term maturity signal now unconfirmed under two independent methods \u2014 cycle 16's external web search and cycle 17's direct etsy search both found no shop/listing/market-page for the exact term \"nonnacore\"; cycle 15's \"dedicated shop\" characterization is flagged as unverified/possibly overstated, since the one real listing it cited (id 758772060) traces to a general art-print shop with one nonna-themed line, not a nonnacore-dedicated shop. however, the broader \"nonna kitchen\"/italian-grandmother-kitchen-decor theme this would actually compete inside is independently confirmed as real, current, and already populated by multiple distinct sellers \u2014 so this is downgraded from an open maturity-risk flag to a confirmed-not-white-space read, just not for the reason originally flagged)",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Perimenopause humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AuDHD (combined autism+ADHD identity)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover heavily served against the tracked adhd/neurodivergent niche (5-6 distinct sticker listings plus dedicated market pages) \u2014 reads as a keyword sub-slice of that already-saturated parent niche, not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mob wife aesthetic",
+          "status": "active",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Coquette aesthetic",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "NICU / preemie mom",
+          "status": "active \u2014 established gift-guide category, moderate volume; apparel product-type fit newly confirmed this cycle via a real, resolvable listing",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Highly Sensitive Person (HSP)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found hsp \u00d7 empath positioning is not a genuine gap \u2014 sellers already fully conflate the two terms within the same listings and dedicated market pages exist for both; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Goblincore",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Foster mom / adoptive parent",
+          "status": "active \u2014 established mainstream gift niche, not new",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Night shift nurse",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Misophonia",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19: gap finder found this crossover with adhd/spoonie/chronic-illness stickers already actively claimed (one real listing stacks misophonia + spoonie + chronic illness + neurodiversity + autism acceptance tags in a single sku) \u2014 not a distinct gap; niche itself stays tracked, not ruled out",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "IBS / gut health humor",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rejection Sensitive Dysphoria (RSD)",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 19 correction: cycle 18 read this as \"stickers, could extend to wall art\" \u2014 gap finder's more thorough search found rsd **wall art is already served** (3 real poster/wall-art listings found), so the opportunity is specifically the sticker product type, not the niche as a whole. **the sticker gap is real and now scored as gap 10 (30/40) \u2014 see gaps section and brief 10.**",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trad wife aesthetic",
+          "status": "unresolved \u2014 \u26a0\ufe0f cycle 21 update: the single-template-system pattern flagged in cycle 20 is now evidenced more broadly \u2014 9 real, resolvable-url listings (up from 6-7), spanning at least 5 distinct sub-themes (irish american housewife, japanese tradwife, conservative/anime \"waifu\" wife, retro kitchen, generic midcentury housewife), all sharing identical production-spec boilerplate (\"midjourney ai\" design credit, \"museum-grade 175gsm matte archival paper,\" size range \"8x12 to 36x54,\" \"30% off 3+\" discount) repeated verbatim across nominally different listings \u2014 stronger mechanical evidence of one template system than cycle 20's title-numbering pattern alone. a possible common shop name (\"englishartifex\") surfaced via search, but this came from the search tool's own synthesized answer text, not a directly-quoted source snippet or a page load (blocked by an outbound proxy 403 this cycle) \u2014 shop identity itself remains unverified, and gap finder explicitly did not factor it into this cycle's rescore. the trad wife \u00d7 nonnacore intersection (gap 11) was rescored 21\u219223/40 on the production-mechanics evidence alone \u2014 the intersection itself was not re-checked this cycle (still 0 combined listings from cycle 20); still low-tier, not briefed; see gaps section.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25, 2026-09-28, 2026-10-07)*",
+          "status": "unresolved \u2014 thin: one real digital png clip-art sticker pack confirmed on etsy (cycle 23); no finished physical pod sticker/wall-art/apparel product found as of cycle 24, re-confirmed unchanged by a second targeted check in cycle 27 (2026-09-16, 4 queries, zero physical listings), re-confirmed unchanged a third time in cycle 31 (2026-09-20), re-confirmed unchanged a fourth time in cycle 36 (2026-09-25, two targeted physical-product searches), re-confirmed unchanged a fifth time in cycle 39 (2026-09-28, three targeted physical-product searches with explicit digital/png/clip-art exclusions), and **re-confirmed unchanged a sixth time in cycle 48 (2026-10-07, four targeted physical-product searches, explicit digital/png/clip-art exclusions \u2014 only unrelated same-name noise surfaced: a melissa & doug \"play house\" sticker pad and walmart \"haus and hues\" wall art, neither an etsy \"play haus\" match)** \u2014 still no physical product found after six checks spanning three and a half weeks. a 2026 printify trend report separately calls this a \"fastest-growing\" gen-z maximalist aesthetic \u2014 real as an industry signal, but that's a secondary source, not etsy-native listing-volume data, and is not independently verified here. \u26a0\ufe0f **needs your call (new this cycle):** six consecutive negative checks is a materially stronger signal than the \"wait and see\" read this row carried through cycles 27-39 \u2014 worth deciding whether to keep periodically re-checking the physical-product angle at all, or treat it as settled-negative and only revisit if an external trigger (e.g. a new trend-report mention) warrants it. not retiring the niche or dropping the digital-sticker finding either way \u2014 that's not this flag's subject, and only you make that call regardless.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
+          "status": "unresolved \u2014 now 6 real, resolvable listing urls across 2 product types (title/url only \u2014 price/image/reviews/date `no data available` throughout). cycle 26 ran the targeted genuineness follow-up cycle 25 flagged: checked whether the cycle 25 listing's 5-term \"-core\" cross-tagging (cozycore, grandmillennial, cutecore, fairycore, ch\u00e2teaucore) was an outlier or a repeating pattern. mixed result: across all 6 known listings, 3 use \"ch\u00e2teaucore\" as the sole aesthetic (no cross-tagging), 2 pair it only with \"cottagecore\" (closely related aesthetic, lighter-degree), and 1 (the cycle 25 find) stacks 5 terms \u2014 that remains the most extreme case, but title-level cross-tagging itself isn't unique to it. new supporting evidence: a dedicated shop, **chateaucorehome**, was identified via search snippets, branding multiple product categories (mugs, wall art, kitchen items, home decor) specifically around \"ch\u00e2teaucore\" alongside only two co-aesthetics (cottagecore, french country) \u2014 a data point for genuineness, though full catalog verification remains blocked (no page-fetch tool). \u26a0\ufe0f treating the cycle 25 genuineness caution as **addressed, not fully resolved**: evidence now leans toward \"real enough to keep tracking as-is,\" not toward a nonnacore-style downgrade, but this isn't a two-independent-method confirmation either \u2014 a further check would need actual shop-catalog access, not just search snippets. not urgent; revisit only if new evidence surfaces.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. cycle 10 already evaluated this niche and found it real but already mature/saturated via multiple etsy market-taxonomy sub-pages, two with deep pagination \u2014 logged then as \"not tracked, no need to re-check.\" trend scout re-surfaced it today without that history (it was only given a name-collision avoid-list, not the full ruled-out log); today's own evidence (1 listing, 1 dedicated `/market/cryptidcore` page) is thinner than cycle 10's, so it doesn't override that finding \u2014 reaffirmed saturated. formally added as a tracked row now (current convention tracks saturated niches for market intelligence \u2014 see coquette/goblincore/night shift nurse/ibs/perimenopause rows above \u2014 a convention that postdates cycle 10's \"not tracked\" note).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. cycle 10 found this real but already mature/saturated (multiple market-taxonomy sub-pages, deep pagination). today's independent re-check agrees: large \"mega bundle\" digital-download listings (2,900-6,000 prints each) found alongside single prints, consistent with a crowded, bundle-seller-dominated term \u2014 a reaffirmation 18 cycles apart, not a contradiction. formally added as a tracked row now, same reasoning as cryptidcore above.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
+          "status": "unresolved \u2014 search-verified, no saturation caution raised. cycle 31 correction: of cycle 30's \"5 more sellers\" spot-check claim (oxhip studio, cosmoandpepe, dailymugstudio), only **cosmoandpepe** yielded a genuinely new, real listing; dailymugstudio's was a duplicate of an already-tracked listing, and oxhip studio's claimed listing could not be located \u2014 the corrected, current confirmed count for this specific title/style cluster is **3 real listings**, not 5. the new listing's illustration style (a multi-species collage) is genuinely different from the prior two examples' single-mascot style, so phrase miner's visual-style read moved from \"weak (2-example)\" to \"confirmed split/heterogeneous\" rather than graduating to strong \u2014 only the title/copy formula graduated. one isolated hsp-thematic touchpoint remains from cycle 29 (\"feathers and feelings\" bird sublimation-wrap design file) \u2014 a digital design asset, not a finished gift, still flagged as a genuinely isolated single example, not a pattern; gap finder re-searched the birdcore\u00d7hsp combined intersection this cycle and again found 0 listings. distinct from the pet-ownership niches already tracked (species/nature-observation hobby-identity, not pet-breed identity).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
+          "status": "unresolved \u2014 new, real foraging/mycology hobbyist-identity niche, distinct from goblincore/fantasy forest aesthetics (a genuine outdoor-hobby practice, not a costume aesthetic). 3 real, resolvable-url listings found across 2 product types (1 shirt, 2 mugs); phrase miner extracted a moderately-supported (3/3) keyword-first + identity/gift-tag title formula, plus a weaker mug-specific \"[identity] + gift\" sub-pattern (2/3, mug-only, don't generalize to shirts). visual-style read is thin \u2014 a single-listing inference only (\"illustrated/botanical fungi\" line art) \u2014 not corroborated, treat as hypothesis not pattern.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
+          "status": "saturated \u2014 small mature corner, market intelligence only, not treated as an opportunity. cycle 32's initial 1-listing read undersold this niche. a cycle 33 dedicated standalone trend scout pass (search fallback only, no api \u2014 five product-type queries run) found **22** distinct, resolvable listings, dominated by an \"easily distracted by rocks\" joke-phrase cluster with its own auto-generated etsy market page (`/market/easily_distracted_by_rocks`) \u2014 etsy only generates these once a phrase has real independent listing volume, a maturity signal. title-formula divergence across the cluster (at least 4 distinct patterns, one shop \u2014 thunderandgrace \u2014 explicitly named) indicates 3-4+ independent sellers, not one shop relisting \u2014 corroborating and extending gap finder's cycle 32 side-find. one plausible untested angle (rockhounding-hobby-identity wall art, distinct from generic \"rocks\" home decor) surfaced with no signal this pass \u2014 a single unexplored sub-query, not validated white space.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 8+ real, resolvable-url listings and 5+ dedicated etsy market-category pages (`dysautonomia_stickers`, `dysautonomia_emergency_kit`, `pots_syndrome_essentials_bag`, `pots_syndrome_kit`, `dysautonomia_cups`, `pots_syndrome_sticker` page 2, `pots_spoonie`) \u2014 same multi-market-page maturity signal already applied to rockhounding/cryptidcore/cluttercore. structurally similar to the tracker's existing ibs/spoonie/chronic-illness rows but a distinct condition-specific term.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus an unusually dense 7+ dedicated etsy market-category pages spanning mugs and apparel \u2014 one of the strongest maturity signals of any niche this pipeline has tested.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 4+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`witchy_kitchen`, `witches_kitchen_art`, `witches_cottage_art`, `kitchen_witch_poster`). distinct territory from the tracker's ch\u00e2teaucore/nonnacore/trad-wife kitchen-decor rows \u2014 witchy-domestic rather than heritage/traditional aesthetic.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Vet tech / veterinary technician humor *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 4-5 dedicated etsy market-category pages. a distinct occupation from the tracker's existing \"occupation x sarcasm t-shirts\" row's night-shift-nurse example.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages. structurally parallel to the tracker's mycology/rockhounding/beekeeping hobbyist-identity rows but a distinct hobby community.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"Girl math\" meme merch *(new 2026-09-23)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. found as a bonus check (not one of this cycle's 7 primary discovery angles) during trend scout's fresh discovery pass \u2014 5+ real, resolvable-url listings and 3 dedicated etsy market-category pages (`girl_math_merch`, `girl_math_mug`, `girl_math_sticker`).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
+          "status": "saturated \u2014 market-page-level intelligence only, not treated as an opportunity; **weaker-verified than cycle 34's other 6 additions.** fresh trend scout discovery pass found 8 dedicated etsy market-category pages (including `/market/bugcore` itself) \u2014 real, corroborated at the market level. but no individual bugcore-specific listing url was captured this pass: the one candidate listing found is tagged cottagecore/fairycore primarily, insect-themed but not bugcore-labeled. per this pipeline's sourcing-discipline rule, treating the individual-listing claim as unverified rather than letting the market-page signal alone imply a confirmed product-level example.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Reptile/gecko keeper merch *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings and 9+ dedicated etsy market-category pages spanning a multi-species (snake, gecko, bearded dragon) sub-taxonomy \u2014 deeper category-splitting than most tracked saturated niches, a strong maturity signal.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found the pyrex side real and listing-level confirmed, including a dedicated \"pyrex collectors checklist\" product line and 8 market pages; the depression-glass side has 9 market pages but **no individual listing url was captured this pass** \u2014 market-level signal only for that half, same asymmetric-evidence pattern already applied to bugcore. treating the depression-glass listing-level claim as unverified per this pipeline's sourcing rule.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Dental hygienist humor *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 7 dedicated etsy market-category pages. same occupation-sarcasm format already crowded by the tracker's existing nurse/vet-tech rows \u2014 dental hygienist is just another already-claimed occupation slot.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"Situationship\" merch *(new 2026-09-24)*",
+          "status": "saturated on t-shirts \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found an exact-phrase \"situationship survivor\" pattern repeated across 5+ distinct real listings/sellers and 3 dedicated etsy market-category pages, all t-shirt-dominant. mug/sticker product-type fit was referenced only in the search tool's own synthesized summary text, not backed by any listing url \u2014 flagged as genuinely unverified rather than treated as confirmed cross-product fit.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Frogcore / froggy aesthetic *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings and 9+ dedicated etsy market-category pages, including a literal `/market/frogcore` page \u2014 etsy only auto-generates these once a term has real independent listing volume, the same signal already relied on for bugcore/cryptidcore.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Ham radio operator merch *(new 2026-09-24)*",
+          "status": "established, moderate maturity \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 3 dedicated etsy market-category pages and an existing \"funny x operator\" title formula. fewer market pages than this cycle's other additions, but still a real, populated, multi-seller niche, not thin.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings across all three product types, including a \"[term] definition poster\" wall-art sub-format mirroring a pattern already seen elsewhere in this tracker's history, plus 7 dedicated etsy market-category pages.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus a dedicated shop (sourdoughgifts) and 5 dedicated etsy market-category pages (`sourdough_sticker`, `sourdough`, `sourdough_stickers`, `sourdough_shirt`, `sourdough_themed_gift`).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Vinyl record collector merch *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages \u2014 one of the deepest maturity signals seen this pipeline (comparable to beekeeping's 7+).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Board game night host merch *(new 2026-09-25)*",
+          "status": "saturated \u2014 market-page-level intelligence only, not treated as an opportunity; **weaker-verified, same asymmetric-evidence pattern as bugcore/depression glass.** fresh trend scout discovery pass found 9 dedicated etsy market-category pages (`board_game_mug`, `gifts_for_board_gamers`, `gifts_for_boardgame_lovers`, `board_game_t_shirt`, `board_game_shirt`, `board_game_gifts`, `gifts_for_board_game_lovers`, `mug_board_games`, `board_game_fan_gift`) \u2014 the deepest market-page count of this cycle's six additions \u2014 but no individual listing url was captured this pass. real and corroborated at the market level; product-level claim unverified per this pipeline's sourcing rule.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
+          "status": "saturated (smaller scale) \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus a dedicated shop (yinzergearstore) and 3 dedicated etsy market-category pages (`yinzer_gift_ideas`, `yinz`, `yinzers`) \u2014 the thinnest maturity signal of this cycle's six additions, but still clearly claimed by an existing dedicated shop, not unclaimed white space. a different regional identity might still be open; this specific one is not.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 8 dedicated etsy market-category pages. \u26a0\ufe0f ceo note: trend scout itself flagged this angle as blurring close to the tracker's already-exhausted meme-identity bucket despite the non-meme \"nostalgia\" framing \u2014 treating it as real but not fully independent new-category evidence.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 6 dedicated etsy market-category pages, including a `propagation_labels` page specific to the narrower functional sub-angle \u2014 even the narrower framing is already claimed, not just the broad \"plant mom/dad\" identity.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus multiple dedicated etsy market-category pages (\"dungeon master merch,\" \"dungeon master clothing,\" \"dnd tumblers,\" \"sublimated dungeons and dragons tumbler\") and an already-claimed cat-pun spinoff (\"dungeon meowster\"). distinct from the tracker's board game night host row \u2014 this is the narrower ttrpg-player identity, not general social board-gaming.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Competitive pickleball player merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus an unusually deep market-page count with product-type-specific pages (mugs, tumblers, cups, glass tumblers, stainless tumblers each separately claimed) and classic pun-driven copy (\"tears of my pickleball opponents\"). one of the deepest maturity signals of this cycle's six additions.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Van life / car camping enthusiast merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus dedicated etsy market-category pages including a distinct sub-identity term (\"vandweller\") already claimed as its own page.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Disc golf hobbyist merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings, notably deep and specific (hawaiian/button-down shirts, personalized 3d jerseys, regional/state-map variants, multiple running pun formulas (\"stupid tree,\" \"disc golf makes me say bad words\")) \u2014 one of the more thoroughly worked-over angles tested this pipeline.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Librarian humor *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity; a visibly thinner dedicated-market-page count than this cycle's other five additions, worth noting but not a different verdict. fresh trend scout discovery pass found real, resolvable-url listings across shirts and mugs, still claimed by multiple sellers. one listing's \"201 favorites\" figure flagged as a favorites count, not a review count \u2014 reported as directional/unverified, not treated as a commercial metric.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings, same pun-heavy multi-shop pattern as this cycle's pickleball/disc golf additions, with product-specific market pages already claimed (\"funny knitting mugs,\" \"yarn addict shirt,\" \"funny crochet shirt\").",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mechanical keyboard enthusiast merch *(new 2026-09-27)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus 4 dedicated etsy market-category pages (`retro_mechanical_keyboard`, `geek_nerd_keyboard`, `custom_mechanical_rgb_keyboard`, `programmer_keycaps`).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Home lab / self-hosted server hobbyist merch *(new 2026-09-27)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity; strong maturity signal. fresh trend scout discovery pass found real, resolvable-url listings with unusually specific inside-joke copy already in market (proxmox, kubernetes, dns-haiku, \"127.0.0.1\" jokes) \u2014 sellers have moved past generic phrasing into micro-jargon targeting, a stronger-than-usual saturation signal for a niche this narrow.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Speedcubing (Rubik's cube) hobbyist merch *(new 2026-09-27)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings across all three product types from multiple sellers.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Software engineer / programmer humor *(new 2026-09-27)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity; one of the most crowded pod niches tested this pipeline. fresh trend scout discovery pass found real, resolvable-url listings plus confirmed dedicated etsy market-category pages (`programmer_keycaps`, `geek_nerd_keyboard`); generic-to-specific copy already fully exhausted (\"infinite loop,\" \"works on my machine,\" dns/kubernetes jokes).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Retro console gaming collector merch *(new 2026-09-27)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings, console-specific sub-variants (sega, handheld) already separately claimed as their own listings.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Competitive chess player identity merch *(new 2026-09-27)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings across all three product types plus a confirmed dedicated etsy market-category page (`chess_keycaps`). one candidate listing had gone dead (\"item unavailable\") \u2014 noted as ordinary inventory churn, not evidence of white space.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Narcolepsy awareness/humor merch *(new 2026-09-28)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found real, resolvable-url listings plus dedicated etsy market-category pages (`narcolepsy_shirt`, `narcolepsy_merch`, `narcolepsy_gift_idea`) including an auto-generated gift-guide page; one sticker listing shows visible social proof (209 favorites \u2014 a favorites count, not a review count, reported as directional only).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Trail running / ultrarunning fandom merch *(new 2026-09-28)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found extensive dedicated etsy market-category pages across both product types (`trail_running_shirt`, `ultra_running_shirts`, `trail_runner_sticker`, `ultra_marathon_decal`), plus strava-branded crossover products and mileage-milestone/race-distance sub-segmentation already in market \u2014 a stronger-than-usual maturity signal.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Appalachian / hillbilly regional pride merch *(new 2026-09-28)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found multiple dedicated etsy market-category pages (`appalachian_pride`, `hillbilly_pride`, `hillbilly_shirt`, `hillbilly_clothing_m`) and a \"progressive appalachian\" sub-angle already claimed (identity + political-reclamation variant) \u2014 a sub-fragmentation signal already seen elsewhere in this tracker (trad wife, play haus).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Mortician / funeral-industry humor merch *(new 2026-09-28)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found multiple real listings plus dedicated etsy market-category pages (`mortician_shirt`, `funny_mortician_shirt`, `gifts_for_morticians`, `funny_funeral_t`) including a gift-guide page, with an established dark-humor formula already in market (\"hide body\" mug jokes, \"last responder\" framing). same occupation-sarcasm format already crowded by this tracker's nurse/vet-tech/dental-hygienist rows.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Gorpcore / technical-outdoor aesthetic merch *(new 2026-09-28)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found at least 6 distinct dedicated etsy market-category pages (`gorpcore`, `gorpcore_shirt`, `gorpcore_aesthetic`, `gorpcore_clothes`, `gorpcore_womens`, `gorpcore_fashion`, `gorpcore_style`) \u2014 the deepest market-page count of this cycle's angles \u2014 already cross-pollinated with \"granola girl\"/y2k aesthetics.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Thrifting / vintage-shopping identity merch *(new 2026-09-29)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. this was the pipeline's held-in-reserve angle (deferred since cycle 39); on testing it turned out to be one of the more thoroughly saturated angles tested this pipeline \u2014 17 distinct dedicated etsy market-category page slugs found (`thrift_flips`, `thrift_flip_shirt`, `thrift_flip`, `gift_for_thrifter`, `thrift_flips_mens_shirt`, `thrift_store_flip`, `unique_thrifting`, `thrifting_shirt`, `thriftie`, `thrift_shop_stickers`, `thrift_logo`, `thrift_store_sticker`, `shop_thrift_stores`, `thrifter_shirt`, `thrifter_stickers`, `thrift_stickers`, `shop_thrifted_stickers`) across all three product types.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Genealogy / family-history hobbyist merch *(new 2026-09-29)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 8 dedicated etsy market-category pages (`geneology_gifts`, `gifts_for_genealogy_buffs`, `genealogy_gifts`, `for_family_historian`, `genealogy_mug`, `genealogy_tshirts`, `genealogy_tshirt`, `family_tree_mug`) across mugs, shirts, and gift-guide categories.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Dark academia aesthetic merch *(new 2026-09-29)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 8 dedicated etsy market-category pages (`dark_academia_skin`, `dark_academia_mug`, `dark_academia_stickers_pack`, `printable_dark_academia_stickers`, `dark_academia_wall_art_collection`, `vinyl_stickers_pack_dark_academia`, `dark_academia_stickers`, `dark_academia_decor`) with extensive established decor/sticker/mug supply. adjacent in aesthetic territory to the already-tracked castlecore/knightcore and neo deco rows but confirmed as its own independently mature market, not a duplicate.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Doula / birth-worker profession humor merch *(new 2026-09-29)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found multiple real listings across all three product types plus 5 dedicated etsy market-category pages (`doula_stone`, `postpartum_doula_clip_art`, `doula_shirt`, `doula_sticker`, `doula_mug`). reads the same as this tracker's already-established occupation-sarcasm pattern (night shift nurse, vet tech, dental hygienist, mortician), just a different profession.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Homebrewing / home-brewer hobbyist merch *(new 2026-09-29)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 7 dedicated etsy market-category pages (`home_brew_beer_shirt`, `home_brew_shirt`, `home_brewer_shirt`, `homebrew_mug`, `homebrew_stickers`, `homebrew_t_shirt`, `homebrew_decals`) plus a named dedicated shop (`shop/brewershirts`) confirming established seller-level supply, not just isolated listings.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Powerlifting / strength-training gym humor merch *(new 2026-09-29)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. fresh trend scout discovery pass found 4 dedicated etsy market-category pages (`powerlifting_shirt`, `powerlifting_t_shirt`, `powerlifter_t_shirt`, `funny_powerlifting`) and multiple distinct listings with real engagement signal (136 favorites on one listing \u2014 a favorites count, not a review count, reported as directional only).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cybersecurity / infosec professional humor merch *(new 2026-10-03)*",
+          "status": "active \u2014 real but narrow: a small dedicated seller cluster exists (shop cyberclubtees, built specifically around pentest/red-team identity), narrower audience than general programmer humor. no computed saturation (no `etsy_api_key`); trend scout flagged all read-level findings this cycle as directional only, not a computed ratio. did not find a direct \"i break into things for a living\" exact-phrase match on etsy itself (that phrase surfaced instead on a qa-tester mug, off-etsy \u2014 see cycle 44 ceo summary).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "DevOps / SRE engineer humor merch *(new 2026-10-03)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. multiple independent sellers found this cycle with personalization variants already common (a maturity signal consistent with cycles 34-40's saturated-niche classification). the on-call/pager-culture and kubernetes-specific joke sub-angle returned no signal despite targeted query attempts \u2014 only the broader devops role-identity angle is actually served, not that narrower sub-angle.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Data scientist / ML engineer humor merch *(new 2026-10-03)*",
+          "status": "saturated \u2014 market intelligence only, not treated as an opportunity. real cluster found, but it reads \"data analyst\" flavored rather than ml-engineer-specific (model-training/gpu/overfitting jokes). the narrower ml-training-joke sub-angle returned zero etsy-native signal this pass \u2014 the one matching phrase found (\"too legit to overfit\") surfaced only on walmart, explicitly not counted as etsy evidence per this pipeline's no-fabrication rule.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Linux sysadmin / terminal-nerd humor merch *(upgraded 2026-10-04)*",
+          "status": "rising \u2014 upgraded from cycle 44's \"2 listings, thin\" read. a deeper trend scout pass (9 new query variants) found 6 additional real, resolvable listings across french, german/austrian, and scandinavian storefronts, bringing the real count to 8 distinct listings across 5+ storefronts. a strong title/copy formula is now confirmed (5 of 8 examples): \"[real shell command: rm -rf / grep / sleep / whoami / sudo] + linux/cli/command/terminal keyword stack.\" paired into gap 23 (linux cli \u00d7 mechanical keyboard enthusiast, 31/40, this tracker's highest-scoring gap \u2014 briefed as brief 16) and gap 24 (linux cli \u00d7 home lab/self-hosted jargon mashup, 25/40, unbriefed stretch \u2014 gap finder flagged a real audience-overlap risk undercutting the score). \"systemd joke,\" \"tux/penguin shirt,\" and \"ssh joke shirt\" query variants still return no real etsy signal; vim-vs-emacs rivalry sub-angle still unconfirmed.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "3D printing / maker hobbyist merch *(new 2026-10-05)*",
+          "status": "new \u2014 real signal (2 confirmed resolvable listings this pass); not yet saturation-scored. distinct from all previously-tracked technical-identity niches (cycles 44-45).",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "AI \"prompt engineer\" / \"vibe coding\" identity humor *(new 2026-10-05; re-checked 2026-10-06, 2026-10-07)*",
+          "status": "rising \u2014 unchanged at 2 confirmed listings across 2 categories (t-shirts + mugs) this cycle. cycle 48 ran a dedicated shop-scoped follow-up on the mrprompt lead flagged last cycle (8 query variants, incl. `site:etsy.com/shop/mrprompt` and name+product-title combinations) \u2014 still could not resolve any individual `/listing/` url to the shop; only shop/locale-duplicate pages (`/shop/mrprompt` and its `/jp/`, `/it/`, `/es/`, `/de/`, `/ca/` variants) came back, which are shop pages, not listings. three listing ids surfaced in broader or-term queries were checked for attribution and found to be likely false positives (one keyed off a german quilt-wall-hanging listing matching only on the word \"lonesome\") \u2014 not logged as mrprompt listings or counted toward this niche's total. a search engine's own synthesized shop-summary text (claiming 4 named products, an au$60.64 price point, two named shop owners, and a barcelona production partner) could not be attached to any resolvable listing url and is flagged as unverified background color only, per this pipeline's no-fabrication rule \u2014 not entered as data. niche stays at 2 confirmed listings; still too thin for phrase miner, same threshold as cycle 47.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "\"IT Crowd\" fan-content tech-support merch *(new 2026-10-05)*",
+          "status": "caution \u2014 real signal (2 confirmed resolvable listings) but rides specific copyrighted/trademarked tv-show ip (channel 4's \"the it crowd\"), a poor fit for this pipeline's cautious/limited-budget-operator profile. logged as market intelligence only, not pursued as an original-ip opportunity. the non-ip generic \"it helpdesk/tech support humor\" framing returned only one title-only hit this pass (no resolvable url), so stays unconfirmed and is not logged as its own row.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Database administrator / SQL humor *(new 2026-10-05)*",
+          "status": "new \u2014 real but thin signal (1 confirmed resolvable listing this pass); distinct from the already-tracked general-programmer, infosec, devops, and data-scientist clusters (cycles 38/44). other plausible titles (\"trust me, i'm the dba,\" \"select shirt from closet where...\") seen in search prose but not matched to a resolvable url this pass, so not counted as confirmed.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Manual QA / regression-testing humor *(new 2026-10-05 \u2014 narrower framing than the \"QA/test-engineer\" phrasing checked and found dead-signal in Cycles 44-45)*",
+          "status": "new \u2014 real signal under a narrower framing only; does not overturn the broader finding. cycles 44-45 tested the broad \"qa engineer\"/\"qa tester\" phrasing twice and found no verifiable etsy signal (logged as checked-no-signal, never a tracked row). this cycle's narrower \"manual qa\"/\"regression testing\" framing \u2014 explicitly flagged by cycle 45 as untried in either prior pass \u2014 surfaced 2 real resolvable listing urls. one of the two (\"quality assurance design bundle\") may be a digital design-file bundle rather than a finished physical pod product \u2014 flagged as ambiguous, not asserted as a clean comparable. evidence is thin; not yet pipelined further.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Day trader / stock market humor merch *(new 2026-10-08)*",
+          "status": "unresolved \u2014 real-but-thin signal. fresh trend scout discovery pass (one of 6 new angles tested) found 3 real, resolvable-url listings across 2 product types (2 shirts, 1 mug). phrase miner extracted two weak-confidence title/copy formulas from the 3 examples: a 2-example \"[descriptor] + day trader gift + [finance/crypto slang stack]\" keyword-front-loaded pattern, and a distinct 1-example idiom/clich\u00e9-twist joke mechanic (\"live life on the edge...of my computer screen\") \u2014 neither generalizes across all 3 titles, so both stay flagged weak rather than strong. visual-style read (possible chart/candlestick or bull/crypto iconography) is text-inferred only from slang in the titles, not image-confirmed. gap finder paired this niche against software engineer/programmer humor and scored the tracker's newest briefed gap from it (gap 25, 27/40, brief 17) \u2014 see gaps/design briefs sections. flagged as this cycle's standout.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Rock climbing / bouldering enthusiast merch *(upgraded 2026-10-09)*",
+          "status": "rising \u2014 upgraded from cycle 49's \"1 listing, very thin\" read. a targeted trend scout deep-dive (cycle 50) found 8 additional real, resolvable listings \u2014 3 stickers, 3 t-shirts, 2 wall art (1 of the 2 wall-art hits is a digital download, not physical pod) \u2014 bringing the real count to 9 distinct listings, the same order-of-magnitude jump this pipeline saw with linux sysadmin (2\u21928, cycles 44\u219245). phrase miner then confirmed two strong formulas: a climbing-slang-as-wordplay joke mechanic (\"jugs,\" \"grip,\" \"send it,\" 4 examples) and a cross-niche keyword-stacking seo title mechanic (3 in-niche examples, 6+ cross-niche with cottagecore). visual style remains insufficient data \u2014 text-inferred only, contradictory signals (the two climbing wall-art examples split \"watercolor\" vs. \"retro/minimalist\"). seller-diversity behind the 9 listings is unconfirmed (unlike linux sysadmin's independently-confirmed 5+ storefronts) \u2014 flagged as an open question for a future pass, not resolved this cycle. the \"climbing holds sticker\" (shop lowgravityprints) remains unconfirmed \u2014 a dedicated shop-scoped search again found no resolvable etsy url, only the same third-party sales-tracker figures as cycle 49; still excluded from the real evidence base. climbing mugs found this pass have a physical climbing hold attached as the handle (handmade/assembled novelty, not printed-on-blank pod) \u2014 excluded from product-type fit, mugs not counted among this niche's viable pod categories. paired against programmer humor and rescored as gap 26 (29/40, up from 25/40) \u2014 now briefed, see brief 18.",
+          "satLevel": "unknown"
+        },
+        {
+          "name": "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+          "status": "active \u2014 status unchanged from cycle 50. a third dedicated trend scout pass this cycle specifically hunting a physical/printed wall-art listing (canvas/poster/framed, explicitly excluding digital-download/printable and handmade pottery) again came back inconclusive, not resolved either way: several real-format `etsy.com/listing/...` urls surfaced inside aggregated search snippets with pod-consistent details (multi-format/frame-choice language, \"made-to-order\"), but none could be independently re-resolved on a second query to confirm title/price/image \u2014 a tool-indexing blank, the same limitation flagged in cycles 49-50, not a finding that physical wall art doesn't exist. one candidate (`/listing/4301570570`) read as genuine physical pod but is tagged **grandmacore**, an adjacent-but-distinct aesthetic, not confirmed as cottagecore. **new flag this cycle (\u26a0\ufe0f needs your call):** a cluster of detailed, pod-consistent, cottagecore-labeled wall-art listings surfaced on `patternbyetsy.com` subdomains (etsy's \"pattern by etsy\" custom-storefront product) rather than `etsy.com` itself \u2014 these read as the strongest signal found across all three passes, but trend scout correctly declined to count them against this pipeline's `etsy.com/listing/...` sourcing rule, and flagged that pattern by etsy was understood to have been sunset around 2023, making current-dated hits on that domain in 2026 itself worth a second look rather than quietly accepting or discarding. i'm not resolving this myself either direction \u2014 whether `patternbyetsy.com` listings should count as valid etsy-sourced evidence for this pipeline is a sourcing-policy call, not a routine logging decision. recommend treating wall-art pod-fit as unconfirmed and not spending a fourth manual search pass on it \u2014 trend scout's own recommendation is to prioritize this specific lookup once `etsy_api_key` goes live rather than repeating search-only attempts.",
+          "satLevel": "unknown"
+        }
+      ]
     }
   ],
   "historyNicheNames": [
@@ -12234,7 +12704,8 @@ const DATA = {
     "Rock climbing / bouldering enthusiast merch *(new 2026-10-08)*",
     "Cottagecore aesthetic merch (general) *(new 2026-10-08)*",
     "Rock climbing / bouldering enthusiast merch *(upgraded 2026-10-09)*",
-    "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*"
+    "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+    "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*"
   ],
   "productTypes": [
     "3/3",
@@ -12245,7 +12716,6 @@ const DATA = {
     "but its visual style is confirmed **split/heterogeneous** between two real illustration approaches",
     "decals",
     "digital/PNG",
-    "excluded)",
     "first non-wall-art example \u2014 single example",
     "hats",
     "hoodies",
@@ -12253,7 +12723,7 @@ const DATA = {
     "mugs (**5** real listings confirmed \u2014 4 as of Cycle 30 plus 1 genuinely new this cycle; the \"Bird Nerd Mug\" birder-identity title/copy formula is now **STRONG**",
     "mugs (crosses into t-shirts)",
     "mugs (stickers not yet evidenced)",
-    "mugs (wall art unconfirmed \u2014 mostly digital-download printables",
+    "mugs (wall art still unconfirmed for POD)",
     "no individual listing found for those product types",
     "not one reinforced cluster); stickers (1 real listing confirmed); wall art (2 real minimalist-line-art listings",
     "only 1 birder-identity-confirmed); t-shirts per Trend Scout's original industry-trend note",
@@ -13560,10 +14030,10 @@ const DATA = {
         "r": 21.9
       },
       {
-        "id": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "id": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "kind": "niche",
-        "label": "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
-        "name": "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "label": "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "name": "Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "category": "stickers",
         "color": "#f472b6",
         "satLevel": "unknown",
@@ -14257,6 +14727,11 @@ const DATA = {
       },
       {
         "source": "niche:ADHD/neurodivergent \u00d7 wall art",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:ADHD/neurodivergent \u00d7 wall art",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
       },
@@ -14352,6 +14827,11 @@ const DATA = {
       },
       {
         "source": "niche:Chronic illness/spoonie \u00d7 wall art",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "weight": 2
+      },
+      {
+        "source": "niche:Chronic illness/spoonie \u00d7 wall art",
         "target": "gap:2:Nonnacore \u00d7 ADHD/spoonie self-care mugs",
         "weight": 1
       },
@@ -14419,6 +14899,11 @@ const DATA = {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
         "target": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
         "weight": 1
+      },
+      {
+        "source": "niche:Nonnacore \u00d7 kitchen wall art",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "weight": 2
       },
       {
         "source": "niche:Nonnacore \u00d7 kitchen wall art",
@@ -14697,7 +15182,7 @@ const DATA = {
       },
       {
         "source": "niche:Mob wife aesthetic",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -14752,7 +15237,7 @@ const DATA = {
       },
       {
         "source": "niche:Coquette aesthetic",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -15007,7 +15492,7 @@ const DATA = {
       },
       {
         "source": "niche:Trad wife aesthetic",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -15332,7 +15817,7 @@ const DATA = {
       },
       {
         "source": "niche:Play Haus *(new 2026-09-12; re-checked 2026-09-16, 2026-09-20, 2026-09-25, 2026-09-28, 2026-10-07)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -15632,7 +16117,7 @@ const DATA = {
       },
       {
         "source": "niche:Ch\u00e2teaucore *(new 2026-09-12; upgraded 2026-09-13, 2026-09-14, 2026-09-15)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -15947,7 +16432,7 @@ const DATA = {
       },
       {
         "source": "niche:Cryptidcore / Mothman aesthetic *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Cryptidcore/Cryptid Hunter\")*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -16252,8 +16737,8 @@ const DATA = {
       },
       {
         "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
-        "weight": 1
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "weight": 2
       },
       {
         "source": "niche:Cluttercore / maximalist gallery wall decor *(re-surfaced 2026-09-17; originally evaluated Cycle 10, 2026-08-30, as \"Grandmillennial/Cluttercore Maximalist Decor\")*",
@@ -16587,7 +17072,7 @@ const DATA = {
       },
       {
         "source": "niche:Birdcore / Birding gifts (Gen Z birding trend) *(new 2026-09-17; expanded 2026-09-18, 2026-09-19, 2026-09-20)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -16872,7 +17357,7 @@ const DATA = {
       },
       {
         "source": "niche:Mycology / mushroom-foraging hobby merch *(new 2026-09-21)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -17172,7 +17657,7 @@ const DATA = {
       },
       {
         "source": "niche:Rockhounding / geology-hobby merch *(new 2026-09-21; reclassified saturated 2026-09-22)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -17462,7 +17947,7 @@ const DATA = {
       },
       {
         "source": "niche:POTS / Dysautonomia awareness merch *(new 2026-09-23)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -17747,7 +18232,7 @@ const DATA = {
       },
       {
         "source": "niche:Beekeeping / apiary hobbyist merch *(new 2026-09-23)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -18022,7 +18507,7 @@ const DATA = {
       },
       {
         "source": "niche:Kitchen witch / cottage witchery decor *(new 2026-09-23)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -18287,7 +18772,7 @@ const DATA = {
       },
       {
         "source": "niche:Vet tech / veterinary technician humor *(new 2026-09-23)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -18572,7 +19057,7 @@ const DATA = {
       },
       {
         "source": "niche:Amateur astronomy / stargazing hobbyist merch *(new 2026-09-23)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -18832,7 +19317,7 @@ const DATA = {
       },
       {
         "source": "niche:\"Girl math\" meme merch *(new 2026-09-23)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -19087,7 +19572,7 @@ const DATA = {
       },
       {
         "source": "niche:Bugcore / insect-lover aesthetic *(new 2026-09-23)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -19332,7 +19817,7 @@ const DATA = {
       },
       {
         "source": "niche:Reptile/gecko keeper merch *(new 2026-09-24)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -19577,7 +20062,7 @@ const DATA = {
       },
       {
         "source": "niche:Vintage Pyrex / Depression glass collector merch *(new 2026-09-24)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -19822,7 +20307,7 @@ const DATA = {
       },
       {
         "source": "niche:Dental hygienist humor *(new 2026-09-24)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -20077,7 +20562,7 @@ const DATA = {
       },
       {
         "source": "niche:\"Situationship\" merch *(new 2026-09-24)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -20307,7 +20792,7 @@ const DATA = {
       },
       {
         "source": "niche:Frogcore / froggy aesthetic *(new 2026-09-24)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -20527,7 +21012,7 @@ const DATA = {
       },
       {
         "source": "niche:Ham radio operator merch *(new 2026-09-24)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -20747,7 +21232,7 @@ const DATA = {
       },
       {
         "source": "niche:Cold plunge / ice bath enthusiast merch *(new 2026-09-24)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -20962,7 +21447,7 @@ const DATA = {
       },
       {
         "source": "niche:Sourdough / home bread-baking hobbyist merch *(new 2026-09-25)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -21177,7 +21662,7 @@ const DATA = {
       },
       {
         "source": "niche:Vinyl record collector merch *(new 2026-09-25)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -21387,7 +21872,7 @@ const DATA = {
       },
       {
         "source": "niche:Board game night host merch *(new 2026-09-25)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -21587,7 +22072,7 @@ const DATA = {
       },
       {
         "source": "niche:\"Yinzer\" / Pittsburgh regional-identity humor *(new 2026-09-25)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -21822,7 +22307,7 @@ const DATA = {
       },
       {
         "source": "niche:Xennial / \"elder millennial\" generational nostalgia *(new 2026-09-25)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -21997,7 +22482,7 @@ const DATA = {
       },
       {
         "source": "niche:Houseplant propagation-station labels / \"plant mom\"/\"plant dad\" identity *(new 2026-09-25)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -22207,7 +22692,7 @@ const DATA = {
       },
       {
         "source": "niche:Tabletop RPG / D&D hobbyist merch *(new 2026-09-26)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -22387,7 +22872,7 @@ const DATA = {
       },
       {
         "source": "niche:Competitive pickleball player merch *(new 2026-09-26)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -22562,7 +23047,7 @@ const DATA = {
       },
       {
         "source": "niche:Van life / car camping enthusiast merch *(new 2026-09-26)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -22737,7 +23222,7 @@ const DATA = {
       },
       {
         "source": "niche:Disc golf hobbyist merch *(new 2026-09-26)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -22902,7 +23387,7 @@ const DATA = {
       },
       {
         "source": "niche:Librarian humor *(new 2026-09-26)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -23082,8 +23567,8 @@ const DATA = {
       },
       {
         "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
-        "weight": 2
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "weight": 3
       },
       {
         "source": "niche:Knitting / crochet fiber-arts hobbyist merch *(new 2026-09-26)*",
@@ -23282,7 +23767,7 @@ const DATA = {
       },
       {
         "source": "niche:Mechanical keyboard enthusiast merch *(new 2026-09-27)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -23432,7 +23917,7 @@ const DATA = {
       },
       {
         "source": "niche:Home lab / self-hosted server hobbyist merch *(new 2026-09-27)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -23582,7 +24067,7 @@ const DATA = {
       },
       {
         "source": "niche:Speedcubing (Rubik's cube) hobbyist merch *(new 2026-09-27)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -23722,7 +24207,7 @@ const DATA = {
       },
       {
         "source": "niche:Software engineer / programmer humor *(new 2026-09-27)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -23877,7 +24362,7 @@ const DATA = {
       },
       {
         "source": "niche:Retro console gaming collector merch *(new 2026-09-27)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24012,7 +24497,7 @@ const DATA = {
       },
       {
         "source": "niche:Competitive chess player identity merch *(new 2026-09-27)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24157,7 +24642,7 @@ const DATA = {
       },
       {
         "source": "niche:Narcolepsy awareness/humor merch *(new 2026-09-28)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24307,7 +24792,7 @@ const DATA = {
       },
       {
         "source": "niche:Trail running / ultrarunning fandom merch *(new 2026-09-28)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24422,7 +24907,7 @@ const DATA = {
       },
       {
         "source": "niche:Appalachian / hillbilly regional pride merch *(new 2026-09-28)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24532,7 +25017,7 @@ const DATA = {
       },
       {
         "source": "niche:Mortician / funeral-industry humor merch *(new 2026-09-28)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24667,7 +25152,7 @@ const DATA = {
       },
       {
         "source": "niche:Gorpcore / technical-outdoor aesthetic merch *(new 2026-09-28)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 3
       },
       {
@@ -24782,7 +25267,7 @@ const DATA = {
       },
       {
         "source": "niche:Thrifting / vintage-shopping identity merch *(new 2026-09-29)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24897,7 +25382,7 @@ const DATA = {
       },
       {
         "source": "niche:Genealogy / family-history hobbyist merch *(new 2026-09-29)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -24987,7 +25472,7 @@ const DATA = {
       },
       {
         "source": "niche:Dark academia aesthetic merch *(new 2026-09-29)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 3
       },
       {
@@ -25087,7 +25572,7 @@ const DATA = {
       },
       {
         "source": "niche:Doula / birth-worker profession humor merch *(new 2026-09-29)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25202,7 +25687,7 @@ const DATA = {
       },
       {
         "source": "niche:Homebrewing / home-brewer hobbyist merch *(new 2026-09-29)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25282,7 +25767,7 @@ const DATA = {
       },
       {
         "source": "niche:Powerlifting / strength-training gym humor merch *(new 2026-09-29)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25382,7 +25867,7 @@ const DATA = {
       },
       {
         "source": "niche:Cybersecurity / infosec professional humor merch *(new 2026-10-03)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25477,7 +25962,7 @@ const DATA = {
       },
       {
         "source": "niche:DevOps / SRE engineer humor merch *(new 2026-10-03)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25567,7 +26052,7 @@ const DATA = {
       },
       {
         "source": "niche:Data scientist / ML engineer humor merch *(new 2026-10-03)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25652,7 +26137,7 @@ const DATA = {
       },
       {
         "source": "niche:Linux sysadmin / terminal-nerd humor merch *(upgraded 2026-10-04)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 3
       },
       {
@@ -25732,7 +26217,7 @@ const DATA = {
       },
       {
         "source": "niche:3D printing / maker hobbyist merch *(new 2026-10-05)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25777,7 +26262,7 @@ const DATA = {
       },
       {
         "source": "niche:AI \"prompt engineer\" / \"vibe coding\" identity humor *(new 2026-10-05; re-checked 2026-10-06, 2026-10-07)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -25857,7 +26342,7 @@ const DATA = {
       },
       {
         "source": "niche:\"IT Crowd\" fan-content tech-support merch *(new 2026-10-05)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -25892,7 +26377,7 @@ const DATA = {
       },
       {
         "source": "niche:Database administrator / SQL humor *(new 2026-10-05)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -25942,7 +26427,7 @@ const DATA = {
       },
       {
         "source": "niche:Manual QA / regression-testing humor *(new 2026-10-05 \u2014 narrower framing than the \"QA/test-engineer\" phrasing checked and found dead-signal in Cycles 44-45)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 1
       },
       {
@@ -25987,7 +26472,7 @@ const DATA = {
       },
       {
         "source": "niche:Day trader / stock market humor merch *(new 2026-10-08)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 2
       },
       {
@@ -26037,7 +26522,7 @@ const DATA = {
       },
       {
         "source": "niche:Rock climbing / bouldering enthusiast merch *(upgraded 2026-10-09)*",
-        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "target": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "weight": 3
       },
       {
@@ -26071,32 +26556,67 @@ const DATA = {
         "weight": 1
       },
       {
-        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "target": "gap:9:Equestrian-imagery \u00d7 dark-academia wall art/prints",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "target": "gap:11:Trad wife \u00d7 Nonnacore domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "target": "gap:15:Ch\u00e2teaucore \u00d7 Castlecore/Knightcore old-world-grandeur wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "target": "gap:16:Ch\u00e2teaucore \u00d7 Nonnacore heritage-kitchen wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "target": "gap:17:Ch\u00e2teaucore \u00d7 Trad wife domestic-homemaker wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "target": "gap:18:Ch\u00e2teaucore \u00d7 Kitchen witch cottage-kitchen wall art",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "target": "gap:19:Mob Wife aesthetic \u00d7 Neo Deco old-Hollywood-glam wall art",
-        "weight": 1
+        "weight": 3
       },
       {
-        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "target": "gap:20:Mob Wife aesthetic \u00d7 Gothmas gothic-glam Christmas wall art/decor",
-        "weight": 1
+        "weight": 3
       },
       {
-        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
+        "target": "gap:21:NICU/preemie mom \u00d7 Castlecore/Knightcore \"warrior\" wall art/apparel",
+        "weight": 2
+      },
+      {
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "target": "gap:22:NICU/preemie mom \u00d7 Foster mom/adoptive parent gift merch",
         "weight": 1
       },
       {
-        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "target": "gap:23:Linux CLI/terminal humor \u00d7 Mechanical keyboard enthusiast merch",
         "weight": 1
       },
       {
-        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "target": "gap:30:Cottagecore (general) \u00d7 Mycology/mushroom-foraging hobbyist merch",
         "weight": 2
       },
       {
-        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09)*",
+        "source": "niche:Cottagecore aesthetic merch (general) *(upgraded 2026-10-09; wall-art POD check re-attempted and still inconclusive 2026-10-10)*",
         "target": "gap:31:Cottagecore (general) \u00d7 Cozy fantasy/\"romantasy\" reader mug",
         "weight": 1
       }
