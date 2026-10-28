@@ -333,41 +333,41 @@
 </script>
 <script>
 const DATA = {
-  "generatedAt": "2026-10-27T13:49:41",
+  "generatedAt": "2026-10-28T13:34:44",
   "cycle": {
-    "number": 68,
-    "date": "2026-10-27",
-    "title": "Cycle 68 \u2014 2026-10-27",
-    "dataAsOfCycle": null
+    "number": 69,
+    "date": "2026-10-28",
+    "title": "Cycle 69 \u2014 2026-10-28",
+    "dataAsOfCycle": 68
   },
   "pipeline": {
-    "lastRun": "2026-10-27",
-    "nextScheduled": "2026-10-28",
+    "lastRun": "2026-10-28",
+    "nextScheduled": "2026-10-29",
     "agents": [
       {
         "name": "Trend Scout",
         "status": "success",
-        "detail": "fresh discovery pass, 6 new angles tested against a combined avoid-list built from the 115-row Niches table plus 10 cycles of tested-but-unlogged angles; `ETSY_API_KEY` confirmed genuinely unset via direct check; 1 of 6 angles \u2014 Equestrian/\"horse girl\" aesthetic merch \u2014 cleared the row-logging bar with 6 resolvable listings across 3 categories"
+        "detail": "targeted re-check on Gap 34 only \u2014 Equestrian \u00d7 Castlecore/Knightcore; 14 phrasing variants across 5 product categories; search fallback, `ETSY_API_KEY` confirmed directly unset; found no genuine combined listing, one borderline result correctly not counted; flagged `site:etsy.com` filter-leak reliability issue"
       },
       {
         "name": "Phrase Miner",
-        "status": "success",
-        "detail": "extracted 1 reasonably-grounded pattern \u2014 floral/botanical + horse motif, 3 of 4 titled items \u2014 flagged everything else weak/insufficient from 1-2 examples"
+        "status": "skipped",
+        "detail": "no new raw listing material this cycle"
       },
       {
         "name": "Gap Finder",
         "status": "success",
-        "detail": "ruled out Equestrian \u00d7 Cottagecore as already-served; scored 3 new candidate intersections at 25/40, 25/40, and 21/40, all below the briefing floor"
+        "detail": "rescored Gap 34 from 25/40 to 26/40 \u2014 Market Opportunity 6\u21927, other three components held flat \u2014 still below the briefing floor; recommended against engaging Review Miner/Design Briefer"
       },
       {
         "name": "Review Miner",
         "status": "skipped",
-        "detail": "`ETSY_API_KEY` unset, moot"
+        "detail": "`ETSY_API_KEY` unset, 69th consecutive cycle, moot regardless"
       },
       {
         "name": "Design Briefer",
         "status": "skipped",
-        "detail": "nothing cleared the briefing bar"
+        "detail": "gap still below briefing bar"
       }
     ],
     "summary": ""
@@ -3538,21 +3538,21 @@ const DATA = {
     },
     {
       "rank": 34,
-      "rankLabel": "34 (new, stretch, not briefed)",
+      "rankLabel": "34 (rescored 2026-10-28, stretch, not briefed)",
       "name": "Equestrian/\"horse girl\" aesthetic \u00d7 Castlecore/Knightcore (tracked, medium saturation, 501 listings)",
-      "verification": "**0** combined listings (`site:etsy.com` horse-girl/equestrian + knightcore/medieval phrasings, Cycle 68) \u2014 confirmed sparse at search-only confidence (no API); only generic horse-shirt listings and off-domain noise surfaced.",
+      "verification": "**Verification status (Cycle 69, superseding Cycle 68's single spot-check):** Confirmed sparse via deep re-check \u2014 Trend Scout ran 14 distinct `site:etsy.com` phrasing variants across all 5 product categories (apparel, stickers, mugs, wall art, tumblers) and found no resolvable-URL listing genuinely combining the equestrian/\"horse girl\" identity angle with the castlecore/knightcore/medieval-fantasy aesthetic. Real listings sorted cleanly into horse-only (girls' horse tee, horse-lover mug, $55 vintage equestrian print, personalized horse tumbler, generic horse stickers) or knight/medieval-only (Ren-Faire horse mug framed as fantasy pottery not horse-girl identity, knight costume, Renaissance ruffle shirt, surcoat/tunic) \u2014 never both in one listing. One borderline result, [etsy.com/listing/4513369786](https://www.etsy.com/listing/4513369786) (a \"knight-and-princess/knight-and-maiden\" medieval fantasy print series, ~$18-27), is **not counted as a combined-niche hit** \u2014 it reads as romance/fairytale-genre art, not equestrian \"horse girl\" identity merch, and was not independently re-verified beyond the search snippet. Trend Scout rates its own confidence as \"inferred, leaning toward genuinely sparse,\" not real-verified (no `ETSY_API_KEY`) \u2014 and flags that the search tool leaked non-etsy.com domains (TeePublic, Walmart, Redbubble, Dashery, eBay, museum stores, Zazzle) past the `site:` filter despite the filter, which caps how cleanly \"zero\" can be asserted the way an API count would. Net read: meaningfully more thorough than Cycle 68's single check, still not airtight confirmation.",
       "risk": "Audience-merge uncertain \u2014 Castlecore/Knightcore skews gothic/historical-fantasy decor buyers, horse-girl skews younger floral/cute-aesthetic apparel buyers; real tonal-mismatch risk between gothic/moody and floral/cute.",
-      "nearMissCount": 0,
-      "nearMissUrl": null,
-      "nearMissTitle": null,
+      "nearMissCount": null,
+      "nearMissUrl": "https://www.etsy.com/listing/4513369786",
+      "nearMissTitle": "etsy.com/listing/4513369786",
       "brief": null,
       "score": {
         "marketOpportunity": 6,
         "easeOfEntry": 7,
         "userFit": 7,
         "profitPotential": 5,
-        "total": 25,
-        "rationale": "Market Opportunity 6: Castlecore/Knightcore is a real, medium-saturation tracked niche (501 listings) giving a validated anchor on one side; horse-girl itself is still thin (6 listings, 4 titled). Ease of Entry 7: simple line-art (knight + horse) is cheap to commission and fully templatable. User Fit 7: one illustration swappable across variants, low upfront cost for a solo operator. Profit Potential 5: the gothic/moody vs. floral/cute tonal mismatch caps realistic combined audience size and price-point confidence."
+        "total": 26,
+        "rationale": "**Rescored from 25/40 (+1).** Market Opportunity 6\u21927: Trend Scout's Cycle 69 re-check ran 14 phrasing variants across all 5 product categories (vs. Cycle 68's single spot-check) and again found zero genuine combined listing \u2014 a thorough independent null-result search moving confidence from \"one spot-check\" to \"broad multi-variant confirmation,\" the same one-point precedent this pipeline applied to Gap 6. Capped at +1, not more: Trend Scout's own confidence rating is \"inferred, leaning sparse,\" not real-verified (no `ETSY_API_KEY`), and the `site:etsy.com` filter-leak issue caps how airtight \"zero\" can be claimed. The other half of this score \u2014 validated demand on both sides \u2014 is unchanged: Castlecore/Knightcore remains a solid anchor (501 listings) but horse-girl itself is still thin (6 listings, 4 titled), and nothing in the new search adds listing-count or review depth there. Ease of Entry 7, User Fit 7, Profit Potential 5: all held flat \u2014 the deeper search speaks only to how empty the combined space is, not to production mechanics, operator fit, or price/audience-size data, so none of these three had a basis to move. **Still below this pipeline's ~27-31/40 historical briefing floor \u2014 not sent to Review Miner or Design Briefer this cycle.**"
       }
     },
     {
@@ -24734,8 +24734,8 @@ const DATA = {
         "example": null,
         "price": null,
         "url": null,
-        "r": 32,
-        "score": 25
+        "r": 30,
+        "score": 26
       },
       {
         "id": "gap:35:Equestrian/\"horse girl\" identity apparel/stickers \u00d7 Dark Academia aesthetic merch (tracked, established/mature) \u2014 **distinct from Gap 9/Brief 9** (Cycle 11's existing Equestrian-imagery \u00d7 dark-academia *wall art* intersection, decor-framed, already briefed)",
